@@ -3,7 +3,7 @@ package item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory {
+public class Inventory implements ItemManagement {
 
     private static final double DEFAULT_CAPACITY = 10.0;
 
@@ -22,34 +22,78 @@ public class Inventory {
     }
 
     public double getUsedCapacity() {
-        return this.itemList.stream().mapToDouble(item -> (item.getWeight() * item.getQuantity())).sum();
+
+        // return this.itemList.stream().mapToDouble(item -> (item.getWeight() * item.getQuantity())).sum();
+        return 0.0;
     }
 
     public double getCapacity() {
-        return capacity;
+        return 0;
     }
 
     public int getNbItems() {
         return nbItems;
     }
 
-    public boolean addItem(Item itm) {
-        double usedCapacity = getUsedCapacity();
-        if (canAddItem(itm, usedCapacity)) {
-            this.itemList.add(itm);
-            this.nbItems += itm.getQuantity();
-            return true;
-        }
+    @Override
+    public boolean isEmpty() {
         return false;
     }
 
-    private void addItemBypass(Item item, int quantity){
-        this.itemList.add(item);
-        this.nbItems += item.getQuantity();
+    @Override
+    public Item getRandomItem() {
+        return null;
     }
 
+    @Override
+    public void removeAllItems() {
+    }
+
+    public boolean addItem(Item itm) {
+        return false;
+    }
+
+    public boolean addItem(String string) {
+        return false;
+    }
+
+    @Override
+    public boolean removeItem(Item item) {
+        return false;
+    }
+
+    @Override
+    public boolean removeItem(String item) {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Item item) {
+        return false;
+    }
+
+    @Override
+    public boolean contains(String item) {
+        return false;
+    }
+
+    @Override
+    public int getQuantity(Item item) {
+        return 0;
+    }
+
+    @Override
+    public int getQuantity(String s) {
+        return 0;
+    }
+
+
     public boolean canAddItem(Item itm, double usedCapacity) {
-        return (usedCapacity + (itm.getWeight() * itm.getQuantity())) < this.capacity;
+        return false;
+    }
+
+    public boolean canAddItem(Item item) {
+        return false;
     }
 
 }
