@@ -17,7 +17,9 @@ public class LimitedInventory extends Inventory {
     }
 
     public double getUsedCapacity() {
-        return 0.0;
+        return itemList.stream()
+                       .mapToDouble(Item::getWeight)
+                       .sum();
     }
 
     public double getCapacity() {
@@ -25,11 +27,14 @@ public class LimitedInventory extends Inventory {
     }
 
     public boolean canAddItem(Item item) {
-        return false;
+        double d = item.getWeight();
+        return capacity > (d + getUsedCapacity());
     }
 
-    public boolean canAddItem(Item itm, double usedCapacity) {
+    @Override
+    public boolean addItem(Item item) {
+        if (canAddItem(item))
+            return super.addItem(item);
         return false;
     }
-
 }

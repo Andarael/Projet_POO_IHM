@@ -16,7 +16,7 @@ public class Item {
 
     public Item(String name, double weight) {
         this.name = name;
-        this.weight = weight;
+        this.weight = weight; // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
     }
 
     public String getName() {
@@ -32,18 +32,12 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return name.equals(item.name);
+        return Double.compare(item.weight, weight) == 0 && name.equals(item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
-    }
-
-    public static void main(String[] args) {
-        Item pomme = new Item("pomme");
-        System.out.println(pomme.getName());
-        System.out.println(pomme);
+        return Objects.hash(name, weight);
     }
 
     @Override

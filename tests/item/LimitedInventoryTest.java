@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class LimitedInventoryTest {
 
     private LimitedInventory inv1;
-    private Inventory inv2;
 
     private Item item1;
     private Item item2;
@@ -18,7 +17,6 @@ class LimitedInventoryTest {
     @BeforeEach
     void setUp() {
         inv1 = new LimitedInventory(10.0);
-        inv2 = new LimitedInventory();
 
         item1 = new Item("apple", 1.0);
         item2 = new Item("sword", 3.0);
@@ -27,18 +25,18 @@ class LimitedInventoryTest {
     }
 
     @Test
-    public void testInventory() {
+    void Inventory() {
         LimitedInventory inv = new LimitedInventory();
-        Inventory inv3 = new LimitedInventory(10.0);
+        Inventory inv2 = new LimitedInventory(10.0);
 
         assertEquals(0, inv.getNbItems());
 
-        assertEquals(10.0, ((LimitedInventory) inv3).getCapacity());
-        assertEquals(10.0, ((LimitedInventory) inv3).getUsedCapacity());
+        assertEquals(10.0, ((LimitedInventory) inv2).getCapacity());
+        assertEquals(0.0, ((LimitedInventory) inv2).getUsedCapacity());
     }
 
     @Test
-    public void addItem2() {
+    void addItem2() {
         inv1.addItem(item1);
         inv1.addItem(item2);
         inv1.addItem(item3);
@@ -50,14 +48,14 @@ class LimitedInventoryTest {
     }
 
     @Test
-    public void addItem3() {
+    void addItem3() {
         assertFalse(inv1.addItem(item4));
 
         assertTrue(inv1.addItem(item1));
     }
 
     @Test
-    void testContains() {
+    void contains() {
         inv1.addItem(item1);
 
         assertTrue(inv1.contains(item1));
@@ -74,12 +72,20 @@ class LimitedInventoryTest {
     }
 
     @Test
-    void testGetUsedCapacity() {
+    void getUsedCapacity() {
+        assertEquals(0.0, inv1.getUsedCapacity());
 
+        inv1.addItem(item1);
+        inv1.addItem(item1);
+        assertEquals(2.0, inv1.getUsedCapacity());
+
+        inv1.removeItem(item1);
+        assertEquals(1.0, inv1.getUsedCapacity());
     }
 
     @Test
-    void testGetCapacity() {
+    void getCapacity() {
+        assertEquals(10.0, inv1.getCapacity());
     }
 
 }

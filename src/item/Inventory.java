@@ -35,8 +35,8 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public boolean addItem(Item itm) {
-        itemList.add(itm);
+    public boolean addItem(Item item) {
+        itemList.add(item);
         nbItems += 1;
         return true;
     }
