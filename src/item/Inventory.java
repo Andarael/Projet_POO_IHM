@@ -1,46 +1,38 @@
 package item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory implements InventoryManagement {
-
-    private static final double DEFAULT_CAPACITY = 10.0;
-
+    protected final List<Item> itemList;
     private int nbItems;
-    private final double capacity;
-    private final List<Item> itemList;
-
-    public Inventory(double capacity) {
-        this.capacity = 0;
-        itemList = null;
-    }
 
     public Inventory() {
-        this(DEFAULT_CAPACITY);
-    }
-
-    @Override
-    public double getUsedCapacity() {
-        return 0.0;
-    }
-
-    @Override
-    public double getCapacity() {
-        return 0;
+        itemList = new ArrayList<>();
     }
 
     @Override
     public int getNbItems() {
-        return 0;
+        return nbItems;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return nbItems == 0;
+    }
+
+    @Override
+    public Item getItem(String s) {
+        return null;
     }
 
     @Override
     public Item getRandomItem() {
+        return null;
+    }
+
+    @Override
+    public Item getFirstItem() {
         return null;
     }
 
@@ -50,22 +42,25 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public boolean addItem(Item itm) {
-        return false;
+        this.itemList.add(itm);
+        nbItems += 1;
+        return true;
     }
 
-    @Override
-    public boolean addItem(String string) {
-        return false;
-    }
 
     @Override
     public boolean removeItem(Item item) {
-        return false;
+        if (!this.contains(item))
+            return false;
+
+        this.itemList.remove(item);
+        this.nbItems -= 1;
+        return true;
     }
 
     @Override
-    public boolean removeItem(String item) {
-        return false;
+    public boolean removeItem(String s) {
+        return this.removeItem(this.getItem(s));
     }
 
     @Override
@@ -74,7 +69,7 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public boolean contains(String item) {
+    public boolean contains(String s) {
         return false;
     }
 
@@ -88,14 +83,7 @@ public class Inventory implements InventoryManagement {
         return 0;
     }
 
-    @Override
-    public boolean canAddItem(Item itm, double usedCapacity) {
-        return false;
+    public boolean isValid() {
+        return nbItems == itemList.size();
     }
-
-    @Override
-    public boolean canAddItem(Item item) {
-        return false;
-    }
-
 }

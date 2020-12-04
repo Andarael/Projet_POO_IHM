@@ -8,30 +8,15 @@ public class Item {
 
     private final String name;
     private final double weight;
-    private int quantity;
 
-
-    public Item(String name, double weight){
-        this(name, weight, 1);
-    }
 
     public Item(String name) {
-        this(name, DEFAULT_WEIGHT, 1);
+        this(name, DEFAULT_WEIGHT);
     }
 
-    private Item(String name, double weight, int quantity) {
+    public Item(String name, double weight) {
         this.name = name;
         this.weight = weight;
-        this.quantity = quantity;
-    }
-
-    public static void main(String[] args) {
-        Item pomme = new Item("pomme");
-
-        pomme.getName();
-        System.out.println(pomme);
-
-
     }
 
     public String getName() {
@@ -40,14 +25,6 @@ public class Item {
 
     public double getWeight() {
         return weight;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Override
@@ -68,7 +45,12 @@ public class Item {
         return "Item{" +
                 "name='" + name + '\'' +
                 ", weight=" + weight +
-                ", x " + quantity +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        Item pomme = new Item("pomme");
+        System.out.println(pomme.getName());
+        System.out.println(pomme);
     }
 }
