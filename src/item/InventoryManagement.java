@@ -8,6 +8,7 @@ public interface InventoryManagement {
 
 
     Item getItem(String s);
+
     Item getFirstItem();
 
     boolean addItem(Item itm);
@@ -15,11 +16,14 @@ public interface InventoryManagement {
     boolean removeItem(Item item);
 
     boolean removeItem(String s);
+
     void removeAllItems();
 
     boolean contains(Item item);
+
     boolean contains(String item);
 
     int getQuantity(Item item);
+
     int getQuantity(String s);
 }

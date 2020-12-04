@@ -32,7 +32,7 @@ class InventoryTest {
 
     @Test
     void display() {
-        String s = new String("Inventory{itemList=[Item{name='apple', weight=1.0}, Item{name='apple', weight=1.0}, Item{name='sword', weight=3.0}, Item{name='shield', weight=5.0}, Item{name='sword', weight=3.0}], nbItems=5}");
+        String s = "Inventory{itemList=[Item{name='apple', weight=1.0}, Item{name='apple', weight=1.0}, Item{name='sword', weight=3.0}, Item{name='shield', weight=5.0}, Item{name='sword', weight=3.0}], nbItems=5}";
 
         inv1.addItem(item1);
         inv1.addItem(item1);
@@ -87,11 +87,6 @@ class InventoryTest {
         inv1.removeItem(item1);
         assertFalse(inv1.isEmpty());
     }
-
-    /*
-    @Test
-    void getRandomItem() {
-    }*/
 
     @Test
     void getFirstItem() {
@@ -189,13 +184,14 @@ class InventoryTest {
         assertEquals(inv1.getQuantity("apple"), inv1.getQuantity(item1));
 
         inv1.removeItem(item1);
-        assertEquals(nb-1, inv1.getQuantity(item1));
+        assertEquals(nb - 1, inv1.getQuantity(item1));
 
         inv1.removeItem(item2);
         assertEquals(0, inv1.getQuantity(item2));
     }
 
-    @Test void getItem() {
+    @Test
+    void getItem() {
         assertNull(inv1.getItem("apple"));
 
         inv1.addItem(item1);
@@ -207,7 +203,8 @@ class InventoryTest {
         assertNull(inv1.getItem("apple"));
     }
 
-    @Test void isValid(){
+    @Test
+    void isValid() {
         assertTrue(inv1.isValid());
 
         inv1.addItem(item1);

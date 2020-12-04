@@ -1,7 +1,5 @@
 package item;
 
-import java.util.List;
-
 public class LimitedInventory extends Inventory {
 
     private static final double DEFAULT_CAPACITY = 15.0;
@@ -16,14 +14,16 @@ public class LimitedInventory extends Inventory {
         this.capacity = capacity;
     }
 
-    public double getUsedCapacity() {
-        return itemList.stream()
-                       .mapToDouble(Item::getWeight)
-                       .sum();
-    }
-
     public double getCapacity() {
         return capacity;
+    }
+
+    @Override
+    public boolean addItem(Item item) {
+        if (canAddItem(item)) {
+            return super.addItem(item);
+        }
+        return false;
     }
 
     public boolean canAddItem(Item item) {
@@ -31,10 +31,9 @@ public class LimitedInventory extends Inventory {
         return capacity > (d + getUsedCapacity());
     }
 
-    @Override
-    public boolean addItem(Item item) {
-        if (canAddItem(item))
-            return super.addItem(item);
-        return false;
+    public double getUsedCapacity() {
+        return itemList.stream()
+                       .mapToDouble(Item::getWeight)
+                       .sum();
     }
 }

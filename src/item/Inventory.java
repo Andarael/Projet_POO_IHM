@@ -23,10 +23,10 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public Item getItem(String s) {
-    return itemList.stream()                        // stream de la liste d'items
-                .filter(x -> x.getName().equals(s)) // on filtre les items du même nom
-                .findAny()                          // on en retourne un
-                .orElse(null);                // si rien alors null
+        return itemList.stream()                        // stream de la liste d'items
+                       .filter(x -> x.getName().equals(s)) // on filtre les items du même nom
+                       .findAny()                          // on en retourne un
+                       .orElse(null);                // si rien alors null
     }
 
     @Override
@@ -44,8 +44,9 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public boolean removeItem(Item item) {
-        if (!this.contains(item))
+        if (!this.contains(item)) {
             return false;
+        }
 
         itemList.remove(item);
         nbItems -= 1;
