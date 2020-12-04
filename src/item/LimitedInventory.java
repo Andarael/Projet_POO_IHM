@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LimitedInventory extends Inventory {
 
-    private static final double DEFAULT_CAPACITY = 10.0;
+    private static final double DEFAULT_CAPACITY = 15.0;
     private final double capacity;
 
     public LimitedInventory() {
@@ -13,7 +13,7 @@ public class LimitedInventory extends Inventory {
 
     public LimitedInventory(double capacity) {
         super();
-        this.capacity = 0;
+        this.capacity = capacity;
     }
 
     public double getUsedCapacity() {
@@ -21,7 +21,7 @@ public class LimitedInventory extends Inventory {
     }
 
     public double getCapacity() {
-        return 0;
+        return capacity;
     }
 
     public boolean canAddItem(Item item) {

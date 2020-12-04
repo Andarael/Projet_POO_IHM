@@ -40,17 +40,17 @@ public class Item {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", weight=" + weight +
-                '}';
-    }
-
     public static void main(String[] args) {
         Item pomme = new Item("pomme");
         System.out.println(pomme.getName());
         System.out.println(pomme);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+               "name='" + name + '\'' +
+               ", weight=" + weight +
+               '}';
     }
 }

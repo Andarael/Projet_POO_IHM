@@ -17,7 +17,7 @@ class InventoryTest {
     @BeforeEach
     void setUp() {
         inv1 = new Inventory();
-        inv1 = new Inventory();
+        inv2 = new Inventory();
 
         item1 = new Item("apple", 1.0);
         item2 = new Item("sword", 3.0);
@@ -28,6 +28,21 @@ class InventoryTest {
     public void Inventory() {
         Inventory inv = new Inventory();
         assertEquals(0, inv.getNbItems());
+    }
+
+    @Test
+    void display() {
+        String s = new String("Inventory{itemList=[Item{name='apple', weight=1.0}, Item{name='apple', weight=1.0}, Item{name='sword', weight=3.0}, Item{name='shield', weight=5.0}, Item{name='sword', weight=3.0}], nbItems=5}");
+
+        inv1.addItem(item1);
+        inv1.addItem(item1);
+        inv1.addItem(item2);
+        inv1.addItem(item3);
+        inv1.addItem(item2);
+
+        System.out.println(inv1);
+
+        assertEquals(s, inv1.toString());
     }
 
     @Test
@@ -110,7 +125,7 @@ class InventoryTest {
         assertTrue(inv1.contains("apple"));
 
         assertEquals(3, inv1.getQuantity(item1));
-        assertEquals(1, inv1.getQuantity("apple"));
+        assertEquals(3, inv1.getQuantity("apple"));
     }
 
     @Test

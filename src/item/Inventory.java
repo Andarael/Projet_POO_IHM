@@ -8,7 +8,7 @@ public class Inventory implements InventoryManagement {
     private int nbItems;
 
     public Inventory() {
-        itemList = new ArrayList<>();
+        this.itemList = new ArrayList<>();
     }
 
     @Override
@@ -23,26 +23,20 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public Item getItem(String s) {
-        return null;
-    }
-
-    @Override
-    public Item getRandomItem() {
-        return null;
+    return itemList.stream()                        // stream de la liste d'items
+                .filter(x -> x.getName().equals(s)) // on filtre les items du même nom
+                .findAny()                          // on en retourne un
+                .orElse(null);                // si rien alors null
     }
 
     @Override
     public Item getFirstItem() {
-        return null;
-    }
-
-    @Override
-    public void removeAllItems() {
+        return itemList.stream().findFirst().orElse(null);
     }
 
     @Override
     public boolean addItem(Item itm) {
-        this.itemList.add(itm);
+        itemList.add(itm);
         nbItems += 1;
         return true;
     }
@@ -53,8 +47,8 @@ public class Inventory implements InventoryManagement {
         if (!this.contains(item))
             return false;
 
-        this.itemList.remove(item);
-        this.nbItems -= 1;
+        itemList.remove(item);
+        nbItems -= 1;
         return true;
     }
 
@@ -64,26 +58,42 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
+    public void removeAllItems() {
+        itemList.clear();
+        nbItems = 0;
+    }
+
+    @Override
     public boolean contains(Item item) {
-        return false;
+        return itemList.contains(item);
     }
 
     @Override
     public boolean contains(String s) {
-        return false;
+        return contains(getItem(s));
     }
 
     @Override
     public int getQuantity(Item item) {
-        return 0;
+        return (int) itemList.stream()
+                             .filter(x -> x.equals(item))
+                             .count();
     }
 
     @Override
     public int getQuantity(String s) {
-        return 0;
+        return getQuantity(getItem(s));
     }
 
     public boolean isValid() {
         return nbItems == itemList.size();
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+               "itemList=" + itemList +
+               ", nbItems=" + nbItems +
+               '}';
     }
 }

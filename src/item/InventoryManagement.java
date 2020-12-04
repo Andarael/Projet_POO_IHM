@@ -8,7 +8,6 @@ public interface InventoryManagement {
 
 
     Item getItem(String s);
-    Item getRandomItem();
     Item getFirstItem();
 
     boolean addItem(Item itm);

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LimitedInventoryTest {
 
     private LimitedInventory inv1;
-    private LimitedInventory inv2;
+    private Inventory inv2;
 
     private Item item1;
     private Item item2;
@@ -28,24 +28,14 @@ class LimitedInventoryTest {
 
     @Test
     public void testInventory() {
-        LimitedInventory inv3 = new LimitedInventory();
-        LimitedInventory inv4 = new LimitedInventory(10.0);
+        LimitedInventory inv = new LimitedInventory();
+        Inventory inv3 = new LimitedInventory(10.0);
 
-        assertEquals(0, inv3.getNbItems());
+        assertEquals(0, inv.getNbItems());
 
-        assertEquals(10.0, inv4.getCapacity());
-        assertEquals(10.0, inv4.getUsedCapacity());
+        assertEquals(10.0, ((LimitedInventory) inv3).getCapacity());
+        assertEquals(10.0, ((LimitedInventory) inv3).getUsedCapacity());
     }
-
-    @Test
-    void testGetUsedCapacity() {
-
-    }
-
-    @Test
-    void testGetCapacity() {
-    }
-
 
     @Test
     public void addItem2() {
@@ -83,5 +73,13 @@ class LimitedInventoryTest {
         assertFalse(inv1.canAddItem(item4));
     }
 
+    @Test
+    void testGetUsedCapacity() {
+
+    }
+
+    @Test
+    void testGetCapacity() {
+    }
 
 }
