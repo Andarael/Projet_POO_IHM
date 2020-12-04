@@ -1,9 +1,8 @@
 package item;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory implements ItemManagement {
+public class Inventory implements InventoryManagement {
 
     private static final double DEFAULT_CAPACITY = 10.0;
 
@@ -12,27 +11,27 @@ public class Inventory implements ItemManagement {
     private final List<Item> itemList;
 
     public Inventory(double capacity) {
-        this.nbItems = 0;
-        this.capacity = capacity;
-        this.itemList = new ArrayList<>();
+        this.capacity = 0;
+        itemList = null;
     }
 
     public Inventory() {
         this(DEFAULT_CAPACITY);
     }
 
+    @Override
     public double getUsedCapacity() {
-
-        // return this.itemList.stream().mapToDouble(item -> (item.getWeight() * item.getQuantity())).sum();
         return 0.0;
     }
 
+    @Override
     public double getCapacity() {
         return 0;
     }
 
+    @Override
     public int getNbItems() {
-        return nbItems;
+        return 0;
     }
 
     @Override
@@ -49,10 +48,12 @@ public class Inventory implements ItemManagement {
     public void removeAllItems() {
     }
 
+    @Override
     public boolean addItem(Item itm) {
         return false;
     }
 
+    @Override
     public boolean addItem(String string) {
         return false;
     }
@@ -87,11 +88,12 @@ public class Inventory implements ItemManagement {
         return 0;
     }
 
-
+    @Override
     public boolean canAddItem(Item itm, double usedCapacity) {
         return false;
     }
 
+    @Override
     public boolean canAddItem(Item item) {
         return false;
     }

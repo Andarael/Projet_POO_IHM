@@ -68,8 +68,9 @@ class InventoryTest {
 
     @Test
     public void addItem3() {
-        boolean b = inv1.addItem(item4);
-        assertFalse(b);
+        assertFalse(inv1.addItem(item4));
+
+        assertTrue(inv1.addItem(item1));
     }
 
     @Test
@@ -102,6 +103,12 @@ class InventoryTest {
     @Test void removeItem() {
         assertFalse(inv1.removeItem(item1));
         assertFalse(inv1.removeItem("apple"));
+
+        inv1.addItem(item1);
+        assertTrue(inv1.removeItem(item1));
+
+        inv1.addItem(item1);
+        assertTrue(inv1.removeItem("apple"));
     }
 
     @Test void removeItem2() {
