@@ -2,19 +2,23 @@ package item;
 
 public class LimitedInventory extends Inventory {
 
-    private static final double DEFAULT_CAPACITY = 15.0;
-    private final double capacity;
+    private static final float DEFAULT_CAPACITY = 15.0f;
+    private final float capacity;
 
     public LimitedInventory() {
         this(DEFAULT_CAPACITY);
     }
 
-    public LimitedInventory(double capacity) {
+    public LimitedInventory(float capacity) {
         super();
         this.capacity = capacity;
     }
 
-    public double getCapacity() {
+    public LimitedInventory(double capacity) {
+        this((float) capacity);
+    }
+
+    public float getCapacity() {
         return capacity;
     }
 

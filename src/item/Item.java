@@ -4,26 +4,30 @@ import java.util.Objects;
 
 public class Item {
 
-    private static final double DEFAULT_WEIGHT = 1.0;
+    private static final float DEFAULT_WEIGHT = 1.0f;
 
     private final String name;
-    private final double weight;
+    private final float weight;
 
 
     public Item(String name) {
         this(name, DEFAULT_WEIGHT);
     }
 
-    public Item(String name, double weight) {
+    public Item(String name, float weight) {
         this.name = name;
         this.weight = weight; // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
+    }
+
+    public Item(String name, double weight) {
+        this(name, (float) weight);
     }
 
     public String getName() {
         return name;
     }
 
-    public double getWeight() {
+    public float getWeight() {
         return weight;
     }
 

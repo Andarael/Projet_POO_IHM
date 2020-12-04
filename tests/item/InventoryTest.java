@@ -19,9 +19,9 @@ class InventoryTest {
         inv1 = new Inventory();
         inv2 = new Inventory();
 
-        item1 = new Item("apple", 1.0);
-        item2 = new Item("sword", 3.0);
-        item3 = new Item("shield", 5.0);
+        item1 = new Item("apple", 1.0f);
+        item2 = new Item("sword", 3.0f);
+        item3 = new Item("shield", 5.0f);
     }
 
     @Test

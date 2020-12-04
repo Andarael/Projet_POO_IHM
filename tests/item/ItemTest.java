@@ -13,8 +13,8 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        item1 = new Item("apple", 1.0);
-        item2 = new Item("sword", 3.0);
+        item1 = new Item("apple", 1.0f);
+        item2 = new Item("sword", 3.0f);
         item3 = new Item("shield");
     }
 
@@ -26,19 +26,19 @@ class ItemTest {
 
     @Test
     void getWeight() {
-        assertEquals(3.0, item2.getWeight());
-        assertEquals(1.0, item3.getWeight());
+        assertEquals(3.0f, item2.getWeight());
+        assertEquals(1.0f, item3.getWeight());
     }
 
     @Test
     void testEquals() {
-        assertEquals(item1, new Item("apple", 1.0));
+        assertEquals(item1, new Item("apple", 1.0f));
         assertEquals(item3, new Item("shield"));
     }
 
     @Test
     void testHashCode() {
-        assertEquals(-338367577, item1.hashCode());
+        assertEquals(-345707609, item1.hashCode());
     }
 
     @Test
