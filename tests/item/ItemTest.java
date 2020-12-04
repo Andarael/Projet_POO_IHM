@@ -3,7 +3,7 @@ package item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ItemTest {
 
@@ -38,12 +38,12 @@ class ItemTest {
 
     @Test
     void testHashCode() {
-        assertEquals(-338367577,item1.hashCode());
+        assertEquals(-338367577, item1.hashCode());
     }
 
     @Test
     void testToString() {
         System.out.println(item1);
-        assertEquals("Item{name='apple', weight=1.0}",item1.toString());
+        assertEquals("Item{name='apple', weight=1.0}", item1.toString());
     }
 }
