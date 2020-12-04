@@ -202,23 +202,4 @@ class InventoryTest {
         inv1.removeItem("apple");
         assertNull(inv1.getItem("apple"));
     }
-
-    @Test
-    void isValid() {
-        assertTrue(inv1.isValid());
-
-        inv1.addItem(item1);
-        inv1.addItem(item2);
-        inv1.addItem(item3);
-        assertTrue(inv1.isValid());
-
-        inv1.removeItem(item1);
-        assertTrue(inv1.isValid());
-
-        inv1.removeAllItems();
-        assertTrue(inv1.isValid());
-
-        inv1.addItem(item1);
-        assertTrue(inv1.isValid());
-    }
 }

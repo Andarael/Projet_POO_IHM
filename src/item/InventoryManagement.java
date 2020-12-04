@@ -6,7 +6,6 @@ public interface InventoryManagement {
 
     boolean isEmpty();
 
-
     Item getItem(String s);
 
     Item getFirstItem();
