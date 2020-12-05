@@ -41,3 +41,5 @@ Taille des salles :
                            "#             #\n" +
                            "#             #\n" +
                            "#######  ######");
+                           
+test edit Josué
