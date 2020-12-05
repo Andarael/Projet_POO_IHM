@@ -11,10 +11,6 @@ public class Item {
     private final float weight;
     private final int value;
 
-    public Item(String name) {
-        this(name, DEFAULT_WEIGHT, DEFAULT_VALUE);
-    }
-
     public Item(String name, float weight, int value) {
         this.name = name;
         this.weight = weight; // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
@@ -27,12 +23,8 @@ public class Item {
         }
     }
 
-    public Item(String name, int value){
-        this(name, DEFAULT_WEIGHT, value);
-    }
-
-    public Item(String name, float weight) {
-        this(name, weight, DEFAULT_VALUE);
+    public Item(String name) {
+        this(name, DEFAULT_WEIGHT, DEFAULT_VALUE);
     }
 
     public String getName() {
