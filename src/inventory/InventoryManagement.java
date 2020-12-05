@@ -4,6 +4,8 @@ import item.Item;
 
 public interface InventoryManagement {
 
+    void sortInventory();
+
     int getNbItems();
 
     boolean isEmpty();

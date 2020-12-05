@@ -42,4 +42,16 @@ public class LimitedInventory extends Inventory {
                        .mapToDouble(Item::getWeight)
                        .sum();
     }
+
+    @Override
+    public String getDisplay() {
+        return "capacity=" + capacity + "\n" + super.getDisplay();
+    }
+
+    @Override
+    public String toString() {
+        return "LimitedInventory{ \n" +
+               getDisplay() +
+               "} \n";
+    }
 }

@@ -3,6 +3,7 @@ package inventory;
 import item.Item;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Inventory implements InventoryManagement {
@@ -10,6 +11,11 @@ public class Inventory implements InventoryManagement {
 
     public Inventory() {
         this.itemList = new ArrayList<>();
+    }
+
+    @Override
+    public void sortInventory() {
+        itemList.sort(Comparator.comparing(Item::getName));
     }
 
     @Override
@@ -43,11 +49,11 @@ public class Inventory implements InventoryManagement {
         return true;
     }
 
-
     @Override
     public boolean removeItem(Item item) {
-        if (!this.contains(item))
+        if (!this.contains(item)) {
             return false;
+        }
 
         itemList.remove(item);
         return true;
@@ -85,11 +91,27 @@ public class Inventory implements InventoryManagement {
         return getQuantity(getItem(s));
     }
 
+    public String getItemListDisplay(boolean detailed) {
+        StringBuilder output = new StringBuilder();
+        for (Item item : itemList){
+            if (detailed)
+                output.append(item.toString()).append("\n");
+            else
+                output.append(item.getName()).append("\n");
+        }
+        return output.toString();
+    }
+
+    public String getDisplay() {
+        String s = "";
+        return "nbItems=" + itemList.size() + "\n" +
+               getItemListDisplay(true);
+    }
+
     @Override
     public String toString() {
-        return "Inventory{" +
-               "itemList=" + itemList +
-               ", nbItems=" + itemList.size() +
-               '}';
+        return "Inventory{ \n" +
+               getDisplay() +
+               "}\n";
     }
 }

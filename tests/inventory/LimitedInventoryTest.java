@@ -1,6 +1,6 @@
-package item;
+package inventory;
 
-import inventory.LimitedInventory;
+import item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +23,18 @@ class LimitedInventoryTest {
         item2 = new Item("sword", 3.0f, 1);
         item3 = new Item("shield", 5.0f, 1);
         item4 = new Item("heavy_thing", 500.0f, 1);
+    }
+
+    @Test
+    void display() {
+        inv1.addItem(item1);
+        inv1.addItem(item1);
+        inv1.addItem(item2);
+        inv1.addItem(item3);
+        inv1.addItem(item2);
+
+        System.out.println(inv1.getItemListDisplay(false));
+        System.out.println(inv1);
     }
 
     @Test
