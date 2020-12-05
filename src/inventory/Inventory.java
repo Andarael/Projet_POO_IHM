@@ -91,7 +91,7 @@ public class Inventory implements InventoryManagement {
         return getQuantity(getItem(s));
     }
 
-    protected String getItemListDisplay(boolean detailed) {
+    public String getItemListDisplay(boolean detailed) {
         StringBuilder output = new StringBuilder();
         for (Item item : itemList){
             if (detailed)
