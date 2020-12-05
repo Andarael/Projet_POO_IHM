@@ -3,8 +3,7 @@ package item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ItemTest {
 
@@ -77,7 +76,7 @@ class ItemTest {
     }
 
     @Test
-    void testToString() {
+    void testDisplay() {
         System.out.println(item1.toString());
     }
 }

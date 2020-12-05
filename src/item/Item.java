@@ -1,22 +1,19 @@
 package item;
 
-import java.util.Objects;
-
 public class Item {
 
-    protected static final float DEFAULT_WEIGHT = 1.0f;
-    protected static final int DEFAULT_VALUE = 1;
-    protected static final int DEFAULT_SHORT_NAME_SIZE = 5;
+    private static final float DEFAULT_WEIGHT = 1.0f;
+    private static final int DEFAULT_VALUE = 1;
+    private static final int DEFAULT_SHORT_NAME_SIZE = 5;
 
-    protected final String name;
-    protected String shortName;
-    protected final float weight;
-    protected final int value;
+    private final String name;
+    private final float weight;
+    private final int value;
+    private String shortName;
 
     public Item(String name, float weight, int value) {
         this.name = name;
 
-        this.shortName = createShort(name);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
         this.weight = weight;
@@ -26,6 +23,8 @@ public class Item {
             this.value = DEFAULT_VALUE;
         else
             this.value = value;
+
+        this.shortName = createShort(name);
     }
 
     public Item(String name) {
@@ -33,15 +32,16 @@ public class Item {
         this.shortName = createShort(name);
     }
 
-    public static String createShort(String s){
+    public static String createShort(String s) {
         int len = s.length();
-        if (s.length() < DEFAULT_SHORT_NAME_SIZE) {
-            StringBuilder s2 = new StringBuilder(s);
-            for (int i = 0; i < DEFAULT_SHORT_NAME_SIZE - len; i++)
-                s2.append(" ");
-            return s2.toString();
-        }
-        return s.substring(0, DEFAULT_SHORT_NAME_SIZE);
+        if (s.length() >= DEFAULT_SHORT_NAME_SIZE)
+            return s.substring(0, DEFAULT_SHORT_NAME_SIZE);
+
+        StringBuilder s2 = new StringBuilder();
+        s2.append(s);
+        for (int i = 0; i < DEFAULT_SHORT_NAME_SIZE - len; i++)
+            s2.append(" ");
+        return s2.toString();
     }
 
     public String getName() {
@@ -68,21 +68,32 @@ public class Item {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Item item = (Item) o;
-        return Float.compare(item.weight, weight) == 0 && value == item.value && name.equals(item.name);
+
+        if (Float.compare(item.weight, weight) != 0) return false;
+        if (value != item.value) return false;
+        return name.equals(item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, value);
+        int result = name.hashCode();
+        result = 31 * result + (weight != +0.0f ? Float.floatToIntBits(weight) : 0);
+        result = 31 * result + value;
+        return result;
+    }
+
+    public String getDisplay() {
+        return "'" + name + "'" +
+               ", weight=" + weight +
+               ", value=" + value;
     }
 
     @Override
     public String toString() {
         return "Item{" +
-               "'" + name + "'" +
-               ", weight=" + weight +
-               ", value=" + value +
+               getDisplay() +
                '}';
     }
 }
