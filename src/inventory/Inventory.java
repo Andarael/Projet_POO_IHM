@@ -1,4 +1,6 @@
-package item;
+package inventory;
+
+import item.Item;
 
 import java.util.ArrayList;
 import java.util.List;

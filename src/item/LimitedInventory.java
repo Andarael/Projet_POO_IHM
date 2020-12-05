@@ -1,5 +1,7 @@
 package item;
 
+import inventory.Inventory;
+
 public class LimitedInventory extends Inventory {
 
     private static final float DEFAULT_CAPACITY = 15.0f;

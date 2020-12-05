@@ -14,10 +14,10 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        item1 = new Item("apple", 1.0f);
-        item2 = new Item("sword", 3.0f);
-        item3 = new Item("shield",-10);
-        item4 = new Item("shield", 10);
+        item1 = new Item("apple", 1.0f, 1);
+        item2 = new Item("sword", 3.0f, 1);
+        item3 = new Item("shield",-10, 1);
+        item4 = new Item("shield", 10, 1);
     }
 
     @Test
@@ -42,7 +42,7 @@ class ItemTest {
 
     @Test
     void testEquals() {
-        assertEquals(item1, new Item("apple", 1.0f));
+        assertEquals(item1, new Item("apple", 1.0f,1));
         assertEquals(item3, new Item("shield"));
     }
 

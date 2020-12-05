@@ -1,4 +1,6 @@
-package item;
+package inventory;
+
+import item.Item;
 
 public interface InventoryManagement {
 
