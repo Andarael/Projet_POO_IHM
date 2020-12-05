@@ -1,6 +1,6 @@
-package item;
+package inventory;
 
-import inventory.Inventory;
+import item.Item;
 
 public class LimitedInventory extends Inventory {
 

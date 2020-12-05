@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ItemTest {
 
@@ -16,8 +17,27 @@ class ItemTest {
     void setUp() {
         item1 = new Item("apple", 1.0f, 1);
         item2 = new Item("sword", 3.0f, 1);
-        item3 = new Item("shield",-10, 1);
-        item4 = new Item("shield", 10, 1);
+        item3 = new Item("shield", 10, -10);
+        item4 = new Item("pog", 10, 10);
+    }
+
+    @Test
+    void getShort(){
+        assertEquals(item1.getShortName(), "apple");
+        assertEquals(item3.getShortName(), "shiel");
+        assertEquals(item4.getShortName(), "pog  ");
+    }
+
+    @Test
+    void setShortName(){
+        item1.setShortName("123");
+        assertEquals(item1.getShortName(), "123  ");
+
+        item1.setShortName("12345");
+        assertEquals(item1.getShortName(), "12345");
+
+        item1.setShortName("123456789");
+        assertEquals(item1.getShortName(), "12345");
     }
 
     @Test
@@ -29,7 +49,7 @@ class ItemTest {
     @Test
     void getWeight() {
         assertEquals(3.0f, item2.getWeight());
-        assertEquals(1.0f, item3.getWeight());
+        assertEquals(10.0f, item3.getWeight());
     }
 
     @Test
@@ -42,18 +62,22 @@ class ItemTest {
 
     @Test
     void testEquals() {
-        assertEquals(item1, new Item("apple", 1.0f,1));
-        assertEquals(item3, new Item("shield"));
+        item1 = new Item("veryverylongname", 1.0f, 1);
+        item2 = new Item("veryverylongname", 1.0f, 1);
+        item2.setShortName("veryv");
+        Item item = new Item("veryverylongname");
+        assertEquals(item1, item2);
+        assertEquals(item1, item);
+        assertNotEquals(item3, item1);
     }
 
     @Test
     void testHashCode() {
-        assertEquals(-345707609, item1.hashCode());
+        System.out.println(item1.hashCode());
     }
 
     @Test
     void testToString() {
-        System.out.println(item1);
-        assertEquals("Item{name='apple', weight=1.0}", item1.toString());
+        System.out.println(item1.toString());
     }
 }

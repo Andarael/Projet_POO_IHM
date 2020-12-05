@@ -1,5 +1,6 @@
 package item;
 
+import inventory.LimitedInventory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,10 +19,10 @@ class LimitedInventoryTest {
     void setUp() {
         inv1 = new LimitedInventory(10.0f);
 
-        item1 = new Item("apple", 1.0f,1);
-        item2 = new Item("sword", 3.0f,1);
-        item3 = new Item("shield", 5.0f,1);
-        item4 = new Item("heavy_thing", 500.0f,1);
+        item1 = new Item("apple", 1.0f, 1);
+        item2 = new Item("sword", 3.0f, 1);
+        item3 = new Item("shield", 5.0f, 1);
+        item4 = new Item("heavy_thing", 500.0f, 1);
     }
 
     @Test
