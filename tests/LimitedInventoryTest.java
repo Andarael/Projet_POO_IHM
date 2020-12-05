@@ -1,5 +1,4 @@
-package inventory;
-
+import inventory.LimitedInventory;
 import item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
