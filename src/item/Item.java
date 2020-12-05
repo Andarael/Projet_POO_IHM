@@ -48,12 +48,12 @@ public class Item {
         return name;
     }
 
-    public void setShortName(String s) {
-        this.shortName = createShort(s);
-    }
-
     public String getShortName() {
         return shortName;
+    }
+
+    public void setShortName(String s) {
+        this.shortName = createShort(s);
     }
 
     public float getWeight() {

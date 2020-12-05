@@ -93,7 +93,7 @@ public class Inventory implements InventoryManagement {
 
     public String getItemListDisplay(boolean detailed) {
         StringBuilder output = new StringBuilder();
-        for (Item item : itemList){
+        for (Item item : itemList) {
             if (detailed)
                 output.append(item.toString()).append("\n");
             else

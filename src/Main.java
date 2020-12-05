@@ -4,7 +4,7 @@ import item.Item;
 public class Main {
 
 
-    public static String createShort(String s){
+    public static String createShort(String s) {
         int len = s.length();
         if (s.length() < 5) {
             StringBuilder s2 = new StringBuilder(s);
@@ -12,7 +12,7 @@ public class Main {
                 s2.append(" ");
             return s2.toString();
         }
-        return s.substring(0,5);
+        return s.substring(0, 5);
     }
 
 
