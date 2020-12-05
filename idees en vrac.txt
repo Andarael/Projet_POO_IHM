@@ -1,7 +1,7 @@
 on peut stocker la quantité de gold du player dans la class player.
 Et on override les méthodes addItem() ( ou addItemToInventory() ) pour que si on ajoute un item gold, il soit pas ajouté
     mais plutôt que l'attribut "richesse" soit modifié
-
+//
 
 Taille des salles :
         // taille max de nom : 11
