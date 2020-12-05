@@ -47,11 +47,4 @@ public class LimitedInventory extends Inventory {
     public String getDisplay() {
         return "capacity=" + capacity + "\n" + super.getDisplay();
     }
-
-    @Override
-    public String toString() {
-        return "LimitedInventory{ \n" +
-               getDisplay() +
-               "} \n";
-    }
 }

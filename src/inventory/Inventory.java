@@ -91,7 +91,7 @@ public class Inventory implements InventoryManagement {
         return getQuantity(getItem(s));
     }
 
-    public String getItemListDisplay(boolean detailed) {
+    protected String getItemListDisplay(boolean detailed) {
         StringBuilder output = new StringBuilder();
         for (Item item : itemList){
             if (detailed)
@@ -103,9 +103,13 @@ public class Inventory implements InventoryManagement {
     }
 
     public String getDisplay() {
-        String s = "";
         return "nbItems=" + itemList.size() + "\n" +
                getItemListDisplay(true);
+    }
+
+    public String getSimpleDisplay() {
+        return "nbItems=" + itemList.size() + "\n" +
+               getItemListDisplay(false);
     }
 
     @Override

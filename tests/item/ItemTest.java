@@ -21,14 +21,14 @@ class ItemTest {
     }
 
     @Test
-    void getShort(){
+    void getShort() {
         assertEquals(item1.getShortName(), "apple");
         assertEquals(item3.getShortName(), "shiel");
         assertEquals(item4.getShortName(), "pog  ");
     }
 
     @Test
-    void setShortName(){
+    void setShortName() {
         item1.setShortName("123");
         assertEquals(item1.getShortName(), "123  ");
 
@@ -62,9 +62,12 @@ class ItemTest {
     @Test
     void testEquals() {
         item1 = new Item("veryverylongname", 1.0f, 1);
+
         item2 = new Item("veryverylongname", 1.0f, 1);
-        item2.setShortName("veryv");
+        item2.setShortName("yabadabadou");
+
         Item item = new Item("veryverylongname");
+
         assertEquals(item1, item2);
         assertEquals(item1, item);
         assertNotEquals(item3, item1);
@@ -77,6 +80,7 @@ class ItemTest {
 
     @Test
     void testDisplay() {
+        System.out.println(item1.getDisplay());
         System.out.println(item1.toString());
     }
 }

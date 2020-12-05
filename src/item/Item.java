@@ -64,6 +64,10 @@ public class Item {
         return value;
     }
 
+
+    /**
+     * @return returns true if two items have the same name
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,17 +75,12 @@ public class Item {
 
         Item item = (Item) o;
 
-        if (Float.compare(item.weight, weight) != 0) return false;
-        if (value != item.value) return false;
         return name.equals(item.name);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (weight != +0.0f ? Float.floatToIntBits(weight) : 0);
-        result = 31 * result + value;
-        return result;
+        return name.hashCode();
     }
 
     public String getDisplay() {
