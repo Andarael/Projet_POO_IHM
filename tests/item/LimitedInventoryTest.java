@@ -21,7 +21,7 @@ class LimitedInventoryTest {
         item1 = new Item("apple", 1.0f);
         item2 = new Item("sword", 3.0f);
         item3 = new Item("shield", 5.0f);
-        item4 = new Item("heavy_thing", 500.0);
+        item4 = new Item("heavy_thing", 500.0f);
     }
 
     @Test

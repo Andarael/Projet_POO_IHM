@@ -10,12 +10,14 @@ class ItemTest {
     private Item item1;
     private Item item2;
     private Item item3;
+    private Item item4;
 
     @BeforeEach
     void setUp() {
         item1 = new Item("apple", 1.0f);
         item2 = new Item("sword", 3.0f);
-        item3 = new Item("shield");
+        item3 = new Item("shield",-10);
+        item4 = new Item("shield", 10);
     }
 
     @Test
@@ -28,6 +30,14 @@ class ItemTest {
     void getWeight() {
         assertEquals(3.0f, item2.getWeight());
         assertEquals(1.0f, item3.getWeight());
+    }
+
+    @Test
+    void getValue() {
+        assertEquals(1, item1.getValue());
+        assertEquals(1, item2.getValue());
+        assertEquals(10, item4.getValue());
+        assertEquals(1, item3.getValue());
     }
 
     @Test
