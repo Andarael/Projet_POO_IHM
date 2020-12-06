@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Inventory implements InventoryManagement {
+public class Inventory implements ItemManagement {
 
     protected int gold;
     protected final List<Item> itemList;
@@ -16,12 +16,10 @@ public class Inventory implements InventoryManagement {
         this.itemList = new ArrayList<>();
     }
 
-    @Override
     public void sortInventory() {
         itemList.sort(Comparator.comparing(Item::getName));
     }
 
-    @Override
     public int getNbItems() {
         return itemList.size();
     }
@@ -39,7 +37,6 @@ public class Inventory implements InventoryManagement {
                        .orElse(null);                 // si rien alors null
     }
 
-    @Override
     public Item getFirstItem() {
         return itemList.stream()
                        .findFirst()
@@ -87,7 +84,6 @@ public class Inventory implements InventoryManagement {
         return this.removeItem(this.getItem(s));
     }
 
-    @Override
     public void removeAllItems() {
         itemList.clear();
     }
@@ -102,14 +98,12 @@ public class Inventory implements InventoryManagement {
         return contains(getItem(s));
     }
 
-    @Override
     public int getQuantity(Item item) {
         return (int) itemList.stream()
                              .filter(x -> x.equals(item))
                              .count();
     }
 
-    @Override
     public int getQuantity(String s) {
         return getQuantity(getItem(s));
     }
