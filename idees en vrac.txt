@@ -41,5 +41,6 @@ Taille des salles :
                            "#             #\n" +
                            "#             #\n" +
                            "#######  ######");
-                           
-test edit Josué
+
+
+ajouter un attribut description pour les objets
