@@ -33,7 +33,7 @@ public enum Col {
     }
 
     public static String colorize(String s, Col color) {
-        return color.toCol() + s + RESET.toCol();
+        return color + s + RESET;
     }
 
     public static void main(String[] args) {
@@ -46,7 +46,8 @@ public enum Col {
         System.out.println(colorize(s3, GREEN));
     }
 
-    public String toCol() {
+    @Override
+    public String toString() {
         return value;
     }
 }
