@@ -9,7 +9,7 @@ public class Shortener {
      * @param str the input String to shorten
      * @return shortened String
      */
-    public static String shortenName(String str) {
+    public static String shorten(String str) {
         if (str == null)
             return StringUtils.stringFill(SHORT_NAME_SIZE, ' ');
 

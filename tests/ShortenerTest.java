@@ -27,22 +27,22 @@ class ShortenerTest {
 
     @Test
     void shortenName1() {
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s1).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s2).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s3).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s4).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s5).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shortenName(s6).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s1).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s2).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s3).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s4).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s5).length());
+        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s6).length());
     }
 
     @Test
     void shortenName2() {
-        assertEquals("longN", Shortener.shortenName(s1));
-        assertEquals("short", Shortener.shortenName(s2));
-        assertEquals("vs   ", Shortener.shortenName(s3));
-        assertEquals("     ", Shortener.shortenName(s4));
-        assertEquals("     ", Shortener.shortenName(s5));
-        assertEquals("     ", Shortener.shortenName(s6));
+        assertEquals("longN", Shortener.shorten(s1));
+        assertEquals("short", Shortener.shorten(s2));
+        assertEquals("vs   ", Shortener.shorten(s3));
+        assertEquals("     ", Shortener.shorten(s4));
+        assertEquals("     ", Shortener.shorten(s5));
+        assertEquals("     ", Shortener.shorten(s6));
     }
 
     @Test
@@ -54,12 +54,12 @@ class ShortenerTest {
         System.out.println("s5 : " + s5);
         System.out.println("s6 : " + s6);
 
-        System.out.println(Shortener.shortenName(s1));
-        System.out.println(Shortener.shortenName(s2));
-        System.out.println(Shortener.shortenName(s3));
-        System.out.println(Shortener.shortenName(s4));
-        System.out.println(Shortener.shortenName(s5));
-        System.out.println(Shortener.shortenName(s6));
+        System.out.println(Shortener.shorten(s1));
+        System.out.println(Shortener.shorten(s2));
+        System.out.println(Shortener.shorten(s3));
+        System.out.println(Shortener.shorten(s4));
+        System.out.println(Shortener.shorten(s5));
+        System.out.println(Shortener.shorten(s6));
     }
 
 }
