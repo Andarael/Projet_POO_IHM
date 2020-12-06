@@ -1,4 +1,5 @@
 import item.Item;
+import item.Shortener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,11 +28,11 @@ class ItemTest {
         assertNotNull(item.getShortName());
         assertNotNull(item.getName());
 
-        assertEquals("", item.getName());
-        assertEquals("     ", item.getShortName());
+        assertEquals(Item.DEFAULT_NAME, item.getName());
+        assertEquals("defau", item.getShortName());
 
-        assertEquals(Item.DEFAULT_ITEM_VALUE, item.getValue());
-        assertEquals(Item.ITEM_SHORT_NAME_SIZE, item.getShortName().length());
+        assertEquals(Item.DEFAULT_VALUE, item.getValue());
+        assertEquals(Shortener.SHORT_NAME_SIZE, item.getShortName().length());
 
 
     }
@@ -72,7 +73,7 @@ class ItemTest {
         assertEquals(1, item1.getValue());
         assertEquals(1, item2.getValue());
         assertEquals(10, item4.getValue());
-        assertEquals(Item.DEFAULT_ITEM_VALUE, item3.getValue());
+        assertEquals(Item.DEFAULT_VALUE, item3.getValue());
     }
 
     @Test
@@ -97,15 +98,21 @@ class ItemTest {
     @Test
     void testDisplay() {
         Item item = new Item("apple", "a red apple", 0.2f, 3);
+
         assertTrue(item.getDisplay().contains("apple"));
         assertTrue(item.getDisplay().contains("a red apple"));
         assertTrue(item.getDisplay().contains("0.2"));
         assertTrue(item.getDisplay().contains("3"));
 
-        item = new Item("apple", 0.2f,3);
-        assertFalse(item.getDisplay().contains("a red apple"));
+        assertFalse(item.getSimpleDisplay().contains("3"));
+        assertFalse(item.getSimpleDisplay().contains("0.2"));
+        assertTrue(item.getSimpleDisplay().contains("red"));
 
         System.out.println(item1.getDisplay());
+        System.out.println(item1.getSimpleDisplay());
         System.out.println(item1.toString());
+
+        item = new Item("apple", 0.2f,3);
+        assertFalse(item.getDisplay().contains("a red apple"));
     }
 }

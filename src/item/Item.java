@@ -2,9 +2,9 @@ package item;
 
 public class Item {
 
-    public static final float DEFAULT_ITEM_WEIGHT = 0.1f;
-    public static final int DEFAULT_ITEM_VALUE = 0;
-    public static final int ITEM_SHORT_NAME_SIZE = 5;
+    public static final float DEFAULT_WEIGHT = 0.1f;
+    public static final int DEFAULT_VALUE = 0;
+    public static final String DEFAULT_NAME = "default";
 
     private final String name;
     private String shortName;
@@ -14,21 +14,23 @@ public class Item {
     private final int value;
 
     public Item(String name, String description, float weight, int value) {
+
+        // le nom ne peut pas être null.
         if (name == null)
-            this.name = "";
-        else
-            this.name = name;
+            name = DEFAULT_NAME;
+
+        this.name = name;
 
         this.description = description;
 
-        this.shortName = createShort(name);
+        this.shortName = Shortener.shortenName(name);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
         this.weight = weight;
 
         // on n'autorise pas de valeur négative.
         if (value < 0) {
-            this.value = DEFAULT_ITEM_VALUE;
+            this.value = DEFAULT_VALUE;
         }
         else {
             this.value = value;
@@ -41,22 +43,8 @@ public class Item {
     }
 
     public Item(String name) {
-        this(name, null, DEFAULT_ITEM_WEIGHT, DEFAULT_ITEM_VALUE);
-        this.shortName = createShort(name);
-    }
-
-    public static String createShort(String s) {
-        if (s == null)
-            s = " ";
-        int len = s.length();
-        if (s.length() >= ITEM_SHORT_NAME_SIZE)
-            return s.substring(0, ITEM_SHORT_NAME_SIZE);
-
-        StringBuilder s2 = new StringBuilder();
-        s2.append(s);
-        for (int i = 0; i < ITEM_SHORT_NAME_SIZE - len; i++)
-            s2.append(" ");
-        return s2.toString();
+        this(name, null, DEFAULT_WEIGHT, DEFAULT_VALUE);
+        this.shortName = Shortener.shortenName(name);
     }
 
     public String getName() {
@@ -68,7 +56,7 @@ public class Item {
     }
 
     public void setShortName(String s) {
-        this.shortName = createShort(s);
+        this.shortName = Shortener.shortenName(s);
     }
 
     public float getWeight() {
@@ -97,13 +85,16 @@ public class Item {
         return name.hashCode();
     }
 
+    public String getSimpleDisplay() {
+        if (description != null)
+            return name + " : " + description;
+        return name;
+    }
+
     public String getDisplay() {
-        String s =  name;
-        if (description != null){
-            s += " : " + description;
-        }
-        s +=", weight=" + weight + ", value=" + value;
-        return s;
+        return getSimpleDisplay() +
+               ", weight=" + weight +
+               ", value=" + value;
     }
 
     @Override
