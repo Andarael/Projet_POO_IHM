@@ -1,0 +1,38 @@
+Taille des salles :
+        // taille max de nom : 11
+        // nb max entités : 3
+        System.out.println("\ntaille 4 (13) : ");
+        System.out.println("######  #####\n" +
+                           "#           #\n" +
+                           "             \n" +
+                           "#           #\n" +
+                           "#           #\n" +
+                           "######  #####");
+
+        // taille max de nom : 7
+        // nb max entité : 2
+        System.out.println("\ntaille 3 (9) : ");
+        System.out.println("#### ####\n" +
+                           "#       #\n" +
+                           "         \n" +
+                           "#       #\n" +
+                           "#### ####");
+
+        //taille max de nom : 5
+        // nb max : 2
+        System.out.println("\ntaille 2 (7) : ");
+        System.out.println("### ###\n" +
+                           "#     #\n" +
+                           "       \n" +
+                           "### ###");
+
+        // taille max de nom : 13
+        // nb max entité : 4
+        System.out.println("\ntaille 5 (15) : ");
+        System.out.println("#######  ######\n" +
+                           "#             #\n" +
+                           "#             #\n" +
+                           "               \n" +
+                           "#             #\n" +
+                           "#             #\n" +
+                           "#######  ######");
