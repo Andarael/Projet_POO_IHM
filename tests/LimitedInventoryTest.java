@@ -18,10 +18,10 @@ class LimitedInventoryTest {
     void setUp() {
         inv1 = new LimitedInventory(10.0);
 
-        item1 = new Item("apple", 1.0f, 1);
-        item2 = new Item("sword", 3.0f, 1);
-        item3 = new Item("shield", 5.0f, 1);
-        item4 = new Item("heavy_thing", 500.0f, 1);
+        item1 = new Item("apple", 1.0, 1);
+        item2 = new Item("sword", 3.0, 1);
+        item3 = new Item("shield", 5.0, 1);
+        item4 = new Item("heavy_thing", 500.0, 1);
     }
 
     @Test
@@ -47,8 +47,8 @@ class LimitedInventoryTest {
         assertEquals(0, inv.getNbItems());
         assertEquals(LimitedInventory.DEFAULT_CAPACITY, inv.getCapacity());
 
-        assertEquals(10.0f, inv2.getCapacity());
-        assertEquals(0.0f, inv2.getUsedCapacity());
+        assertEquals(10.0, inv2.getCapacity());
+        assertEquals(0.0, inv2.getUsedCapacity());
     }
 
     @Test
@@ -89,19 +89,19 @@ class LimitedInventoryTest {
 
     @Test
     void getUsedCapacity() {
-        assertEquals(0.0f, inv1.getUsedCapacity());
+        assertEquals(0.0, inv1.getUsedCapacity());
 
         inv1.addItem(item1);
         inv1.addItem(item1);
-        assertEquals(2.0f, inv1.getUsedCapacity());
+        assertEquals(2.0, inv1.getUsedCapacity());
 
         inv1.removeItem(item1);
-        assertEquals(1.0f, inv1.getUsedCapacity());
+        assertEquals(1.0, inv1.getUsedCapacity());
     }
 
     @Test
     void getCapacity() {
-        assertEquals(10.0f, inv1.getCapacity());
+        assertEquals(10.0, inv1.getCapacity());
     }
 
 }

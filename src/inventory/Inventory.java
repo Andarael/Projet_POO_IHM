@@ -2,9 +2,7 @@ package inventory;
 
 import item.Item;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Inventory implements ItemManagement {
 
@@ -65,7 +63,7 @@ public class Inventory implements ItemManagement {
     }
 
     public void sortInventory() {
-        itemList.sort(Comparator.comparing(Item::getName));
+        itemList.sort(Item::compareTo);
     }
 
     public int getNbItems() {
@@ -109,14 +107,13 @@ public class Inventory implements ItemManagement {
     }
 
     public String getItemListDisplay(boolean detailed) {
-        String output = "    ";
+        String output = "";
 
         for (Item item : itemList) {
             if (detailed)
-                output = output.concat(item.getDisplay());
+                output = output.concat("    " + item.getDisplay() + "\n");
             else
-                output = output.concat(item.getSimpleDisplay());
-            output = output.concat("\n");
+                output = output.concat(item.getSimpleDisplay() + "\n");
         }
 
         return output;
