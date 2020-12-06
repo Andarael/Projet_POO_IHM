@@ -4,7 +4,7 @@ import utils.Shortener;
 
 public class Item implements Comparable<Item> {
 
-    public static final double DEFAULT_WEIGHT = 0.1f;
+    public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
     public static final String DEFAULT_NAME = "null";
 
