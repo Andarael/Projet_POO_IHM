@@ -45,4 +45,21 @@ class ShortenerTest {
         assertEquals("     ", Shortener.shortenName(s6));
     }
 
+    @Test
+    void display() {
+        System.out.println("s1 : " + s1);
+        System.out.println("s2 : " + s2);
+        System.out.println("s3 : " + s3);
+        System.out.println("s4 : " + s4);
+        System.out.println("s5 : " + s5);
+        System.out.println("s6 : " + s6);
+
+        System.out.println(Shortener.shortenName(s1));
+        System.out.println(Shortener.shortenName(s2));
+        System.out.println(Shortener.shortenName(s3));
+        System.out.println(Shortener.shortenName(s4));
+        System.out.println(Shortener.shortenName(s5));
+        System.out.println(Shortener.shortenName(s6));
+    }
+
 }
