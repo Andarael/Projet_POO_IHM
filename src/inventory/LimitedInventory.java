@@ -4,31 +4,27 @@ import item.Item;
 
 public class LimitedInventory extends Inventory {
 
-    public static final float DEFAULT_CAPACITY = 15.0f;
-    private final float capacity;
+    public static final double DEFAULT_CAPACITY = 15.0;
+    private final double capacity;
 
     public LimitedInventory() {
         this(DEFAULT_CAPACITY);
     }
 
-    public LimitedInventory(float capacity) {
+    public LimitedInventory(double capacity) {
         super();
         this.capacity = capacity;
     }
 
-    public LimitedInventory(double capacity) {
-        this((float) capacity);
-    }
-
-    public float getCapacity() {
+    public double getCapacity() {
         return capacity;
     }
 
     @Override
     public boolean addItem(Item item) {
-        if (canAddItem(item)) {
+        if (canAddItem(item))
             return super.addItem(item);
-        }
+
         return false;
     }
 
@@ -39,8 +35,8 @@ public class LimitedInventory extends Inventory {
 
     public double getUsedCapacity() {
         return itemList.stream()
-                       .mapToDouble(Item::getWeight)
-                       .sum();
+                               .mapToDouble(Item::getWeight)
+                               .sum();
     }
 
     @Override

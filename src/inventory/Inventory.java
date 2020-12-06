@@ -8,20 +8,12 @@ import java.util.List;
 
 public class Inventory implements ItemManagement {
 
-    protected int gold;
     protected final List<Item> itemList;
+    protected int gold;
 
     public Inventory() {
         this.gold = 0;
         this.itemList = new ArrayList<>();
-    }
-
-    public void sortInventory() {
-        itemList.sort(Comparator.comparing(Item::getName));
-    }
-
-    public int getNbItems() {
-        return itemList.size();
     }
 
     @Override
@@ -35,32 +27,6 @@ public class Inventory implements ItemManagement {
                        .filter(x -> x.getName().equals(s))  // on filtre les items du même nom
                        .findAny()                           // on en retourne un
                        .orElse(null);                 // si rien alors null
-    }
-
-    public Item getFirstItem() {
-        return itemList.stream()
-                       .findFirst()
-                       .orElse(null);
-    }
-
-    public void addGold(int nb) {
-        if (nb >= 0)
-            gold += nb;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public boolean removeGold(int nb) {
-        if (nb < 0)
-            return false;
-
-        if (gold - nb < 0)
-            return false;
-
-        gold -= nb;
-        return true;
     }
 
     @Override
@@ -98,6 +64,40 @@ public class Inventory implements ItemManagement {
         return contains(getItem(s));
     }
 
+    public void sortInventory() {
+        itemList.sort(Comparator.comparing(Item::getName));
+    }
+
+    public int getNbItems() {
+        return itemList.size();
+    }
+
+    public Item getFirstItem() {
+        return itemList.stream()
+                       .findFirst()
+                       .orElse(null);
+    }
+
+    public void addGold(int nb) {
+        if (nb >= 0)
+            gold += nb;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public boolean removeGold(int nb) {
+        if (nb < 0)
+            return false;
+
+        if (gold - nb < 0)
+            return false;
+
+        gold -= nb;
+        return true;
+    }
+
     public int getQuantity(Item item) {
         return (int) itemList.stream()
                              .filter(x -> x.equals(item))
@@ -109,14 +109,17 @@ public class Inventory implements ItemManagement {
     }
 
     public String getItemListDisplay(boolean detailed) {
-        StringBuilder output = new StringBuilder();
+        String output = "    ";
+
         for (Item item : itemList) {
             if (detailed)
-                output.append("    ").append(item.getDisplay()).append("\n");
+                output = output.concat(item.getDisplay());
             else
-                output.append("    ").append(item.getSimpleDisplay()).append("\n");
+                output = output.concat(item.getSimpleDisplay());
+            output = output.concat("\n");
         }
-        return output.toString();
+
+        return output;
     }
 
     public String getDisplay() {

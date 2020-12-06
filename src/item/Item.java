@@ -4,18 +4,17 @@ import utils.Shortener;
 
 public class Item {
 
-    public static final float DEFAULT_WEIGHT = 0.1f;
+    public static final double DEFAULT_WEIGHT = 0.1f;
     public static final int DEFAULT_VALUE = 0;
     public static final String DEFAULT_NAME = "default";
 
     private final String name;
-    private String shortName;
     private final String description;
-
-    private final float weight;
+    private final double weight;
     private final int value;
+    private String shortName;
 
-    public Item(String name, String description, float weight, int value) {
+    public Item(String name, String description, double weight, int value) {
 
         // le nom ne peut pas être null.
         if (name == null)
@@ -31,13 +30,10 @@ public class Item {
         this.weight = weight;
 
         // on n'autorise pas de valeur négative.
-        if (value < 0) {
+        if (value < 0)
             this.value = DEFAULT_VALUE;
-        }
-        else {
+        else
             this.value = value;
-        }
-
     }
 
     public Item(String name, float weight, int value) {
@@ -61,7 +57,7 @@ public class Item {
         this.shortName = Shortener.shortenName(s);
     }
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 

@@ -16,7 +16,7 @@ class LimitedInventoryTest {
 
     @BeforeEach
     void setUp() {
-        inv1 = new LimitedInventory(10.0f);
+        inv1 = new LimitedInventory(10.0);
 
         item1 = new Item("apple", 1.0f, 1);
         item2 = new Item("sword", 3.0f, 1);

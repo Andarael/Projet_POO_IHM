@@ -1,7 +1,7 @@
 import item.Item;
-import utils.Shortener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.Shortener;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +23,7 @@ class ItemTest {
 
     @Test
     void invalidItem() {
-        Item item = new Item(null, 1,-1);
+        Item item = new Item(null, 1, -1);
 
         assertNotNull(item.getShortName());
         assertNotNull(item.getName());
@@ -112,7 +112,7 @@ class ItemTest {
         System.out.println(item1.getSimpleDisplay());
         System.out.println(item1.toString());
 
-        item = new Item("apple", 0.2f,3);
+        item = new Item("apple", 0.2f, 3);
         assertFalse(item.getDisplay().contains("a red apple"));
     }
 }
