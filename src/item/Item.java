@@ -36,8 +36,13 @@ public class Item {
             this.value = value;
     }
 
-    public Item(String name, float weight, int value) {
+    public Item(String name, double weight, int value) {
         this(name, null, weight, value);
+    }
+
+    public Item(String name, String description) {
+        this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE);
+        this.shortName = Shortener.shortenName(name);
     }
 
     public Item(String name) {
@@ -86,9 +91,9 @@ public class Item {
     }
 
     public String getSimpleDisplay() {
-        if (description != null)
-            return name + " : " + description;
-        return name;
+        if (description == null || description.equals(""))
+            return name;
+        return name + " : " + description;
     }
 
     public String getDisplay() {
