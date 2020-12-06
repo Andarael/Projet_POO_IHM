@@ -1,4 +1,4 @@
-import item.Shortener;
+import utils.Shortener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

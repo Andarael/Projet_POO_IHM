@@ -1,8 +1,14 @@
-package item;
+package utils;
 
 public class Shortener {
     public static final int SHORT_NAME_SIZE = 5;
 
+    /**
+     * Shortens the input string to fit the SHORT_NAME_SIZE length
+     *
+     * @param s  the input String to shorten
+     * @return  shortened String
+     */
     public static String shortenName(String s) {
         if (s == null)
             s = " ";

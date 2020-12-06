@@ -1,5 +1,7 @@
 package item;
 
+import utils.Shortener;
+
 public class Item {
 
     public static final float DEFAULT_WEIGHT = 0.1f;
@@ -68,7 +70,9 @@ public class Item {
     }
 
     /**
-     * @return returns true if two items have the same name
+     * The only qualification for 2 items to be equal is their name
+     *
+     * @return true if two items have the same name
      */
     @Override
     public boolean equals(Object o) {
