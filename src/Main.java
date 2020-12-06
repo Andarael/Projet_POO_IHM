@@ -1,6 +1,9 @@
 import item.Food;
 import item.Item;
 
+import static utils.Col.*;
+import static utils.Col.colorize;
+
 public class Main {
 
 
@@ -32,5 +35,7 @@ public class Main {
 
         Item apple = new Food("apple", "a delicious red apple", 2);
         System.out.println(apple);
+
+        System.out.println(colorize(apple.toString(), RED));
     }
 }
