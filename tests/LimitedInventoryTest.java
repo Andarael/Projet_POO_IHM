@@ -42,6 +42,7 @@ class LimitedInventoryTest {
         LimitedInventory inv2 = new LimitedInventory(10.0);
 
         assertEquals(0, inv.getNbItems());
+        assertEquals(LimitedInventory.DEFAULT_CAPACITY, inv.getCapacity());
 
         assertEquals(10.0f, inv2.getCapacity());
         assertEquals(0.0f, inv2.getUsedCapacity());
