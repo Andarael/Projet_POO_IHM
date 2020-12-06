@@ -95,20 +95,22 @@ public class Inventory implements InventoryManagement {
         StringBuilder output = new StringBuilder();
         for (Item item : itemList) {
             if (detailed)
-                output.append(item.toString()).append("\n");
+                output.append("    ").append(item.getDisplay()).append("\n");
             else
-                output.append(item.getName()).append("\n");
+                output.append("    ").append(item.getSimpleDisplay()).append("\n");
         }
         return output.toString();
     }
 
     public String getDisplay() {
-        return "nbItems=" + itemList.size() + "\n" +
+        return "nbItems=" +
+               itemList.size() + "\n" +
                getItemListDisplay(true);
     }
 
     public String getSimpleDisplay() {
-        return "nbItems=" + itemList.size() + "\n" +
+        return "nbItems=" +
+               itemList.size() + "\n" +
                getItemListDisplay(false);
     }
 

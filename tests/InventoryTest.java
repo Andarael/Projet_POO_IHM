@@ -19,7 +19,7 @@ class InventoryTest {
         inv1 = new Inventory();
         inv2 = new Inventory();
 
-        item1 = new Item("apple", 1.0f, 1);
+        item1 = new Item("apple", "a red apple", 1.0f, 1);
         item2 = new Item("sword", 3.0f, 1);
         item3 = new Item("shield", 5.0f, 1);
     }
@@ -54,7 +54,10 @@ class InventoryTest {
         inv1.addItem(item3);
         inv1.addItem(item2);
 
-        System.out.println(inv1.getItemListDisplay(false));
+        assertTrue(inv1.getDisplay().contains(item1.getSimpleDisplay()));
+        assertTrue(inv1.getSimpleDisplay().contains(item1.getSimpleDisplay()));
+
+        System.out.println(inv1.getItemListDisplay(true));
         System.out.println(inv1.getSimpleDisplay());
         System.out.println(inv1);
     }
