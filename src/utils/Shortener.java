@@ -6,23 +6,14 @@ public class Shortener {
     /**
      * Shortens the input string to fit the SHORT_NAME_SIZE length
      *
-     * @param s  the input String to shorten
-     * @return  shortened String
+     * @param str the input String to shorten
+     * @return shortened String
      */
-    public static String shortenName(String s) {
-        if (s == null)
-            s = " ";
-        int len = s.length();
+    public static String shortenName(String str) {
+        if (str == null)
+            return StringUtils.stringFill(SHORT_NAME_SIZE, ' ');
 
-        if (s.length() >= SHORT_NAME_SIZE)
-            return s.substring(0, SHORT_NAME_SIZE);
-
-        StringBuilder output = new StringBuilder();
-        output.append(s);
-
-        for (int i = 0; i < SHORT_NAME_SIZE - len; i++)
-            output.append(" ");
-
-        return output.toString();
+        return StringUtils.rightPad(str, SHORT_NAME_SIZE, ' ').substring(0, SHORT_NAME_SIZE);
     }
+
 }
