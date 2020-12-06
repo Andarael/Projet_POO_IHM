@@ -17,6 +17,23 @@ class ItemTest {
         item2 = new Item("sword", 3.0f, 1);
         item3 = new Item("shield", 10, -10);
         item4 = new Item("pog", 10, 10);
+
+    }
+
+    @Test
+    void invalidItem() {
+        Item item = new Item(null, 1,-1);
+
+        assertNotNull(item.getShortName());
+        assertNotNull(item.getName());
+
+        assertEquals("", item.getName());
+        assertEquals("     ", item.getShortName());
+
+        assertEquals(Item.DEFAULT_ITEM_VALUE, item.getValue());
+        assertEquals(Item.ITEM_SHORT_NAME_SIZE, item.getShortName().length());
+
+
     }
 
     @Test
@@ -55,7 +72,7 @@ class ItemTest {
         assertEquals(1, item1.getValue());
         assertEquals(1, item2.getValue());
         assertEquals(10, item4.getValue());
-        assertEquals(1, item3.getValue());
+        assertEquals(Item.DEFAULT_ITEM_VALUE, item3.getValue());
     }
 
     @Test
