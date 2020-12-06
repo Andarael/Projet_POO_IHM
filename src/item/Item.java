@@ -1,8 +1,10 @@
 package item;
 
+import interfaces.Lookable;
+import interfaces.Shortable;
 import utils.Shortener;
 
-public class Item implements Comparable<Item> {
+public class Item implements Comparable<Item>, Shortable, Lookable {
 
     public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
@@ -54,10 +56,12 @@ public class Item implements Comparable<Item> {
         return name;
     }
 
+    @Override
     public String getShortName() {
         return shortName;
     }
 
+    @Override
     public void setShortName(String s) {
         this.shortName = Shortener.shorten(s);
     }
@@ -96,6 +100,11 @@ public class Item implements Comparable<Item> {
         return name + " : " + description;
     }
 
+    @Override
+    public String look() {
+        return getDisplay();
+    }
+
     public String getDisplay() {
         return getSimpleDisplay() +
                ", weight : " + weight +
@@ -104,7 +113,7 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{ \n" +
+        return getClass().getSimpleName() + "{" +
                getDisplay() +
                '}';
     }
