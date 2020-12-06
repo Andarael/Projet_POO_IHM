@@ -104,7 +104,7 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return getClass().getSimpleName() + "{ \n" +
                getDisplay() +
                '}';
     }

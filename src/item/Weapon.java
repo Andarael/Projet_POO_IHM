@@ -16,6 +16,10 @@ public class Weapon extends Item {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, damage);
     }
 
+    @Override
+    public String getDisplay() {
+        return super.getDisplay() + ", damage : " + damage;
+    }
 
     public int getDamage() {
         return damage;

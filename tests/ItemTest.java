@@ -1,3 +1,4 @@
+import item.Food;
 import item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        item1 = new Item("apple", "a red apple", 1.0f, 1);
-        item2 = new Item("sword", 3.0f, 1);
+        item1 = new Item("apple", "a red apple", 1.0, 1);
+        item2 = new Item("sword", 3.0, 1);
         item3 = new Item("shield", 10, -10);
         item4 = new Item("pog", "a nice Pog");
 

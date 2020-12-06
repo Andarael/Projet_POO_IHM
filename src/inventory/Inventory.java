@@ -2,7 +2,10 @@ package inventory;
 
 import item.Item;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static utils.Col.*;
 
 public class Inventory implements ItemManagement {
 
@@ -126,14 +129,14 @@ public class Inventory implements ItemManagement {
     }
 
     public String getSimpleDisplay() {
-        return "gold : " + gold + "\n" +
+        return colorize("gold : " + gold + "\n", YELLOW) +
                "nbItems : " + itemList.size() + "\n" +
                getItemListDisplay(false);
     }
 
     @Override
     public String toString() {
-        return "Inventory{ \n" +
+        return getClass().getSimpleName() + "{ \n" +
                getDisplay() +
                "}\n";
     }

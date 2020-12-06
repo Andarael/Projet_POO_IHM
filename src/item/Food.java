@@ -19,4 +19,9 @@ public class Food extends Item {
     public int getRestoreValue() {
         return restoreValue;
     }
+
+    @Override
+    public String getDisplay() {
+        return super.getDisplay() + ", restoration : " + restoreValue;
+    }
 }
