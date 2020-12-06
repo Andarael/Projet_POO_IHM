@@ -42,10 +42,6 @@ class InventoryTest {
 
         assertTrue(inv1.removeGold(50));
         assertEquals(50, inv1.getGold());
-
-
-
-
     }
 
     @Test
