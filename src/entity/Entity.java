@@ -94,8 +94,8 @@ public class Entity implements Lookable, Shortable, Descriptable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{" +
+        return getClass().getSimpleName() + " {" +
                       getDisplay() +
-                      '}';
+                      "}";
     }
 }

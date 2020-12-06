@@ -113,9 +113,9 @@ public class Item implements Comparable<Item>, Shortable, Lookable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{" +
+        return getClass().getSimpleName() + " {" +
                getDisplay() +
-               '}';
+               "}";
     }
 
     @Override

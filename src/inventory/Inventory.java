@@ -136,7 +136,7 @@ public class Inventory implements ItemManagement {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{ \n" +
+        return getClass().getSimpleName() + " { \n" +
                getDisplay() +
                "}\n";
     }
