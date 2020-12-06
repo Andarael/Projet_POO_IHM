@@ -8,14 +8,18 @@ public class Item {
 
     private final String name;
     private String shortName;
+    private final String description;
+
     private final float weight;
     private final int value;
 
-    public Item(String name, float weight, int value) {
+    public Item(String name, String description, float weight, int value) {
         if (name == null)
             this.name = "";
         else
             this.name = name;
+
+        this.description = description;
 
         this.shortName = createShort(name);
 
@@ -32,8 +36,12 @@ public class Item {
 
     }
 
+    public Item(String name, float weight, int value) {
+        this(name, null, weight, value);
+    }
+
     public Item(String name) {
-        this(name, DEFAULT_ITEM_WEIGHT, DEFAULT_ITEM_VALUE);
+        this(name, null, DEFAULT_ITEM_WEIGHT, DEFAULT_ITEM_VALUE);
         this.shortName = createShort(name);
     }
 
@@ -90,9 +98,12 @@ public class Item {
     }
 
     public String getDisplay() {
-        return "'" + name + "'" +
-               ", weight=" + weight +
-               ", value=" + value;
+        String s =  name;
+        if (description != null){
+            s += " : " + description;
+        }
+        s +=", weight=" + weight + ", value=" + value;
+        return s;
     }
 
     @Override

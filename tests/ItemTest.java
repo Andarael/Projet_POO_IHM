@@ -13,7 +13,7 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        item1 = new Item("apple", 1.0f, 1);
+        item1 = new Item("apple", "a red apple", 1.0f, 1);
         item2 = new Item("sword", 3.0f, 1);
         item3 = new Item("shield", 10, -10);
         item4 = new Item("pog", 10, 10);
@@ -96,6 +96,15 @@ class ItemTest {
 
     @Test
     void testDisplay() {
+        Item item = new Item("apple", "a red apple", 0.2f, 3);
+        assertTrue(item.getDisplay().contains("apple"));
+        assertTrue(item.getDisplay().contains("a red apple"));
+        assertTrue(item.getDisplay().contains("0.2"));
+        assertTrue(item.getDisplay().contains("3"));
+
+        item = new Item("apple", 0.2f,3);
+        assertFalse(item.getDisplay().contains("a red apple"));
+
         System.out.println(item1.getDisplay());
         System.out.println(item1.toString());
     }
