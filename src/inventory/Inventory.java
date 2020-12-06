@@ -7,9 +7,12 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Inventory implements InventoryManagement {
+
+    protected int gold;
     protected final List<Item> itemList;
 
     public Inventory() {
+        this.gold = 0;
         this.itemList = new ArrayList<>();
     }
 
@@ -41,6 +44,26 @@ public class Inventory implements InventoryManagement {
         return itemList.stream()
                        .findFirst()
                        .orElse(null);
+    }
+
+    public void addGold(int nb) {
+        if (nb >= 0)
+            gold += nb;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public boolean removeGold(int nb) {
+        if (nb < 0)
+            return false;
+
+        if (gold - nb < 0)
+            return false;
+
+        gold -= nb;
+        return true;
     }
 
     @Override
@@ -103,14 +126,14 @@ public class Inventory implements InventoryManagement {
     }
 
     public String getDisplay() {
-        return "nbItems=" +
-               itemList.size() + "\n" +
+        return "gold : " + gold + "\n" +
+               "nbItems=" + itemList.size() + "\n" +
                getItemListDisplay(true);
     }
 
     public String getSimpleDisplay() {
-        return "nbItems=" +
-               itemList.size() + "\n" +
+        return "gold : " + gold + "\n" +
+               "nbItems : " + itemList.size() + "\n" +
                getItemListDisplay(false);
     }
 

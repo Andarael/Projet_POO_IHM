@@ -25,6 +25,30 @@ class InventoryTest {
     }
 
     @Test
+    void testGold() {
+        assertEquals(0, inv1.getGold());
+
+        inv1.addGold(100);
+        assertEquals(100, inv1.getGold());
+
+        inv1.addGold(-100);
+        assertEquals(100, inv1.getGold());
+
+        assertFalse(inv1.removeGold(101));
+        assertEquals(100, inv1.getGold());
+
+        assertFalse(inv1.removeGold(-1));
+        assertEquals(100, inv1.getGold());
+
+        assertTrue(inv1.removeGold(50));
+        assertEquals(50, inv1.getGold());
+
+
+
+
+    }
+
+    @Test
     void sortInventory() {
         inv1.addItem(item3);
         inv1.addItem(item1);
