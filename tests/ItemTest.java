@@ -17,7 +17,7 @@ class ItemTest {
         item1 = new Item("apple", "a red apple", 1.0f, 1);
         item2 = new Item("sword", 3.0f, 1);
         item3 = new Item("shield", 10, -10);
-        item4 = new Item("pog", 10, 10);
+        item4 = new Item("pog", "a nice Pog");
 
     }
 
@@ -29,7 +29,7 @@ class ItemTest {
         assertNotNull(item.getName());
 
         assertEquals(Item.DEFAULT_NAME, item.getName());
-        assertEquals("defau", item.getShortName());
+        assertEquals(Shortener.shorten(Item.DEFAULT_NAME), item.getShortName());
 
         assertEquals(Item.DEFAULT_VALUE, item.getValue());
         assertEquals(Shortener.SHORT_NAME_SIZE, item.getShortName().length());
@@ -72,15 +72,14 @@ class ItemTest {
     void getValue() {
         assertEquals(1, item1.getValue());
         assertEquals(1, item2.getValue());
-        assertEquals(10, item4.getValue());
         assertEquals(Item.DEFAULT_VALUE, item3.getValue());
     }
 
     @Test
     void testEquals() {
-        item1 = new Item("veryverylongname", 1.0f, 1);
+        item1 = new Item("veryverylongname", 1.0, 1);
 
-        item2 = new Item("veryverylongname", 1.0f, 1);
+        item2 = new Item("veryverylongname", 1.0, 1);
         item2.setShortName("yabadabadou");
 
         Item item = new Item("veryverylongname");
@@ -97,7 +96,7 @@ class ItemTest {
 
     @Test
     void testDisplay() {
-        Item item = new Item("apple", "a red apple", 0.2f, 3);
+        Item item = new Item("apple", "a red apple", 0.2, 3);
 
         assertTrue(item.getDisplay().contains("apple"));
         assertTrue(item.getDisplay().contains("a red apple"));
@@ -114,5 +113,10 @@ class ItemTest {
 
         item = new Item("apple", 0.2f, 3);
         assertFalse(item.getDisplay().contains("a red apple"));
+    }
+
+    @Test
+    void compare() {
+        assertTrue(item1.compareTo(item2) < 0 );
     }
 }
