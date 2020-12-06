@@ -2,11 +2,11 @@ package item;
 
 import utils.Shortener;
 
-public class Item {
+public class Item implements Comparable<Item> {
 
     public static final double DEFAULT_WEIGHT = 0.1f;
     public static final int DEFAULT_VALUE = 0;
-    public static final String DEFAULT_NAME = "default";
+    public static final String DEFAULT_NAME = "null";
 
     private final String name;
     private final String description;
@@ -24,7 +24,7 @@ public class Item {
 
         this.description = description;
 
-        this.shortName = Shortener.shortenName(name);
+        this.shortName = Shortener.shorten(name);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
         this.weight = weight;
@@ -42,12 +42,12 @@ public class Item {
 
     public Item(String name, String description) {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE);
-        this.shortName = Shortener.shortenName(name);
+        this.shortName = Shortener.shorten(name);
     }
 
     public Item(String name) {
         this(name, null, DEFAULT_WEIGHT, DEFAULT_VALUE);
-        this.shortName = Shortener.shortenName(name);
+        this.shortName = Shortener.shorten(name);
     }
 
     public String getName() {
@@ -59,7 +59,7 @@ public class Item {
     }
 
     public void setShortName(String s) {
-        this.shortName = Shortener.shortenName(s);
+        this.shortName = Shortener.shorten(s);
     }
 
     public double getWeight() {
@@ -98,8 +98,8 @@ public class Item {
 
     public String getDisplay() {
         return getSimpleDisplay() +
-               ", weight=" + weight +
-               ", value=" + value;
+               ", weight : " + weight +
+               ", value : " + value;
     }
 
     @Override
@@ -107,5 +107,10 @@ public class Item {
         return "Item{" +
                getDisplay() +
                '}';
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return this.name.compareTo(item.name);
     }
 }
