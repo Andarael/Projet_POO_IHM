@@ -8,7 +8,7 @@ import java.util.List;
 import static utils.Col.YELLOW;
 import static utils.Col.colorize;
 
-public class Inventory implements ItemManagement {
+public class Inventory implements InventoryManagement {
 
     protected final List<Item> itemList;
     protected int gold;
@@ -24,11 +24,11 @@ public class Inventory implements ItemManagement {
     }
 
     @Override
-    public Item getItem(String s) {
-        return itemList.stream()                            // stream de la liste d'items
-                       .filter(x -> x.getName().equals(s))  // on filtre les items du même nom
-                       .findAny()                           // on en retourne un
-                       .orElse(null);                 // si rien alors null
+    public Item getItem(String item) {
+        return itemList.stream()                              // stream de la liste d'items
+                       .filter(x -> x.getName().equals(item)) // on filtre les items du même nom
+                       .findAny()                             // on en retourne un
+                       .orElse(null);                   // si rien alors null
     }
 
     @Override
@@ -48,10 +48,11 @@ public class Inventory implements ItemManagement {
     }
 
     @Override
-    public boolean removeItem(String s) {
-        return this.removeItem(this.getItem(s));
+    public boolean removeItem(String item) {
+        return this.removeItem(this.getItem(item));
     }
 
+    @Override
     public void removeAllItems() {
         itemList.clear();
     }
@@ -62,14 +63,16 @@ public class Inventory implements ItemManagement {
     }
 
     @Override
-    public boolean contains(String s) {
-        return contains(getItem(s));
+    public boolean contains(String item) {
+        return contains(getItem(item));
     }
 
+    @Override
     public void sortInventory() {
         itemList.sort(Item::compareTo);
     }
 
+    @Override
     public int getNbItems() {
         return itemList.size();
     }
@@ -80,15 +83,18 @@ public class Inventory implements ItemManagement {
                        .orElse(null);
     }
 
+    @Override
     public void addGold(int nb) {
         if (nb >= 0)
             gold += nb;
     }
 
+    @Override
     public int getGold() {
         return gold;
     }
 
+    @Override
     public boolean removeGold(int nb) {
         if (nb < 0)
             return false;
@@ -100,14 +106,16 @@ public class Inventory implements ItemManagement {
         return true;
     }
 
+    @Override
     public int getQuantity(Item item) {
         return (int) itemList.stream()
                              .filter(x -> x.equals(item))
                              .count();
     }
 
-    public int getQuantity(String s) {
-        return getQuantity(getItem(s));
+    @Override
+    public int getQuantity(String item) {
+        return getQuantity(getItem(item));
     }
 
     public String getItemListDisplay(boolean detailed) {
