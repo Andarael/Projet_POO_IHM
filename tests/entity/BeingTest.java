@@ -154,6 +154,11 @@ class BeingTest {
 
     @Test
     void testEquals() {
+        Object o = new Object();
+        assertNotEquals(b1, o);
+        assertNotEquals(null, b1);
+
+
         Being being = new Being("Spider", "silky beauty", 5);
         assertEquals(being, b3);
         being.levelUP(5);

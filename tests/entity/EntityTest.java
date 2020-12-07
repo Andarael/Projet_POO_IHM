@@ -99,6 +99,7 @@ class EntityTest {
     void testEquals() {
         Object o = new Object();
         assertNotEquals(e1, o);
+        assertNotEquals(null, e1);
 
         e1 = new Entity("NaME") {
         };
@@ -109,7 +110,6 @@ class EntityTest {
 
         assertEquals(e1, e2);
 
-        assertNotEquals(null, e1);
 
         e1 = new Entity("name") {
         };
