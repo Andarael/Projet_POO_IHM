@@ -7,131 +7,156 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BeingTest {
 
-    private Being player;
-    private Being npc;
-    private Being monster1;
-    private Being monster2;
+    private Being b1;
+    private Being b2;
+    private Being b3;
+    private Being b4;
 
     @BeforeEach
     void setUp() {
-      /*  player = new Player();
-        npc = new Npc("vieux_marchand", "un vieux marchand");
-        monster1 = new Monster("monster", "il fait peur", 10);
-        monster2 = new Monster("spider", "silky beauty", 5);*/
-
-        player = new Being(null, null);
-        npc = new Being("vieux_marchand", "un vieux marchand");
-        monster1 = new Being("monster", "il fait peur", 10);
-        monster2 = new Being("spider", "silky beauty", 5);
+        b1 = new Being(null, null);
+        b2 = new Being("vieux_marchand", "un vieux marchand");
+        b3 = new Being("spider", 5);
     }
 
     @Test
-    void getHealth() {
-        assertEquals(10, monster1.getHP());
-        assertEquals(20, npc.getHP());
-        assertEquals(20, player.getHP());
+    void getHP() {
+        assertEquals(5, b3.getHP());
+        assertEquals(20, b2.getHP());
+        assertEquals(20, b1.getHP());
     }
 
     @Test
-    void getMAX_HEALTH() {
-        assertEquals(10, monster1.getMAX_HP());
-        assertEquals(20, npc.getMAX_HP());
-        assertEquals(20, player.getMAX_HP());
+    void getMAX_HP() {
+        assertEquals(5, b3.getMAX_HP());
+        assertEquals(20, b2.getMAX_HP());
+        assertEquals(20, b1.getMAX_HP());
     }
 
     @Test
     void healMax() {
-        player.hurt(player.getMAX_HP() - 5);
-        assertNotEquals(player.getMAX_HP(), player.getHP());
-        player.healMax();
-        assertEquals(player.getMAX_HP(), player.getHP());
+        b1.hurt(b1.getMAX_HP() - 5);
+        assertNotEquals(b1.getMAX_HP(), b1.getHP());
+        b1.healMax();
+        assertEquals(b1.getMAX_HP(), b1.getHP());
     }
 
     @Test
     void heal() {
-        int healthTemp = player.getHP();
+        int healthTemp = b1.getHP();
 
-        player.hurt(10);
-        player.heal(5);
+        b1.hurt(10);
+        b1.heal(5);
 
-        assertEquals(healthTemp - 10 + 5, player.getHP());
+        assertEquals(healthTemp - 10 + 5, b1.getHP());
     }
 
     @Test
     void heal2() {
-        int healthTemp = player.getHP();
-        player.heal(15);
-        assertEquals(healthTemp, player.getHP());
+        int healthTemp = b1.getHP();
+        b1.heal(15);
+        assertEquals(healthTemp, b1.getHP());
 
-        player.hurt(5);
-        healthTemp = player.getHP();
-        player.heal(-15);
-        assertEquals(healthTemp, player.getHP());
+        b1.hurt(5);
+        healthTemp = b1.getHP();
+        b1.heal(-15);
+        assertEquals(healthTemp, b1.getHP());
 
-        player.hurt(5);
-        healthTemp = player.getHP();
-        player.heal(-15);
-        assertEquals(healthTemp, player.getHP());
+        b1.hurt(5);
+        healthTemp = b1.getHP();
+        b1.heal(-15);
+        assertEquals(healthTemp, b1.getHP());
 
-        player.hurt(5);
-        healthTemp = player.getHP();
-        player.heal(-15);
-        assertEquals(healthTemp, player.getHP());
+        b1.hurt(5);
+        healthTemp = b1.getHP();
+        b1.heal(-15);
+        assertEquals(healthTemp, b1.getHP());
     }
 
     @Test
     void hurt() {
-        npc.hurt(999);
-        assertEquals(0, npc.getHP());
+        b2.hurt(999);
+        assertEquals(0, b2.getHP());
 
-        player.hurt(5);
-        assertEquals(player.getMAX_HP() - 5, player.getHP());
+        b1.hurt(5);
+        assertEquals(b1.getMAX_HP() - 5, b1.getHP());
     }
 
     @Test
     void isDead() {
-        npc.hurt(999);
-        assertTrue(npc.isDead());
+        b2.hurt(999);
+        assertTrue(b2.isDead());
 
-        monster1.kill();
-        assertTrue(monster1.isDead());
+        b3.kill();
+        assertTrue(b3.isDead());
+
+        b3.healMax();
+        assertFalse(b3.isDead());
     }
 
     @Test
     void getLevel() {
-        assertEquals(1, monster1.getLevel());
+        assertEquals(1, b3.getLevel());
 
-        monster1.levelUP();
+        b3.levelUP();
 
-        assertEquals(2, monster1.getLevel());
+        assertEquals(2, b3.getLevel());
 
-        monster2.levelUP(9);
-        assertEquals(10, monster2.getLevel());
+        b1.levelUP(9);
+        assertEquals(10, b1.getLevel());
     }
 
     @Test
     void levelUP() {
-        monster1.levelUP();
-        assertEquals(2, monster1.getLevel());
+        b3.levelUP();
+        assertEquals(2, b3.getLevel());
 
-        int expectedMAX_HEALTH = monster1.getMAX_HP() +
-                                 monster1.getMAX_HP() /
-                                 monster1.getLevel();
+        int expectedMAX_HEALTH = b3.getMAX_HP();
+        expectedMAX_HEALTH += b3.getMAX_HP() / (b3.getLevel() + 1);
 
-        assertEquals(expectedMAX_HEALTH, monster1.getMAX_HP());
-        assertEquals(monster1.getMAX_HP(), monster1.getHP());
+        b3.levelUP();
+        assertEquals(expectedMAX_HEALTH, b3.getMAX_HP());
+        assertEquals(b3.getMAX_HP(), b3.getHP());
     }
 
     @Test
     void levelUP2() {
 
 
-        int expectedMAX_HEALTH = monster1.getMAX_HP();
+        int expectedMAX_HEALTH = b3.getMAX_HP();
         for (int i = 0; i < 9; i++)
-            expectedMAX_HEALTH += monster1.getMAX_HP() /
-                                  monster1.getLevel();
+            expectedMAX_HEALTH += b3.getMAX_HP() /
+                                  (b3.getLevel() + 1);
 
-        monster1.levelUP(9);
-        assertEquals(expectedMAX_HEALTH, monster1.getHP());
+        b3.levelUP(9);
+        assertEquals(expectedMAX_HEALTH, b3.getHP());
+    }
+
+    @Test
+    void kill() {
+        assertFalse(b3.isDead());
+        b3.kill();
+        assertTrue(b3.isDead());
+    }
+
+    @Test
+    void getDisplay() {
+        assertTrue(b2.getDisplay().contains("vieux"));
+        assertTrue(b2.getDisplay().contains("vieux"));
+    }
+
+    @Test
+    void compareTo() {
+        b1.levelUP(13);
+        b2.levelUP(7);
+        assertEquals(b1.getLevel() - b2.getLevel(), b1.compareTo(b2));
+    }
+
+    @Test
+    void testEquals() {
+        Being being = new Being("Spider", "silky beauty", 5);
+        assertEquals(being, b3);
+        being.levelUP(5);
+        assertNotEquals(being, b3);
     }
 }
