@@ -8,12 +8,22 @@ public class Key extends Item {
     private final Col color;
 
     public Key(String name, String description, Col color) {
-        super(name, description);
+        super(name, description, 0, 0);
 
         if (color == null)
             color = RESET;
 
         this.color = color;
+    }
+
+    @Override
+    public String getSimpleDisplay() {
+        return colorize(super.getSimpleDisplay(), color);
+    }
+
+    @Override
+    public String getDisplay() {
+        return colorize(getSimpleDisplay(), color);
     }
 
     @Override
@@ -24,16 +34,6 @@ public class Key extends Item {
         Key key = (Key) o;
 
         return color == key.color;
-    }
-
-    @Override
-    public String getSimpleDisplay() {
-        return colorize(super.getSimpleDisplay(), color);
-    }
-
-    @Override
-    public String getDisplay() {
-        return colorize(super.getDisplay(), color);
     }
 
     @Override
