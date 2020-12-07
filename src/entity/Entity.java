@@ -1,8 +1,6 @@
 package entity;
 
 import interfaces.Lookable;
-import inventory.Inventory;
-import entity.item.Weapon;
 
 import static utils.Shortener.shorten;
 
@@ -13,7 +11,6 @@ public abstract class Entity implements Lookable {
     private final String name;
     private String description;
     private String shortName;
-    private boolean hostile;
 
     public Entity(String name, String description) {
         // le nom ne peut pas être null.
@@ -82,32 +79,6 @@ public abstract class Entity implements Lookable {
         boolean part2 = (shortName.toUpperCase()).equals(comparedShortName);
 
         return (part1 || part2);
-    }
-
-    private Entity enti;
-    private Weapon weapon;
-    private Inventory inventory;
-
-    public boolean hasEntity() {
-        if(this.enti != null)
-            return true;
-        return false;
-    }
-
-    public Entity getEntity() {
-        return this.enti;
-    }
-
-    public boolean isHostile(){
-        return this.hostile;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public Inventory getInventory() {
-        return this.inventory;
     }
 
 }
