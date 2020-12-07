@@ -20,6 +20,11 @@ public class Place {
         this.listExits.add(exit);
     }
 
+    public Exit rmExit(Exit exit){
+        this.listExits.remove(exit);
+        return exit;
+    }
+
     public Boolean exitExists(String name){
         for(Exit exit : this.listExits){
             if (exit.destination.getName().equals(name)) return true;
@@ -31,9 +36,21 @@ public class Place {
         this.listContainers.add(container);
     }
 
+    public Container rmContainer(Container container){
+        this.listContainers.remove(container);
+        return container;
+    }
+
+    public boolean isEmptyContainer(){
+        return this.listContainers.isEmpty();
+    }
+
+    public boolean isEmptyExit(){
+        return this.listExits.isEmpty();
+    }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public boolean hasPlayer() {
@@ -44,8 +61,36 @@ public class Place {
         return this.player;
     }
 
-    public void display() {
+    public int nbExit(){
+        return this.listExits.size();
     }
+
+    public int nbContainer(){
+        return this.listContainers.size();
+    }
+
+
+    public void displayExit() {
+        for (int i = 0; i < this.nbExit(); i++) {
+            System.out.println("- " + this.listExits.get(i).destination.getName());
+        }
+    }
+
+
+    public void displayContainer() {
+        for (int i = 0; i < this.nbContainer(); i++) {
+            System.out.println("- " + this.listContainers.get(i).getName());
+        }
+    }
+
+    public void display(){
+
+    }
+
+
+
+
+
 
 
 }
