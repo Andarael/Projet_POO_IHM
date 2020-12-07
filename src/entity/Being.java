@@ -27,6 +27,10 @@ public class Being extends Entity implements Comparable<Being> {
         this(name, null, hp);
     }
 
+    public Being(String name) {
+        this(name, DEFAULT_HEALTH);
+    }
+
     public int getHP() {
         return hp;
     }

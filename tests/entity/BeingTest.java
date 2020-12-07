@@ -10,11 +10,10 @@ class BeingTest {
     private Being b1;
     private Being b2;
     private Being b3;
-    private Being b4;
 
     @BeforeEach
     void setUp() {
-        b1 = new Being(null, null);
+        b1 = new Being(null, null, -5);
         b2 = new Being("vieux_marchand", "un vieux marchand");
         b3 = new Being("spider", 5);
     }
@@ -154,14 +153,20 @@ class BeingTest {
 
     @Test
     void testEquals() {
+        assertEquals(b2, b2);
+        assertNotEquals(b1, null);
+
         Object o = new Object();
         assertNotEquals(b1, o);
-        assertNotEquals(null, b1);
 
 
         Being being = new Being("Spider", "silky beauty", 5);
         assertEquals(being, b3);
+
         being.levelUP(5);
+        assertNotEquals(being, b3);
+
+        being = new Being("pog");
         assertNotEquals(being, b3);
     }
 }

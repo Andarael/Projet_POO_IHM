@@ -97,9 +97,9 @@ class EntityTest {
 
     @Test
     void testEquals() {
+        assertNotEquals(null, e1);
         Object o = new Object();
         assertNotEquals(e1, o);
-        assertNotEquals(null, e1);
 
         e1 = new Entity("NaME") {
         };
@@ -109,7 +109,6 @@ class EntityTest {
         e2.setShortName("shortname1");
 
         assertEquals(e1, e2);
-
 
         e1 = new Entity("name") {
         };
