@@ -10,6 +10,8 @@ public class Food extends Item {
         if (restoreValue < 1)
             restoreValue = DEFAULT_RESTORE_VALUE;
         this.restoreValue = restoreValue;
+
+        PREFIX = "FOOD : ";
     }
 
     public Food(String name, String description, int restoreValue){

@@ -14,6 +14,8 @@ public class Key extends Item {
             color = RESET;
 
         this.color = color;
+
+        PREFIX = "KEY  : ";
     }
 
     @Override

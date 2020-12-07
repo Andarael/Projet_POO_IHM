@@ -7,6 +7,8 @@ public class Item extends Entity implements Comparable<Item> {
     public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
 
+    protected static String PREFIX;
+
     private final double weight;
     private final int value;
 
@@ -21,6 +23,8 @@ public class Item extends Entity implements Comparable<Item> {
             this.value = DEFAULT_VALUE;
         else
             this.value = value;
+
+        PREFIX = "ITEM : ";
     }
 
     public Item(String name, double weight, int value) {
@@ -44,7 +48,7 @@ public class Item extends Entity implements Comparable<Item> {
     }
 
     public String getDisplay() {
-        return getSimpleDisplay() +
+        return PREFIX +  getSimpleDisplay() +
                ", weight : " + weight +
                ", value : " + value;
     }

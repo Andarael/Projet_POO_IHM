@@ -10,6 +10,8 @@ public class Weapon extends Item {
         if (damage < 1)
             damage = DEFAULT_DAMAGE;
         this.damage = damage;
+
+        PREFIX = "WEAP  : ";
     }
 
     public Weapon(String name, String description, int damage) {
