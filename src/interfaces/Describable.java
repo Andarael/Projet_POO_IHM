@@ -1,7 +1,6 @@
 package interfaces;
 
-public interface Descriptable extends Shortable {
-
+public interface Describable extends Shortenable {
     String getName();
 
     String getDescription();

@@ -1,6 +1,8 @@
 package interfaces;
 
-public interface Shortable {
+public interface Shortenable {
+
+
 
     String getShortName();
 
