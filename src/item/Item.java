@@ -7,8 +7,8 @@ public class Item extends Entity implements Comparable<Item> {
     public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
 
-    protected final double weight;
-    protected final int value;
+    private final double weight;
+    private final int value;
 
     public Item(String name, String description, double weight, int value) {
         super(name, description);
@@ -51,6 +51,6 @@ public class Item extends Entity implements Comparable<Item> {
 
     @Override
     public int compareTo(Item item) {
-        return this.name.compareTo(item.name);
+        return this.getName().compareTo(item.getName());
     }
 }

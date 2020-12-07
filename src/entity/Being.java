@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Being extends Entity implements Comparable<Being> {
 
-    private static final int DEFAULT_HEALTH = 20;
+    public static final int DEFAULT_HEALTH = 20;
 
-    protected int MAX_HEALTH;
-    protected int hp;
-    protected int level;
+    private int MAX_HEALTH;
+    private int hp;
+    private int level;
 
     public Being(String name, String description, int hp) {
         super(name, description);

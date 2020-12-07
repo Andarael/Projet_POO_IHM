@@ -1,18 +1,16 @@
 package entity;
 
-import interfaces.Descriptable;
 import interfaces.Lookable;
-import interfaces.Shortable;
 
 import static utils.Shortener.shorten;
 
-public abstract class Entity implements Lookable, Shortable, Descriptable {
+public abstract class Entity implements Lookable {
 
     public static final String DEFAULT_NAME = "null";
 
-    protected final String name;
-    protected final String description;
-    protected String shortName;
+    private final String name;
+    private String description;
+    private String shortName;
 
     public Entity(String name, String description) {
         // le nom ne peut pas être null.
