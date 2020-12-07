@@ -1,53 +1,51 @@
 package world;
 
-import java.util.Map;
-import java.util.Set;
-import inventory.*;
-import entity.Entity;
+import java.util.List;
+
+import entity.Container;
+import entity.Player;
 
 
 public class Place {
-    private int size;
-    private Inventory loot;
-    private Map<String, Exit> exits;
-    private String name;
-    private Entity enti;
+    private final String name;
+    private List<Exit> listExits;
+    private List<Container> listContainers;
+    private Player player;
 
-    public void display() {
-        String t = new String();
-
-        if(this.size<10){
-            t = "petite";
-        }
-        if(this.size>=10 && this.size<20){
-            t = "moyenne";
-        }
-        if(this.size>=20){
-            t = "grande";
-        }
-        Main.cleanScreen();
-        System.out.println("Vous etes dans une "+t+" salle.");
-        if(!this.loot.isEmpty()) {
-            System.out.println("Par terre vous voyez : ");
-            this.loot.getInvDisplayDetails();
-        }
-        System.out.println("D�placement possible :");
-        Set<String> e = this.exits.keySet();
-        for(String s : e) {
-            System.out.println(this.exits.get(s).GoIn().getName()+" : "+s);
-        }
-
+    public Place(String name){
+        this.name = name;
     }
 
-    public String getName(){return this.name;}
+    public void addExit(Exit exit){
+        this.listExits.add(exit);
+    }
 
-    public boolean hasEntity() {
-        if(this.enti != null)
-            return true;
+    public Boolean exitExists(String name){
+        for(Exit exit : this.listExits){
+            if (exit.destination.getName().equals(name)) return true;
+        }
         return false;
     }
 
-    public Entity getEntity() {
-        return this.enti;
+    public void addContainer(Container container){
+        this.listContainers.add(container);
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean hasPlayer() {
+        return this.player != null;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public void display() {
+    }
+
+
 }
