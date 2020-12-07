@@ -9,11 +9,16 @@ import entity.Player;
 public class Place {
     private final String name;
     private List<Exit> listExits;
+    private final int exitMax = 4;
     private List<Container> listContainers;
+    private final int containerMax = 4;
     private Player player;
+
 
     public Place(String name){
         this.name = name;
+        this.listContainers = null;
+        this.listExits = null;
     }
 
     /* ------ méthodes ------*/
@@ -35,11 +40,15 @@ public class Place {
     /* ------ les Exits ------*/
 
     public void addExit(Exit exit){
-        this.listExits.add(exit);
+        if(this.nbExit()<this.exitMax) {
+            this.listExits.add(exit);
+        }
     }
 
     public Exit rmExit(Exit exit){
-        this.listExits.remove(exit);
+        if (!this.isEmptyExit()) {
+            this.listExits.remove(exit);
+        }
         return exit;
     }
 
@@ -68,11 +77,16 @@ public class Place {
     /* ------ les containers ------*/
 
     public void addContainer(Container container){
-        this.listContainers.add(container);
+        if(this.nbContainer()<this.containerMax) {
+            this.listContainers.add(container);
+        }
+
     }
 
     public Container rmContainer(Container container){
-        this.listContainers.remove(container);
+        if (!this.isEmptyContainer()) {
+            this.listContainers.remove(container);
+        }
         return container;
     }
 
