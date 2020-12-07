@@ -4,7 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.Col.*;
+import static utils.Col.BLUE;
+import static utils.Col.RED;
 
 class KeyTest {
 
@@ -21,16 +22,16 @@ class KeyTest {
 
     @Test
     void testEquals() {
-        assertEquals(k1,k1);
+        assertEquals(k1, k1);
 
         Item k = new Key("not a blue key !", "definitely not blue", BLUE);
-        assertEquals(k,k1);
+        assertEquals(k, k1);
         // en réalité la clé k est bleu
 
-        assertNotEquals(k1,k2);
+        assertNotEquals(k1, k2);
 
         Object o = new Object();
-        assertNotEquals(k1,o);
+        assertNotEquals(k1, o);
 
         assertNotEquals(null, k1);
     }

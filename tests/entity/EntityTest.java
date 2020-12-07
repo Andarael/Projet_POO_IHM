@@ -14,14 +14,18 @@ class EntityTest {
 
     @BeforeEach
     void setUp() {
-        e1 = new Entity("apple", "a red apple") {};
-        e2 = new Entity(null) {};
-        e3 = new Entity("pog", "a nice Pog") {};
+        e1 = new Entity("apple", "a red apple") {
+        };
+        e2 = new Entity(null) {
+        };
+        e3 = new Entity("pog", "a nice Pog") {
+        };
     }
 
     @Test
     void Entity() {
-        Entity e = new Entity(null) {};
+        Entity e = new Entity(null) {
+        };
         System.out.println(e);
 
         assertNotNull(e.getName());
@@ -94,10 +98,12 @@ class EntityTest {
     @Test
     void testEquals() {
         Object o = new Object();
-        assertNotEquals(e1,o);
+        assertNotEquals(e1, o);
 
-        e1 = new Entity("NaME") {};
-        e2 = new Entity("name") {};
+        e1 = new Entity("NaME") {
+        };
+        e2 = new Entity("name") {
+        };
 
         e2.setShortName("shortname1");
 
@@ -105,9 +111,11 @@ class EntityTest {
 
         assertNotEquals(null, e1);
 
-        e1 = new Entity("name") {};
+        e1 = new Entity("name") {
+        };
 
-        e2 = new Entity("newName") {};
+        e2 = new Entity("newName") {
+        };
 
         assertNotEquals(e1, e2);
         assertNotEquals(e3, e1);

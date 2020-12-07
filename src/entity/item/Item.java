@@ -48,7 +48,7 @@ public class Item extends Entity implements Comparable<Item> {
     }
 
     public String getDisplay() {
-        return PREFIX +  getSimpleDisplay() +
+        return PREFIX + getSimpleDisplay() +
                ", weight : " + weight +
                ", value : " + value;
     }

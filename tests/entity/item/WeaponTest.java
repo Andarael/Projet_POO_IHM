@@ -3,7 +3,8 @@ package entity.item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WeaponTest {
 
@@ -26,7 +27,7 @@ class WeaponTest {
 
     @Test
     void getDamage() {
-        assertSame(10, ((Weapon)w1).getDamage());
-        assertSame(1, ((Weapon)w2).getDamage());
+        assertSame(10, ((Weapon) w1).getDamage());
+        assertSame(1, ((Weapon) w2).getDamage());
     }
 }

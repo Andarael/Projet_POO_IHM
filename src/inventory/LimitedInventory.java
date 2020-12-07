@@ -35,8 +35,8 @@ public class LimitedInventory extends Inventory {
 
     public double getUsedCapacity() {
         return itemList.stream()
-                               .mapToDouble(Item::getWeight)
-                               .sum();
+                       .mapToDouble(Item::getWeight)
+                       .sum();
     }
 
     @Override

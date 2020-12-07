@@ -1,7 +1,9 @@
 package entity.item;
 
 import utils.Col;
-import static utils.Col.*;
+
+import static utils.Col.RESET;
+import static utils.Col.colorize;
 
 public class Key extends Item {
 

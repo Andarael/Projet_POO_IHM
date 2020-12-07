@@ -2,7 +2,7 @@ package entity.item;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HandTest {
 
@@ -11,7 +11,7 @@ class HandTest {
         Item h1 = new Hand();
         Item h2 = new Hand();
         h2.setShortName("h");
-        assertEquals(h1,h2);
+        assertEquals(h1, h2);
 
         System.out.println(h1);
         System.out.println(h2);

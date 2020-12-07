@@ -1,6 +1,5 @@
 package entity;
 
-import entity.Being;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -55,7 +54,7 @@ class BeingTest {
         player.hurt(10);
         player.heal(5);
 
-        assertEquals(healthTemp-10+5, player.getHP());
+        assertEquals(healthTemp - 10 + 5, player.getHP());
     }
 
     @Test
@@ -104,16 +103,16 @@ class BeingTest {
 
         monster1.levelUP();
 
-        assertEquals(2,monster1.getLevel());
+        assertEquals(2, monster1.getLevel());
 
         monster2.levelUP(9);
-        assertEquals(10,monster2.getLevel());
+        assertEquals(10, monster2.getLevel());
     }
 
     @Test
     void levelUP() {
         monster1.levelUP();
-        assertEquals(2,monster1.getLevel());
+        assertEquals(2, monster1.getLevel());
 
         int expectedMAX_HEALTH = monster1.getMAX_HP() +
                                  monster1.getMAX_HP() /

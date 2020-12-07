@@ -2,7 +2,6 @@ import entity.item.Food;
 import entity.item.Item;
 
 import static utils.Col.*;
-import static utils.Col.colorize;
 
 public class Main {
 

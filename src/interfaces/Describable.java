@@ -9,7 +9,7 @@ public interface Describable extends Shortenable {
         String output = "(" + getShortName().trim() + ") " + getName();
         if (getDescription() != null)
             return output + " : " + getDescription();
-        return  output;
+        return output;
     }
 
     String getDisplay();

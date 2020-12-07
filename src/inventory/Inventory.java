@@ -5,7 +5,8 @@ import entity.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-import static utils.Col.*;
+import static utils.Col.YELLOW;
+import static utils.Col.colorize;
 
 public class Inventory implements ItemManagement {
 
