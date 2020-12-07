@@ -18,7 +18,6 @@ public class Container extends Entity implements InventoryManagement {
         this(name, null);
     }
 
-
     @Override
     public boolean isEmpty() {
         return inventory.isEmpty();
@@ -32,6 +31,11 @@ public class Container extends Entity implements InventoryManagement {
     @Override
     public Item getItem(String s) {
         return inventory.getItem(s);
+    }
+
+    @Override
+    public Item getFirstItem() {
+        return inventory.getFirstItem();
     }
 
     @Override
@@ -85,6 +89,11 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
+    public boolean canPay(int nb) {
+        return inventory.canPay(nb);
+    }
+
+    @Override
     public boolean removeGold(int nb) {
         return inventory.removeGold(nb);
     }
@@ -97,5 +106,11 @@ public class Container extends Entity implements InventoryManagement {
     @Override
     public int getQuantity(String s) {
         return inventory.getQuantity(s);
+    }
+
+    @Override
+    public String getDisplay() {
+        return getSimpleDisplay() + "\n" +
+               inventory.getInvDisplayDetails();
     }
 }

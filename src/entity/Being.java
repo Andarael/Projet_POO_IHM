@@ -1,6 +1,6 @@
 package entity;
 
-public class Being extends Entity implements Comparable<Being> {
+public class Being extends Container implements Comparable<Being> {
 
     public static final int DEFAULT_HEALTH = 20;
 
