@@ -66,6 +66,7 @@ class LimitedInventoryTest {
 
     @Test
     void addItem3() {
+        assertFalse(inv1.addItem(null));
         assertFalse(inv1.addItem(item4));
 
         assertTrue(inv1.addItem(item1));
