@@ -1,6 +1,8 @@
 package entity.item;
 
-public class Weapon extends Item {
+import interfaces.Equipable;
+
+public class Weapon extends Item implements Equipable {
 
     private static final int DEFAULT_DAMAGE = 1;
     private final int damage;
@@ -24,6 +26,11 @@ public class Weapon extends Item {
     }
 
     public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public int getPower() {
         return damage;
     }
 }
