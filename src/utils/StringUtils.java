@@ -13,14 +13,14 @@ public interface StringUtils {
 
     static String rightPad(String str, int size, char c) {
         if (str == null)
-            return null;
+            str = "";
 
         return str + stringFill(size, c);
     }
 
     static String leftPad(String str, int size, char c) {
         if (str == null)
-            return null;
+            str = "";
 
         return stringFill(size, c) + str;
     }
