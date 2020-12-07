@@ -1,7 +1,7 @@
 package utils;
 
-public class Shortener {
-    public static final int SHORT_NAME_SIZE = 5;
+public interface Shortener {
+    int SHORT_NAME_SIZE = 5;
 
     /**
      * Shortens the input string to fit the SHORT_NAME_SIZE length
@@ -9,7 +9,7 @@ public class Shortener {
      * @param str the input String to shorten
      * @return shortened String
      */
-    public static String shorten(String str) {
+    static String shorten(String str) {
         if (str == null)
             return StringUtils.stringFill(SHORT_NAME_SIZE, ' ');
 
