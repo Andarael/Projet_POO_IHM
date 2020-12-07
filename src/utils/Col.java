@@ -36,16 +36,6 @@ public enum Col {
         return color + s + RESET;
     }
 
-    public static void main(String[] args) {
-        String s1 = "test en rouge";
-        String s2 = "test en bleu";
-        String s3 = "test en vert";
-
-        System.out.println(colorize(s1, RED));
-        System.out.println(colorize(s2, BLUE));
-        System.out.println(colorize(s3, GREEN));
-    }
-
     @Override
     public String toString() {
         return value;
