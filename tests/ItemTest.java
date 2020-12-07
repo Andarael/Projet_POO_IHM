@@ -78,15 +78,15 @@ class ItemTest {
 
     @Test
     void testEquals() {
-        item1 = new Item("veryverylongname", 1.0, 1);
+        item1 = new Item("NaME", 1.0, 1);
 
-        item2 = new Item("veryverylongname", 1.0, 1);
-        item2.setShortName("yabadabadou");
+        item2 = new Item("name", 1.0, 1);
+        item2.setShortName("shortname1");
 
-        Item item = new Item("veryverylongname");
+        Item item = new Item("NEWname");
 
         assertEquals(item1, item2);
-        assertEquals(item1, item);
+        assertNotEquals(item1, item);
         assertNotEquals(item3, item1);
     }
 
@@ -99,6 +99,12 @@ class ItemTest {
     void testDisplay() {
         Item item = new Item("apple", "a red apple", 0.2, 3);
 
+        System.out.println(item1.getDisplay());
+        System.out.println(item1.getSimpleDisplay());
+        System.out.println(item1.toString());
+
+        System.out.println(item4);
+
         assertTrue(item.getDisplay().contains("apple"));
         assertTrue(item.getDisplay().contains("a red apple"));
         assertTrue(item.getDisplay().contains("0.2"));
@@ -107,10 +113,6 @@ class ItemTest {
         assertFalse(item.getSimpleDisplay().contains("3"));
         assertFalse(item.getSimpleDisplay().contains("0.2"));
         assertTrue(item.getSimpleDisplay().contains("red"));
-
-        System.out.println(item1.getDisplay());
-        System.out.println(item1.getSimpleDisplay());
-        System.out.println(item1.toString());
 
         item = new Item("apple", 0.2f, 3);
         assertFalse(item.getDisplay().contains("a red apple"));
