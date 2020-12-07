@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.Objects;
-
 public class Being extends Entity implements Comparable<Being> {
 
     public static final int DEFAULT_HEALTH = 20;
@@ -96,18 +94,16 @@ public class Being extends Entity implements Comparable<Being> {
         if (this == o)
             return true;
 
-        if (o == null || getClass() != o.getClass())
+        if (o == null)
+            return false;
+
+        if (!(o instanceof Being))
             return false;
 
         if (!super.equals(o))
             return false;
 
         Being being = (Being) o;
-        return hp == being.hp;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), hp);
+        return hp == being.getHP();
     }
 }
