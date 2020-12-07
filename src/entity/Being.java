@@ -23,6 +23,10 @@ public class Being extends Entity implements Comparable<Being> {
         this(name, description, DEFAULT_HEALTH);
     }
 
+    public Being(String name, int hp) {
+        this(name, null, hp);
+    }
+
     public int getHP() {
         return hp;
     }
@@ -38,6 +42,8 @@ public class Being extends Entity implements Comparable<Being> {
     public void heal(int amount) {
         if (amount > 0)
             this.hp += amount;
+        if (hp > MAX_HEALTH)
+            hp = MAX_HEALTH;
     }
 
     public void hurt(int amount) {
@@ -48,7 +54,7 @@ public class Being extends Entity implements Comparable<Being> {
     }
 
     public boolean isDead() {
-        return hp < 0;
+        return hp <= 0;
     }
 
     public void kill() {
@@ -104,6 +110,6 @@ public class Being extends Entity implements Comparable<Being> {
             return false;
 
         Being being = (Being) o;
-        return hp == being.getHP();
+        return (hp == being.getHP() && level == being.getLevel());
     }
 }
