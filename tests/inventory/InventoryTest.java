@@ -21,29 +21,110 @@ class InventoryTest {
         inv2 = new Inventory();
 
         item1 = new Item("apple", "a red apple", 1.0, 1);
-        item2 = new Item("sword", 3.0, 1);
-        item3 = new Item("shield", 5.0, 1);
+        item2 = new Item("apple");
+        item3 = new Item("shield");
+
+        item1.setShortName("a");
+
+        inv2.addItem(item1);
+        inv2.addItem(item2);
+        inv2.addItem(item3);
+
+        inv2.addGold(10);
     }
 
     @Test
-    void testGold() {
-        assertEquals(0, inv1.getGold());
-
-        inv1.addGold(100);
-        assertEquals(100, inv1.getGold());
-
-        inv1.addGold(-100);
-        assertEquals(100, inv1.getGold());
-
-        assertFalse(inv1.removeGold(101));
-        assertEquals(100, inv1.getGold());
-
-        assertFalse(inv1.removeGold(-1));
-        assertEquals(100, inv1.getGold());
-
-        assertTrue(inv1.removeGold(50));
-        assertEquals(50, inv1.getGold());
+    void isEmpty() {
+        assertTrue(inv1.isEmpty());
+        assertFalse(inv2.isEmpty());
     }
+
+    @Test
+    void getItem() {
+        assertSame(item1, inv2.getItem(item1));
+        assertSame(item1, inv2.getItem(new Item("apple")));
+        assertSame(item3, inv2.getItem(item3));
+
+        assertNull(inv1.getItem(item1));
+        assertNull(inv2.getItem(new Item("toto")));
+    }
+
+    @Test
+    void getItem2() {
+        assertSame(item1, inv2.getItem("apple"));
+        assertSame(item1, inv2.getItem("APPLE"));
+        assertSame(item3, inv2.getItem("shiel"));
+
+        assertNull(inv1.getItem("toto"));
+        assertNull(inv2.getItem("toto"));
+    }
+
+    @Test
+    void addItem() {
+        assertTrue(inv1.addItem(item1));
+        assertFalse(inv1.addItem(null));
+        assertEquals(1, inv1.getQuantity(item1));
+
+        inv2.addItem(item2);
+        assertEquals(4, inv2.getNbItems());
+        assertEquals(3, inv2.getQuantity(item2));
+
+    }
+
+    @Test
+    void removeItem() {
+        assertFalse(inv1.removeItem(new Item("clarinette")));
+        assertFalse(inv2.removeItem(new Item("clarinette")));
+
+        assertFalse(inv1.removeItem(item1));
+
+        assertTrue(inv2.removeItem(item1));
+        assertEquals(2, inv2.getNbItems());
+    }
+
+    @Test
+    void removeItem2() {
+        assertFalse(inv1.removeItem("clarinette"));
+        assertFalse(inv2.removeItem("clarinette"));
+
+        assertFalse(inv1.removeItem("apple"));
+
+        assertTrue(inv2.removeItem("apple"));
+        assertEquals(2, inv2.getNbItems());
+    }
+
+
+    @Test
+    void removeAllItems() {
+        inv2.removeAllItems();
+        assertTrue(inv2.isEmpty());
+    }
+
+    @Test
+    void removeAllItems2() {
+        for (int i = 0; i < 64; i++)
+            inv1.addItem(new Item("clarinette"));
+        inv1.removeAllItems();
+        assertTrue(inv1.isEmpty());
+    }
+
+    @Test
+    void contains() {
+        assertFalse(inv1.contains("apple"));
+        assertFalse(inv1.contains("clarinette"));
+
+        assertTrue(inv2.contains("apple"));
+        assertFalse(inv2.contains("clarinette"));
+    }
+
+    @Test
+    void contains2() {
+        assertFalse(inv1.contains(item1));
+        assertFalse(inv1.contains(new Item("a")));
+
+        assertTrue(inv2.contains(item1));
+    }
+
 
     @Test
     void sortInventory() {
@@ -62,182 +143,95 @@ class InventoryTest {
     }
 
     @Test
-    void Inventory() {
-        Inventory inv = new Inventory();
-        assertEquals(0, inv.getNbItems());
-    }
-
-    @Test
-    void display() {
-        inv1.addItem(item1);
-        inv1.addItem(item1);
-        inv1.addItem(item2);
-        inv1.addItem(item3);
-        inv1.addItem(item2);
-
-        System.out.println(inv1.getItemListDisplay(true));
-        System.out.println(inv1.getInvDisplayNoDetails());
-        System.out.println(inv1);
-
-        assertTrue(inv1.getInvDisplayDetails().contains(item1.getSimpleDisplay()));
-        assertTrue(inv1.getInvDisplayNoDetails().contains(item1.getSimpleDisplay()));
-    }
-
-    @Test
     void getNbItems() {
         assertEquals(0, inv1.getNbItems());
-
-        inv1.addItem(item1);
-        assertEquals(1, inv1.getNbItems());
-
-        inv1.addItem(item2);
-        assertEquals(2, inv1.getNbItems());
-
-        inv1.addItem(item3);
-        assertEquals(3, inv1.getNbItems());
-
-        inv1.removeItem(item1);
-        assertEquals(2, inv1.getNbItems());
-
-        assertEquals(0, inv2.getNbItems());
-    }
-
-    @Test
-    void getNbItems2() {
-        inv1.addItem(item1);
-        inv1.addItem(item1);
-        inv1.addItem(item1);
-        inv1.addItem(item2);
-        inv1.removeItem(item1);
-        assertEquals(3, inv1.getNbItems());
-        inv1.removeItem(item2);
-        assertEquals(2, inv1.getNbItems());
-    }
-
-    @Test
-    void isEmpty() {
-        assertTrue(inv1.isEmpty());
-
-        inv1.addItem(item1);
-        inv1.addItem(item2);
-        assertFalse(inv1.isEmpty());
-
-        inv1.removeItem(item1);
-        assertFalse(inv1.isEmpty());
-    }
-
-    @Test
-    void getFirstItem() {
-        assertNull(inv1.getFirstItem());
-
-        inv1.addItem(item1);
-        inv1.addItem(item2);
-        assertSame(item1, inv1.getFirstItem());
+        assertEquals(3, inv2.getNbItems());
 
         inv2.addItem(item1);
-        inv2.removeItem(item1);
-        assertNull(inv2.getFirstItem());
-    }
-
-    @Test
-    void removeAllItems() {
-        for (int i = 0; i < 64; i++)
-            inv1.addItem(item1);
-        inv1.removeAllItems();
-        assertTrue(inv1.isEmpty());
-    }
-
-    @Test
-    void addItem() {
-        assertTrue(inv1.addItem(item1));
-        assertTrue(inv1.addItem(item1));
-        assertTrue(inv1.addItem(item1));
-        assertTrue(inv1.addItem(item3));
-
-        assertTrue(inv1.contains(item1));
-        assertTrue(inv1.contains("apple"));
-
-        assertEquals(3, inv1.getQuantity(item1));
-        assertEquals(3, inv1.getQuantity("apple"));
-    }
-
-    @Test
-    void removeItem() {
-        assertFalse(inv1.removeItem(item1));
-        assertFalse(inv1.removeItem("apple"));
-
-        inv1.addItem(item1);
-        assertTrue(inv1.removeItem(item1));
-
-        inv1.addItem(item1);
-        assertTrue(inv1.removeItem("apple"));
-    }
-
-    @Test
-    void removeItem2() {
-        inv1.addItem(item1);
-        assertFalse(inv1.removeItem(item2));
-        inv1.addItem(item2);
-        assertTrue(inv1.removeItem(item2));
-    }
-
-    @Test
-    void contains() {
-        assertFalse(inv1.contains(item1));
-        assertFalse(inv1.contains("apple"));
-
-        inv1.addItem(item1);
-        assertTrue(inv1.contains(item1));
-        assertTrue(inv1.contains("apple"));
-
-        assertFalse(inv1.contains(item2));
-        assertFalse(inv1.contains("sword"));
-
-        inv1.addItem(item2);
-        assertTrue(inv1.contains("sword"));
-    }
-
-    @Test
-    void contains2() {
-        inv1.addItem(item1);
-        inv1.addItem(item1);
-        inv1.removeItem(item1);
-        assertTrue(inv1.contains(item1));
-
-        inv2.addItem(item2);
-        assertFalse(inv2.contains(item1));
+        assertEquals(4, inv2.getNbItems());
     }
 
     @Test
     void getQuantity() {
-        assertEquals(0, inv1.getQuantity(item1));
+        assertEquals(2, inv2.getQuantity(item1));
+        assertEquals(2, inv2.getQuantity("apple"));
 
-        int nb = 16;
-        for (int i = 0; i < nb; i++)
-            inv1.addItem(item1);
+        inv2.addItem(item1);
+        assertEquals(3, inv2.getQuantity("apple"));
 
-        assertEquals(nb, inv1.getQuantity(item1));
-        assertEquals(0, inv1.getQuantity(item2));
-
-        assertEquals(inv1.getQuantity("apple"), inv1.getQuantity(item1));
-
-        inv1.removeItem(item1);
-        assertEquals(nb - 1, inv1.getQuantity(item1));
-
-        inv1.removeItem(item2);
-        assertEquals(0, inv1.getQuantity(item2));
+        assertEquals(0, inv1.getQuantity("apple"));
     }
 
     @Test
-    void getItem() {
-        assertNull(inv1.getItem("apple"));
+    void getFirstItem() {
+        assertEquals(item1,inv2.getFirstItem());
+        assertNull(inv1.getFirstItem());
+    }
 
-        inv1.addItem(item1);
-        assertSame(item1, inv1.getItem("apple"));
+    @Test
+    void addGold() {
+        inv1.addGold(10);
+        assertEquals(10, inv1.getGold());
 
-        assertNull(inv1.getItem("monkey"));
+        inv1.addGold(-10);
+        assertEquals(10, inv1.getGold());
+    }
 
-        inv1.removeItem("apple");
-        assertNull(inv1.getItem("apple"));
+    @Test
+    void getGold() {
+        assertEquals(0, inv1.getGold());
+        assertEquals(10, inv2.getGold());
+    }
+
+    @Test
+    void canPay() {
+        assertFalse(inv2.canPay(100));
+        assertFalse(inv2.canPay(-1));
+        assertTrue(inv2.canPay(1));
+    }
+
+    @Test
+    void removeGold() {
+        assertFalse(inv2.removeGold(100));
+        assertFalse(inv2.removeGold(- 5));
+        assertTrue(inv2.removeGold(5));
+
+        assertSame(5, inv2.getGold());
+    }
+
+
+    @Test
+    void getItemListDisplay() {
+        assertTrue(inv2.getItemListDisplay(true).contains("red"));
+        assertFalse(inv2.getItemListDisplay(true).contains("clarinette"));
+        assertTrue(inv2.getItemListDisplay(false).contains("apple"));
+    }
+
+    @Test
+    void getHeaderDisplay() {
+        assertTrue(inv2.getHeaderDisplay().contains(": 10"));
+        assertTrue(inv2.getHeaderDisplay().contains(": 3"));
+
+        assertTrue(inv1.getHeaderDisplay().contains(": 0"));
+        assertFalse(inv1.getHeaderDisplay().contains(": 3"));
+
+    }
+
+    @Test
+    void getInvDisplayDetails() {
+        System.out.println(inv1.getInvDisplayDetails());
+        System.out.println(inv2.getInvDisplayDetails());
+    }
+
+    @Test
+    void getInvDisplayNoDetails() {
+        System.out.println(inv1.getInvDisplayNoDetails());
+        System.out.println(inv2.getInvDisplayNoDetails());
+    }
+
+    @Test
+    void testToString() {
+        System.out.println(inv1);
+        System.out.println(inv2);
     }
 }

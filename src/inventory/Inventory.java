@@ -24,32 +24,40 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public Item getItem(String item) {
-        return itemList.stream()                              // stream de la liste d'items
-                       .filter(x -> x.getName().equals(item)) // on filtre les items du même nom
-                       .findAny()                             // on en retourne un
-                       .orElse(null);                   // si rien alors null
+    public Item getItem(Item item) {
+        // on stream la liste d'items
+        // en recherchant in item identique à celui demandé
+            // (identique selon la méthode equals() de item
+            // donc juste le nom ou le shortname d'identique)
+        return itemList.stream()
+                .filter(x -> x.equals(item))
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public Item getItem(String s) {
+        // on crée un nouvel item à partir du nom de l'item cherché
+        return getItem(new Item(s));
     }
 
     @Override
     public boolean addItem(Item item) {
+        if (item == null)
+            return false;
+
         itemList.add(item);
         return true;
     }
 
     @Override
     public boolean removeItem(Item item) {
-        if (!this.contains(item)) {
-            return false;
-        }
-
-        itemList.remove(item);
-        return true;
+        return itemList.remove(item);
     }
 
     @Override
-    public boolean removeItem(String item) {
-        return this.removeItem(this.getItem(item));
+    public boolean removeItem(String s) {
+        return removeItem(getItem(s));
     }
 
     @Override
@@ -63,8 +71,8 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public boolean contains(String item) {
-        return contains(getItem(item));
+    public boolean contains(String s) {
+        return contains(new Item(s));
     }
 
     @Override
@@ -77,10 +85,16 @@ public class Inventory implements InventoryManagement {
         return itemList.size();
     }
 
-    public Item getFirstItem() {
-        return itemList.stream()
-                       .findFirst()
-                       .orElse(null);
+    @Override
+    public int getQuantity(Item item) {
+        return (int) itemList.stream()
+                             .filter(x -> x.equals(item))
+                             .count();
+    }
+
+    @Override
+    public int getQuantity(String s) {
+        return getQuantity(new Item(s));
     }
 
     @Override
@@ -94,28 +108,20 @@ public class Inventory implements InventoryManagement {
         return gold;
     }
 
-    @Override
-    public boolean removeGold(int nb) {
+    public boolean canPay(int nb) {
         if (nb < 0)
             return false;
 
-        if (gold - nb < 0)
+        return gold - nb >= 0;
+    }
+
+    @Override
+    public boolean removeGold(int nb) {
+        if (!canPay(nb))
             return false;
 
         gold -= nb;
         return true;
-    }
-
-    @Override
-    public int getQuantity(Item item) {
-        return (int) itemList.stream()
-                             .filter(x -> x.equals(item))
-                             .count();
-    }
-
-    @Override
-    public int getQuantity(String item) {
-        return getQuantity(getItem(item));
     }
 
     public String getItemListDisplay(boolean detailed) {
@@ -133,7 +139,7 @@ public class Inventory implements InventoryManagement {
 
     public String getHeaderDisplay() {
         return colorize("gold : " + gold, YELLOW) + "\n" +
-               "nbItems=" + itemList.size() + "\n";
+               "nbItems : " + itemList.size() + "\n";
     }
 
     public String getInvDisplayDetails() {
@@ -151,4 +157,9 @@ public class Inventory implements InventoryManagement {
                "}\n";
     }
 
+    public Item getFirstItem() {
+        if (isEmpty())
+            return null;
+        return itemList.get(0);
+    }
 }
