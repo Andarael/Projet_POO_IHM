@@ -76,11 +76,11 @@ class InventoryTest {
         inv1.addItem(item2);
 
         System.out.println(inv1.getItemListDisplay(true));
-        System.out.println(inv1.getSimpleDisplay());
+        System.out.println(inv1.getInvDisplayNoDetails());
         System.out.println(inv1);
 
-        assertTrue(inv1.getDisplay().contains(item1.getSimpleDisplay()));
-        assertTrue(inv1.getSimpleDisplay().contains(item1.getSimpleDisplay()));
+        assertTrue(inv1.getInvDisplayDetails().contains(item1.getSimpleDisplay()));
+        assertTrue(inv1.getInvDisplayNoDetails().contains(item1.getSimpleDisplay()));
     }
 
     @Test

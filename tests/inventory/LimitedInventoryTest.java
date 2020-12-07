@@ -34,7 +34,7 @@ class LimitedInventoryTest {
         inv1.addItem(item2);
 
         System.out.println(inv1.getItemListDisplay(true));
-        System.out.println(inv1.getSimpleDisplay());
+        System.out.println(inv1.getInvDisplayNoDetails());
         System.out.println(inv1);
 
 

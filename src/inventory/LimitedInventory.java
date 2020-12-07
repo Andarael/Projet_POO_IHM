@@ -40,12 +40,10 @@ public class LimitedInventory extends Inventory {
     }
 
     @Override
-    public String getDisplay() {
-        return "capacity=" + capacity + "\n" + super.getDisplay();
+    public String getHeaderDisplay() {
+        return "capacity=" + capacity + "\n" +
+               "used capacity : " + getUsedCapacity() + "\n" +
+               super.getHeaderDisplay();
     }
 
-    @Override
-    public String getSimpleDisplay() {
-        return "capacity=" + capacity + "\n" + super.getDisplay();
-    }
 }
