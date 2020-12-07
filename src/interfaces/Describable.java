@@ -12,7 +12,9 @@ public interface Describable extends Shortenable {
         return output;
     }
 
-    String getDisplay();
+    default String getDisplay() {
+        return getSimpleDisplay();
+    }
 
     default String print() {
         return getDisplay();

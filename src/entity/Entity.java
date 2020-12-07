@@ -35,11 +35,6 @@ public abstract class Entity implements Lookable {
         return description;
     }
 
-    @Override
-    public String getDisplay() {
-        return getSimpleDisplay();
-    }
-
     public void updateDescription(String update) {
         this.description = update;
     }

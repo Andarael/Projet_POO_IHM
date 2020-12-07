@@ -123,22 +123,24 @@ public class Inventory implements ItemManagement {
         return output;
     }
 
-    public String getDisplay() {
-        return "gold : " + gold + "\n" +
-               "nbItems=" + itemList.size() + "\n" +
-               getItemListDisplay(true);
+    public String getHeaderDisplay() {
+        return colorize("gold : " + gold, YELLOW) + "\n" +
+               "nbItems=" + itemList.size() + "\n";
     }
 
-    public String getSimpleDisplay() {
-        return colorize("gold : " + gold + "\n", YELLOW) +
-               "nbItems : " + itemList.size() + "\n" +
-               getItemListDisplay(false);
+    public String getInvDisplayDetails() {
+        return getHeaderDisplay() + getItemListDisplay(true);
+    }
+
+    public String getInvDisplayNoDetails() {
+        return getHeaderDisplay() + getItemListDisplay(false);
     }
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + " { \n" +
-               getDisplay() +
+               getInvDisplayDetails() +
                "}\n";
     }
+
 }
