@@ -25,8 +25,13 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public Item getItem(String item) {
+    public Item getItem(Item item) {
         return inventory.getItem(item);
+    }
+
+    @Override
+    public Item getItem(String s) {
+        return inventory.getItem(s);
     }
 
     @Override
@@ -40,8 +45,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public boolean removeItem(String item) {
-        return inventory.removeItem(item);
+    public boolean removeItem(String s) {
+        return inventory.removeItem(s);
     }
 
     @Override
@@ -55,8 +60,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public boolean contains(String item) {
-        return inventory.contains(item);
+    public boolean contains(String s) {
+        return inventory.contains(s);
     }
 
     @Override
@@ -90,7 +95,7 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public int getQuantity(String item) {
-        return inventory.getQuantity(item);
+    public int getQuantity(String s) {
+        return inventory.getQuantity(s);
     }
 }
