@@ -1,4 +1,4 @@
-package item;
+package entity.item;
 
 import utils.Col;
 import static utils.Col.*;

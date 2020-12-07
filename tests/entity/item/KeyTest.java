@@ -1,5 +1,5 @@
-import item.Item;
-import item.Key;
+package entity.item;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.Col;

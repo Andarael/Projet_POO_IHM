@@ -1,4 +1,4 @@
-package item;
+package entity.item;
 
 public class Hand extends Item{
 

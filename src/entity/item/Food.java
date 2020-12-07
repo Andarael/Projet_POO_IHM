@@ -1,4 +1,4 @@
-package item;
+package entity.item;
 
 public class Food extends Item {
 
@@ -14,7 +14,7 @@ public class Food extends Item {
         PREFIX = "FOOD : ";
     }
 
-    public Food(String name, String description, int restoreValue){
+    public Food(String name, String description, int restoreValue) {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, restoreValue);
     }
 

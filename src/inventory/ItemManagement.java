@@ -1,6 +1,6 @@
 package inventory;
 
-import item.Item;
+import entity.item.Item;
 
 public interface ItemManagement {
 
