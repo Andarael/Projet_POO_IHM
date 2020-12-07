@@ -72,3 +72,22 @@ pour boolean unequip()
         : false
     sinon : slot = "mains" et ajout à l'inventaire
         : true
+
+
+====================================
+
+Pour les name et shortname des entités et des items: 
+En fait comme à travers la console le joueur n'interagira qu'avec des shortNames,
+est-ce que ce ne serait pas mieux de tester les égalités et de récupérer les items à travers leur shortname
+du genre : 
+
+(apl) apple : a red apple
+> take apl
+
+(apl) apple : a red apple was added to your inventory
+
+
+====================================
+
+il faudrait parler dans le rapport de la méthode hashcode() qu'on overwritte pas 
+et que du coup ça rend impossible de stocker des entités dans une hashmap
