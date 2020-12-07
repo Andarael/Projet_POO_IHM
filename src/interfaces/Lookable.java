@@ -1,8 +1,10 @@
 package interfaces;
 
-public interface Lookable {
+public interface Lookable extends Descriptable{
 
-    String look();
+    default String look() {
+        System.out.println(getDisplay());
+        return getDisplay();
+    }
 
-    String getDisplay();
 }
