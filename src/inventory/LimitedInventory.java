@@ -20,15 +20,10 @@ public class LimitedInventory extends Inventory {
         return capacity;
     }
 
-    @Override
-    public boolean addItem(Item item) {
-        if (canAddItem(item))
-            return super.addItem(item);
-
-        return false;
-    }
-
     public boolean canAddItem(Item item) {
+        if (item == null)
+            return false;
+
         double d = item.getWeight();
         return capacity > (d + getUsedCapacity());
     }
@@ -40,8 +35,16 @@ public class LimitedInventory extends Inventory {
     }
 
     @Override
+    public boolean addItem(Item item) {
+        if (canAddItem(item))
+            return super.addItem(item);
+
+        return false;
+    }
+
+    @Override
     public String getHeaderDisplay() {
-        return "capacity=" + capacity + "\n" +
+        return "capacity : " + capacity + "\n" +
                "used capacity : " + getUsedCapacity() + "\n" +
                super.getHeaderDisplay();
     }
