@@ -2,7 +2,7 @@ package entity.item;
 
 public class Food extends Item {
 
-    private static final int DEFAULT_RESTORE_VALUE = 1;
+    public static final int DEFAULT_RESTORE_VALUE = 1;
     private final int restoreValue;
 
     public Food(String name, String description, double weight, int value, int restoreValue) {
