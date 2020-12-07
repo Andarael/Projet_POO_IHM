@@ -1,3 +1,5 @@
+package entity;
+
 import entity.Being;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,42 +25,6 @@ class BeingTest {
         monster1 = new Being("monster", "il fait peur", 10);
         monster2 = new Being("spider", "silky beauty", 5);
     }
-
-    @Test
-    void getName() {
-        assertSame("vieux_marchand", npc.getName());
-        assertSame("player", npc.getName().toLowerCase());
-        assertSame("monster", npc.getName().toLowerCase());
-    }
-
-    @Test
-    void getDescription() {
-        assertTrue(npc.getDescription().contains("marchand"));
-        assertNull(player.getDescription());
-    }
-
-    @Test
-    void look() {
-        assertTrue(npc.look().contains(npc.getDisplay()));
-    }
-
-    @Test
-    void getDisplay() {
-        System.out.println(npc);
-        System.out.println(monster1);
-        System.out.println(player);
-        assertTrue(npc.getDisplay().contains("un vieux"));
-    }
-
-    @Test
-    void setShortName() {
-        monster1.setShortName("M");
-        assertEquals("M    ", monster1.getShortName());
-
-        monster1.setShortName("MONSTRE");
-        assertEquals("MONST", monster1.getShortName());
-    }
-
 
     @Test
     void getHealth() {
@@ -168,9 +134,5 @@ class BeingTest {
 
         monster1.levelUP(9);
         assertEquals(expectedMAX_HEALTH, monster1.getHP());
-    }
-
-    @Test
-    void testToString() {
     }
 }
