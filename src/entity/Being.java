@@ -1,6 +1,8 @@
 package entity;
 
-public class Being extends Entity {
+import java.util.Objects;
+
+public class Being extends Entity implements Comparable<Being> {
 
     private static final int DEFAULT_HEALTH = 20;
 
@@ -35,16 +37,16 @@ public class Being extends Entity {
         hp = MAX_HEALTH;
     }
 
-    public void heal(int hp) {
-        if (hp > 0)
-            this.hp += hp;
+    public void heal(int amount) {
+        if (amount > 0)
+            this.hp += amount;
     }
 
     public void hurt(int amount) {
         if (amount > 0)
             hp -= amount;
-            if (hp < 0)
-                hp = 0;
+        if (hp < 0)
+            hp = 0;
     }
 
     public boolean isDead() {
@@ -61,9 +63,9 @@ public class Being extends Entity {
 
     private void updateMAX_HP() {
         // HP levelUP formula
-            // (for 20 MAX_HP it goes by increments of 10,
-            // but for 10 it will go by increments of 5)
-        this.MAX_HEALTH += MAX_HEALTH/level;
+        // (for 20 MAX_HP it goes by increments of 10,
+        // but for 10 it will go by increments of 5)
+        this.MAX_HEALTH += MAX_HEALTH / level;
     }
 
     public void levelUP() {
