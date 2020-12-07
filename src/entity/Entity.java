@@ -72,20 +72,18 @@ public abstract class Entity implements Lookable {
         if (this == o)
             return true;
 
-        if (o == null || getClass() != o.getClass())
+        if (!(o instanceof Entity))
             return false;
 
         Entity ComparedEntity = (Entity) o;
-        String comparedName = ComparedEntity.name.toUpperCase();
-        String comparedShortName = ComparedEntity.shortName.toUpperCase();
 
-        boolean part1 = shortName.toUpperCase().equals(comparedShortName);
-        boolean part2 = name.toUpperCase().equals(comparedName);
+        String comparedName = ComparedEntity.getName().toUpperCase();
+        String comparedShortName = ComparedEntity.getShortName().toUpperCase();
+
+        boolean part1 = (name.toUpperCase()).equals(comparedName);
+        boolean part2 = (shortName.toUpperCase()).equals(comparedShortName);
+
         return (part1 || part2);
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 }
