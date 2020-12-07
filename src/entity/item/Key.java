@@ -25,21 +25,19 @@ public class Key extends Item {
 
     @Override
     public String getDisplay() {
-        return colorize(getSimpleDisplay(), color);
+        return colorize(super.getDisplay(), color);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Key key = (Key) o;
 
         return color == key.color;
-    }
-
-    @Override
-    public int hashCode() {
-        return color.hashCode();
     }
 }
