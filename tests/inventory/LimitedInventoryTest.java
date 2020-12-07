@@ -36,8 +36,6 @@ class LimitedInventoryTest {
         System.out.println(inv1.getItemListDisplay(true));
         System.out.println(inv1.getInvDisplayNoDetails());
         System.out.println(inv1);
-
-
     }
 
     @Test

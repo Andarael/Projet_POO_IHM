@@ -9,6 +9,8 @@ public interface InventoryManagement {
 
     Item getItem(String s);
 
+    Item getFirstItem();
+
     boolean addItem(Item item);
 
     boolean removeItem(Item item);
@@ -32,6 +34,8 @@ public interface InventoryManagement {
     void addGold(int nb);
 
     int getGold();
+
+    boolean canPay(int nb);
 
     boolean removeGold(int nb);
 }

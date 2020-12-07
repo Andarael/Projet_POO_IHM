@@ -41,6 +41,12 @@ public class Inventory implements InventoryManagement {
         return getItem(new Item(s));
     }
 
+    public Item getFirstItem() {
+        if (isEmpty())
+            return null;
+        return itemList.get(0);
+    }
+
     @Override
     public boolean addItem(Item item) {
         if (item == null)
@@ -152,14 +158,8 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " { \n" +
+        return " { \n" +
                getInvDisplayDetails() +
                "}\n";
-    }
-
-    public Item getFirstItem() {
-        if (isEmpty())
-            return null;
-        return itemList.get(0);
     }
 }
