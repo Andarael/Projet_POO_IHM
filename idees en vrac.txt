@@ -73,6 +73,20 @@ pour boolean unequip()
     sinon : slot = "mains" et ajout à l'inventaire
         : true
 
+====================================
+pour use [item]
+si item implements usable
+-> player.equip(item) :
+	Equipable temp = player.getEquiped()
+	player.removeItem(item)
+	player.equiped = item
+	payer.additem(temp);
+   player.use()
+
+pour use [exit]
+si item extends trucPourOuvrirExits
+	alors exit.use(item)
+	si réussi alors 
 
 ====================================
 
@@ -91,3 +105,59 @@ du genre :
 
 il faudrait parler dans le rapport de la méthode hashcode() qu'on overwritte pas 
 et que du coup ça rend impossible de stocker des entités dans une hashmap
+
+
+====================================
+
+Le joueur peut commencer avec un arc vide dans son invenetaire pour la démo par ex 
+
+Arrow.use() -> rien
+Arrow.use("Bow") -> player.getitem("bow").addPower(arrow.getPower);
+USE ARROW BOW
+> vous préparez votre arc pour la prochaine rencontre
+
+====================================
+
+LOOK Chest
+> (CHEST) Chest : un vieux coffre
+gold = 10
+nb items = 3
+	FOOD (tarti) tartiflette : une vieille recette, weight = 0.3, value = 1, restoration = 2
+	WEAP (arrow) Arrow : a sharp arrow, weight = 0.1, value = 1, dammage = 3
+	KEY  (blueK) Blue_Key : a bright blue key; 
+
+TAKE CHEST tartiflette (ou TAKE tartiflette CHEST)
+> vous prenez la tartiflette du coffre. 
+
+TAKE CHEST
+> vous prenez tout le contenu du chest
+
+
+====================================
+
+Il faut une méthode qui à la mort renvoie l'inventaire de l'entité
+	if monster.isDead()
+		place.addStaticContainer(monstre.getInventory());
+		place.removeEntity(Monstre)
+
+====================================
+
+Pour passer d'une pièce à l'autre
+World.pieceacutelle = nouvellepiece
+player.placeactuelle = nouvellepiece;
+anciennepiece.removeantity(player)
+nouvellepiece.addentity(player);
+
+====================================
+
+Pour draw une pièce
+	parcours des sorties
+		dessin_mur_haut
+	
+	parcours de sa liste des entités
+		skip le player
+		dessin_mur_gauche + draw_entité + dessin_mur_droit
+	dessin_milieu
+	dessin_mur_bas
+
+
