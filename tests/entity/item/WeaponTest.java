@@ -1,5 +1,5 @@
-import item.Item;
-import item.Weapon;
+package entity.item;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
