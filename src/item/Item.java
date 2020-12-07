@@ -1,32 +1,17 @@
 package item;
 
-import interfaces.Lookable;
-import interfaces.Shortable;
-import utils.Shortener;
+import entity.Entity;
 
-public class Item implements Comparable<Item>, Shortable, Lookable {
+public class Item extends Entity {
 
     public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
-    public static final String DEFAULT_NAME = "null";
 
-    private final String name;
-    private final String description;
-    private final double weight;
-    private final int value;
-    private String shortName;
+    protected final double weight;
+    protected final int value;
 
     public Item(String name, String description, double weight, int value) {
-
-        // le nom ne peut pas être null.
-        if (name == null)
-            name = DEFAULT_NAME;
-
-        this.name = name;
-
-        this.description = description;
-
-        this.shortName = Shortener.shorten(name);
+        super(name, description);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
         this.weight = weight;
@@ -44,26 +29,10 @@ public class Item implements Comparable<Item>, Shortable, Lookable {
 
     public Item(String name, String description) {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE);
-        this.shortName = Shortener.shorten(name);
     }
 
     public Item(String name) {
-        this(name, null, DEFAULT_WEIGHT, DEFAULT_VALUE);
-        this.shortName = Shortener.shorten(name);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getShortName() {
-        return shortName;
-    }
-
-    @Override
-    public void setShortName(String s) {
-        this.shortName = Shortener.shorten(s);
+        this(name, null);
     }
 
     public double getWeight() {
@@ -74,52 +43,9 @@ public class Item implements Comparable<Item>, Shortable, Lookable {
         return value;
     }
 
-    /**
-     * The only qualification for 2 items to be equal is their name
-     *
-     * @return true if two items have the same name
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Item item = (Item) o;
-
-        return name.equals(item.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    public String getSimpleDisplay() {
-        if (description == null || description.equals(""))
-            return name;
-        return name + " : " + description;
-    }
-
-    @Override
-    public String look() {
-        return getDisplay();
-    }
-
     public String getDisplay() {
         return getSimpleDisplay() +
                ", weight : " + weight +
                ", value : " + value;
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + " {" +
-               getDisplay() +
-               "}";
-    }
-
-    @Override
-    public int compareTo(Item item) {
-        return this.name.compareTo(item.name);
     }
 }
