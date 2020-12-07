@@ -16,6 +16,24 @@ public class Place {
         this.name = name;
     }
 
+    /* ------ méthodes ------*/
+
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean hasPlayer() {
+        return this.player != null;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+
+
+    /* ------ les Exits ------*/
+
     public void addExit(Exit exit){
         this.listExits.add(exit);
     }
@@ -25,12 +43,29 @@ public class Place {
         return exit;
     }
 
+    public boolean isEmptyExit(){
+        return this.listExits.isEmpty();
+    }
+
     public Boolean exitExists(String name){
         for(Exit exit : this.listExits){
             if (exit.destination.getName().equals(name)) return true;
         }
         return false;
     }
+
+    public int nbExit(){
+        return this.listExits.size();
+    }
+
+    public void displayExit() {
+        for (int i = 0; i < this.nbExit(); i++) {
+            System.out.println("- " + this.listExits.get(i).destination.getName());
+        }
+    }
+
+
+    /* ------ les containers ------*/
 
     public void addContainer(Container container){
         this.listContainers.add(container);
@@ -45,43 +80,24 @@ public class Place {
         return this.listContainers.isEmpty();
     }
 
-    public boolean isEmptyExit(){
-        return this.listExits.isEmpty();
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public boolean hasPlayer() {
-        return this.player != null;
-    }
-
-    public Player getPlayer() {
-        return this.player;
-    }
-
-    public int nbExit(){
-        return this.listExits.size();
+    public Boolean containerExists(String name){
+        for(Container container : this.listContainers){
+            if (container.getName().equals(name)) return true;
+        }
+        return false;
     }
 
     public int nbContainer(){
         return this.listContainers.size();
     }
 
-
-    public void displayExit() {
-        for (int i = 0; i < this.nbExit(); i++) {
-            System.out.println("- " + this.listExits.get(i).destination.getName());
-        }
-    }
-
-
     public void displayContainer() {
         for (int i = 0; i < this.nbContainer(); i++) {
             System.out.println("- " + this.listContainers.get(i).getName());
         }
     }
+
+
 
     public void display(){
 
