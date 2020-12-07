@@ -14,11 +14,8 @@ public interface Describable extends Shortenable {
 
     String getDisplay();
 
-
     default String print() {
-        return getClass().getSimpleName() + " {" +
-               getDisplay() +
-               "}";
+        return getDisplay();
     }
 
     void updateDescription(String update);
