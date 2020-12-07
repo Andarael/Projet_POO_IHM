@@ -1,24 +1,42 @@
 package world;
 
 public class LockedExit extends Exit {
-    private final boolean isLocked;
+    private boolean isLocked;
     private final Place origine;
 
-    public LockedExit(Place dest, Place ori) {
-        super(dest);
-        this.origine = ori;
+    public LockedExit(Place destination, Place origine) {
+        super(destination);
+        this.origine = origine;
         this.isLocked = true;
     }
 
-    //@Override
-    public Place goIn() {
-        if (this.isLocked) {
-            System.out.println("this exit is locked, you need the key.");
+    public boolean canGo(){
+        return !this.isLocked;
+    }
+
+    @Override
+    public Place goIn(){
+        if (!this.canGo()){
             return this.origine;
-        } else {
+        }else {
             return this.destination;
         }
     }
 
+    public boolean getIsLocked() {
+        return this.isLocked;
+    }
+
+    public void unLock() {
+        this.isLocked = false;
+    }
+
+    public void lock(){
+        this.isLocked = true;
+    }
+
+    public Place getOrigine() {
+        return origine;
+    }
 
 }

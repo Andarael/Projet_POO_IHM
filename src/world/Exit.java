@@ -3,12 +3,17 @@ package world;
 public class Exit {
     protected final Place destination;
 
-    public Exit(Place dest) {
-        this.destination = dest;
+    public Exit(Place destination){
+        this.destination = destination;
     }
 
-    public Place GoIn() {
+    public Place getDestination() {
+        return destination;
+    }
+
+    public Place goIn(){
         return this.destination;
     }
 
 }
+
