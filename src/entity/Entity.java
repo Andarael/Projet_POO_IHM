@@ -6,7 +6,7 @@ import interfaces.Shortable;
 
 import static utils.Shortener.shorten;
 
-public abstract class Entity implements Comparable<Entity>, Lookable, Shortable, Descriptable {
+public abstract class Entity implements Lookable, Shortable, Descriptable {
 
     public static final String DEFAULT_NAME = "null";
 
@@ -62,21 +62,23 @@ public abstract class Entity implements Comparable<Entity>, Lookable, Shortable,
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Entity ComparedEntity = (Entity) o;
+        if (this == o)
+            return true;
 
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Entity ComparedEntity = (Entity) o;
         String comparedName = ComparedEntity.name.toUpperCase();
         String comparedShortName = ComparedEntity.shortName.toUpperCase();
 
         boolean part1 = shortName.toUpperCase().equals(comparedShortName);
         boolean part2 = name.toUpperCase().equals(comparedName);
-
         return (part1 || part2);
     }
 
     @Override
-    public int compareTo (Entity e){
-        return this.name.compareTo(e.name);
+    public int hashCode() {
+        return super.hashCode();
     }
 }

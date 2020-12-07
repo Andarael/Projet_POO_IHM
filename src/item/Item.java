@@ -2,7 +2,7 @@ package item;
 
 import entity.Entity;
 
-public class Item extends Entity {
+public class Item extends Entity implements Comparable<Item> {
 
     public static final double DEFAULT_WEIGHT = 0.1;
     public static final int DEFAULT_VALUE = 0;
@@ -47,5 +47,10 @@ public class Item extends Entity {
         return getSimpleDisplay() +
                ", weight : " + weight +
                ", value : " + value;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return this.name.compareTo(item.name);
     }
 }
