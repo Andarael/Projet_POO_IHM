@@ -22,4 +22,6 @@ public interface Descriptable extends Shortable {
                "}";
     }
 
+    void updateDescription(String update);
+
 }

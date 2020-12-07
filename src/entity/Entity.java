@@ -37,6 +37,10 @@ public abstract class Entity implements Lookable, Shortable, Descriptable {
         return description;
     }
 
+    public void updateDescription(String update) {
+        this.description = update;
+    }
+
     @Override
     public String getShortName() {
         return this.shortName;
