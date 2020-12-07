@@ -160,4 +160,21 @@ Pour draw une pièce
 	dessin_milieu
 	dessin_mur_bas
 
+====================================
+
+Faire une classe d'items abstract UsableItem extends Item implements Usable
+qui contient Food, Key, Weapon
+weapon.use() ça fera rien sauf si on a l'interface usable on anotherItem
+
+====================================
+
+
+
+
+
+
+
+
+
+
 
