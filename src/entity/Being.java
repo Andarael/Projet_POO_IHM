@@ -8,6 +8,7 @@ public class Being extends Container implements Comparable<Being> {
     private int hp;
     private int level;
 
+
     public Being(String name, String description, int hp) {
         super(name, description);
 
@@ -38,6 +39,7 @@ public class Being extends Container implements Comparable<Being> {
     public int getMAX_HP() {
         return MAX_HEALTH;
     }
+
 
     public void healMax() {
         hp = MAX_HEALTH;
@@ -86,6 +88,8 @@ public class Being extends Container implements Comparable<Being> {
         for (int i = 0; i < levels; i++)
             levelUP();
     }
+
+
 
     @Override
     public String getDisplay() {
