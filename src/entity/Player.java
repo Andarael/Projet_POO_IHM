@@ -3,6 +3,7 @@ package entity;
 import entity.item.Hand;
 import entity.item.Item;
 import interfaces.Equipable;
+import interfaces.Usable;
 import inventory.LimitedInventory;
 
 public class Player extends Being {
@@ -11,11 +12,12 @@ public class Player extends Being {
 
     private Item equipped;
 
-    private final LimitedInventory inventory;
+    private final LimitedInventory limitedInventory;
 
     public Player(int hp) {
         super("player", null, hp,1);
-        inventory = new LimitedInventory();
+        limitedInventory = new LimitedInventory();
+        this.inventory = limitedInventory;
         equipped = HANDS;
     }
 
@@ -25,8 +27,7 @@ public class Player extends Being {
 
     @Override
     public int getPower() {
-        if (equipped == null || (!(equipped instanceof Equipable)))
-            return 1;
+        if (equipped == null || (!(equipped instanceof Equipable))) return 1;
 
         return ((Equipable) equipped).getPower();
     }
@@ -45,6 +46,9 @@ public class Player extends Being {
      * @return true if the new item was equipped
      */
     public boolean equip(Item newItem) {
+        // on récupère l'item équivalent dans l'inventaire du joueur
+        newItem = getItem(newItem);
+
         if (newItem == null)
             return false;
 
@@ -57,8 +61,13 @@ public class Player extends Being {
             return false;
 
         equipped = newItem;
+        removeItem(newItem);
 
         return true;
+    }
+
+    public boolean equip(String itemName) {
+        return equip(new Item(itemName));
     }
 
     /**
@@ -71,16 +80,46 @@ public class Player extends Being {
      */
     public boolean unequip() {
         // si l'item actuellement équipé ne peut pas être rangé dans l'inventaire
-        if (!(inventory.canAddItem(equipped)))
+        if (!(limitedInventory.canAddItem(equipped)))
             return false;
 
         // si les mains du player sont l'item actuellement équipé
         if (equipped.equals(HANDS))
             return true;
 
-        inventory.addItem(equipped);
+        limitedInventory.addItem(equipped);
         equipped = HANDS;
 
         return true;
+    }
+
+    public String use(Item item) {
+        Item newItem = getItem(item);
+
+        if (newItem == null) {
+            if (equipped.equals(item))
+                newItem = equipped;
+            else
+                return "You don't have this item in your inventory";
+        }
+
+        if (newItem instanceof Usable)
+            return ((Usable) newItem).use();
+
+        return "This (" + item.getName() + ") is not usable";
+    }
+
+    public String use(String itemName) {
+        return use(new Item(itemName));
+    }
+
+
+
+    @Override
+    public String getSimpleDisplay() {
+        return "Player" + ", lvl : " + getLevel() +
+               ", hp : " + getHp() + "/" + getMaxHp() +
+               ", pow : " + getPower() + "\n" +
+               "equipped : " + equipped.getSimpleDisplay();
     }
 }
