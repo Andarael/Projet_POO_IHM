@@ -81,4 +81,9 @@ class KeyTest {
         Exit exit = new Exit(null, null);
         assertTrue(k1.use(exit).contains(k1.getUsage()));
     }
+
+    @Test
+    void getPrefix() {
+        assertTrue(k1.getPrefix().contains("KEY"));
+    }
 }

@@ -5,19 +5,21 @@ package entity.item;
  */
 public class Food extends Item {
 
-    public static final int DEFAULT_RESTORE_VALUE = 1;
     private final int restoreValue;
 
     public Food(String name, String description, double weight, int value, int restoreValue) {
         super(name, description, weight, value);
 
         this.restoreValue = restoreValue;
-
-        PREFIX = "FOOD : ";
     }
 
     public Food(String name, String description, int restoreValue) {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, restoreValue);
+    }
+
+    @Override
+    public String getPrefix() {
+        return "FOOD : ";
     }
 
     /**

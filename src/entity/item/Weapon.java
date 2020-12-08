@@ -16,12 +16,15 @@ public class Weapon extends Item implements Equipable {
         if (damage < 1)
             damage = DEFAULT_DAMAGE;
         this.damage = damage;
-
-        PREFIX = "WEAP  : ";
     }
 
     public Weapon(String name, String description, int damage) {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, damage);
+    }
+
+    @Override
+    public String getPrefix() {
+        return "WEAP : ";
     }
 
     @Override

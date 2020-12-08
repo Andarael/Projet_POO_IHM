@@ -13,7 +13,11 @@ public class Arrow extends Weapon implements UsableOnItem {
 
     public Arrow() {
         super("Arrow", null,0.0, 3, 3);
-        PREFIX = "ARROW";
+    }
+
+    @Override
+    public String getPrefix() {
+        return "ARROW: ";
     }
 
     @Override

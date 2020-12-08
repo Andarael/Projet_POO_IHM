@@ -42,4 +42,9 @@ class ArrowTest {
         assertEquals(3, bow.getArrows());
 
     }
+
+    @Test
+    void getPrefix() {
+        assertTrue(a.getPrefix().contains("ARR"));
+    }
 }

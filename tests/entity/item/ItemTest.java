@@ -53,9 +53,15 @@ class ItemTest {
 
     @Test
     void compare() {
+        assertEquals(0, item1.compareTo(null));
         assertTrue(item1.compareTo(item2) < 0);
         assertEquals(item1.getName().compareTo(item2.getName()), item1.compareTo(item2));
         assertTrue(item1.compareTo(item3) < 0);
         assertEquals(item1.getName().compareTo(item3.getName()), item1.compareTo(item3));
+    }
+
+    @Test
+    void getPrefix() {
+        assertTrue(item1.getPrefix().contains("ITEM"));
     }
 }

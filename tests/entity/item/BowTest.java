@@ -65,4 +65,9 @@ class BowTest {
 
         assertEquals(4+a.getPower(), b.getPowerNoConsume());
     }
+
+    @Test
+    void getPrefix() {
+        assertTrue(b.getPrefix().contains("BOW"));
+    }
 }

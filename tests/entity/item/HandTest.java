@@ -3,6 +3,7 @@ package entity.item;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HandTest {
 
@@ -15,6 +16,12 @@ class HandTest {
 
         System.out.println(h1);
         System.out.println(h2);
+    }
+
+    @Test
+    void getPrefix() {
+        Item h = new Hand();
+        assertTrue(h.getPrefix().contains("HAND"));
     }
 
 }

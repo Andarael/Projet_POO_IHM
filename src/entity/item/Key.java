@@ -20,6 +20,8 @@ public class Key extends Item  implements Usable {
     private static final String USAGE = "try 'USE [Key] [Exit]'";
     private final Col color;
 
+    protected static final String PREFIX = "KEY  : ";
+
     public Key(String name, String description, Col color) {
         super(name, description, 0, 0);
 
@@ -28,7 +30,11 @@ public class Key extends Item  implements Usable {
 
         this.color = color;
 
-        PREFIX = "KEY  : ";
+    }
+
+    @Override
+    public String getPrefix() {
+        return "KEY  : ";
     }
 
     @Override

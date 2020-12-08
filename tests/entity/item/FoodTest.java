@@ -30,4 +30,9 @@ class FoodTest {
 
         assertTrue(f1.getDisplay().contains("3"));
     }
+
+    @Test
+    void getPrefix() {
+        assertTrue(f1.getPrefix().contains("FOOD"));
+    }
 }

@@ -14,12 +14,17 @@ public class Bow extends Weapon {
 
     public Bow(String name, String description, double weight, int value, int damage) {
         super(name, description, weight, value, damage);
-        PREFIX = "BOW  ";
+
         arrows = 0;
     }
 
     public Bow(String name, String description, int damage) {
         this(name, description, DEFAULT_WEIGHT, damage, damage);
+    }
+
+    @Override
+    public String getPrefix() {
+        return "BOW  : ";
     }
 
     public void addArrow() {

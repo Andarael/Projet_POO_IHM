@@ -36,4 +36,9 @@ class WeaponTest {
         assertEquals(10, ((Weapon)w1).getPower());
         assertEquals(1, ((Weapon)w2).getPower());
     }
+
+    @Test
+    void getPrefix() {
+        assertTrue(w1.getPrefix().contains("WEAP"));
+    }
 }
