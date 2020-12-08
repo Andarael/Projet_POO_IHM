@@ -19,8 +19,8 @@ public class Inv implements Command {
         System.out.println("PV : "+this.enti.getHP());
         System.out.println("PO : "+this.enti.getGold());
         System.out.print("Weapon : ");
-        this.enti.getWeapon().getDisplay();
-        enti.getInventory().getInvDisplayDetails();
+/*        this.enti.getWeapon().getDisplay();
+        enti.getInventory().getInvDisplayDetails();*/
     }
 
     @Override
