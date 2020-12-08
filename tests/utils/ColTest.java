@@ -30,6 +30,8 @@ class ColTest {
         System.out.println(colorize("BACKGROUND_CYAN", BACKGROUND_CYAN));
         System.out.println(colorize("BACKGROUND_WHITE", BACKGROUND_WHITE));
 
+        assertTrue(BLACK.getColorName().contains("BLACK"));
+
         assertTrue(colorize("A_COLOR", RED).contains(RED.toString()));
     }
 }
