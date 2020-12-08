@@ -1,5 +1,7 @@
 package world;
 
+import entity.item.Key;
+
 public class LockedExit extends Exit {
     private boolean isLocked;
     private final Place origine;
@@ -29,6 +31,12 @@ public class LockedExit extends Exit {
 
     public void unLock() {
         this.isLocked = false;
+    }
+
+    public boolean unlock(Key key) {
+        // todo
+        unLock();
+        return true;
     }
 
     public void lock(){
