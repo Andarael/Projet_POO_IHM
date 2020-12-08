@@ -5,7 +5,6 @@ public class World {
 
 
     private Place currentPlace;
-
     private boolean end;
 
     public Place getCurrentPlace() {

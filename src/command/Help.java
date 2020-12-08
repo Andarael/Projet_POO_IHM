@@ -4,7 +4,7 @@ import entity.item.Item;
 import world.Main;
 import world.Place;
 
-public class Help implements Command {
+public abstract class Help implements Command {
 
     @Override
     public void execute() {

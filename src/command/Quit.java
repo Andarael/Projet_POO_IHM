@@ -4,7 +4,7 @@ import entity.item.Item;
 import world.Place;
 import world.World;
 
-public class Quit implements Command {
+public abstract class Quit implements Command {
     private World world;
 
     public Quit(World world) {
