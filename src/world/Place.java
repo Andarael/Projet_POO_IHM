@@ -4,6 +4,7 @@ import java.util.List;
 
 import entity.Container;
 import entity.Player;
+import utils.StringUtils;
 
 
 public class Place {
@@ -134,6 +135,25 @@ public class Place {
             //System.out.println("- " + this.listContainers.get(i).getName());
         }
     }
+
+
+
+    public String displayFirstLine(){
+        //en cour de test
+        String line1 = StringUtils.leftPad("#",5,' ')+StringUtils.leftPad("..",5,'#')+StringUtils.leftPad("#",5,'#');
+        return line1;
+    }
+
+    public void draw(int nbContainer){
+        if(this.nbContainer()<2){
+
+        }else{
+            if(this.nbContainer()<4){
+
+            }
+        }
+    }
+
 
 
 
