@@ -5,7 +5,7 @@ import entity.item.Item;
 import world.Main;
 import world.Place;
 
-public class Inv implements Command {
+public abstract class Inv implements Command {
     private Being enti;
 
     public Inv(Being player) {

@@ -6,7 +6,7 @@ import entity.item.Item;
 import world.Place;
 
 
-public class Erreur implements Command {
+public abstract class Erreur implements Command {
 
     @Override
     public void execute() {

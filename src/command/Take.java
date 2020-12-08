@@ -4,7 +4,7 @@ import entity.item.Item;
 import world.Place;
 import inventory.Inventory;
 
-public class Take implements Command {
+public abstract class Take implements Command {
 
     private Inventory inv;
 
