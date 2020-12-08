@@ -12,6 +12,7 @@ public class Place {
     private final int exitMax = 4;
     private List<Container> listContainers;
     private final int containerMax = 4;
+    private Container placeContainer;
     private Player player;
 
 
@@ -19,6 +20,7 @@ public class Place {
         this.name = name;
         this.listContainers = null;
         this.listExits = null;
+        this.placeContainer = new Container("placeLoot");
     }
 
     /* ------ méthodes ------*/
@@ -27,12 +29,27 @@ public class Place {
         return this.name;
     }
 
+
+    /* ------ le player ------*/
+
     public boolean hasPlayer() {
         return this.player != null;
     }
 
     public Player getPlayer() {
         return this.player;
+    }
+
+    public void addPlayer(Player player1){
+        if (!this.hasPlayer()) {
+            this.player = player1;
+        }
+    }
+
+    public void rmPlayer(){
+        if(this.hasPlayer()){
+            this.player = null;
+        }
     }
 
 
@@ -69,7 +86,7 @@ public class Place {
 
     public void displayExit() {
         for (int i = 0; i < this.nbExit(); i++) {
-            System.out.println("- " + this.listExits.get(i).destination.getName());
+            //System.out.println("- " + this.listExits.get(i).destination.getName());
         }
     }
 
@@ -101,13 +118,20 @@ public class Place {
         return false;
     }
 
+    public Container getContainer(String name){
+        for(Container container : this.listContainers){
+            if (container.getName().equals(name)) return container;
+        }
+        return null;
+    }
+
     public int nbContainer(){
         return this.listContainers.size();
     }
 
     public void displayContainer() {
         for (int i = 0; i < this.nbContainer(); i++) {
-            System.out.println("- " + this.listContainers.get(i).getName());
+            //System.out.println("- " + this.listContainers.get(i).getName());
         }
     }
 
