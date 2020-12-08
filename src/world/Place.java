@@ -118,6 +118,13 @@ public class Place {
         return false;
     }
 
+    public Container getContainer(String name){
+        for(Container container : this.listContainers){
+            if (container.getName().equals(name)) return container;
+        }
+        return null;
+    }
+
     public int nbContainer(){
         return this.listContainers.size();
     }
