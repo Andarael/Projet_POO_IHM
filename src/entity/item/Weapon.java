@@ -2,7 +2,7 @@ package entity.item;
 
 import interfaces.Equipable;
 
-public abstract class Weapon extends Item implements Equipable {
+public class Weapon extends Item implements Equipable {
 
     private static final int DEFAULT_DAMAGE = 1;
     private final int damage;
@@ -31,8 +31,6 @@ public abstract class Weapon extends Item implements Equipable {
 
     @Override
     public int getPower() {
-        return damage;
+        return getDamage();
     }
-
-
 }
