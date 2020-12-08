@@ -1,5 +1,11 @@
 package entity;
 
+import entity.item.Item;
+import interfaces.Equipable;
+
+/**
+ * An Hostile is a Being hostile toward the player that can equip one Item
+ */
 public class Hostile extends Being {
 
     public Hostile(String name, String description, int hp, int power) {
