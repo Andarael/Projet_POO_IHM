@@ -32,6 +32,13 @@ public enum Col {
         this.value = s;
     }
 
+    /**
+     * Colorize a string with the specified color
+     *
+     * @param s the string to colorize
+     * @param color the color desired
+     * @return the colorize string
+     */
     public static String colorize(String s, Col color) {
         return color + s + RESET;
     }

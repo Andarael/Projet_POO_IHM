@@ -4,7 +4,6 @@ import entity.Being;
 import entity.item.Item;
 import world.Main;
 import world.Place;
-import entity.Entity;
 
 public class Inv implements Command {
     private Being enti;
@@ -16,7 +15,7 @@ public class Inv implements Command {
     @Override
     public void execute() {
         Main.cleanScreen();
-        System.out.println("PV : "+this.enti.getHP());
+        System.out.println("PV : "+this.enti.getHp());
         System.out.println("PO : "+this.enti.getGold());
         System.out.print("Weapon : ");
 /*        this.enti.getWeapon().getDisplay();

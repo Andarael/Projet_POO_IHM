@@ -3,10 +3,9 @@ package entity;
 import entity.item.Hand;
 import entity.item.Item;
 import interfaces.Equipable;
-import interfaces.Fightable;
 import inventory.LimitedInventory;
 
-public class Player extends Being implements Fightable {
+public class Player extends Being {
 
     private static final Hand HANDS = new Hand();
 
@@ -15,7 +14,7 @@ public class Player extends Being implements Fightable {
     private final LimitedInventory inventory;
 
     public Player(int hp) {
-        super("player", null, hp);
+        super("player", null, hp,1);
         inventory = new LimitedInventory();
         equipped = HANDS;
     }
@@ -27,7 +26,7 @@ public class Player extends Being implements Fightable {
     @Override
     public int getPower() {
         if (equipped == null || (!(equipped instanceof Equipable)))
-            return 0;
+            return 1;
 
         return ((Equipable) equipped).getPower();
     }

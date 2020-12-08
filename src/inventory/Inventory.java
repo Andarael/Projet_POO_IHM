@@ -1,6 +1,7 @@
 package inventory;
 
 import entity.item.Item;
+import interfaces.Describable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,10 @@ import java.util.List;
 import static utils.Col.YELLOW;
 import static utils.Col.colorize;
 
+/**
+ * An inventory is a List of items with its own display (but not Describable nor Lookable)
+ *
+ */
 public class Inventory implements InventoryManagement {
 
     protected final List<Item> itemList;
@@ -36,9 +41,9 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public Item getItem(String s) {
+    public Item getItem(String str) {
         // on crée un nouvel item à partir du nom de l'item cherché
-        return getItem(new Item(s));
+        return getItem(new Item(str));
     }
 
     public Item getFirstItem() {
@@ -62,8 +67,8 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public boolean removeItem(String s) {
-        return removeItem(getItem(s));
+    public boolean removeItem(String str) {
+        return removeItem(getItem(str));
     }
 
     @Override
@@ -77,8 +82,8 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public boolean contains(String s) {
-        return contains(new Item(s));
+    public boolean contains(String str) {
+        return contains(new Item(str));
     }
 
     @Override
@@ -99,8 +104,8 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
-    public int getQuantity(String s) {
-        return getQuantity(new Item(s));
+    public int getQuantity(String str) {
+        return getQuantity(new Item(str));
     }
 
     @Override
@@ -114,6 +119,7 @@ public class Inventory implements InventoryManagement {
         return gold;
     }
 
+    @Override
     public boolean canPay(int nb) {
         if (nb < 0)
             return false;
@@ -130,6 +136,13 @@ public class Inventory implements InventoryManagement {
         return true;
     }
 
+    /**
+     * Creates a list of all items in the inventory,
+     * the list is intend to the right by one tab
+     *
+     * @param detailed details in the items if true
+     * @return a string containing the list of all items in the inventory
+     */
     public String getItemListDisplay(boolean detailed) {
         String output = "";
 
@@ -143,23 +156,31 @@ public class Inventory implements InventoryManagement {
         return output;
     }
 
+    /**
+     * Creates a string containing the inventory informations
+     * @return a String with the inventory header
+     */
     public String getHeaderDisplay() {
         return colorize("gold : " + gold, YELLOW) + "\n" +
                "nbItems : " + itemList.size() + "\n";
     }
 
+    /**
+     * @return A string of a whole detailed inventory
+     */
     public String getInvDisplayDetails() {
         return getHeaderDisplay() + getItemListDisplay(true);
     }
 
+    /**
+     * @return a String of the whole inventory without the item details
+     */
     public String getInvDisplayNoDetails() {
         return getHeaderDisplay() + getItemListDisplay(false);
     }
 
     @Override
     public String toString() {
-        return " { \n" +
-               getInvDisplayDetails() +
-               "}\n";
+        return getInvDisplayDetails() ;
     }
 }

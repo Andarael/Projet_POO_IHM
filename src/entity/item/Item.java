@@ -2,6 +2,15 @@ package entity.item;
 
 import entity.Entity;
 
+/**
+ * An item is an Entity with some special values :
+ * A weight and a value (in gold)
+ * value can't be negative.
+ * If an item is miss constructed, default values are used to avoid an ill formed item.
+ * All items have a prefix to know of which type it is.
+ *
+ * An Item is comparable to another lexicographically.
+ */
 public class Item extends Entity implements Comparable<Item> {
 
     public static final double DEFAULT_WEIGHT = 0.1;

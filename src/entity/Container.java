@@ -4,6 +4,13 @@ import entity.item.Item;
 import inventory.Inventory;
 import inventory.InventoryManagement;
 
+/**
+ * A container is an entity with an inventory.
+ * All inventory methods are available via a container
+ *
+ *
+ * Such containers could be chests, monsters for example.
+ */
 public class Container extends Entity implements InventoryManagement {
 
     private final Inventory inventory;
@@ -29,8 +36,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public Item getItem(String s) {
-        return inventory.getItem(s);
+    public Item getItem(String str) {
+        return inventory.getItem(str);
     }
 
     @Override
@@ -49,8 +56,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public boolean removeItem(String s) {
-        return inventory.removeItem(s);
+    public boolean removeItem(String str) {
+        return inventory.removeItem(str);
     }
 
     @Override
@@ -64,8 +71,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public boolean contains(String s) {
-        return inventory.contains(s);
+    public boolean contains(String str) {
+        return inventory.contains(str);
     }
 
     @Override
@@ -104,8 +111,8 @@ public class Container extends Entity implements InventoryManagement {
     }
 
     @Override
-    public int getQuantity(String s) {
-        return inventory.getQuantity(s);
+    public int getQuantity(String str) {
+        return inventory.getQuantity(str);
     }
 
     @Override

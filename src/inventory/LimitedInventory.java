@@ -2,18 +2,25 @@ package inventory;
 
 import entity.item.Item;
 
+/**
+ * A Limited inventory is a special kind of inventory with a weight limit
+ *
+ */
 public class LimitedInventory extends Inventory {
 
     public static final double DEFAULT_CAPACITY = 15.0;
     private final double capacity;
 
-    public LimitedInventory() {
-        this(DEFAULT_CAPACITY);
-    }
-
     public LimitedInventory(double capacity) {
         super();
+        if (capacity < 0.0)
+            capacity = DEFAULT_CAPACITY;
+
         this.capacity = capacity;
+    }
+
+    public LimitedInventory() {
+        this(DEFAULT_CAPACITY);
     }
 
     public double getCapacity() {
@@ -28,6 +35,9 @@ public class LimitedInventory extends Inventory {
         return capacity > (d + getUsedCapacity());
     }
 
+    /**
+     * @return the total capcity used by all items in the inventory
+     */
     public double getUsedCapacity() {
         return itemList.stream()
                        .mapToDouble(Item::getWeight)

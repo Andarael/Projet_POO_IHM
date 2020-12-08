@@ -1,5 +1,6 @@
 package entity;
 
+import entity.item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,77 +21,77 @@ class BeingTest {
 
     @Test
     void getHP() {
-        assertEquals(5, b3.getHP());
-        assertEquals(20, b2.getHP());
-        assertEquals(20, b1.getHP());
+        assertEquals(5, b3.getHp());
+        assertEquals(20, b2.getHp());
+        assertEquals(20, b1.getHp());
     }
 
     @Test
     void getMAX_HP() {
-        assertEquals(5, b3.getMAX_HP());
-        assertEquals(20, b2.getMAX_HP());
-        assertEquals(20, b1.getMAX_HP());
+        assertEquals(5, b3.getMaxHp());
+        assertEquals(20, b2.getMaxHp());
+        assertEquals(20, b1.getMaxHp());
     }
 
     @Test
     void healMax() {
-        b1.hurt(b1.getMAX_HP() - 5);
-        assertNotEquals(b1.getMAX_HP(), b1.getHP());
+        b1.hurt(b1.getMaxHp() - 5);
+        assertNotEquals(b1.getMaxHp(), b1.getHp());
         b1.healMax();
-        assertEquals(b1.getMAX_HP(), b1.getHP());
+        assertEquals(b1.getMaxHp(), b1.getHp());
     }
 
     @Test
     void heal() {
-        int healthTemp = b1.getHP();
+        int healthTemp = b1.getHp();
 
         b1.hurt(10);
         b1.heal(5);
 
-        assertEquals(healthTemp - 10 + 5, b1.getHP());
+        assertEquals(healthTemp - 10 + 5, b1.getHp());
     }
 
     @Test
     void heal2() {
-        int healthTemp = b1.getHP();
+        int healthTemp = b1.getHp();
         b1.heal(15);
-        assertEquals(healthTemp, b1.getHP());
+        assertEquals(healthTemp, b1.getHp());
 
         b1.hurt(5);
-        healthTemp = b1.getHP();
+        healthTemp = b1.getHp();
         b1.heal(-15);
-        assertEquals(healthTemp, b1.getHP());
+        assertEquals(healthTemp, b1.getHp());
 
         b1.hurt(5);
-        healthTemp = b1.getHP();
+        healthTemp = b1.getHp();
         b1.heal(-15);
-        assertEquals(healthTemp, b1.getHP());
+        assertEquals(healthTemp, b1.getHp());
 
         b1.hurt(5);
-        healthTemp = b1.getHP();
+        healthTemp = b1.getHp();
         b1.heal(-15);
-        assertEquals(healthTemp, b1.getHP());
+        assertEquals(healthTemp, b1.getHp());
     }
 
     @Test
     void hurt() {
         b2.hurt(999);
-        assertEquals(0, b2.getHP());
+        assertEquals(0, b2.getHp());
 
         b1.hurt(5);
-        assertEquals(b1.getMAX_HP() - 5, b1.getHP());
+        assertEquals(b1.getMaxHp() - 5, b1.getHp());
     }
 
     @Test
     void isDead() {
-        b2.hurt(999);
-        assertTrue(b2.isDead());
-
         b3.kill();
         assertTrue(b3.isDead());
 
         b3.healMax();
         assertFalse(b3.isDead());
+
+        b2.hurt(999);
+        assertTrue(b2.isDead());
     }
 
     @Test
@@ -107,28 +108,27 @@ class BeingTest {
 
     @Test
     void levelUP() {
+        int expectedMaxHp = b3.getMaxHp();
         b3.levelUP();
         assertEquals(2, b3.getLevel());
 
-        int expectedMAX_HEALTH = b3.getMAX_HP();
-        expectedMAX_HEALTH += b3.getMAX_HP() / (b3.getLevel() + 1);
-
+        expectedMaxHp = (expectedMaxHp + (expectedMaxHp *3 / 2));
         b3.levelUP();
-        assertEquals(expectedMAX_HEALTH, b3.getMAX_HP());
-        assertEquals(b3.getMAX_HP(), b3.getHP());
+        assertEquals(expectedMaxHp, b3.getMaxHp());
+        assertEquals(b3.getMaxHp(), b3.getHp());
     }
+
 
     @Test
     void levelUP2() {
 
 
-        int expectedMAX_HEALTH = b3.getMAX_HP();
-        for (int i = 0; i < 9; i++)
-            expectedMAX_HEALTH += b3.getMAX_HP() /
-                                  (b3.getLevel() + 1);
+        int expectedMaxHp = b3.getMaxHp();
+        expectedMaxHp = expectedMaxHp + (expectedMaxHp * 10 /2);
+
 
         b3.levelUP(9);
-        assertEquals(expectedMAX_HEALTH, b3.getHP());
+        assertEquals(expectedMaxHp, b3.getHp());
     }
 
     @Test
@@ -168,5 +168,27 @@ class BeingTest {
 
         being = new Being("pog");
         assertNotEquals(being, b3);
+    }
+
+    @Test
+    void Display() {
+
+        Item item1 = new Item("apple", "a red apple", 1.0, 1);
+        Item item2 = new Item("apple");
+        Item item3 = new Item("shield");
+
+        b1.addItem(item1);
+        b1.addItem(item1);
+        b1.addItem(item1);
+        b1.addItem(item2);
+        b1.addItem(item3);
+
+        b2.addItem(new Item("pog"));
+        System.out.println(b2.getSimpleDisplay());
+
+
+        System.out.println(b1);
+        System.out.println(b2);
+        System.out.println(b3);
     }
 }

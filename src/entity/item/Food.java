@@ -1,5 +1,8 @@
 package entity.item;
 
+/**
+ * Food is a special item that have a restore value that can be negative (poisoned food)
+ */
 public class Food extends Item {
 
     public static final int DEFAULT_RESTORE_VALUE = 1;
@@ -7,8 +10,7 @@ public class Food extends Item {
 
     public Food(String name, String description, double weight, int value, int restoreValue) {
         super(name, description, weight, value);
-        if (restoreValue < 1)
-            restoreValue = DEFAULT_RESTORE_VALUE;
+
         this.restoreValue = restoreValue;
 
         PREFIX = "FOOD : ";
@@ -18,6 +20,9 @@ public class Food extends Item {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, restoreValue);
     }
 
+    /**
+     * @return the restore value of the food.
+     */
     public int getRestoreValue() {
         return restoreValue;
     }
