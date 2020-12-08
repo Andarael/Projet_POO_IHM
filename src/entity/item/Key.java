@@ -12,7 +12,6 @@ import static utils.Col.colorize;
  * Key is a special kind of Item that can open a locked exit
  * Keys are defined by theirs colors
  * <p>
- * Two key are equal if their color are the same, their names and shortname could be different
  * Keys are displayed in their respective color in the terminal
  */
 public class Key extends Item  implements Usable {
@@ -32,6 +31,11 @@ public class Key extends Item  implements Usable {
 
     }
 
+    public Key(Col color) {
+        this(color.getColorName()+"Key", null, color);
+        setShortName("Key" + color.getColorName().charAt(0));
+    }
+
     @Override
     public String getPrefix() {
         return "KEY  : ";
@@ -47,27 +51,14 @@ public class Key extends Item  implements Usable {
         return colorize(super.getDisplay(), color);
     }
 
-    /**
-     * The only way two key are equal is if they share the same color
-     *
-     * @param o the object to comare to.
-     * @return true if o is a key of the same color as the current object
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        Key key = (Key) o;
-
-        return color == key.color;
-    }
-
     public Col getColor() {
         return color;
+    }
+
+    public boolean isSameColor(Key k) {
+        if (k == null)
+            return false;
+        return color == k.getColor();
     }
 
     @Override

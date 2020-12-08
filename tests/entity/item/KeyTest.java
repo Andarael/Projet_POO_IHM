@@ -22,19 +22,9 @@ class KeyTest {
     }
 
     @Test
-    void testEquals() {
-        assertEquals(k1, k1);
-
-        Item k = new Key("not a blue key !", "definitely not blue", BLUE);
-        assertEquals(k, k1);
-        // en réalité la clé k est bleu
-
-        assertNotEquals(k1, k2);
-
-        Object o = new Object();
-        assertNotEquals(k1, o);
-
-        assertNotEquals(null, k1);
+    void Key() {
+        Key k = new Key(RED);
+        System.out.println(k.toString());
     }
 
     @Test
@@ -51,7 +41,6 @@ class KeyTest {
         assertSame(BLUE, k1.getColor());
         assertSame(RED, k2.getColor());
         assertSame(RESET, k3.getColor());
-
     }
 
     @Test
@@ -85,5 +74,12 @@ class KeyTest {
     @Test
     void getPrefix() {
         assertTrue(k1.getPrefix().contains("KEY"));
+    }
+
+    @Test
+    void isSameColor() {
+        assertFalse(k1.isSameColor(null));
+        assertFalse(k1.isSameColor(k2));
+        assertTrue(k1.isSameColor(new Key(null,null, BLUE)));
     }
 }
