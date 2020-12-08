@@ -6,7 +6,7 @@ public class Passive extends Being implements Talkable {
 
     public static final String DEFAULT_DIALOGUE = "Hello adventurer, i am old";
 
-    private final String dialogue;
+    private String dialogue;
 
     public Passive(String name, String description, String dialogue) {
         super(name, description);
@@ -18,4 +18,11 @@ public class Passive extends Being implements Talkable {
     public String getDialogue() {
         return dialogue;
     }
+
+    @Override
+    public void changeDialogue(String str) {
+        this.dialogue = str;
+    }
+
+
 }
