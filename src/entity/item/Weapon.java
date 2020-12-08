@@ -37,4 +37,6 @@ public class Weapon extends Item implements Equipable {
     public int getPower() {
         return getDamage();
     }
+
+    // faire le use(UsableOnAnotherItem) ici
 }
