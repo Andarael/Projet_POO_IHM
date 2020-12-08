@@ -13,6 +13,7 @@ public class Arrow extends Weapon implements UsableOnItem {
 
     public Arrow() {
         super("Arrow", null,0.0, 3, 3);
+        PREFIX = "ARROW";
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Arrow extends Weapon implements UsableOnItem {
     @Override
     public String use(Item item) {
         if (item == null)
-            return "This item does not exit, " + getUsage();
+            return "This item does not exist, " + getUsage();
 
         if (!(item instanceof Bow))
             return "This is not a Bow, " + getUsage();
