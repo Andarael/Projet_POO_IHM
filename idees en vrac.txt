@@ -167,6 +167,46 @@ qui contient Food, Key, Weapon
 weapon.use() ça fera rien sauf si on a l'interface usable on anotherItem
 
 ====================================
+Idées pour les getters sur les entités :
+
+World.Place.getMonster().attack(Place.getplayer());
+Place.getMonster().attack(getplayer());
+Place.getPlayer();
+
+=======================
+
+pour draw : 
+
+imentets Drawable; 
+    draw();
+    
+Place.draw() {
+   draw(place.size)
+}
+
+Place.draw(int size) {
+   
+ if (size < 2 )
+        draw(3)
+
+    // tests que la place est valide. 
+    for (i ;0  ;size + 2 )
+        affiche ligne(i);
+}
+
+Palace.getStaticContainer(){
+    //si pas d'autre container
+        return containerList(0);
+    // sinon
+        return containerList.getcoffre();
+}
+
+addMonsterInventoryOnDeath(Hostile h) {
+    if ! containerList.contains(h)
+        return false;
+
+}
+
 
 
 
