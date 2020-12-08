@@ -9,24 +9,31 @@ import interfaces.UsableOnItem;
  */
 public class Arrow extends Weapon implements UsableOnItem {
 
+    private static final String USAGE = "try 'USE [Arrow] [Bow]'";
+
     public Arrow() {
         super("Arrow", null,0.0, 3, 3);
     }
 
     @Override
-    public void use() {
-        System.out.println("Invalid use of Arrow, try 'USE Arrow Bow'");
+    public String getUsage() {
+        return USAGE;
     }
 
     @Override
-    public boolean use(Item item) {
+    public String use() {
+        return ("Invalid use of Arrow, " + getUsage());
+    }
+
+    @Override
+    public String use(Item item) {
         if (item == null)
-            return false;
+            return "This item does not exit, " + getUsage();
 
         if (!(item instanceof Bow))
-            return false;
+            return "This is not a Bow, " + getUsage();
 
         ((Bow) item).addArrow();
-        return true;
+        return ("Added an Arrow to " + item.getName());
     }
 }

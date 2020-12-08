@@ -1,6 +1,9 @@
 package entity.item;
 
+import interfaces.Usable;
 import utils.Col;
+import world.Exit;
+import world.LockedExit;
 
 import static utils.Col.RESET;
 import static utils.Col.colorize;
@@ -12,8 +15,9 @@ import static utils.Col.colorize;
  * Two key are equal if their color are the same, their names and shortname could be different
  * Keys are displayed in their respective color in the terminal
  */
-public class Key extends Item {
+public class Key extends Item  implements Usable {
 
+    private static final String USAGE = "try 'USE [Key] [Exit]'";
     private final Col color;
 
     public Key(String name, String description, Col color) {
@@ -60,4 +64,26 @@ public class Key extends Item {
         return color;
     }
 
+    @Override
+    public String getUsage() {
+        return USAGE;
+    }
+
+    @Override
+    public String use() {
+        return "Invalid use of Key, " + getUsage();
+    }
+
+    public String use(Exit exit) {
+        if (exit == null)
+            return "This Exit does not exist, " + getUsage();
+
+        if ( !(exit instanceof LockedExit))
+            return "This Exit is not Locked, " + getUsage() + "on a Locked Exit";
+
+        if (((LockedExit) exit).unlock(this))
+            return "You unlocked " + exit + "with " + this;
+
+        return "You can't unlock " + exit + "with " + this;
+    }
 }
