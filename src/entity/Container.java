@@ -11,7 +11,7 @@ import inventory.InventoryManagement;
  *
  * Such containers could be chests, monsters for example.
  */
-public class Container extends Entity implements InventoryManagement {
+public abstract class Container extends Entity implements InventoryManagement {
 
     protected Inventory inventory;
 

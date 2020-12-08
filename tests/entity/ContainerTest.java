@@ -17,8 +17,8 @@ class ContainerTest {
 
     @BeforeEach
     void setUp() {
-        cont1 = new Container("coffre");
-        cont2 = new Container("Monster");
+        cont1 = new Container("coffre") {};
+        cont2 = new Container("Monster") {};
 
         item1 = new Item("apple", "a red apple", 1.0, 1);
         item2 = new Item("apple");

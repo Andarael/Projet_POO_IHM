@@ -4,6 +4,7 @@ import java.util.List;
 
 import entity.Container;
 import entity.Player;
+import entity.StaticContainer;
 import utils.StringUtils;
 
 
@@ -13,7 +14,7 @@ public class Place {
     private final int exitMax = 4;
     private List<Container> listContainers;
     private final int containerMax = 4;
-    private Container placeContainer;
+    private StaticContainer placeContainer;
     private Player player;
 
 
@@ -21,7 +22,7 @@ public class Place {
         this.name = name;
         this.listContainers = null;
         this.listExits = null;
-        this.placeContainer = new Container("placeLoot");
+        this.placeContainer = new StaticContainer("placeLoot");
     }
 
     /* ------ méthodes ------*/
