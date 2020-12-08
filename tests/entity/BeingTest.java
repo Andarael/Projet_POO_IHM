@@ -16,7 +16,7 @@ class BeingTest {
     void setUp() {
         b1 = new Being(null, null, -5);
         b2 = new Being("vieux_marchand", "un vieux marchand");
-        b3 = new Being("spider", 5);
+        b3 = new Being("spider",5);
     }
 
     @Test
@@ -190,5 +190,29 @@ class BeingTest {
         System.out.println(b1);
         System.out.println(b2);
         System.out.println(b3);
+    }
+
+    @Test
+    void setHp() {
+        b1.setHp(-1);
+        assertNotEquals(-1, b1.getHp());
+        assertEquals(0, b1.getHp());
+
+        b1.setHp(1000);
+        assertNotEquals(1000, b1.getHp());
+        assertEquals(b1.getMaxHp(), b1.getHp());
+
+        b1.setHp(2);
+        assertEquals(2, b1.getHp());
+    }
+
+    @Test
+    void getPower() {
+        Being b1 = new Being("Pog", null, 10 ,-5);
+        Being b2 = new Being("Pog", null, 10 ,5);
+
+        assertEquals(1, b1.getPower());
+        assertEquals(5, b2.getPower());
+
     }
 }

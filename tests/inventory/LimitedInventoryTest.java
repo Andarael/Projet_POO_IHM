@@ -42,9 +42,12 @@ class LimitedInventoryTest {
     void Inventory() {
         LimitedInventory inv = new LimitedInventory();
         LimitedInventory inv2 = new LimitedInventory(10.0);
+        LimitedInventory inv3 = new LimitedInventory(-10.0);
 
         assertEquals(0, inv.getNbItems());
         assertEquals(LimitedInventory.DEFAULT_CAPACITY, inv.getCapacity());
+
+        assertEquals(LimitedInventory.DEFAULT_CAPACITY, inv3.getCapacity());
 
         assertEquals(10.0, inv2.getCapacity());
         assertEquals(0.0, inv2.getUsedCapacity());
