@@ -76,9 +76,14 @@ public interface Fightable extends Describable {
      *
      * @param opponent the opponent to attack
      */
-    default void attack(Fightable opponent) {
-        if (!isDead())
-            opponent.hurt(getPower());
+    default int attack(Fightable opponent) {
+        if (opponent == null)
+            return 0;
+        int amount = getPower();
+        System.out.println(getName() + "attacks " + opponent.getName() +
+                           "and deals " + amount + " Damage !");
+        opponent.hurt(amount);
+        return amount;
     }
 
     /**
