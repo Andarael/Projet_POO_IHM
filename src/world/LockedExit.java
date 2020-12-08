@@ -31,7 +31,7 @@ public class LockedExit extends Exit {
         }
     }
 
-    public boolean getIsLocked() {
+    public boolean isLocked() {
         return this.isLocked;
     }
 
