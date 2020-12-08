@@ -1,7 +1,6 @@
 package entity.item;
 
 import entity.Entity;
-import world.World;
 
 public class Item extends Entity implements Comparable<Item> {
 
@@ -58,5 +57,4 @@ public class Item extends Entity implements Comparable<Item> {
     public int compareTo(Item item) {
         return this.getName().compareTo(item.getName());
     }
-
 }

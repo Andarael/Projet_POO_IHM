@@ -29,7 +29,5 @@ class ColTest {
         System.out.println(colorize("BACKGROUND_PURPLE", BACKGROUND_PURPLE));
         System.out.println(colorize("BACKGROUND_CYAN", BACKGROUND_CYAN));
         System.out.println(colorize("BACKGROUND_WHITE", BACKGROUND_WHITE));
-
-
     }
 }

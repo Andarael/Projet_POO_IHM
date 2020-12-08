@@ -46,4 +46,5 @@ public class Key extends Item {
     public Col getColor() {
         return color;
     }
+
 }
