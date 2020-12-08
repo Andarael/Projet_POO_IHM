@@ -42,4 +42,8 @@ public class Key extends Item {
 
         return color == key.color;
     }
+
+    public Col getColor() {
+        return color;
+    }
 }
