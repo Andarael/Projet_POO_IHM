@@ -12,6 +12,7 @@ public class Place {
     private final int exitMax = 4;
     private List<Container> listContainers;
     private final int containerMax = 4;
+    private Container placeContainer;
     private Player player;
 
 
@@ -19,6 +20,7 @@ public class Place {
         this.name = name;
         this.listContainers = null;
         this.listExits = null;
+        this.placeContainer = new Container("placeLoot");
     }
 
     /* ------ méthodes ------*/
