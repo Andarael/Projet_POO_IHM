@@ -112,7 +112,8 @@ public class Being extends Container implements Fightable, Comparable<Being> {
     public String getSimpleDisplay() {
         return super.getSimpleDisplay() +
                ", lvl : " + level +
-               ", hp  : " + hp + "/" + maxHp;
+               ", hp : " + hp + "/" + maxHp +
+               ", pow : " + getPower();
     }
 
     @Override
