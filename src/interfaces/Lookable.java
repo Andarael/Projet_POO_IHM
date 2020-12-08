@@ -4,7 +4,7 @@ package interfaces;
  * An Interface to interact with objects that can be looked at.
  *
  */
-public interface Lookable extends Describable {
+public interface Lookable extends Drawable {
 
     /**
      * Displays the content of the current object
