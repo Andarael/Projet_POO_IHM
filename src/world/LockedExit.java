@@ -43,9 +43,9 @@ public class LockedExit extends Exit {
         return this.color;
     }
 
-    public void unLock(LockedExit exit, Key key) {
-        if (exit.getColor() == key.getColor()){
-            this.isLocked = false;
+    public void unLock(Key key) {
+        if (getColor() == key.getColor()){
+            isLocked = false;
         }else{
             System.out.println("Please use the key required for this outing");
         }
