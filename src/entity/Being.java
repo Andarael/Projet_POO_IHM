@@ -27,11 +27,11 @@ public class Being extends Container implements Fightable, Comparable<Being> {
 
         if (power < 1)
             power = 1;
-        this.power = power;
 
         this.level = 1;
         this.maxHp = hp;
         this.hp = hp;
+        this.power = power;
         this.BASE_HEALTH = hp;
     }
 
