@@ -27,12 +27,27 @@ public class Place {
         return this.name;
     }
 
+
+    /* ------ le player ------*/
+
     public boolean hasPlayer() {
         return this.player != null;
     }
 
     public Player getPlayer() {
         return this.player;
+    }
+
+    public void addPlayer(Player player1){
+        if (!this.hasPlayer()) {
+            this.player = player1;
+        }
+    }
+
+    public void rmPlayer(){
+        if(this.hasPlayer()){
+            this.player = null;
+        }
     }
 
 
@@ -69,7 +84,7 @@ public class Place {
 
     public void displayExit() {
         for (int i = 0; i < this.nbExit(); i++) {
-            System.out.println("- " + this.listExits.get(i).destination.getName());
+            //System.out.println("- " + this.listExits.get(i).destination.getName());
         }
     }
 
@@ -107,7 +122,7 @@ public class Place {
 
     public void displayContainer() {
         for (int i = 0; i < this.nbContainer(); i++) {
-            System.out.println("- " + this.listContainers.get(i).getName());
+            //System.out.println("- " + this.listContainers.get(i).getName());
         }
     }
 
