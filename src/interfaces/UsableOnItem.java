@@ -4,6 +4,6 @@ import entity.item.Item;
 
 public interface UsableOnItem extends Usable{
 
-    boolean use(Item item);
+    String use(Item item);
 
 }

@@ -5,5 +5,7 @@ package interfaces;
  */
 public interface Usable {
 
-    void use();
+    String getUsage();
+
+    String use();
 }
