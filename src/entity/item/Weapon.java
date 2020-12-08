@@ -2,6 +2,10 @@ package entity.item;
 
 import interfaces.Equipable;
 
+/**
+ * A weapon is an item that can be equipped
+ * It have a damage value that is 1 at least
+ */
 public class Weapon extends Item implements Equipable {
 
     private static final int DEFAULT_DAMAGE = 1;

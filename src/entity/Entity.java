@@ -4,6 +4,14 @@ import interfaces.Lookable;
 
 import static utils.Shortener.shorten;
 
+/**
+ * An Entity is an object that is lookable, drawable and describable
+ * An entity have a name, a shortName and a description
+ * Only the description can be null
+ * If an Entity is miss constructed, default values are used to avoid an ill formed Entity.
+ *
+ * An entity is equal to another if their name or shortName are the same, their description could be different.
+ */
 public abstract class Entity implements Lookable {
 
     public static final String DEFAULT_NAME = "null";

@@ -1,101 +1,118 @@
 package entity;
 
-public class Being extends Container implements Comparable<Being> {
+import interfaces.Fightable;
+
+/**
+ * A being is a living container.
+ * All beings have health value and a level and a power
+ * Begins are comparable by their levels.
+ * Beings are equals by their name (or shortName), level and health
+ * Being can level up, it does heal them, and give them a higher maximum health and level
+ */
+public class Being extends Container implements Fightable, Comparable<Being> {
 
     public static final int DEFAULT_HEALTH = 20;
 
-    private int MAX_HEALTH;
+    private int maxHp;
+    private final int BASE_HEALTH;
     private int hp;
     private int level;
+    private final int power;
 
-
-    public Being(String name, String description, int hp) {
+    public Being(String name, String description, int hp, int power) {
         super(name, description);
 
-        if (hp < 1)
+        if (hp < 0)
             hp = DEFAULT_HEALTH;
 
+        if (power < 1)
+            power = 1;
+        this.power = power;
+
         this.level = 1;
-        this.MAX_HEALTH = hp;
+        this.maxHp = hp;
         this.hp = hp;
+        this.BASE_HEALTH = hp;
+    }
+
+    public Being(String name, String description, int hp) {
+        this(name, description, hp, 1);
     }
 
     public Being(String name, String description) {
-        this(name, description, DEFAULT_HEALTH);
+        this(name, description, DEFAULT_HEALTH, 1);
     }
 
     public Being(String name, int hp) {
-        this(name, null, hp);
+        this(name, null, hp,1);
     }
 
     public Being(String name) {
         this(name, DEFAULT_HEALTH);
     }
 
-    public int getHP() {
+    @Override
+    public int getHp() {
         return hp;
     }
 
-    public int getMAX_HP() {
-        return MAX_HEALTH;
-    }
-
-
-    public void healMax() {
-        hp = MAX_HEALTH;
-    }
-
-    public void heal(int amount) {
-        if (amount > 0)
-            this.hp += amount;
-        if (hp > MAX_HEALTH)
-            hp = MAX_HEALTH;
-    }
-
-    public void hurt(int amount) {
-        if (amount > 0)
-            hp -= amount;
+    @Override
+    public void setHp(int hp) {
         if (hp < 0)
-            hp = 0;
+            this.hp = 0;
+
+        else if (hp > getMaxHp())
+            this.hp = getMaxHp();
+
+        else
+            this.hp = hp;
     }
 
-    public boolean isDead() {
-        return hp <= 0;
+    @Override
+    public int getMaxHp() {
+        return maxHp;
     }
 
-    public void kill() {
-        hp = 0;
+    @Override
+    public int getPower() {
+        return power;
     }
 
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Compute new max Health from base Health an current level
+     */
     private void updateMAX_HP() {
         // HP levelUP formula
-        // (for 20 MAX_HP it goes by increments of 10,
-        // but for 10 it will go by increments of 5)
-        this.MAX_HEALTH += MAX_HEALTH / level;
+        this.maxHp = BASE_HEALTH + (BASE_HEALTH * level / 2);
     }
 
+    /**
+     * Levels up : increase level, increase max health and heals
+     */
     public void levelUP() {
         level++;
         updateMAX_HP();
         healMax();
     }
 
+    /**
+     * @param levels numbers of levels to levelUP
+     */
     public void levelUP(int levels) {
-        for (int i = 0; i < levels; i++)
-            levelUP();
+        level += levels;
+        updateMAX_HP();
+        healMax();
     }
 
-
-
     @Override
-    public String getDisplay() {
-        return getSimpleDisplay() + "\n" +
-               "    lvl : " + level + "\n" +
-               "    hp  : " + hp + "/" + MAX_HEALTH;
+    public String getSimpleDisplay() {
+        return super.getSimpleDisplay() +
+               ", lvl : " + level +
+               ", hp  : " + hp + "/" + maxHp;
     }
 
     @Override
@@ -103,6 +120,10 @@ public class Being extends Container implements Comparable<Being> {
         return this.level - being.level;
     }
 
+    /**
+     * @param o the object to test equality with
+     * @return true if being have the same name (or shortname) level, and health
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -118,6 +139,8 @@ public class Being extends Container implements Comparable<Being> {
             return false;
 
         Being being = (Being) o;
-        return (hp == being.getHP() && level == being.getLevel());
+        return (hp == being.getHp() && level == being.getLevel());
     }
+
+
 }

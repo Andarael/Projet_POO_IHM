@@ -14,13 +14,13 @@ class FoodTest {
     @BeforeEach
     void setUp() {
         f1 = new Food("apple", "a red apple", 0.2, 1, 3);
-        f2 = new Food("chicken", "a grilled chicken", -5);
+        f2 = new Food("chicken", "a rotten chicken", -5);
     }
 
     @Test
     void getRestoreValue() {
         assertEquals(3, ((Food) f1).getRestoreValue());
-        assertEquals(Food.DEFAULT_RESTORE_VALUE, f2.getRestoreValue());
+        assertEquals(-5, f2.getRestoreValue());
     }
 
     @Test
