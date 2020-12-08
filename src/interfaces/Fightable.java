@@ -5,7 +5,7 @@ package interfaces;
  * A Fightable is dead when its health is at 0 or less
  * A Fightable cannot have a negative amount of health nor can it exceed its maximum Hp
  */
-public interface Fightable {
+public interface Fightable extends Describable {
 
     /**
      * @return the current health
@@ -53,7 +53,7 @@ public interface Fightable {
      */
     default void hurt(int amount) {
         if (amount > 0)
-        setHp(getHp() - amount);
+            setHp(getHp() - amount);
     }
 
     /**
@@ -66,6 +66,7 @@ public interface Fightable {
     /**
      * The fighting power is used to know how much to hurt the opponent
      * It can't be negative or 0
+     *
      * @return the fighting power of the Fightable
      */
     int getPower();
