@@ -4,7 +4,7 @@ import entity.item.Item;
 import interfaces.Equipable;
 
 /**
- * An Hostile is a Being hostile toward the player that can equip one Item
+ * An Hostile is a Being hostile toward the player
  */
 public class Hostile extends Being {
 
