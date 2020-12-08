@@ -24,7 +24,6 @@ public class LockedExit extends Exit {
     @Override
     public Place goIn(){
         if (!this.canGo()){
-            System.out.println("Exit is locked");
             return this.origine;
         }else {
             return this.destination;
@@ -46,10 +45,7 @@ public class LockedExit extends Exit {
     public void unLock(LockedExit exit, Key key) {
         if (exit.getColor() == key.getColor()){
             this.isLocked = false;
-        }else{
-            System.out.println("Please use the key required for this outing");
         }
-
     }
 
     public void lock(){
