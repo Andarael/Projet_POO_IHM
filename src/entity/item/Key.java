@@ -81,9 +81,15 @@ public class Key extends Item  implements Usable {
         if ( !(exit instanceof LockedExit))
             return "This Exit is not Locked, " + getUsage() + "on a Locked Exit";
 
-        if (((LockedExit) exit).unlock(this))
-            return "You unlocked " + exit + "with " + this;
+        LockedExit lockedExit = (LockedExit) exit;
+        if (!lockedExit.isLocked())
+            return "This Exit is not Locked";
 
-        return "You can't unlock " + exit + "with " + this;
+        lockedExit.unLock(this);
+
+        if (lockedExit.isLocked())
+            return "You can't unlock " + exit + "with " + this;
+
+        return "You unlocked " + exit + "with " + this;
     }
 }
