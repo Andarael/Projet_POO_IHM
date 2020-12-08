@@ -13,7 +13,7 @@ import inventory.InventoryManagement;
  */
 public class Container extends Entity implements InventoryManagement {
 
-    private final Inventory inventory;
+    protected Inventory inventory;
 
     public Container(String name, String description) {
         super(name, description);
