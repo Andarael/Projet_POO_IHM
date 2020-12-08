@@ -38,5 +38,4 @@ public class Weapon extends Item implements Equipable {
         return getDamage();
     }
 
-    // faire le use(UsableOnAnotherItem) ici
 }
