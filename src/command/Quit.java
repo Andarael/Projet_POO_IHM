@@ -4,6 +4,8 @@ import entity.item.Item;
 import entity.place.Place;
 import world.World;
 
+import java.util.List;
+
 public abstract class Quit implements Command {
     private World world;
 
@@ -33,4 +35,6 @@ public abstract class Quit implements Command {
         System.out.println("Mauvaise utilisation de la commande \"quit\"");
         System.out.println("Essayez plutot : quit");
     }
+
+
 }

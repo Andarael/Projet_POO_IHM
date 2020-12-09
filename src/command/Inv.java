@@ -1,12 +1,19 @@
 package command;
 
 import entity.Being;
+import entity.Player;
 import entity.item.Item;
 import entity.place.Place;
 import world.Main;
+import entity.item.Weapon;
+import inventory.Inventory;
+
+import java.util.List;
 
 public abstract class Inv implements Command {
     private final Being enti;
+    private Inventory inven;
+    private Player joueur;
 
     public Inv(Being player) {
         this.enti = player;
@@ -14,12 +21,7 @@ public abstract class Inv implements Command {
 
     @Override
     public void execute() {
-        Main.cleanScreen();
-        System.out.println("PV : " + this.enti.getHp());
-        System.out.println("PO : " + this.enti.getGold());
-        System.out.print("Weapon : ");
-/*        this.enti.getWeapon().getDisplay();
-        enti.getInventory().getInvDisplayDetails();*/
+        joueur.getDisplay();
     }
 
     @Override
@@ -39,5 +41,6 @@ public abstract class Inv implements Command {
         System.out.println("Mauvaise utilisation de la commande \"inv\"");
         System.out.println("Essayez plutot : inv");
     }
+
 
 }
