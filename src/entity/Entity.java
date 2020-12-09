@@ -5,7 +5,7 @@ import interfaces.Lookable;
 import static utils.Shortener.shorten;
 
 /**
- * An Entity is an object that is lookable, drawable and describable
+ * An Entity is an object that is Lookable, drawable and describable
  * An entity have a name, a shortName and a description
  * Only the description can be null
  * If an Entity is miss constructed, default values are used to avoid an ill formed Entity.
@@ -57,11 +57,6 @@ public abstract class Entity implements Lookable {
         this.shortName = shorten(s);
     }
 
-    @Override
-    public String toString() {
-        return print();
-    }
-
     /**
      * The only qualification for 2 entities to be equal is their ShortName or name
      * The only interaction the user will have with entities is via their shortname
@@ -87,6 +82,11 @@ public abstract class Entity implements Lookable {
         boolean part2 = (shortName.toUpperCase()).equals(comparedShortName);
 
         return (part1 || part2);
+    }
+
+    @Override
+    public String toString() {
+        return print();
     }
 
 }

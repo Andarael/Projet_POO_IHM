@@ -12,7 +12,7 @@ public class Arrow extends Weapon implements UsableOnItem {
     private static final String USAGE = "try 'USE [Arrow] [Bow]'";
 
     public Arrow() {
-        super("Arrow", null,0.0, 3, 3);
+        super("Arrow", null, 0.0, 3, 3);
     }
 
     @Override
@@ -41,4 +41,5 @@ public class Arrow extends Weapon implements UsableOnItem {
         ((Bow) item).addArrow();
         return ("Added an Arrow to " + item.getName());
     }
+
 }

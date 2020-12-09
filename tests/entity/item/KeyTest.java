@@ -66,7 +66,6 @@ class KeyTest {
         k1.use(lockedExit2);
         assertTrue(lockedExit2.isLocked());
 
-
         Exit exit = new Exit();
         assertTrue(k1.use(exit).contains(k1.getUsage()));
     }
