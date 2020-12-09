@@ -1,5 +1,6 @@
 package entity.place;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import entity.Container;
 import entity.Entity;
 import entity.Player;
@@ -57,8 +58,7 @@ public class Place extends Entity {
 
     /* ------ les Exits ------*/
 
-    public void addExit(Place place,
-                        int position) { //position dans la list = sa position dans la salle))
+    public void addExit(Place place, int position) { //position dans la list = sa position dans la salle))
         if (this.nbExit() < this.exitMax) {
             Exit exit = new Exit(place);
             this.listExits.add(position, exit);
@@ -162,32 +162,102 @@ public class Place extends Entity {
     //todo
 
 
-    public String displayTopExitLine() {
-        /* for(Container container : this.listContainers){
-            if (container.getName().equals(name)) return true;
-        }*/
-        String line1 = StringUtils.leftPad("#", 5, ' ') +
-                       StringUtils.leftPad("..", 5, '#') +
-                       StringUtils.leftPad("#", 5, '#');
-        return line1;
+
+
+    public String displayExitTopLine(){
+        String lineTop ="";
+
+        if (this.exitExistIndex(0)){
+            String str;
+            if (this.getExitByIndex(1) instanceof LockedExit)
+                str = "XX";
+            else
+                str = "@@";
+            String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 5, ' ');
+            String line2 = StringUtils.leftPad("#", 5, ' ') +
+                           StringUtils.leftPad(str, 5, '#') +
+                           StringUtils.leftPad("#", 5, '#');
+            lineTop = line1 + "\n" + line2;
+        }else{
+            String line2 = StringUtils.leftPad("#", 5, ' ') +
+                           StringUtils.leftPad("##", 5, '#') +
+                           StringUtils.leftPad("#", 5, '#');
+            lineTop = line2;
+        }
+        return lineTop;
     }
 
-    public String displayFirstLine() {
-        //en cour de test
-        String line1 = StringUtils.leftPad("#", 5, ' ') +
-                       StringUtils.leftPad("..", 5, '#') +
-                       StringUtils.leftPad("#", 5, '#');
-        return line1;
+    public String displayExitMiddleLine(){
+        String lineMiddle ="";
+        if (this.exitExistIndex(1)) {
+            String str;
+            if (this.getExitByIndex(1) instanceof LockedExit)
+                str = "X";
+            else
+                str = "@";
+            String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 0, ' ');
+            lineMiddle = line1;
+        }else{
+            String line1 = StringUtils.leftPad("#", 5, ' ');
+            lineMiddle = line1;
+        }
+
+            if (this.exitExistIndex(2)){
+                String str;
+                if (this.getExitByIndex(2) instanceof LockedExit)
+                    str = "X";
+                else
+                    str = "@";
+            String line2 = StringUtils.leftPad(str, 12, ' ') +
+            StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
+            lineMiddle = lineMiddle + line2;
+
+        }else{
+                String line2 = StringUtils.leftPad("#", 12, ' ');
+                lineMiddle = lineMiddle + line2;
+            }
+
+        return lineMiddle;
     }
 
-    public void draw(int nbContainer) {
-        if (this.nbContainer() < 2) {
+    public String displayExitBotLine(){
+        String lineBot ="";
+
+        if (this.exitExistIndex(3)){
+            String str;
+            if (this.getExitByIndex(3) instanceof LockedExit)
+                str = "XX";
+            else
+                str = "@@";
+            String line1 = StringUtils.leftPad(this.getExitByIndex(3).draw(), 5, ' ');
+            String line2 = StringUtils.leftPad("#", 5, ' ') +
+                           StringUtils.leftPad(str, 5, '#') +
+                           StringUtils.leftPad("#", 5, '#');
+            lineBot = line1 + "\n" + line2;
+        }else{
+            String line2 = StringUtils.leftPad("#", 5, ' ') +
+                           StringUtils.leftPad("##", 5, '#') +
+                           StringUtils.leftPad("#", 5, '#');
+            lineBot = line2;
+        }
+        return lineBot;
+    }
+
+
+
+    public void testDisplay() {
+        /*if (this.nbContainer() < 2) {
 
         } else {
             if (this.nbContainer() < 4) {
 
             }
-        }
+        }*/
+        String top = this.displayExitTopLine();
+        String middle = this.displayExitMiddleLine();
+        String bot = this.displayExitBotLine();
+
+        System.out.println(top + "\n" + middle + "\n" + bot);
     }
 
     //todo ajouter de quoi récupérer une exit par son nom
