@@ -31,11 +31,6 @@ public class Place extends Entity {
 
     /* ------ méthodes ------*/
 
-    public String getName() {
-        return this.name;
-    }
-
-
     /* ------ le player ------*/
 
     public boolean hasPlayer() {
