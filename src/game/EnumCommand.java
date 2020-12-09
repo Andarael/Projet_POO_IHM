@@ -51,22 +51,24 @@ public enum EnumCommand {
         1,
         2
     ),
-    ATTACK("Attack a monster in the current place"+
+    ATTACK("Attack a Npc in the current place\n" +
            "For example : Attack Cyclops -> You attack the Cyclops and deals him 5 damage",
            "A",
            1,
            1
+    ),
+    BUY("Buy an item to the Npc in the current place\n" +
+        "For example : Buy Merchant sword -> You bought a sword from the merchant and gave him 5 golds",
+        "B",
+        2,
+        2
+    ),
+    SELL("Sell an item to the Npc in the current place\n" +
+         "For example : Sell Merchant sword -> You sold a sword from the merchant and won 5 golds",
+         "S",
+         2,
+         2
     );
-
-
-
-
-
-
-
-
-
-    ;
 
     private final String usage;
     private final String shortCommand;
