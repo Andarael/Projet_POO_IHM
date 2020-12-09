@@ -11,7 +11,7 @@ class ColTest {
 
     @Test
     void testCol() {
-        System.out.println(colorize("RED", RED));
+        System.out.println(colorize(RED.getColorName(), RED));
         System.out.println(colorize("BLACK", BLACK));
         System.out.println(colorize("GREEN", GREEN));
         System.out.println(colorize("YELLOW", YELLOW));
