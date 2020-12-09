@@ -1,8 +1,8 @@
 package command;
 
-import entity.place.Place;
-import entity.place.Exit;
 import entity.item.Item;
+import entity.place.Exit;
+import entity.place.Place;
 
 public interface Command {
     public void execute();

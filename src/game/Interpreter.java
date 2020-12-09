@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package game;
 
 import java.util.ArrayList;
@@ -12,6 +14,13 @@ import static game.EnumCommand.isValidCommand;
 public class Interpreter {
 
 
+    /**
+     * Get a command input from the user
+     * If the command is not valid a message is displayed and the user must try again
+     * Only a valid command can exit this methode
+     *
+     * @return a list of Strings containing a valid command and its arguments
+     */
     public static List<String> interpret() {
         Scanner scanner = new Scanner(System.in);
 
@@ -21,18 +30,18 @@ public class Interpreter {
         boolean isInvalid = true;
 
         while (isInvalid) {
-
             stringList = Arrays.asList(scanner.nextLine().split(" "));
 
             // vérification que l'on n'a pas reçu une Liste vide
-            // Et initialisation des variables pour le test de validité
             if (stringList.size() > 0) {
                 commandString = stringList.get(0);
                 args = stringList.size() - 1;
+
+                // test d'invalidité
                 isInvalid = !isValidCommand(getCommandFromString(commandString), args);
             }
 
-            // conversion en majuscules de la lsite des arguments de la commande
+            // conversion en majuscules de la liste des arguments de la commande
             stringList = stringList.stream()
                                    .map(x -> {
                                        x = x.toUpperCase();
@@ -41,6 +50,7 @@ public class Interpreter {
                                    .collect(Collectors.toList());
 
             // si invalide on affiche un msg d'erreur
+            // et on reprend à la prochaine itération de la boucle
             if (isInvalid)
                 System.out.println(stringList + " Is not a valid command, try 'HELP'");
         }

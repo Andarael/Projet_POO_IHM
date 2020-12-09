@@ -1,4 +1,8 @@
+// Fichier par Josué Raad
+
 package interfaces;
+
+import entity.Player;
 
 /**
  * An interface to get objects fighting and access their health
@@ -72,18 +76,22 @@ public interface Fightable extends Describable {
     int getPower();
 
     /**
-     * Attacks an opponent's health
+     * Hurts an opponent's health, deals at least 1 damage.
      *
      * @param opponent the opponent to attack
      */
-    default int attack(Fightable opponent) {
+    default void attack(Fightable opponent) {
         if (opponent == null)
-            return 0;
+            return;
         int amount = getPower();
+
+        // this check is here to ensure the minimum of damage must be 1 to avoid infinite battles.
+        if (amount < 1)
+            amount = 1;
+
         System.out.println(getName() + "attacks " + opponent.getName() +
                            "and deals " + amount + " Damage !");
         opponent.hurt(amount);
-        return amount;
     }
 
     /**
@@ -93,7 +101,37 @@ public interface Fightable extends Describable {
         setHp(0);
     }
 
-    default void fight(Fightable player,Fightable opponent) {
-        // todo
+    /**
+     * Simulate a fight between a player and its opponent
+     * The fight ends when one of the dies
+     * Fight outputs messages to the console,
+     * but it is up to the caller to check if the opponent or the player died after the fight.
+     *
+     * @param player   the player of the game
+     * @param opponent the fightable that the player will fight
+     */
+    default void fight(Player player, Fightable opponent) {
+        if (player == null || opponent == null)
+            return;
+
+        while (!(player.isDead() || opponent.isDead())) {
+
+            player.attack(opponent);
+
+            try {
+                wait(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (opponent.isDead())
+                break;
+
+            opponent.attack(player);
+
+        }
+
+        if (opponent.isDead())
+            System.out.println("Bravo, vous avez gagné le combat contre " + opponent.getName());
     }
 }

@@ -3,8 +3,8 @@ package command;
 import entity.item.Item;
 import world.World;
 
-public abstract class Go implements Command{
-    private World world;
+public abstract class Go implements Command {
+    private final World world;
 
     public Go(World world) {
         this.world = world;

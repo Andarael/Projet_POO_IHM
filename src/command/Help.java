@@ -1,8 +1,8 @@
 package command;
 
 import entity.item.Item;
-import world.Main;
 import entity.place.Place;
+import world.Main;
 
 public abstract class Help implements Command {
 
@@ -17,7 +17,8 @@ public abstract class Help implements Command {
         System.out.println("- take <objet>        : recupere l'objet et le place dans l'inventaire");
         System.out.println("- quit                : quitte la partie");
         System.out.println("- use <objet>         : utilise l'objet");
-        System.out.println("- use <objet> <objet> : utilise les deux objets si une combinaison est possible");
+        System.out.println(
+                "- use <objet> <objet> : utilise les deux objets si une combinaison est possible");
         System.out.println("- inv                 : affiche l'inventaire du joueur");
     }
 

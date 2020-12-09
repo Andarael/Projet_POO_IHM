@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package utils;
 
 public interface Shortener {

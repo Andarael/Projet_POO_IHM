@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import entity.item.Item;
@@ -16,7 +18,7 @@ class BeingTest {
     void setUp() {
         b1 = new Being(null, null, -5);
         b2 = new Being("vieux_marchand", "un vieux marchand");
-        b3 = new Being("spider",5);
+        b3 = new Being("spider", 5);
     }
 
     @Test
@@ -112,7 +114,7 @@ class BeingTest {
         b3.levelUP();
         assertEquals(2, b3.getLevel());
 
-        expectedMaxHp = (expectedMaxHp + (expectedMaxHp *3 / 2));
+        expectedMaxHp = (expectedMaxHp + (expectedMaxHp * 3 / 2));
         b3.levelUP();
         assertEquals(expectedMaxHp, b3.getMaxHp());
         assertEquals(b3.getMaxHp(), b3.getHp());
@@ -124,7 +126,7 @@ class BeingTest {
 
 
         int expectedMaxHp = b3.getMaxHp();
-        expectedMaxHp = expectedMaxHp + (expectedMaxHp * 10 /2);
+        expectedMaxHp = expectedMaxHp + (expectedMaxHp * 10 / 2);
 
 
         b3.levelUP(9);
@@ -208,8 +210,8 @@ class BeingTest {
 
     @Test
     void getPower() {
-        Being b1 = new Being("Pog", null, 10 ,-5);
-        Being b2 = new Being("Pog", null, 10 ,5);
+        Being b1 = new Being("Pog", null, 10, -5);
+        Being b2 = new Being("Pog", null, 10, 5);
 
         assertEquals(1, b1.getPower());
         assertEquals(5, b2.getPower());

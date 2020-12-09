@@ -1,16 +1,15 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 /**
  * A Bow is a special class of Weapon that can use Arrows
- *
  */
 public class Bow extends Weapon {
 
-    private int arrows;
-
     public static final double DEFAULT_WEIGHT = 3.0;
-
     private static final int ARROW_POWER = new Arrow().getPower();
+    private int arrows;
 
     public Bow(String name, String description, double weight, int value, int damage) {
         super(name, description, weight, value, damage);
@@ -28,7 +27,7 @@ public class Bow extends Weapon {
     }
 
     public void addArrow() {
-        this.arrows ++;
+        this.arrows++;
     }
 
     public int getArrows() {
@@ -54,6 +53,6 @@ public class Bow extends Weapon {
     @Override
     public String getDisplay() {
         return super.getDisplay()
-                + ", arrows : " + arrows;
+               + ", arrows : " + arrows;
     }
 }

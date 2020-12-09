@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 import org.junit.jupiter.api.BeforeEach;

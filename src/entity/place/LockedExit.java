@@ -4,8 +4,8 @@ import entity.item.Key;
 import utils.Col;
 
 public class LockedExit extends Exit {
-    private boolean locked;
     private final Col color;
+    private boolean locked;
 
     public LockedExit(Place destination, Col color) {
         super(destination);
@@ -13,18 +13,18 @@ public class LockedExit extends Exit {
         this.color = color;
     }
 
-    public LockedExit(Col color){
+    public LockedExit(Col color) {
         super();
         this.color = color;
         this.locked = true;
     }
 
-    public boolean canGo(){
+    public boolean canGo() {
         return !this.locked;
     }
 
     @Override
-    public Place goIn(){
+    public Place goIn() {
         if (this.canGo())
             return this.destination;
         else
@@ -36,7 +36,7 @@ public class LockedExit extends Exit {
         return this.locked;
     }
 
-    public Col getColor(){
+    public Col getColor() {
         return this.color;
     }
 
@@ -45,10 +45,9 @@ public class LockedExit extends Exit {
             this.locked = false;
     }
 
-    public void lock(){
+    public void lock() {
         this.locked = true;
     }
-
 
 
 }

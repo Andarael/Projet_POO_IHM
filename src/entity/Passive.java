@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import interfaces.Talkable;

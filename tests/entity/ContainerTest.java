@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import entity.item.Item;
@@ -17,8 +19,10 @@ class ContainerTest {
 
     @BeforeEach
     void setUp() {
-        cont1 = new Container("coffre") {};
-        cont2 = new Container("Monster") {};
+        cont1 = new Container("coffre") {
+        };
+        cont2 = new Container("Monster") {
+        };
 
         item1 = new Item("apple", "a red apple", 1.0, 1);
         item2 = new Item("apple");
@@ -193,7 +197,7 @@ class ContainerTest {
     @Test
     void removeGold() {
         assertFalse(cont2.removeGold(100));
-        assertFalse(cont2.removeGold(- 5));
+        assertFalse(cont2.removeGold(-5));
         assertTrue(cont2.removeGold(5));
 
         assertSame(5, cont2.getGold());

@@ -5,7 +5,7 @@ import entity.place.Place;
 import world.World;
 
 public abstract class Use implements Command {
-    private World world;
+    private final World world;
 
     public Use(World world) {
         this.world = world;

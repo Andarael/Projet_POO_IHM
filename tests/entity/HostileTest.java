@@ -1,13 +1,15 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import entity.item.Item;
 import entity.item.Key;
 import entity.item.Weapon;
-import static utils.Col.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static utils.Col.RED;
 
 class HostileTest {
 

@@ -1,9 +1,12 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BowTest {
 
@@ -21,18 +24,18 @@ class BowTest {
         b = new Bow("WoodenBow", null, 1);
         assertEquals(Bow.DEFAULT_WEIGHT, b.getWeight());
         assertEquals(b.getDamage(), b.getValue());
-        assertEquals(0,b.getArrows());
+        assertEquals(0, b.getArrows());
     }
 
     @Test
     void addArrow() {
         b.addArrow();
-        assertEquals(1,b.getArrows());
+        assertEquals(1, b.getArrows());
 
         b.addArrow();
         b.addArrow();
         b.addArrow();
-        assertEquals(4,b.getArrows());
+        assertEquals(4, b.getArrows());
     }
 
     @Test
@@ -42,10 +45,10 @@ class BowTest {
 
     @Test
     void getPower() {
-        assertEquals(4,b.getPowerNoConsume());
+        assertEquals(4, b.getPowerNoConsume());
         b.addArrow();
-        assertEquals(4+a.getPower(),b.getPower());
-        assertEquals(4,b.getPowerNoConsume());
+        assertEquals(4 + a.getPower(), b.getPower());
+        assertEquals(4, b.getPowerNoConsume());
 
 
     }
@@ -60,10 +63,10 @@ class BowTest {
 
     @Test
     void getPowerNoConsume() {
-        assertEquals(4,b.getPowerNoConsume());
+        assertEquals(4, b.getPowerNoConsume());
         b.addArrow();
 
-        assertEquals(4+a.getPower(), b.getPowerNoConsume());
+        assertEquals(4 + a.getPower(), b.getPowerNoConsume());
     }
 
     @Test

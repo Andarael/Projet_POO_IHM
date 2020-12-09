@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package inventory;
 
 import entity.item.Item;
@@ -164,7 +166,7 @@ class InventoryTest {
 
     @Test
     void getFirstItem() {
-        assertEquals(item1,inv2.getFirstItem());
+        assertEquals(item1, inv2.getFirstItem());
         assertNull(inv1.getFirstItem());
     }
 
@@ -193,7 +195,7 @@ class InventoryTest {
     @Test
     void removeGold() {
         assertFalse(inv2.removeGold(100));
-        assertFalse(inv2.removeGold(- 5));
+        assertFalse(inv2.removeGold(-5));
         assertTrue(inv2.removeGold(5));
 
         assertSame(5, inv2.getGold());

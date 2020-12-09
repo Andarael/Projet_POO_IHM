@@ -1,6 +1,8 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
-import entity.Being;
+import entity.Entity;
 import entity.Player;
 import interfaces.Usable;
 
@@ -23,16 +25,16 @@ public class Food extends Item implements Usable {
         this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE, restoreValue);
     }
 
-    @Override
-    public String getPrefix() {
-        return "FOOD : ";
-    }
-
     /**
      * @return the restore value of the food.
      */
     public int getRestoreValue() {
         return restoreValue;
+    }
+
+    @Override
+    public String getPrefix() {
+        return "FOOD : ";
     }
 
     @Override
@@ -45,23 +47,56 @@ public class Food extends Item implements Usable {
         return USAGE;
     }
 
+    /**
+     * Use the item to feed
+     * Displays its own messages
+     *
+     * @return false, invalid use all the time
+     */
     @Override
-    public String use() {
-        return "Try using it on a Being";
+    public boolean use() {
+        System.out.println("Try using it on a Being");
+        return false;
     }
 
-    public String use(Player player) {
-        if (player == null)
-            return "This Being does not exist" + getUsage();
+    /**
+     * use the item to feed
+     * Displays its own messages
+     *
+     * @param entity the entity to feed (player)
+     * @return true if the entity was fed
+     */
+    @Override
+    public boolean use(Entity entity) {
+        if (entity instanceof Player) {
+            return use((Player) entity);
+        }
+        System.out.println("This can only be used on the Player");
+        return false;
+    }
 
-        String output = restoreValue + "hp";
+    /**
+     * use the item to feed
+     * Displays its own messages
+     *
+     * @param player the Player of the game
+     * @return true if the player was fed
+     */
+    public boolean use(Player player) {
+        if (player == null) {
+            System.out.println("This Being does not exist" + getUsage());
+            return false;
+        }
+
+        String message = restoreValue + "hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);
-            return "You healed " + output;
+            System.out.println("You healed " + message);
         } else {
             player.hurt(restoreValue);
-            return "You got poisoned by " + output;
+            System.out.println("You got poisoned by " + message);
         }
+        return true;
     }
 
 }

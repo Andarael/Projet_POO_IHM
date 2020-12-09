@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package game;
 
 public enum EnumCommand {
@@ -62,22 +64,6 @@ public enum EnumCommand {
         this.shortCommand = shortCommand;
     }
 
-    public String getCommandUsage() {
-        return usage;
-    }
-
-    public int minArg() {
-        return minArg;
-    }
-
-    public int maxArg() {
-        return maxArg;
-    }
-
-    public String getShortCommand() {
-        return shortCommand;
-    }
-
     public static EnumCommand getCommandFromString(String str) {
         String temp = str.toUpperCase();
 
@@ -94,5 +80,21 @@ public enum EnumCommand {
         if (command == null)
             return false;
         return nb >= command.minArg() && nb <= command.maxArg();
+    }
+
+    public String getCommandUsage() {
+        return usage;
+    }
+
+    public int minArg() {
+        return minArg;
+    }
+
+    public int maxArg() {
+        return maxArg;
+    }
+
+    public String getShortCommand() {
+        return shortCommand;
     }
 }

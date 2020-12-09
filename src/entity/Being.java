@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import interfaces.Fightable;
@@ -12,12 +14,11 @@ import interfaces.Fightable;
 public class Being extends Container implements Fightable, Comparable<Being> {
 
     public static final int DEFAULT_HEALTH = 20;
-
-    private int maxHp;
     private final int BASE_HEALTH;
+    private final int power;
+    private int maxHp;
     private int hp;
     private int level;
-    private final int power;
 
     public Being(String name, String description, int hp, int power) {
         super(name, description);
@@ -44,7 +45,7 @@ public class Being extends Container implements Fightable, Comparable<Being> {
     }
 
     public Being(String name, int hp) {
-        this(name, null, hp,1);
+        this(name, null, hp, 1);
     }
 
     public Being(String name) {

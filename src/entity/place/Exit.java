@@ -5,12 +5,12 @@ import entity.Entity;
 public class Exit extends Entity {
     protected final Place destination;
 
-    public Exit(Place destination){
+    public Exit(Place destination) {
         super(destination.getName());
         this.destination = destination;
     }
 
-    public Exit(){
+    public Exit() {
         super(null);
         destination = null;
     }
@@ -19,7 +19,7 @@ public class Exit extends Entity {
         return this.destination;
     }
 
-    public Place goIn(){
+    public Place goIn() {
         return this.destination;
     }
 

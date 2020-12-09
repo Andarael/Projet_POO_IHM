@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package inventory;
 
 import entity.item.Item;

@@ -1,16 +1,17 @@
 package command;
 
-import entity.place.Place;
 import entity.item.Item;
+import entity.place.Place;
 import world.World;
 
 
 public abstract class Look implements Command {
-    private World world;
+    private final World world;
 
     public Look(World world) {
         this.world = world;
     }
+
     @Override
     public void execute() {
         this.world.getCurrentPlace().display();

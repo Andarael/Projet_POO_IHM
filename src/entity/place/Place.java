@@ -1,8 +1,5 @@
 package entity.place;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import entity.Container;
 import entity.Entity;
 import entity.Player;
@@ -10,18 +7,21 @@ import entity.StaticContainer;
 import utils.Col;
 import utils.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Place extends Entity {
     private final String name;
-    private List<Exit> listExits;
     private final int exitMax = 4;
-    private List<Container> listContainers;
     private final int containerMax = 4;
-    private StaticContainer placeContainer;
+    private final List<Exit> listExits;
+    private final List<Container> listContainers;
+    private final StaticContainer placeContainer;
     private Player player;
 
 
-    public Place(String name){
+    public Place(String name) {
         super(name);
         this.name = name;
         this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
@@ -41,14 +41,14 @@ public class Place extends Entity {
         return this.player;
     }
 
-    public void addPlayer(Player player1){
+    public void addPlayer(Player player1) {
         if (!this.hasPlayer()) {
             this.player = player1;
         }
     }
 
-    public void rmPlayer(){
-        if(this.hasPlayer()){
+    public void rmPlayer() {
+        if (this.hasPlayer()) {
             this.player = null;
         }
     }
@@ -57,55 +57,54 @@ public class Place extends Entity {
 
     /* ------ les Exits ------*/
 
-    public void addExit(Place place,int position){ //position dans la list = sa position dans la salle))
-        if(this.nbExit()<this.exitMax) {
+    public void addExit(Place place,
+                        int position) { //position dans la list = sa position dans la salle))
+        if (this.nbExit() < this.exitMax) {
             Exit exit = new Exit(place);
-            this.listExits.add(position,exit);
+            this.listExits.add(position, exit);
         }
     }
 
-    public void addLockedExit(Place place,int position, Col color){
-        if(this.nbExit()<this.exitMax) {
-            Exit exit = new LockedExit(place,color);
-            this.listExits.add(position,exit);
+    public void addLockedExit(Place place, int position, Col color) {
+        if (this.nbExit() < this.exitMax) {
+            Exit exit = new LockedExit(place, color);
+            this.listExits.add(position, exit);
         }
     }
 
-    public void rmExit(int numExit){
+    public void rmExit(int numExit) {
         this.listExits.remove(numExit);
 
     }
 
-    public Boolean exitExistName(String name){
-        for(Exit exit : this.listExits){
+    public Boolean exitExistName(String name) {
+        for (Exit exit : this.listExits) {
             if (exit.getName().equals(name)) return true;
         }
         return false;
     }
 
-    public Boolean exitExistIndex(int index){
-        if (this.listExits.get(index) != null) return true;
-
-        return false;
+    public Boolean exitExistIndex(int index) {
+        return this.listExits.get(index) != null;
     }
 
-    public Exit getExitByIndex(int index){
+    public Exit getExitByIndex(int index) {
         return this.listExits.get(index);
     }
 
-    public Exit getExitByName(String name){
-        for(Exit exit : this.listExits){
+    public Exit getExitByName(String name) {
+        for (Exit exit : this.listExits) {
             if (exit.getName().equals(name)) return exit;
         }
         return null;
     }
 
-    public int GetIndexExit(String name){
+    public int GetIndexExit(String name) {
         int index = listExits.indexOf(name);
         return index;
     }
 
-    public int nbExit(){
+    public int nbExit() {
         return this.listExits.size();
     }
 
@@ -118,39 +117,39 @@ public class Place extends Entity {
 
     /* ------ les containers ------*/
 
-    public void addContainer(Container container){
-        if(this.nbContainer()<this.containerMax) {
+    public void addContainer(Container container) {
+        if (this.nbContainer() < this.containerMax) {
             this.listContainers.add(container);
         }
 
     }
 
-    public Container rmContainer(Container container){
+    public Container rmContainer(Container container) {
         if (!this.isEmptyContainer()) {
             this.listContainers.remove(container);
         }
         return container;
     }
 
-    public boolean isEmptyContainer(){
+    public boolean isEmptyContainer() {
         return this.listContainers.isEmpty();
     }
 
-    public Boolean containerExists(String name){
-        for(Container container : this.listContainers){
+    public Boolean containerExists(String name) {
+        for (Container container : this.listContainers) {
             if (container.getName().equals(name)) return true;
         }
         return false;
     }
 
-    public Container getContainer(String name){
-        for(Container container : this.listContainers){
+    public Container getContainer(String name) {
+        for (Container container : this.listContainers) {
             if (container.getName().equals(name)) return container;
         }
         return null;
     }
 
-    public int nbContainer(){
+    public int nbContainer() {
         return this.listContainers.size();
     }
 
@@ -163,41 +162,41 @@ public class Place extends Entity {
     //todo
 
 
-    public String displayTopExitLine(){
+    public String displayTopExitLine() {
         /* for(Container container : this.listContainers){
             if (container.getName().equals(name)) return true;
         }*/
-        String line1 = StringUtils.leftPad("#",5,' ')+StringUtils.leftPad("..",5,'#')+StringUtils.leftPad("#",5,'#');
+        String line1 = StringUtils.leftPad("#", 5, ' ') +
+                       StringUtils.leftPad("..", 5, '#') +
+                       StringUtils.leftPad("#", 5, '#');
         return line1;
     }
 
-    public String displayFirstLine(){
+    public String displayFirstLine() {
         //en cour de test
-        String line1 = StringUtils.leftPad("#",5,' ')+StringUtils.leftPad("..",5,'#')+StringUtils.leftPad("#",5,'#');
+        String line1 = StringUtils.leftPad("#", 5, ' ') +
+                       StringUtils.leftPad("..", 5, '#') +
+                       StringUtils.leftPad("#", 5, '#');
         return line1;
     }
 
-    public void draw(int nbContainer){
-        if(this.nbContainer()<2){
+    public void draw(int nbContainer) {
+        if (this.nbContainer() < 2) {
 
-        }else{
-            if(this.nbContainer()<4){
+        } else {
+            if (this.nbContainer() < 4) {
 
             }
         }
     }
 
+    //todo ajouter de quoi récupérer une exit par son nom
+    // pour la méthode use(Exit) de Key et pour Player qui l'appel
 
 
-
-    public void display(){
+    public void display() {
 
     }
-
-
-
-
-
 
 
 }

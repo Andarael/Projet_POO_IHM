@@ -1,9 +1,14 @@
+// Fichier par Josué Raad
+
 package interfaces;
 
 import entity.item.Item;
 
+/**
+ * This interface allow item to be used on other items
+ */
 public interface UsableOnItem extends Usable{
 
-    String use(Item item);
+    boolean use(Item item);
 
 }

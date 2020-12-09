@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,8 +35,8 @@ class WeaponTest {
 
     @Test
     void getPower() {
-        assertEquals(10, ((Weapon)w1).getPower());
-        assertEquals(1, ((Weapon)w2).getPower());
+        assertEquals(10, ((Weapon) w1).getPower());
+        assertEquals(1, ((Weapon) w2).getPower());
     }
 
     @Test

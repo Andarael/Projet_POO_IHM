@@ -1,7 +1,6 @@
-package entity;
+// Fichier par Josué Raad
 
-import entity.item.Item;
-import interfaces.Equipable;
+package entity;
 
 /**
  * An Hostile is a Being hostile toward the player

@@ -1,3 +1,5 @@
+// Fichier par Florian Portrait, Josué Raad, et Thibaud Devemy
+
 package game;
 
 import entity.Container;

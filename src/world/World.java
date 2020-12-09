@@ -1,3 +1,5 @@
+// Fichier par Florian Portrait, Josué Raad, et Thibaud Devemy
+
 package world;
 
 
@@ -13,7 +15,7 @@ public class World {
     private final Set<Place> placeList;
     private Place currentPlace;
     private boolean end;
-    private boolean win;
+    private final boolean win;
 
     public World(int difficulty) {
         if (difficulty < 0 || difficulty > 2)

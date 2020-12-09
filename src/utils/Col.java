@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package utils;
 
 /**
@@ -6,32 +8,30 @@ package utils;
  * So the default windows powershell does not support it.
  */
 public enum Col {
-    RESET("\u001B[0m", "RESET"),
+    RESET("\u001B[0m"),
 
-    BLACK("\u001B[30m", "BLACK"),
-    RED("\u001B[31m", "RED"),
-    GREEN("\u001B[32m", "GREEN"),
-    YELLOW("\u001B[33m", "YELLOW"),
-    BLUE("\u001B[34m", "BLUE"),
-    PURPLE("\u001B[35m", "PURPLE"),
-    CYAN("\u001B[36m", "CYAN"),
-    WHITE("\u001B[37m", "WHITE"),
+    BLACK("\u001B[30m"),
+    RED("\u001B[31m"),
+    GREEN("\u001B[32m"),
+    YELLOW("\u001B[33m"),
+    BLUE("\u001B[34m"),
+    PURPLE("\u001B[35m"),
+    CYAN("\u001B[36m"),
+    WHITE("\u001B[37m"),
 
-    BACKGROUND_BLACK("\u001B[40m", "BACKGROUND_BLACK"),
-    BACKGROUND_RED("\u001B[41m", "BACKGROUND_RED"),
-    BACKGROUND_GREEN("\u001B[42m", "BACKGROUND_GREEN"),
-    BACKGROUND_YELLOW("\u001B[43m", "BACKGROUND_YELLOW"),
-    BACKGROUND_BLUE("\u001B[44m", "BACKGROUND_BLUE"),
-    BACKGROUND_PURPLE("\u001B[45m", "BACKGROUND_PURPLE"),
-    BACKGROUND_CYAN("\u001B[46m", "BACKGROUND_CYAN"),
-    BACKGROUND_WHITE("\u001B[47m", "BACKGROUND_WHITE");
+    BACKGROUND_BLACK("\u001B[40m"),
+    BACKGROUND_RED("\u001B[41m"),
+    BACKGROUND_GREEN("\u001B[42m"),
+    BACKGROUND_YELLOW("\u001B[43m"),
+    BACKGROUND_BLUE("\u001B[44m"),
+    BACKGROUND_PURPLE("\u001B[45m"),
+    BACKGROUND_CYAN("\u001B[46m"),
+    BACKGROUND_WHITE("\u001B[47m");
 
     private final String value;
-    private final String colorName;
 
-    Col(String s, String colorName) {
+    Col(String s) {
         this.value = s;
-        this.colorName = colorName;
     }
 
     /**
@@ -45,8 +45,11 @@ public enum Col {
         return color + s + RESET;
     }
 
+    /**
+     * @return the name of the color (in english and all CAPITAL)
+     */
     public String getColorName() {
-        return this.colorName;
+        return this.value;
     }
 
     @Override

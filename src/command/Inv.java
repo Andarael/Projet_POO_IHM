@@ -2,11 +2,11 @@ package command;
 
 import entity.Being;
 import entity.item.Item;
-import world.Main;
 import entity.place.Place;
+import world.Main;
 
 public abstract class Inv implements Command {
-    private Being enti;
+    private final Being enti;
 
     public Inv(Being player) {
         this.enti = player;
@@ -15,8 +15,8 @@ public abstract class Inv implements Command {
     @Override
     public void execute() {
         Main.cleanScreen();
-        System.out.println("PV : "+this.enti.getHp());
-        System.out.println("PO : "+this.enti.getGold());
+        System.out.println("PV : " + this.enti.getHp());
+        System.out.println("PO : " + this.enti.getGold());
         System.out.print("Weapon : ");
 /*        this.enti.getWeapon().getDisplay();
         enti.getInventory().getInvDisplayDetails();*/

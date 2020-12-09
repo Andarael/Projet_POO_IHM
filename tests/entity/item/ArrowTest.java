@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +24,7 @@ class ArrowTest {
 
     @Test
     void use() {
-        assertTrue(a.use().contains("Invalid"));
+        assertFalse(a.use());
     }
 
     @Test

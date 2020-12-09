@@ -1,5 +1,6 @@
-package entity.item;
+// Fichier par Josué Raad
 
+package entity.item;
 
 /**
  * Hand is a special unique weapon

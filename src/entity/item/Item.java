@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
 import entity.Entity;
@@ -8,7 +10,7 @@ import entity.Entity;
  * value can't be negative.
  * If an item is miss constructed, default values are used to avoid an ill formed item.
  * All items have a prefix to know of which type it is.
- *
+ * <p>
  * An Item is comparable to another lexicographically.
  */
 public class Item extends Entity implements Comparable<Item> {

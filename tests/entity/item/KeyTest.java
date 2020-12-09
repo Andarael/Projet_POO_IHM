@@ -1,9 +1,11 @@
+// Fichier par Josué Raad
+
 package entity.item;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import entity.place.Exit;
 import entity.place.LockedExit;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Col.*;
@@ -50,8 +52,8 @@ class KeyTest {
 
     @Test
     void use() {
-        assertTrue(k1.use().contains(k1.getUsage()));
-        assertTrue(k1.use(null).contains(k1.getUsage()));
+        assertFalse(k1.use());
+        assertFalse(k1.use(null));
     }
 
     @Test
@@ -61,13 +63,13 @@ class KeyTest {
 
         k1.use(lockedExit);
         assertFalse(lockedExit.isLocked());
-        assertTrue(k1.use(lockedExit).contains("not"));
+        assertFalse(k1.use(lockedExit));
 
         k1.use(lockedExit2);
         assertTrue(lockedExit2.isLocked());
 
         Exit exit = new Exit();
-        assertTrue(k1.use(exit).contains(k1.getUsage()));
+        assertFalse(k1.use(exit));
     }
 
     @Test
@@ -79,6 +81,6 @@ class KeyTest {
     void isSameColor() {
         assertFalse(k1.isSameColor(null));
         assertFalse(k1.isSameColor(k2));
-        assertTrue(k1.isSameColor(new Key(null,null, BLUE)));
+        assertTrue(k1.isSameColor(new Key(null, null, BLUE)));
     }
 }

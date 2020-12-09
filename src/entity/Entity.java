@@ -1,3 +1,5 @@
+// Fichier par Josué Raad
+
 package entity;
 
 import interfaces.Lookable;
@@ -10,7 +12,7 @@ import static utils.Shortener.shorten;
  * An entity have a name, a shortName and a description
  * Only the description can be null
  * If an Entity is miss constructed, default values are used to avoid an ill formed Entity.
- *
+ * <p>
  * An entity is equal to another if their name or shortName are the same, their description could be different.
  */
 public abstract class Entity implements Lookable {
@@ -36,14 +38,17 @@ public abstract class Entity implements Lookable {
         this(name, null);
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void updateDescription(String update) {
         this.description = update;
     }
