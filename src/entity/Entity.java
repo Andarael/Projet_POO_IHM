@@ -2,6 +2,7 @@ package entity;
 
 import interfaces.Lookable;
 
+import static java.util.Objects.hash;
 import static utils.Shortener.shorten;
 
 /**
@@ -82,6 +83,15 @@ public abstract class Entity implements Lookable {
         boolean part2 = (shortName.toUpperCase()).equals(comparedShortName);
 
         return (part1 || part2);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash1 = hash(name.toUpperCase());
+        int hash2 = hash(shortName.toUpperCase());
+
+        // opération bit à bit sur sur les hash de name et ShortName pour correspondre à equals()
+        return hash(hash1 | hash2);
     }
 
     @Override
