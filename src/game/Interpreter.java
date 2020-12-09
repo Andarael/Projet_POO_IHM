@@ -15,37 +15,39 @@ public class Interpreter {
     public static List<String> interpret() {
         Scanner scanner = new Scanner(System.in);
 
-        List<String> inputTabStr = new ArrayList<>();
+        List<String> stringList = new ArrayList<>();
         String commandString;
         int args;
         boolean isInvalid = true;
 
         while (isInvalid) {
 
-            if (scanner.hasNext())
-                inputTabStr = Arrays.asList(scanner.nextLine().split(" "));
+            stringList = Arrays.asList(scanner.nextLine().split(" "));
 
-            if (inputTabStr.size() > 0) {
-                commandString = inputTabStr.get(0);
-                args = inputTabStr.size() - 1;
+            // vérification que l'on n'a pas reçu une Liste vide
+                // Et initialisation des variables pour le test de validité
+            if (stringList.size() > 0) {
+                commandString = stringList.get(0);
+                args = stringList.size() - 1;
                 isInvalid = !isValidCommand(getCommandFromString(commandString), args);
             }
 
-            inputTabStr = inputTabStr.stream()
+            // conversion en majuscules de la lsite des arguments de la commande
+            stringList = stringList.stream()
                                      .map(x -> {
                                          x = x.toUpperCase();
                                          return x;
-                                     }).collect(Collectors.toList());
+                                     })
+                                     .collect(Collectors.toList());
 
+            // si invalide on affiche un msg d'erreur
             if (isInvalid) {
-                System.out.println(inputTabStr +
-                                   " Is not a valid command, try to type HELP");
+                System.out.println(stringList +
+                                   " Is not a valid command, try 'HELP'");
             }
         }
 
-        return inputTabStr;
-
-        // return inputTabStr;
+        return stringList;
     }
 
     public static void main(String[] args) {
