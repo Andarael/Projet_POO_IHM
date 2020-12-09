@@ -56,8 +56,8 @@ class KeyTest {
 
     @Test
     void use2() {
-        LockedExit lockedExit = new LockedExit(null, null,  BLUE);
-        LockedExit lockedExit2 = new LockedExit(null, null,  YELLOW);
+        LockedExit lockedExit = new LockedExit(BLUE);
+        LockedExit lockedExit2 = new LockedExit(YELLOW);
 
         k1.use(lockedExit);
         assertFalse(lockedExit.isLocked());
@@ -67,7 +67,7 @@ class KeyTest {
         assertTrue(lockedExit2.isLocked());
 
 
-        Exit exit = new Exit(null);
+        Exit exit = new Exit();
         assertTrue(k1.use(exit).contains(k1.getUsage()));
     }
 
