@@ -114,7 +114,7 @@ public class Player extends Being {
         }
         return "This (" + item.getName() + ") is not usable";
 
-        // todo add usage with Food.use(being)
+        // todo add usage with Food.use(Player)
     }
 
     public String use(Item item1, Item item2) {
