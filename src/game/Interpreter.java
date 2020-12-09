@@ -25,7 +25,7 @@ public class Interpreter {
             stringList = Arrays.asList(scanner.nextLine().split(" "));
 
             // vérification que l'on n'a pas reçu une Liste vide
-                // Et initialisation des variables pour le test de validité
+            // Et initialisation des variables pour le test de validité
             if (stringList.size() > 0) {
                 commandString = stringList.get(0);
                 args = stringList.size() - 1;
@@ -34,17 +34,15 @@ public class Interpreter {
 
             // conversion en majuscules de la lsite des arguments de la commande
             stringList = stringList.stream()
-                                     .map(x -> {
-                                         x = x.toUpperCase();
-                                         return x;
-                                     })
-                                     .collect(Collectors.toList());
+                                   .map(x -> {
+                                       x = x.toUpperCase();
+                                       return x;
+                                   })
+                                   .collect(Collectors.toList());
 
             // si invalide on affiche un msg d'erreur
-            if (isInvalid) {
-                System.out.println(stringList +
-                                   " Is not a valid command, try 'HELP'");
-            }
+            if (isInvalid)
+                System.out.println(stringList + " Is not a valid command, try 'HELP'");
         }
 
         return stringList;
