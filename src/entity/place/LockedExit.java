@@ -5,14 +5,18 @@ import utils.Col;
 
 public class LockedExit extends Exit {
     private boolean locked;
-    private final Place origine;
     private final Col color;
 
-    public LockedExit(Place destination, Place origine, Col color) {
+    public LockedExit(Place destination, Col color) {
         super(destination);
-        this.origine = origine;
         this.locked = true;
         this.color = color;
+    }
+
+    public LockedExit(Col color){
+        super();
+        this.color = color;
+        this.locked = true;
     }
 
     public boolean canGo(){
@@ -21,19 +25,15 @@ public class LockedExit extends Exit {
 
     @Override
     public Place goIn(){
-        if (!this.canGo()){
-            return this.origine;
-        }else {
+        if (this.canGo())
             return this.destination;
-        }
+        else
+            return null;
+
     }
 
     public boolean isLocked() {
         return this.locked;
-    }
-
-    public Place getOrigine() {
-        return this.origine;
     }
 
     public Col getColor(){

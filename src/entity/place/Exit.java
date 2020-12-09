@@ -10,6 +10,11 @@ public class Exit extends Entity {
         this.destination = destination;
     }
 
+    public Exit(){
+        super(null);
+        destination = null;
+    }
+
     public Place getDestination() {
         return this.destination;
     }
@@ -17,6 +22,7 @@ public class Exit extends Entity {
     public Place goIn(){
         return this.destination;
     }
+
 
 }
 
