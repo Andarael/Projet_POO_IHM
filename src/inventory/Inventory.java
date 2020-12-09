@@ -1,7 +1,6 @@
 package inventory;
 
 import entity.item.Item;
-import interfaces.Describable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ import static utils.Col.colorize;
 
 /**
  * An inventory is a List of items with its own display (but not Describable nor Lookable)
- *
  */
 public class Inventory implements InventoryManagement {
 
@@ -32,12 +30,12 @@ public class Inventory implements InventoryManagement {
     public Item getItem(Item item) {
         // on stream la liste d'items
         // en recherchant in item identique à celui demandé
-            // (identique selon la méthode equals() de item
-            // donc juste le nom ou le shortname d'identique)
+        // (identique selon la méthode equals() de item
+        // donc juste le nom ou le shortname d'identique)
         return itemList.stream()
-                .filter(x -> x.equals(item))
-                .findFirst()
-                .orElse(null);
+                       .filter(x -> x.equals(item))
+                       .findFirst()
+                       .orElse(null);
     }
 
     @Override
@@ -158,6 +156,7 @@ public class Inventory implements InventoryManagement {
 
     /**
      * Creates a string containing the inventory informations
+     *
      * @return a String with the inventory header
      */
     public String getHeaderDisplay() {
@@ -181,6 +180,6 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public String toString() {
-        return getInvDisplayDetails() ;
+        return getInvDisplayDetails();
     }
 }

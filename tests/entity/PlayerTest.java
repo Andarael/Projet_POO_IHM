@@ -1,28 +1,24 @@
 package entity;
 
 import entity.item.*;
-import entity.item.Bow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static utils.Col.*;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.Col.RED;
 
 class PlayerTest {
 
     private Player p;
-
+    private Item lourd;
+    private Item lourd2;
+    private Item heavy2;
     private Item item1;
     private Item item2;
     private Item item3;
     private Item item4;
     private Item item5;
     private Item item6;
-
-    Item lourd;
-    Item lourd2;
-    Item heavy2;
 
     @BeforeEach
     void setUp() {
@@ -32,7 +28,7 @@ class PlayerTest {
         item2 = new Hand();
         item3 = new Bow("Bow", "a wooden bow", 4);
         item4 = new Arrow();
-        item5 = new Weapon("Axe", null,3.0,13, 5);
+        item5 = new Weapon("Axe", null, 3.0, 13, 5);
         item6 = new Key(RED);
 
         lourd = new Item("lrd1", 8.8, 0);
@@ -57,11 +53,11 @@ class PlayerTest {
 
     @Test
     void getPower() {
-        assertEquals(1,p.getPower());
+        assertEquals(1, p.getPower());
 
         Item item = p.getItem("Axe");
         p.equip(item);
-        assertEquals(5,p.getPower());
+        assertEquals(5, p.getPower());
     }
 
     @Test
@@ -89,10 +85,10 @@ class PlayerTest {
 
     @Test
     void equip2() {
-       assertFalse(p.equip("pog"));
-       p.equip("axe");
+        assertFalse(p.equip("pog"));
+        p.equip("axe");
 
-       p.addItem(lourd2);
+        p.addItem(lourd2);
 
         assertFalse(p.equip("bow"));
     }
@@ -133,7 +129,7 @@ class PlayerTest {
         System.out.println(p.use(item1, item2));
         System.out.println(p.use(item4, item3));
         System.out.println(p);
-        assertEquals(1,((Bow) p.getItem("bow")).getArrows());
+        assertEquals(1, ((Bow) p.getItem("bow")).getArrows());
         assertFalse(p.contains("arrow"));
     }
 

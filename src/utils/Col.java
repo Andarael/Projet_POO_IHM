@@ -37,7 +37,7 @@ public enum Col {
     /**
      * Colorize a string with the specified color
      *
-     * @param s the string to colorize
+     * @param s     the string to colorize
      * @param color the color desired
      * @return the colorize string
      */

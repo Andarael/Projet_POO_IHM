@@ -1,12 +1,10 @@
 package world;
 
-import java.awt.*;
-
 public class Exit {
     protected final Place destination;
-    private String direction;
+    private final String direction;
 
-    public Exit(Place destination, String direction){
+    public Exit(Place destination, String direction) {
         this.destination = destination;
         this.direction = direction;
     }
@@ -14,11 +12,12 @@ public class Exit {
     public Place getDestination() {
         return destination;
     }
-    public String getDirection(){
+
+    public String getDirection() {
         return this.direction;
     }
 
-    public Place goIn(){
+    public Place goIn() {
         return this.destination;
     }
 

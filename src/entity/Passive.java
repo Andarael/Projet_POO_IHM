@@ -24,5 +24,4 @@ public class Passive extends Being implements Talkable {
         this.dialogue = str;
     }
 
-
 }

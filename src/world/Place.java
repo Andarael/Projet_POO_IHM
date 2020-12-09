@@ -18,7 +18,7 @@ public class Place {
     private Player player;
 
 
-    public Place(String name){
+    public Place(String name) {
         this.name = name;
         this.listContainers = null;
         this.listExits = null;
@@ -42,14 +42,14 @@ public class Place {
         return this.player;
     }
 
-    public void addPlayer(Player player1){
+    public void addPlayer(Player player1) {
         if (!this.hasPlayer()) {
             this.player = player1;
         }
     }
 
-    public void rmPlayer(){
-        if(this.hasPlayer()){
+    public void rmPlayer() {
+        if (this.hasPlayer()) {
             this.player = null;
         }
     }
@@ -58,31 +58,31 @@ public class Place {
 
     /* ------ les Exits ------*/
 
-    public void addExit(Exit exit){
-        if(this.nbExit()<this.exitMax) {
+    public void addExit(Exit exit) {
+        if (this.nbExit() < this.exitMax) {
             this.listExits.add(exit);
         }
     }
 
-    public Exit rmExit(Exit exit){
+    public Exit rmExit(Exit exit) {
         if (!this.isEmptyExit()) {
             this.listExits.remove(exit);
         }
         return exit;
     }
 
-    public boolean isEmptyExit(){
+    public boolean isEmptyExit() {
         return this.listExits.isEmpty();
     }
 
-    public Boolean exitExists(String name){
-        for(Exit exit : this.listExits){
+    public Boolean exitExists(String name) {
+        for (Exit exit : this.listExits) {
             if (exit.destination.getName().equals(name)) return true;
         }
         return false;
     }
 
-    public int nbExit(){
+    public int nbExit() {
         return this.listExits.size();
     }
 
@@ -95,39 +95,39 @@ public class Place {
 
     /* ------ les containers ------*/
 
-    public void addContainer(Container container){
-        if(this.nbContainer()<this.containerMax) {
+    public void addContainer(Container container) {
+        if (this.nbContainer() < this.containerMax) {
             this.listContainers.add(container);
         }
 
     }
 
-    public Container rmContainer(Container container){
+    public Container rmContainer(Container container) {
         if (!this.isEmptyContainer()) {
             this.listContainers.remove(container);
         }
         return container;
     }
 
-    public boolean isEmptyContainer(){
+    public boolean isEmptyContainer() {
         return this.listContainers.isEmpty();
     }
 
-    public Boolean containerExists(String name){
-        for(Container container : this.listContainers){
+    public Boolean containerExists(String name) {
+        for (Container container : this.listContainers) {
             if (container.getName().equals(name)) return true;
         }
         return false;
     }
 
-    public Container getContainer(String name){
-        for(Container container : this.listContainers){
+    public Container getContainer(String name) {
+        for (Container container : this.listContainers) {
             if (container.getName().equals(name)) return container;
         }
         return null;
     }
 
-    public int nbContainer(){
+    public int nbContainer() {
         return this.listContainers.size();
     }
 
@@ -138,34 +138,28 @@ public class Place {
     }
 
 
-
-    public String displayFirstLine(){
+    public String displayFirstLine() {
         //en cour de test
-        String line1 = StringUtils.leftPad("#",5,' ')+StringUtils.leftPad("..",5,'#')+StringUtils.leftPad("#",5,'#');
+        String line1 = StringUtils.leftPad("#", 5, ' ') +
+                       StringUtils.leftPad("..", 5, '#') +
+                       StringUtils.leftPad("#", 5, '#');
         return line1;
     }
 
-    public void draw(int nbContainer){
-        if(this.nbContainer()<2){
+    public void draw(int nbContainer) {
+        if (this.nbContainer() < 2) {
 
-        }else{
-            if(this.nbContainer()<4){
+        } else {
+            if (this.nbContainer() < 4) {
 
             }
         }
     }
 
 
-
-
-    public void display(){
+    public void display() {
 
     }
-
-
-
-
-
 
 
 }
