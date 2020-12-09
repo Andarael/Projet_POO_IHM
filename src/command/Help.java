@@ -4,6 +4,8 @@ import entity.item.Item;
 import entity.place.Place;
 import world.Main;
 
+import java.util.List;
+
 public abstract class Help implements Command {
 
     @Override
@@ -39,5 +41,6 @@ public abstract class Help implements Command {
         System.out.println("Mauvaise utilisation de la commande \"help\"");
         System.out.println("Essayez plutot : help");
     }
+
 
 }

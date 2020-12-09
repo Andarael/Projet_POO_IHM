@@ -50,7 +50,23 @@ public enum EnumCommand {
         "U",
         1,
         2
+    ),
+    ATTACK("Attack a monster in the current place"+
+           "For example : Attack Cyclops -> You attack the Cyclops and deals him 5 damage",
+           "A",
+           1,
+           1
     );
+
+
+
+
+
+
+
+
+
+    ;
 
     private final String usage;
     private final String shortCommand;

@@ -1,8 +1,11 @@
 package command;
 
 import entity.item.Item;
+import entity.place.Exit;
 import entity.place.Place;
 import inventory.Inventory;
+
+import java.util.List;
 
 public abstract class Take implements Command {
 
@@ -35,4 +38,11 @@ public abstract class Take implements Command {
         System.out.println("Mauvaise utilisation de la commande \"take\"");
         System.out.println("Essayez plutot : take <objet>");
     }
+
+    public void execute(Item item, Exit exit){
+        System.out.println("Mauvaise utilisation de la commande \"take\"");
+        System.out.println("Essayez plutot : take <objet>");
+    }
+
+
 }
