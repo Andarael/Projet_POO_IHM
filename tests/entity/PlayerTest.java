@@ -1,6 +1,7 @@
 package entity;
 
 import entity.item.*;
+import entity.item.Bow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -94,8 +95,6 @@ class PlayerTest {
        p.addItem(lourd2);
 
         assertFalse(p.equip("bow"));
-
-
     }
 
     @Test
@@ -127,6 +126,15 @@ class PlayerTest {
         System.out.println(p.use("poug"));
 
         System.out.println(p.use("h"));
+    }
+
+    @Test
+    void use2() {
+        System.out.println(p.use(item1, item2));
+        System.out.println(p.use(item4, item3));
+        System.out.println(p);
+        assertEquals(1,((Bow) p.getItem("bow")).getArrows());
+        assertFalse(p.contains("arrow"));
     }
 
     @Test

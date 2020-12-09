@@ -4,6 +4,7 @@ import entity.item.Hand;
 import entity.item.Item;
 import interfaces.Equipable;
 import interfaces.Usable;
+import interfaces.UsableOnItem;
 import inventory.LimitedInventory;
 
 public class Player extends Being {
@@ -94,6 +95,7 @@ public class Player extends Being {
     }
 
     public String use(Item item) {
+
         Item newItem = getItem(item);
 
         if (newItem == null) {
@@ -103,17 +105,29 @@ public class Player extends Being {
                 return "You don't have this item in your inventory";
         }
 
-        if (newItem instanceof Usable)
-            return ((Usable) newItem).use();
-
+        String output;
+        if (newItem instanceof Usable) {
+            output = ((Usable) newItem).use();
+            removeItem(newItem);
+            return output;
+        }
         return "This (" + item.getName() + ") is not usable";
+    }
+
+    public String use(Item item1, Item item2) {
+
+        if (! (item1 instanceof UsableOnItem))
+            return "This (" + item1.getName() + ") is not usable on another item";
+
+        String output;
+        output = ((UsableOnItem) item1).use(item2);
+        removeItem(item1);
+        return output;
     }
 
     public String use(String itemName) {
         return use(new Item(itemName));
     }
-
-
 
     @Override
     public String getSimpleDisplay() {
@@ -122,4 +136,5 @@ public class Player extends Being {
                ", pow : " + getPower() + "\n" +
                "equipped : " + equipped.getSimpleDisplay();
     }
+
 }
