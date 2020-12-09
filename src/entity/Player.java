@@ -6,6 +6,7 @@ import interfaces.Equipable;
 import interfaces.Usable;
 import interfaces.UsableOnItem;
 import inventory.LimitedInventory;
+import world.Exit;
 
 public class Player extends Being {
 
@@ -112,6 +113,8 @@ public class Player extends Being {
             return output;
         }
         return "This (" + item.getName() + ") is not usable";
+
+        // todo add usage with Food.use(being)
     }
 
     public String use(Item item1, Item item2) {
@@ -127,6 +130,10 @@ public class Player extends Being {
 
     public String use(String itemName) {
         return use(new Item(itemName));
+    }
+
+    public void use(Item item, Exit exit) {
+        //todo use(Item, Exit)
     }
 
     @Override
