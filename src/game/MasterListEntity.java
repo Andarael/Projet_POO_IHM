@@ -11,11 +11,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class MasterListEntity {
+public interface MasterListEntity {
     // =========================================================================
 
     // Items ===================================================================
-    public static Entity pog = new Item("Pog");
+    Entity pog = new Item("Pog");
 
 
     // todo add all entities
@@ -34,9 +34,9 @@ public class MasterListEntity {
     // Passive =================================================================
 
 
-    public static final Set<Entity> entityMasterList = initAllEntities();
+    Set<Entity> entityMasterList = initAllEntities();
 
-    public static Set<Entity> initAllEntities() {
+    static Set<Entity> initAllEntities() {
         HashSet<Entity> output = new HashSet<>();
 
         output.add(pog);
@@ -46,7 +46,7 @@ public class MasterListEntity {
         return output;
     }
 
-    public static Set<Item> getItems() {
+    static Set<Item> getItems() {
         Set<Item> output;
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Item))
@@ -55,7 +55,7 @@ public class MasterListEntity {
         return output;
     }
 
-    public static Set<Place> getPlaces() {
+    static Set<Place> getPlaces() {
         Set<Place> output;
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Place))
@@ -64,7 +64,7 @@ public class MasterListEntity {
         return output;
     }
 
-    public static Set<Hostile> getHostiles() {
+    static Set<Hostile> getHostiles() {
         Set<Hostile> output;
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Hostile))
@@ -73,7 +73,7 @@ public class MasterListEntity {
         return output;
     }
 
-    public static Set<Passive> getPassives() {
+    static Set<Passive> getPassives() {
         Set<Passive> output;
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Passive))
@@ -82,7 +82,7 @@ public class MasterListEntity {
         return output;
     }
 
-    public static Set<Container> getContainers() {
+    static Set<Container> getContainers() {
         Set<Container> output;
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Container))
@@ -90,4 +90,5 @@ public class MasterListEntity {
                                  .collect(Collectors.toSet());
         return output;
     }
+
 }
