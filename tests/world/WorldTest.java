@@ -51,6 +51,15 @@ class WorldTest {
 
         assertEquals(size, w.size());
 
+        p1.equals(new Place("P1"));
+
+        assertEquals(new Place("P1"), p1);
+
+        w.addPlace(new Place("P1"));
+        System.out.println(w);
+
+        assertEquals(size, w.size());
+
     }
 
     @Test

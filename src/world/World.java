@@ -4,7 +4,6 @@ package world;
 import entity.Player;
 import entity.place.Place;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -69,12 +68,12 @@ public class World {
         return getPlace(new Place(str));
     }
 
-    public void setCurrentPlace(Place place) {
-        this.currentPlace = place;
-    }
-
     public Place getCurrentPlace() {
         return this.currentPlace;
+    }
+
+    public void setCurrentPlace(Place place) {
+        this.currentPlace = place;
     }
 
     public void setCurrentPlace(String str) {
