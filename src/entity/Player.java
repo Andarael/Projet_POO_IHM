@@ -6,7 +6,7 @@ import interfaces.Equipable;
 import interfaces.Usable;
 import interfaces.UsableOnItem;
 import inventory.LimitedInventory;
-import world.Exit;
+import entity.place.Exit;
 
 public class Player extends Being {
 
