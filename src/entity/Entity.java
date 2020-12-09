@@ -22,7 +22,6 @@ public abstract class Entity implements Lookable {
     private final String name;
     private String description;
     private String shortName;
-
     public Entity(String name, String description) {
         // le nom ne peut pas être null.
         if (name == null)

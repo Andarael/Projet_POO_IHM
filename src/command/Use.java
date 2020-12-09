@@ -34,7 +34,7 @@ public abstract class Use implements Command {
     @Override
     public void execute(Item i) {
 
-            entity.Player.use(String.valueOf(i));
+
 
     }
 

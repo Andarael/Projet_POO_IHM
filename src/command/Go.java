@@ -36,9 +36,10 @@ public abstract class Go implements Command {
         System.out.println("Essayez plutot : go <direction>");
     }
 
+    @Override
     public void execute(Item item, Exit exit){
-        System.out.println("Mauvaise utilisation de la commande \"take\"");
-        System.out.println("Essayez plutot : take <objet>");
+        System.out.println("Mauvaise utilisation de la commande \"go\"");
+        System.out.println("Essayez plutot : go <direction>");
     }
 
     @Override
