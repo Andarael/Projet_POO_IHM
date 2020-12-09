@@ -50,14 +50,15 @@ public class Interpreter {
 
     public static void main(String[] args) {
         System.out.println("type a command : ");
-        List<String> strTab = new ArrayList<>();
-        strTab.add("GO");
+        List<String> stringList = new ArrayList<>();
+        stringList.add("GO");
 
-        while (!strTab.get(0).equals("QUIT")) {
+        while (!stringList.get(0).equals("QUIT")) {
 
-            strTab = interpret();
+            stringList = interpret();
 
-            System.out.println(strTab);
+            System.out.println(stringList);
+            System.out.println("We execute : " + getCommandFromString(stringList.get(0)));
         }
 
 
