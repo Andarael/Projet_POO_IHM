@@ -54,6 +54,6 @@ public class Bow extends Weapon {
     @Override
     public String getDisplay() {
         return super.getDisplay()
-                + "arrows : " + arrows;
+                + ", arrows : " + arrows;
     }
 }
