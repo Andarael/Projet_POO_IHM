@@ -1,6 +1,7 @@
 import entity.item.Food;
 import entity.item.Item;
 
+import static game.EnumCommand.*;
 import static utils.Col.*;
 
 public class Main {
@@ -61,5 +62,8 @@ public class Main {
         System.out.println(colorize("BACKGROUND_PURPLE", BACKGROUND_PURPLE));
         System.out.println(colorize("BACKGROUND_CYAN", BACKGROUND_CYAN));
         System.out.println(colorize("BACKGROUND_WHITE", BACKGROUND_WHITE));
+
+
+        System.out.println(GO);
     }
 }
