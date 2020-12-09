@@ -20,7 +20,7 @@ public class Passive extends Being implements Talkable {
     }
 
     @Override
-    public void changeDialogue(String str) {
+    public void setDialogue(String str) {
         this.dialogue = str;
     }
 

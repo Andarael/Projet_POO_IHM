@@ -4,9 +4,9 @@ public interface Talkable extends Describable {
 
     String getDialogue();
 
-    void changeDialogue(String str);
+    void setDialogue(String str);
 
     default String talk() {
-        return getName() + getDialogue();
+        return getName() + " : " + getDialogue();
     }
 }

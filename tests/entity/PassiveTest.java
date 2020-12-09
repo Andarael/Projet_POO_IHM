@@ -27,7 +27,7 @@ class PassiveTest {
 
     @Test
     void changeDialogue() {
-        passive.changeDialogue("je susi un jeune marchand !");
+        passive.setDialogue("je susi un jeune marchand !");
         assertTrue(passive.getDialogue().contains("jeune"));
     }
 }
