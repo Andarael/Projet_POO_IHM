@@ -81,20 +81,24 @@ public class Place extends Entity {
 
     }
 
-    public Boolean exitExists(String name){
+    public Boolean exitExistName(String name){
         for(Exit exit : this.listExits){
             if (exit.getName().equals(name)) return true;
         }
         return false;
     }
 
-    public Boolean exitIndexExists(int index){
+    public Boolean exitExistIndex(int index){
         if (this.listExits.get(index) != null) return true;
 
         return false;
     }
 
-    public Exit getExit(String name){
+    public Exit getExitByIndex(int index){
+        return this.listExits.get(index);
+    }
+
+    public Exit getExitByName(String name){
         for(Exit exit : this.listExits){
             if (exit.getName().equals(name)) return exit;
         }
@@ -162,32 +166,7 @@ public class Place extends Entity {
     }
 
     //todo
-/*
-    public Exit getTopExit(){
-        for(Exit exit : this.listExits){
-            if (exit.getDirection().equals("top")) return exit;
-        }
-        return null;
-    }
-    public Exit getBottomExit(){
-        for(Exit exit : this.listExits){
-            if (exit.getDirection().equals("bottom")) return exit;
-        }
-        return null;
-    }
-    public Exit getLeftExit(){
-        for(Exit exit : this.listExits){
-            if (exit.getDirection().equals("left")) return exit;
-        }
-        return null;
-    }
-    public Exit getRightExit(){
-        for(Exit exit : this.listExits){
-            if (exit.getDirection().equals("right")) return exit;
-        }
-        return null;
-    }
-*/
+
 
     public String displayTopExitLine(){
         /* for(Container container : this.listContainers){
