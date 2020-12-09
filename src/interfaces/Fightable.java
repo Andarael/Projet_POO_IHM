@@ -92,4 +92,8 @@ public interface Fightable extends Describable {
     default void kill() {
         setHp(0);
     }
+
+    default void fight(Fightable player,Fightable opponent) {
+        // todo
+    }
 }
