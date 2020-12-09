@@ -71,7 +71,7 @@ public class Place extends Entity {
 
     public void addLockedExit(Place place,int position, Col color){
         if(this.nbExit()<this.exitMax) {
-            Exit exit = new LockedExit(place,this,color);
+            Exit exit = new LockedExit(place,color);
             this.listExits.add(position,exit);
         }
     }
