@@ -3,7 +3,7 @@ package command;
 import entity.Being;
 import entity.item.Item;
 import world.Main;
-import world.Place;
+import entity.place.Place;
 
 public abstract class Inv implements Command {
     private Being enti;

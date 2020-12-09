@@ -1,6 +1,8 @@
 package world;
 
 
+import entity.place.Place;
+
 public class World {
 
 

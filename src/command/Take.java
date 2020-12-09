@@ -1,7 +1,7 @@
 package command;
 
 import entity.item.Item;
-import world.Place;
+import entity.place.Place;
 import inventory.Inventory;
 
 public abstract class Take implements Command {

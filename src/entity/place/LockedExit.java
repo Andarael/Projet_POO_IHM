@@ -1,4 +1,4 @@
-package world;
+package entity.place;
 
 import entity.item.Key;
 import utils.Col;
@@ -8,8 +8,8 @@ public class LockedExit extends Exit {
     private final Place origine;
     private final Col color;
 
-    public LockedExit(Place destination, Place origine, String direction, Col color) {
-        super(destination, direction);
+    public LockedExit(Place destination, Place origine, Col color) {
+        super(destination);
         this.origine = origine;
         this.locked = true;
         this.color = color;

@@ -1,6 +1,6 @@
 package command;
 
-import world.Place;
+import entity.place.Place;
 import entity.item.Item;
 import world.World;
 

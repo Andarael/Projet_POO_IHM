@@ -2,8 +2,8 @@ package entity.item;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import world.Exit;
-import world.LockedExit;
+import entity.place.Exit;
+import entity.place.LockedExit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Col.*;
@@ -56,8 +56,8 @@ class KeyTest {
 
     @Test
     void use2() {
-        LockedExit lockedExit = new LockedExit(null, null, null, BLUE);
-        LockedExit lockedExit2 = new LockedExit(null, null, null, YELLOW);
+        LockedExit lockedExit = new LockedExit(null, null,  BLUE);
+        LockedExit lockedExit2 = new LockedExit(null, null,  YELLOW);
 
         k1.use(lockedExit);
         assertFalse(lockedExit.isLocked());
@@ -67,7 +67,7 @@ class KeyTest {
         assertTrue(lockedExit2.isLocked());
 
 
-        Exit exit = new Exit(null, null);
+        Exit exit = new Exit(null);
         assertTrue(k1.use(exit).contains(k1.getUsage()));
     }
 

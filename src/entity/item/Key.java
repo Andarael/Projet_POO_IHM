@@ -2,8 +2,8 @@ package entity.item;
 
 import interfaces.Usable;
 import utils.Col;
-import world.Exit;
-import world.LockedExit;
+import entity.place.Exit;
+import entity.place.LockedExit;
 
 import static utils.Col.RESET;
 import static utils.Col.colorize;

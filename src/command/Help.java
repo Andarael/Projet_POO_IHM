@@ -2,7 +2,7 @@ package command;
 
 import entity.item.Item;
 import world.Main;
-import world.Place;
+import entity.place.Place;
 
 public abstract class Help implements Command {
 

@@ -3,7 +3,7 @@ package command;
 
 
 import entity.item.Item;
-import world.Place;
+import entity.place.Place;
 
 
 public abstract class Erreur implements Command {

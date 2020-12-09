@@ -1,7 +1,7 @@
 package command;
 
-import world.Place;
-import world.Exit;
+import entity.place.Place;
+import entity.place.Exit;
 import entity.item.Item;
 
 public interface Command {

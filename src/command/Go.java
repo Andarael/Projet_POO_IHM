@@ -1,9 +1,7 @@
 package command;
 
 import entity.item.Item;
-import world.Place;
 import world.World;
-import entity.Entity;
 
 public abstract class Go implements Command{
     private World world;

@@ -1,7 +1,7 @@
 package command;
 
 import entity.item.Item;
-import world.Place;
+import entity.place.Place;
 import world.World;
 
 public abstract class Quit implements Command {
