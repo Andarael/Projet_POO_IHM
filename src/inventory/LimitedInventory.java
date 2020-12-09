@@ -38,7 +38,7 @@ public class LimitedInventory extends Inventory {
     }
 
     /**
-     * @return the total capcity used by all items in the inventory
+     * @return the total capacity used by all items in the inventory
      */
     public double getUsedCapacity() {
         return itemList.stream()

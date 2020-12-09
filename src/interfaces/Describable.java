@@ -25,7 +25,7 @@ public interface Describable extends Shortenable {
     void updateDescription(String update);
 
     /**
-     * Create a simple version of the describable object to be displayer
+     * Create a simple version of the describable object to be displayed
      * > (short) Name : description
      * or
      * > (short) Name

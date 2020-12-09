@@ -24,7 +24,7 @@ public interface StringUtils {
     }
 
     /**
-     * Add a givend amount of char to the right of the given string
+     * Add a given amount of char to the right of the given string
      *
      * @param str  the String to add char to the left
      * @param size the number of chars to add

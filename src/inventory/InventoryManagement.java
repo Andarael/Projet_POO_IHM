@@ -97,7 +97,7 @@ public interface InventoryManagement {
     int getQuantity(String str);
 
     /**
-     * @param nb the quantityu of gold to add
+     * @param nb the quantity of gold to add
      */
     void addGold(int nb);
 
