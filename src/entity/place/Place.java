@@ -15,7 +15,7 @@ import java.util.List;
 public class Place extends Entity {
     private final String name;
     private final int exitMax = 4;
-    private final int containerMax = 4;
+    private final int containerMax = 10;
     private final List<Exit> listExits;
     private final List<Container> listContainers;
     private final StaticContainer placeContainer;
@@ -213,7 +213,7 @@ public class Place extends Entity {
                 str = "X";
             else
                 str = "@";
-            String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 0, ' ');
+            String line1 = StringUtils.leftPad(this.getExitByIndex(1).draw(), 0, ' ') + StringUtils.leftPad(str, 0, ' ');
             lineMiddle = line1;
         } else {
             String line1 = StringUtils.leftPad("#", 5, ' ');
@@ -227,7 +227,7 @@ public class Place extends Entity {
             else
                 str = "@";
             String line2 = StringUtils.leftPad(str, 12, ' ') +
-                           StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
+                           StringUtils.leftPad(this.getExitByIndex(2).draw(), 1, ' ');
             lineMiddle = lineMiddle + line2 + "\n";
 
         } else {
@@ -282,6 +282,13 @@ public class Place extends Entity {
                                    StringUtils.leftPad(this.getContainerByIndex(i).draw(), 1, ' ') +
                                    StringUtils.leftPad("#", 6, ' ');
                     lineContainers = lineContainers + line2 + "\n";
+                    cpt = !cpt;
+                }else{
+                    String line2 = StringUtils.leftPad("#", 5, ' ') +
+                                   StringUtils.leftPad(this.getContainerByIndex(i).draw(), 6, ' ') +
+                                   StringUtils.leftPad("#", 1, ' ');
+                    lineContainers = lineContainers + line2 + "\n";
+                    cpt = !cpt;
                 }
             }
 
@@ -292,19 +299,19 @@ public class Place extends Entity {
     }
 
 
-    public void testDisplay() {
+    @Override
+    public String draw() {
 
         String top = this.displayExitTopLine();
-        String middle = this.displayExitMiddleLine();
+        String middle = this.displayContainers();
         String bot = this.displayExitBotLine();
 
-        System.out.println(top + "\n" + middle + "\n" + bot);
+        System.out.println(top + middle + bot);
+        return top + middle + bot;
     }
 
 
-    public void display() {
 
-    }
 
     @Override
     public String look() {
