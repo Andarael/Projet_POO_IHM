@@ -11,6 +11,7 @@ import interfaces.Usable;
 import interfaces.UsableOnItem;
 import inventory.LimitedInventory;
 
+import static utils.Printer.printErr;
 import static utils.Printer.printMsg;
 
 /**
@@ -169,12 +170,18 @@ public class Player extends Being {
      */
     public boolean use(Item item) {
 
-        Item newItem = getItem(item);
+        if (item == null) {
+            printErr("This item does not exist");
+            return false;
+        }
 
-        if (!haveItem(newItem)) {
+        if (!haveItem(item)) {
             printMsg("You don't have " + item.getName() + " in your inventory");
             return false;
         }
+
+        // getting the actual item from the player's inventory
+        Item newItem = getItem(item);
 
         // check if item is usable
         if (!(newItem instanceof Usable)) {
@@ -194,7 +201,6 @@ public class Player extends Being {
             removeItem(newItem);
 
         return output;
-
     }
 
     /**
@@ -206,6 +212,11 @@ public class Player extends Being {
      * @return true if the item was used correctly
      */
     public boolean use(String itemName) {
+        if (itemName == null) {
+            printErr("This item does not exist");
+            return false;
+        }
+
         return use(new Item(itemName));
     }
 
@@ -220,26 +231,35 @@ public class Player extends Being {
      */
     public boolean use(Item item1, Item item2) {
 
+        if (item1 == null || item2 == null) {
+            printErr("This item does not exist");
+            return false;
+        }
+
         if (!haveItem(item1)) {
-            printMsg("You don't have " + item1.getName() + " in your inventory");
+            printErr("You don't have " + item1.getName() + " in your inventory");
             return false;
         }
 
         if (!haveItem(item2)) {
-            printMsg("You don't have " + item2.getName() + " in your inventory");
+            printErr("You don't have " + item2.getName() + " in your inventory");
             return false;
         }
 
-        if (!(item1 instanceof UsableOnItem)) {
-            printMsg("This (" + item1.getName() + ") is not usable on another item");
+        // getting the actual items from the player's inventory
+        Item newItem1 = getItem(item1);
+        Item newItem2 = getItem(item2);
+
+        if (!(newItem1 instanceof UsableOnItem)) {
+            printErr("This (" + newItem1.getName() + ") is not usable on another item");
             return false;
         }
 
-        boolean output = ((UsableOnItem) item1).use(item2);
+        boolean output = ((UsableOnItem) newItem1).use(newItem2);
 
         // remove only if item was used
         if (output)
-            removeItem(item1);
+            removeItem(newItem1);
 
         return output;
     }
@@ -254,6 +274,11 @@ public class Player extends Being {
      * @return true if the item1 was used correctly
      */
     public boolean use(String itemName1, String itemName2) {
+        if (itemName1 == null || itemName2 == null) {
+            printErr("This item does not exist");
+            return false;
+        }
+
         return use(new Item(itemName1), new Item(itemName2));
     }
 
@@ -267,10 +292,43 @@ public class Player extends Being {
      * @return true if the item was used correctly
      */
     public boolean use(Item item, Exit exit) {
-        // todo check si item.use() a marché
-        // todo use(Item, Exit)
-        // todo faire en sorte de pouvoir récup les exit pour les passer au joueur
-        return false;
+
+        if (item == null || exit == null) {
+            printErr("This does not exist");
+            return false;
+        }
+
+        if (!haveItem(item)) {
+            printMsg("You don't have " + item.getName() + " in your inventory");
+            return false;
+        }
+
+        // getting the actual item from the player's inventory
+        Item newItem = getItem(item);
+
+        // check if item is usable
+        if (!(newItem instanceof Usable)) {
+            printMsg("This (" + item.getName() + ") is not usable");
+            return false;
+        }
+
+        boolean output;
+
+        output = ((Usable) newItem).use(exit);
+
+        // remove only if item was used
+        if (output)
+            removeItem(newItem);
+
+        return output;
+    }
+
+    public boolean use(String itemName, Exit exit) {
+        if (itemName == null || exit == null) {
+            printErr("This does not exist");
+            return false;
+        }
+        return use(new Item(itemName), exit);
     }
 
 }
