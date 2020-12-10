@@ -54,13 +54,15 @@ public interface WorldContains {
     // ===========================================================
 
     static boolean isCurrentPlace(World world, Place place) {
+        if (world == null || place == null)
+            return false;
         return world.getCurrentPlace().equals(place);
-        // todo
     }
 
-    static boolean isHere(World world, Container container) {
-        return false;
-        // todo
+    static boolean isHere(Place place, Container container) {
+        if (place == null || container == null)
+            return false;
+        return place.getContainer(container) != null;
     }
 
     // ===========================================================
