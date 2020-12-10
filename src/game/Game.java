@@ -13,20 +13,15 @@ import static command.Command.execute;
 
 public class Game {
 
-    private final World world;
-
-    public Game(int difficulty) {
-        this.world = new World(difficulty);
-    }
-
-    public boolean play() {
-
+    public static boolean play(int difficulty) {
 
         List<String> userInput;
         boolean victory = false;
         boolean death = false;
 
         while (! (victory ||death)) {
+
+            World world = new World(difficulty);
 
             displayWelcome();
 
@@ -47,8 +42,6 @@ public class Game {
             if (death) {
                 displayDeath();
             }
-
-
 
         }
 
