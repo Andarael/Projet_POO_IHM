@@ -130,7 +130,7 @@ public class Player extends Being {
     public boolean removeItem(Item item) {
         if (!super.removeItem(item)) {
             if (equipped.equals(item)) {
-                unequip();
+                equipped = HANDS;
                 return true;
             }
             return false;
@@ -158,6 +158,7 @@ public class Player extends Being {
 
         Item newItem = getItem(item);
 
+        // check if item is equipped
         if (newItem == null) {
             if (equipped.equals(item))
                 newItem = equipped;
@@ -167,21 +168,38 @@ public class Player extends Being {
             }
         }
 
-        if (newItem instanceof Usable) {
-            boolean output;
-
-            if (newItem instanceof Food)
-                output = ((Food) newItem).use();
-            else
-                output = ((Usable) newItem).use();
-
-            if (output)
-                removeItem(newItem);
-            return output;
+        // check if item is usable
+        if (! (newItem instanceof Usable)) {
+            System.out.println("This (" + item.getName() + ") is not usable");
+            return false;
         }
 
-        System.out.println("This (" + item.getName() + ") is not usable");
-        return false;
+
+        boolean output;
+
+        if (newItem instanceof Food)
+            output = ((Food) newItem).use(this);
+        else
+            output = ((Usable) newItem).use();
+
+        // remove only if item was used
+        if (output)
+            removeItem(newItem);
+
+        return output;
+
+    }
+
+    /**
+     * Allows the player to use an item with its name.
+     * Displays its own messages
+     * remove the item if successful use
+     *
+     * @param itemName of used item
+     * @return true if the item was used correctly
+     */
+    public boolean use(String itemName) {
+        return use(new Item(itemName));
     }
 
     /**
@@ -202,22 +220,11 @@ public class Player extends Being {
 
         boolean output = ((UsableOnItem) item1).use(item2);
 
+        // remove only if item was used
         if (output)
             removeItem(item1);
 
         return output;
-    }
-
-    /**
-     * Allows the player to use an item with its name.
-     * Displays its own messages
-     * remove the item if successful use
-     *
-     * @param itemName of used item
-     * @return true if the item was used correctly
-     */
-    public boolean use(String itemName) {
-        return use(new Item(itemName));
     }
 
     /**
