@@ -5,13 +5,18 @@ import entity.place.Exit;
 import entity.place.Place;
 import world.World;
 import entity.Player;
-
 import java.util.List;
 
-public abstract class Use implements Command {
-    private final World world;
-    private Player j;
+public interface Use {
 
+
+    public World getWorld() {
+        return world;
+    }
+
+    public Player getJ() {
+        return j;
+    }
 
     public Use(World world) {
         this.world = world;

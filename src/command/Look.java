@@ -8,7 +8,7 @@ import world.World;
 import java.util.List;
 
 
-public abstract class Look implements Command {
+public interface Look {
     private final World world;
 
     public Look(World world) {

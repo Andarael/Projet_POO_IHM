@@ -6,7 +6,10 @@ import entity.place.Place;
 import world.World;
 import game.Interpreter;
 
-public abstract class Go implements Command {
+
+
+
+public interface Go{
     private final World world;
 
     public Go(World world) {

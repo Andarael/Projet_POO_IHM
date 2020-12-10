@@ -6,7 +6,7 @@ import world.Main;
 
 import java.util.List;
 
-public abstract class Help implements Command {
+public interface Help {
 
     @Override
     public void execute() {

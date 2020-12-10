@@ -7,9 +7,9 @@ import inventory.Inventory;
 
 import java.util.List;
 
-public abstract class Take implements Command {
+public interface Take {
 
-    private Inventory inv;
+    static being
 
     public Take(Inventory inv){
         this.inv = inv;
@@ -44,5 +44,7 @@ public abstract class Take implements Command {
         System.out.println("Essayez plutot : take <objet>");
     }
 
+
+    being.talk
 
 }

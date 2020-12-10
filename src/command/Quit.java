@@ -6,7 +6,7 @@ import world.World;
 
 import java.util.List;
 
-public abstract class Quit implements Command {
+public interface Quit {
     private World world;
 
     public Quit(World world) {

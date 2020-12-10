@@ -10,14 +10,13 @@ import inventory.Inventory;
 
 import java.util.List;
 
-public abstract class Inv implements Command {
+public interface Inv{
+
     private final Being enti;
-    private Inventory inven;
+    private inventory.Inventory inven;
     private Player joueur;
 
-    public Inv(Being player) {
-        this.enti = player;
-    }
+
 
     @Override
     public void execute() {

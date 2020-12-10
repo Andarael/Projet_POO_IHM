@@ -5,7 +5,7 @@ import entity.place.Place;
 import java.util.List;
 
 
-public abstract class Erreur implements Command {
+public interface Erreur {
 
 
 
