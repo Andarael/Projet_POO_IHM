@@ -164,7 +164,7 @@ public class Place extends Entity {
                              .orElse(null);
     }
 
-    public Container getContainerByString(String name) {
+    public Container getContainerByName(String name) {
         return getContainer(new Container(name) {
         });
     }
