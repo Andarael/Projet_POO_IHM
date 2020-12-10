@@ -1,16 +1,9 @@
 package command;
 
-import entity.item.Item;
-import entity.place.Place;
-import world.Main;
 
-import java.util.List;
+public interface Help {
 
-public abstract class Help implements Command {
-
-    @Override
-    public void execute() {
-        Main.cleanScreen();
+    static void display() {
         System.out.println("Liste des commandes :");
         System.out.println("- go <direction>      : permet de se deplacer dans une salle adjacente");
         System.out.println("- help                : affiche la liste des commandes");
@@ -22,24 +15,6 @@ public abstract class Help implements Command {
         System.out.println(
                 "- use <objet> <objet> : utilise les deux objets si une combinaison est possible");
         System.out.println("- inv                 : affiche l'inventaire du joueur");
-    }
-
-    @Override
-    public void execute(Place p) {
-        System.out.println("Mauvaise utilisation de la commande \"help\"");
-        System.out.println("Essayez plutot : help");
-    }
-
-    @Override
-    public void execute(Item i) {
-        System.out.println("Mauvaise utilisation de la commande \"help\"");
-        System.out.println("Essayez plutot : help");
-    }
-
-    @Override
-    public void execute(Item i, Item i2) {
-        System.out.println("Mauvaise utilisation de la commande \"help\"");
-        System.out.println("Essayez plutot : help");
     }
 
 

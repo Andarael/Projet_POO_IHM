@@ -14,15 +14,16 @@ import static game.MasterListEntity.*;
 public class World {
 
     private final Player player;
-    private final boolean win;
+    private boolean win;
+    private Place currentPlace;
+    private boolean end;
+
     private final Set<Entity> entities;
     private final Set<Item> items;
     private final Set<Place> places;
     private final Set<Hostile> hostiles;
     private final Set<Passive> passives;
     private final Set<Container> containers;
-    private Place currentPlace;
-    private boolean end;
 
 
     public World(int difficulty) {
@@ -44,6 +45,7 @@ public class World {
         hostiles = getHostiles();
         passives = getPassives();
         containers = getContainers();
+
     }
 
     public World() {

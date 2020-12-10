@@ -13,15 +13,15 @@ public interface Command {
         //todo
     }
 
-    public void execute();
+    void execute();
 
-    public void execute(Place p);
+    void execute(Place p);
 
-    public void execute(Item i);
+    void execute(Item i);
 
-    public void execute(Item i, Item i2);
+    void execute(Item i, Item i2);
 
-    public void execute(Item item, Exit exit);
+    void execute(Item item, Exit exit);
 
 }
 
