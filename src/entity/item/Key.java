@@ -20,7 +20,7 @@ import static utils.Col.colorize;
 public class Key extends Item implements Usable {
 
     protected static final String PREFIX = "KEY  : ";
-    private static final String USAGE = "try 'USE [Key] [Exit]'";
+    private static final String USAGE = "try 'USE [Key] [Place]'";
     private final Col color;
 
     public Key(String name, String description, Col color) {
