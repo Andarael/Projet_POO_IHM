@@ -90,7 +90,7 @@ public class Place extends Entity {
 
     public Boolean exitExistName(String name) {
         for (Exit exit : this.listExits) {
-            if (exit.getName().equals(name)) return true;
+            if (exit != null && (exit.destination.equals(new Place(name)))) return true;
         }
         return false;
     }
