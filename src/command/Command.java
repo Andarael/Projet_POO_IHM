@@ -3,11 +3,15 @@ package command;
 import entity.item.Item;
 import entity.place.Exit;
 import entity.place.Place;
-import game.Interpreter;
-import java.util.ArrayList;
+import world.World;
+
 import java.util.List;
 
 public interface Command {
+
+    static void execute(World world, List<String> args) {
+        //todo
+    }
 
     public void execute();
 
