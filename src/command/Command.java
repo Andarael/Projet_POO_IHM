@@ -87,7 +87,7 @@ public enum Command {
     ),
 
     SELL("Sell an item to the Npc in the current place\n" +
-         "For example : Sell Merchant sword -> You sold a sword from the merchant and won 5 golds",
+         "For example : Sell Merchant sword -> You sold a sword to the merchant and won 5 golds",
          "S",
          2,
          2
