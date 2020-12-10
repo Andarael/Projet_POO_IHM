@@ -48,7 +48,7 @@ public class World implements WorldContains {
         passives = getPassives();
         containers = getContainers();
 
-        player.addItem(redKey);
+        initPlayer(player);
 
     }
 

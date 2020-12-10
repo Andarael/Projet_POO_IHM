@@ -2,22 +2,23 @@
 
 package game;
 
-import entity.Container;
-import entity.Entity;
-import entity.Hostile;
-import entity.Passive;
+import entity.*;
 import entity.item.Item;
+import entity.item.Key;
 import entity.place.Place;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static utils.Col.*;
+
 public interface MasterListEntity {
     // =========================================================================
 
     // Items ===================================================================
     Entity pog = new Item("Pog");
+    Key redKey = new Key("redKey", "a red key", RED);
 
     // todo add all entities
     // Weapons =================================================================
@@ -52,6 +53,9 @@ public interface MasterListEntity {
 
     static Set<Item> initItems() {
         Set<Item> output = new HashSet<>();
+
+        output.add(new Item("pogillon"));
+        output.add(redKey);
         //todo init items
         return output;
     }
@@ -79,7 +83,6 @@ public interface MasterListEntity {
         //todo init items
         return output;
     }
-
 
     static Set<Item> getItems() {
         Set<Item> output;
@@ -124,6 +127,11 @@ public interface MasterListEntity {
                                  .map(x -> (Container) x)
                                  .collect(Collectors.toSet());
         return output;
+    }
+
+    static void initPlayer(Player player) {
+        // todo player.addItem(...)
+        player.addItem(redKey);
     }
 
 }
