@@ -43,12 +43,12 @@ public abstract class Use implements Command {
     @Override
     public void execute(Item i, Item i2) {
 
-                entity.Player.use(i, i2);
+                // entity.Player.use(i, i2);
 
     }
 
     public void execute(Item i, Exit exit){
-        entity.Player.use(i, exit);
+       // entity.Player.use(i, exit);
     }
 
 

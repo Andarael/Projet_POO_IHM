@@ -22,7 +22,7 @@ public abstract class Look implements Command {
 
     @Override
     public void execute(Place p) {
-        this.world.getPlace(p).display();
+       // this.world.getPlace(p).display();
     }
 
     @Override
