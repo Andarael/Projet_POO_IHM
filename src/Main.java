@@ -1,7 +1,7 @@
 import entity.item.Food;
 import entity.item.Item;
 
-import static game.EnumCommand.GO;
+import static command.Command.GO;
 import static utils.Col.*;
 
 public class Main {

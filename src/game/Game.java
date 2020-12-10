@@ -2,12 +2,12 @@
 
 package game;
 
-import command.Command;
+import command.Execute;
 import world.World;
 
 import java.util.List;
 
-import static game.Interpreter.getUserInput;
+import static command.Interpreter.getUserInput;
 
 
 public class Game {
@@ -28,7 +28,7 @@ public class Game {
 
             userInput = getUserInput();
 
-            Command.execute(world, userInput);
+            Execute.execute(world, userInput);
 
             victory = world.hasWin();
             death = world.getPlayer().isDead();

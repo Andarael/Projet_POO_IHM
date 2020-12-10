@@ -48,6 +48,7 @@ public class World {
 
     }
 
+
     public World() {
         this(1);
     }
@@ -55,6 +56,44 @@ public class World {
     public Player getPlayer() {
         return player;
     }
+
+
+    public boolean haveEntity(Entity e) {
+        return entities.contains(e);
+    }
+
+    public boolean haveItem(Item item) {
+        return items.contains(item);
+    }
+
+    public boolean havePlace(Place place) {
+        return places.contains(place);
+    }
+
+    public boolean isCurrentPlace(Place place) {
+        return currentPlace.equals(place);
+    }
+
+    public boolean haveHostile(Hostile hostile) {
+        return hostiles.contains(hostile);
+    }
+
+    public boolean havePassive(Passive passive) {
+        return passives.contains(passive);
+    }
+
+    public boolean isHere(Container container) {
+        return false;
+    }
+
+    public boolean playerHaveItem(Item item) {
+        return player.contains(item);
+    }
+
+    public boolean ContainerHaveItem(Container container, Item item) {
+        return false;
+    }
+
 
     public boolean isEnd() {
         return end;
