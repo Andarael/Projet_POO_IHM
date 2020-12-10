@@ -4,6 +4,7 @@ import entity.Container;
 import entity.Entity;
 import entity.Player;
 import entity.StaticContainer;
+import entity.item.Item;
 import utils.Col;
 import utils.StringUtils;
 
@@ -83,14 +84,14 @@ public class Place extends Entity {
         }
     }
 
-    public void rmExit(int numExit) {
-        this.listExits.remove(numExit);
+    public void rmExit(int position) {
+        this.listExits.set(position,null);
 
     }
 
     public Boolean exitExistName(String name) {
         for (Exit exit : this.listExits) {
-            if (exit.getName().equals(name)) return true;
+            if (exit != null && (exit.destination.equals(new Place(name)))) return true;
         }
         return false;
     }
@@ -105,7 +106,7 @@ public class Place extends Entity {
 
     public Exit getExitByName(String name) {
         for (Exit exit : this.listExits) {
-            if (exit != null && (exit.getName().equals(name))) return exit; //lazy evaluation
+            if (exit != null && (exit.destination.equals(new Place(name)))) return exit; //lazy evaluation
         }
         return null;
     }
@@ -164,7 +165,7 @@ public class Place extends Entity {
                              .orElse(null);
     }
 
-    public Container getContainerByString(String name) {
+    public Container getContainerByName(String name) {
         return getContainer(new Container(name) {
         });
     }
@@ -182,6 +183,13 @@ public class Place extends Entity {
         for (int i = 0; i < this.nbContainer(); i++) {
             //System.out.println("- " + this.listContainers.get(i).getName());
         }
+    }
+
+    /* ------ le place container ------*/
+
+    public void addItemToPlace(Item item){
+        if(item == null) return;
+        this.placeContainer.addItem(item);
     }
 
 
