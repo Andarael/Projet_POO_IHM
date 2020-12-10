@@ -7,7 +7,7 @@ public interface Printer {
 
 
     static void printErr(String str) {
-        System.out.println("ERREUR : " + colorize(str, RED));
+        System.out.println("ERROR : " + colorize(str, RED));
     }
 
     static void printMsg(String str) {
