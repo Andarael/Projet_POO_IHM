@@ -105,7 +105,7 @@ public class Place extends Entity {
 
     public Exit getExitByName(String name) {
         for (Exit exit : this.listExits) {
-            if (exit != null && (exit.getName().equals(name))) return exit; //lazy evaluation
+            if (exit != null && (exit.destination.equals(new Place(name)))) return exit; //lazy evaluation
         }
         return null;
     }
