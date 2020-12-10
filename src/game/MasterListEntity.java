@@ -85,7 +85,34 @@ public interface MasterListEntity {
     static Set<Item> initItems() {
         Set<Item> output = new HashSet<>();
         output.add(new Item("pogillion"));
+
+        //init item
+
+        output.add(golden_statue);
+
+        //init weapon
+
+        output.add(great_sword);
+        output.add(one_handed_sword);
+        output.add(dagger);
+        output.add(hunters_bow);
+        output.add(irons_arrow);
+        output.add(spear);
+
+        //init food
+
+        output.add(chicken);
+        output.add(rotten_chicken);
+        output.add(elixir_of_divine_life);
+        output.add(coca_zero);
+        output.add(big_cake);
+        output.add(poison);
+        output.add(apple);
+
+        //init keys
         output.add(redKey);
+
+
         //todo init items
         return output;
     }
@@ -98,12 +125,22 @@ public interface MasterListEntity {
 
     static Set<Hostile> initHostiles() {
         Set<Hostile> output = new HashSet<>();
+        output.add(orc);
+        output.add(goblin);
+        output.add(dragon);
+        output.add(necromancer);
+        output.add(minotaur);
+        output.add(ghost);
+        output.add(skeleton);
         //todo init items
         return output;
     }
 
     static Set<Passive> initPassives() {
         Set<Passive> output = new HashSet<>();
+        output.add(ordinary_guy);
+        output.add(merchant);
+        output.add(scandalf);
         //todo init items
         return output;
     }
