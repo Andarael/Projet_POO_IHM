@@ -174,16 +174,16 @@ public class Place extends Entity {
                 str = "XX";
             else
                 str = "@@";
-            String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 5, ' ');
+            String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 10, ' ');
             String line2 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad(str, 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
-            lineTop = line1 + "\n" + line2;
+            lineTop = line1 + "\n" + line2 + "\n";
         }else{
             String line2 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("##", 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
-            lineTop = line2;
+            lineTop = line2 + "\n";
         }
         return lineTop;
     }
@@ -209,13 +209,13 @@ public class Place extends Entity {
                     str = "X";
                 else
                     str = "@";
-            String line2 = StringUtils.leftPad(str, 12, ' ') +
-            StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
-            lineMiddle = lineMiddle + line2;
+                String line2 = StringUtils.leftPad(str, 12, ' ') +
+                               StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
+                lineMiddle = lineMiddle + line2 + "\n";
 
-        }else{
+            }else{
                 String line2 = StringUtils.leftPad("#", 12, ' ');
-                lineMiddle = lineMiddle + line2;
+                lineMiddle = lineMiddle + line2 + "\n";
             }
 
         return lineMiddle;
@@ -230,20 +230,49 @@ public class Place extends Entity {
                 str = "XX";
             else
                 str = "@@";
-            String line1 = StringUtils.leftPad(this.getExitByIndex(3).draw(), 5, ' ');
-            String line2 = StringUtils.leftPad("#", 5, ' ') +
+            String line1 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad(str, 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
-            lineBot = line1 + "\n" + line2;
+            String line2 = StringUtils.leftPad(this.getExitByIndex(3).draw(), 10, ' ');
+
+            lineBot = line1 + "\n" + line2 + "\n";
         }else{
-            String line2 = StringUtils.leftPad("#", 5, ' ') +
+            String line1 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("##", 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
-            lineBot = line2;
+            lineBot = line1 + "\n";
         }
         return lineBot;
     }
 
+
+    public String displayContainers(){
+        String lineContainers ="";
+        if (this.isEmptyContainer()){
+            String line2 = StringUtils.leftPad("#", 5, ' ') +
+                           StringUtils.leftPad("#", 12, ' ');
+            lineContainers = line2 + "\n";
+        }else{
+            int toPlaceMiddle = this.nbContainer()/2;
+            boolean cpt = true;
+            for (int i = 0; i < this.nbContainer(); i++ ){
+                if (i == toPlaceMiddle){
+                    lineContainers = lineContainers + this.displayExitMiddleLine();
+                }
+
+                if (cpt){
+                    String line2 = StringUtils.leftPad("#", 5, ' ') +
+                                   StringUtils.leftPad(this.getContainerByIndex(i).draw(), 1, ' ') +
+                                   StringUtils.leftPad("#", 6, ' ');
+                    lineContainers = lineContainers + line2 + "\n";
+                }
+            }
+
+        }
+
+
+        return lineContainers;
+    }
 
 
     public void testDisplay() {
