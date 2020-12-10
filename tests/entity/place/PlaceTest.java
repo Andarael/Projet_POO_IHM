@@ -1,3 +1,5 @@
+// Fichier par Florian Portrait
+
 package entity.place;
 
 import entity.Container;
@@ -270,11 +272,11 @@ class PlaceTest {
         place4.addContainer(cont2);
         place4.addContainer(cont3);
         place4.addContainer(cont4);
-        place4.addContainer(cont5);
+       /* place4.addContainer(cont5);
         place4.addContainer(cont6);
         place4.addContainer(cont7);
         place4.addContainer(cont8);
-        place4.addContainer(cont9);
+        place4.addContainer(cont9);*/
 
         place4.draw();
     }
