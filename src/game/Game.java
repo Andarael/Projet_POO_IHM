@@ -54,7 +54,7 @@ public class Game {
     }
 
     private static void displayWelcome() {
-        printMsg("Hello adventurer and welcome to i QZid qzi p");
+        printMsg("You enter the dungeon of Xar Tsaroth, but you're starting to regret this decision");
         printMsg("you awake in a room, here is your inventory");
     }
 
@@ -63,10 +63,12 @@ public class Game {
     }
 
     private static void displayDeath() {
+        printMsg("your wounds led you to a slow and painful death");
         // todo
     }
 
     private static void displayVictory() {
+        printMsg("You defeated the dragon and saved the princess ! Now with this jewel, everyone will finally know that you are true hero");
         // todo
     }
 
