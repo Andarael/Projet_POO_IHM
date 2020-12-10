@@ -83,8 +83,8 @@ public class Place extends Entity {
         }
     }
 
-    public void rmExit(int numExit) {
-        this.listExits.remove(numExit);
+    public void rmExit(int position) {
+        this.listExits.set(position,null);
 
     }
 
