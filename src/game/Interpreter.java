@@ -21,7 +21,7 @@ public class Interpreter {
      *
      * @return a list of Strings containing a valid command and its arguments
      */
-    public static List<String> interpret() {
+    public static List<String> getUserInput() {
         Scanner scanner = new Scanner(System.in);
 
         List<String> stringList = new ArrayList<>();
@@ -65,13 +65,11 @@ public class Interpreter {
 
         while (!stringList.get(0).equals("QUIT")) {
 
-            stringList = interpret();
+            stringList = getUserInput();
 
             System.out.println(stringList);
             System.out.println("We execute : " + getCommandFromString(stringList.get(0)));
         }
-
-
     }
 
 }
