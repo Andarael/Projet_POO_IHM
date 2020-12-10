@@ -11,6 +11,8 @@ import interfaces.Usable;
 import interfaces.UsableOnItem;
 import inventory.LimitedInventory;
 
+import static utils.Printer.printMsg;
+
 /**
  * A player is a being that can equip items
  * and have an inventory limited in capacity
@@ -146,6 +148,17 @@ public class Player extends Being {
                "equipped : " + equipped.getSimpleDisplay();
     }
 
+    public boolean haveItem(Item item) {
+        Item newItem = getItem(item);
+
+        // also check if item is equipped
+        if (newItem == null)
+            if (equipped.equals(item))
+                newItem = equipped;
+
+        return newItem != null;
+    }
+
     /**
      * Use an item (simple use with only 1 arg)
      * Displays its own messages
@@ -158,22 +171,16 @@ public class Player extends Being {
 
         Item newItem = getItem(item);
 
-        // check if item is equipped
-        if (newItem == null) {
-            if (equipped.equals(item))
-                newItem = equipped;
-            else {
-                System.out.println("You don't have this item in your inventory");
-                return false;
-            }
-        }
-
-        // check if item is usable
-        if (! (newItem instanceof Usable)) {
-            System.out.println("This (" + item.getName() + ") is not usable");
+        if (!haveItem(newItem)) {
+            printMsg("You don't have " + item.getName() + " in your inventory");
             return false;
         }
 
+        // check if item is usable
+        if (!(newItem instanceof Usable)) {
+            printMsg("This (" + item.getName() + ") is not usable");
+            return false;
+        }
 
         boolean output;
 
@@ -213,8 +220,18 @@ public class Player extends Being {
      */
     public boolean use(Item item1, Item item2) {
 
+        if (!haveItem(item1)) {
+            printMsg("You don't have " + item1.getName() + " in your inventory");
+            return false;
+        }
+
+        if (!haveItem(item2)) {
+            printMsg("You don't have " + item2.getName() + " in your inventory");
+            return false;
+        }
+
         if (!(item1 instanceof UsableOnItem)) {
-            System.out.println("This (" + item1.getName() + ") is not usable on another item");
+            printMsg("This (" + item1.getName() + ") is not usable on another item");
             return false;
         }
 
