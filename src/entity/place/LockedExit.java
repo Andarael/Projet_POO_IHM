@@ -3,6 +3,8 @@ package entity.place;
 import entity.item.Key;
 import utils.Col;
 
+import static utils.Col.colorize;
+
 public class LockedExit extends Exit {
     private final Col color;
     private boolean locked;
@@ -49,5 +51,23 @@ public class LockedExit extends Exit {
         this.locked = true;
     }
 
+    @Override
+    public String draw() {
+        return colorize(super.draw(),this.color);
+    }
 
+    @Override
+    public String getName() {
+        return colorize(super.getName(),this.color);
+    }
+
+    @Override
+    public String getSimpleDisplay() {
+        return colorize(super.getSimpleDisplay(),this.color);
+    }
+
+    @Override
+    public String getDisplay() {
+        return colorize(super.getDisplay(),this.color);
+    }
 }
