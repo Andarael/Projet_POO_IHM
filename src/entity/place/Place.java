@@ -4,6 +4,7 @@ import entity.Container;
 import entity.Entity;
 import entity.Player;
 import entity.StaticContainer;
+import entity.item.Item;
 import utils.Col;
 import utils.StringUtils;
 
@@ -182,6 +183,13 @@ public class Place extends Entity {
         for (int i = 0; i < this.nbContainer(); i++) {
             //System.out.println("- " + this.listContainers.get(i).getName());
         }
+    }
+
+    /* ------ le place container ------*/
+
+    public void addItemToPlace(Item item){
+        if(item == null) return;
+        this.placeContainer.addItem(item);
     }
 
 
