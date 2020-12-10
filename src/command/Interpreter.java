@@ -1,6 +1,6 @@
 // Fichier par Josué Raad
 
-package game;
+package command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static game.EnumCommand.getCommandFromString;
-import static game.EnumCommand.isValidCommand;
+import static command.Command.getCommandFromString;
+import static command.Command.isValidCommand;
 
 public class Interpreter {
-
 
     /**
      * Get a command input from the user
@@ -53,9 +52,17 @@ public class Interpreter {
             // et on reprend à la prochaine itération de la boucle
             if (isInvalid)
                 System.out.println(stringList + " Is not a valid command, try 'HELP'");
+
         }
 
         return stringList;
+    }
+
+
+    public static void interpret(List<String> args) {
+        // todo : prends une commande en str et renvoie
+
+
     }
 
     public static void main(String[] args) {
