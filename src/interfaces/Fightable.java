@@ -110,7 +110,7 @@ public interface Fightable extends Describable {
      * @param player   the player of the game
      * @param opponent the fightable that the player will fight
      */
-    default void fight(Player player, Fightable opponent) {
+    static void fight(Player player, Fightable opponent) {
         if (player == null || opponent == null)
             return;
 
@@ -118,11 +118,11 @@ public interface Fightable extends Describable {
 
             player.attack(opponent);
 
-            try {
+            /*try {
                 wait(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
 
             if (opponent.isDead())
                 break;
