@@ -173,11 +173,6 @@ public class Place extends Entity {
         return this.listContainers.size();
     }
 
-    public void displayContainer() {
-        for (int i = 0; i < this.nbContainer(); i++) {
-            //System.out.println("- " + this.listContainers.get(i).getName());
-        }
-    }
 
     /* ------ le place container ------*/
 
