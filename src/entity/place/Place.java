@@ -1,6 +1,5 @@
 package entity.place;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import entity.Container;
 import entity.Entity;
 import entity.Player;
@@ -142,11 +141,14 @@ public class Place extends Entity {
         return false;
     }
 
-    public Container getContainer(String name) {
+    public Container getContainerByString(String name) {
         for (Container container : this.listContainers) {
             if (container.getName().equals(name)) return container;
         }
         return null;
+    }
+    public Container getContainerByIndex(int index) {
+        return this.listContainers.get(index);
     }
 
     public int nbContainer() {
@@ -159,7 +161,6 @@ public class Place extends Entity {
         }
     }
 
-    //todo
 
 
 
