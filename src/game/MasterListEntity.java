@@ -3,8 +3,7 @@
 package game;
 
 import entity.*;
-import entity.item.Item;
-import entity.item.Key;
+import entity.item.*;
 import entity.place.Place;
 
 import java.util.HashSet;
@@ -18,14 +17,29 @@ public interface MasterListEntity {
 
     // Items ===================================================================
     Entity pog = new Item("Pog");
+    Item golden_statue = new Item("golden statue", "a small statue with a frightful effigy",1,20);
+
     Key redKey = new Key("redKey", "a red key", RED);
+
 
     // todo add all entities
     // Weapons =================================================================
+    Weapon great_sword = new Weapon("great sword", "a big and heavy sword made with steel", 5, 5, 5);
+    Weapon one_handed_sword = new Weapon("one-handed sword", "a short but sharp sword made with iron", 3, 3, 3);
+    Weapon dagger = new Weapon("dagger", "a tiny dagger", 1, 1, 1);
+    Bow hunters_bow = new Bow("hunter's bow", "a small but tough bow, made for sharpened arrows", 3, 3, 3);
+    Arrow irons_arrow = new Arrow();
 
     // Food   ==================================================================
+    Food chicken = new Food("chicken", "a raw chicken", 1, 2, 2);
+    Food rotten_chicken = new Food("rotten chicken", "a fragrant chicken", 1,1,-2);
+    Food elixir_of_divine_life = new Food("elixir of divine life", "it just look like a bottle of perfume",1,10, 10);
+    Food coca_zero = new Food("coca zero", "it just look like oil, but with no sugar in it", 1,5,20);
+    Food big_cake = new Food("big cake", "a big lemon cake", 1,3,3);
+    Food poison = new Food("weird-looking bottle", "i wouldn't drink this if i were you", 1,10,-15);
 
     // Keys   ==================================================================
+
 
     // Places ==================================================================
 
