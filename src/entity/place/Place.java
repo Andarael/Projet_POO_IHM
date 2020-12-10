@@ -1,3 +1,5 @@
+// Fichier par Florian Portrait
+
 package entity.place;
 
 import entity.Container;
@@ -25,6 +27,18 @@ public class Place extends Entity {
 
     public Place(String name) {
         super(name);
+        this.name = name;
+        this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
+        for (int i = 0; i < this.exitMax; i++) {
+            this.listExits.add(null);
+        }
+
+        this.listContainers = new ArrayList<>(this.containerMax);
+        this.placeContainer = new StaticContainer(name);
+    }
+
+    public Place(String name, String description) {
+        super(name, description);
         this.name = name;
         this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
         for (int i = 0; i < this.exitMax; i++) {

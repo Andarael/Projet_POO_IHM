@@ -20,9 +20,6 @@ public interface MasterListEntity {
     Item golden_statue = new Item("golden statue", "a small statue with a frightful effigy",1,20);
     Item divine_jewel = new Item("divine jewel", "as you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves...");
 
-    Key redKey = new Key("redKey", "a red key", RED);
-
-
     // todo add all entities
     // Weapons =================================================================
     Weapon great_sword = new Weapon("great sword", "a big and heavy sword made with steel", 5, 5, 5);
@@ -43,11 +40,27 @@ public interface MasterListEntity {
 
 
     // Keys   ==================================================================
-
+    Key redKey = new Key("redKey", "a red key", RED);
+    Key blueKey = new Key("blueKey", "a red key", BLUE);
+    Key greenKey = new Key("greenKey", "a red key", GREEN);
+    Key yellowKey = new Key("yellowKey", "a red key", YELLOW);
+    Key purpleKey = new Key("purpleKey", "a red key", PURPLE);
 
     // Places ==================================================================
+    Place tavern = new Place("Tavern","A tavern with a festive atmosphere, just watch out for the flying mug !");
+    Place cave = new Place("Cave","A big dark cave, your voice echoes endlessly");
+    Place graveyard = new Place("Graveyard","In the cemetery you see an expanse of old tomb adorned with various cracks and withered plants");
+    Place forest = new Place("Forest","An endless and sinister forest faces you, straining your ears you might hear screams of agony in the distance");
+    Place church= new Place("church","A charming little church, with beautiful stained glass windows");
+    Place laboratory = new Place("Laboratory","A laboratory like any other, with all kinds of gadgets and flasks on the shelves");
+    Place barn = new Place("Barn", "At the entrance to the barn, you can see a huge pile of hay, the smell goes with it of course, but that's nature !");
+    Place courtyard = new Place("Courtyard","In the courtyard there is a small garden and next to a lot of training dummies");
+    Place marketPlace = new Place("Marketplace","In the marketplace, lots of people are jostling for their purchases, but watch out for thieves");
+    Place banditLair = new Place("Bandit lair","You see tables overturned, barrels full of swords and of course a crowd of terrifying bandits");
+    Place waterSource = new Place("Water source","A great spring of pure water flows before you");
 
     // StaticContainers ========================================================
+
 
     // Hostiles ================================================================
     Hostile orc = new Hostile("orc", "a green creature", 5, 5);
@@ -112,7 +125,12 @@ public interface MasterListEntity {
         output.add(apple);
 
         //init keys
+
         output.add(redKey);
+        output.add(blueKey);
+        output.add(greenKey);
+        output.add(yellowKey);
+        output.add(purpleKey);
 
 
         //todo init items
@@ -121,6 +139,18 @@ public interface MasterListEntity {
 
     static Set<Place> initPlaces() {
         Set<Place> output = new HashSet<>();
+        output.add(tavern);
+        output.add(cave);
+        output.add(graveyard);
+        output.add(forest);
+        output.add(church);
+        output.add(laboratory);
+        output.add(barn);
+        output.add(courtyard);
+        output.add(marketPlace);
+        output.add(banditLair);
+        output.add(waterSource);
+
         //todo init items
         return output;
     }

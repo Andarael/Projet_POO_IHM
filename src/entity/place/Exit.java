@@ -1,3 +1,5 @@
+// Fichier par Florian Portrait
+
 package entity.place;
 
 import entity.Entity;
