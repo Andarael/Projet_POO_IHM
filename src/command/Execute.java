@@ -1,6 +1,7 @@
 package command;
 
 import entity.Being;
+import entity.Entity;
 import entity.Player;
 import entity.item.Item;
 import entity.place.Exit;
@@ -10,7 +11,9 @@ import world.World;
 
 import java.util.List;
 
-import static command.Command.getCommandFromString;
+import static command.Command.*;
+import static utils.Col.GREEN;
+import static utils.Col.colorize;
 import static utils.Printer.printErr;
 import static utils.Printer.printMsg;
 import static world.WorldContains.haveEntity;
@@ -34,7 +37,8 @@ public interface Execute {
 
         if (player == null) {
             printErr("Fatal error, there is no player in the game !");
-            throw new NullPointerException("Fatal error, there is no player in the game , stopping !");
+            throw new NullPointerException(
+                    "Fatal error, there is no player in the game , stopping !");
         }
 
         if (currentPlace == null) {
@@ -47,17 +51,17 @@ public interface Execute {
 
         if (nbArgs > 0) {
             arg1 = args.get(1);
-            if (!haveEntity(world, arg1)) {
+            if (!(haveEntity(world, arg1) || isACommand(arg1)) ) {
                 printErr(arg1 + " does not exist");
-                return ;
+                return;
             }
         }
 
         if (nbArgs > 1) {
             arg2 = args.get(2);
             if (!haveEntity(world, arg2)) {
-                printErr(arg2 + "does not exist");
-                return ;
+                printErr(arg2 + " does not exist");
+                return;
             }
         }
 
@@ -66,38 +70,54 @@ public interface Execute {
                 if (nbArgs == 1)
                     use(player, arg1);
                 else if (nbArgs == 2)
-                    use(player, arg1, arg2);
+                    use(world, player, arg1, arg2);
                 break;
+
             case GO:
                 go(world, currentPlace, arg1);
                 break;
+
             case DROP:
                 drop(player, currentPlace, arg1);
                 break;
+
             case HELP:
-                help(command);
+                if (nbArgs == 0)
+                    help();
+                if (nbArgs == 1)
+                    help(arg1);
                 break;
+
             case LOOK:
                 if (nbArgs == 1)
                     look(currentPlace, arg1);
                 if (nbArgs == 0)
                     look(currentPlace);
                 break;
+
             case QUIT:
                 quit(world);
                 break;
+
             case SELL:
                 buy(player, arg1, arg2);
                 break;
+
             case BUY:
                 sell(player, arg1, arg2);
                 break;
+
             case TAKE:
-                take(player, currentPlace, arg1);
+                if (nbArgs == 1)
+                    take(player, currentPlace, arg1);
+                if (nbArgs == 2)
+                    take(player, currentPlace, arg1, arg2);
                 break;
+
             case ATTACK:
                 attack(player, currentPlace, arg1);
                 break;
+
             case INVENTORY:
                 inventory(player);
                 break;
@@ -140,24 +160,39 @@ public interface Execute {
     }
 
     static void use(Player player, String item) {
-        player.use(player.getItem(item));
+        player.use(item);
     }
 
-    static void use(Player player, String item1, String item2) {
-        player.use(item2, item2);
+    static void use(World world, Player player, String item1, String arg2) {
+
+        // if arg2 is a place we can reach, we call use(Item, Exit)
+        // else we call the default use(item, item)
+        if (isPlace(world, arg2)) {
+            Exit exit = world.getCurrentPlace().getExitByName(arg2);
+            if (exit != null)
+                player.use(item1, exit);
+            else
+                printErr(arg2 + " is not reachable from here");
+        } else {
+            player.use(item1, arg2);
+        }
     }
 
     static void attack(Player player, Place currentPlace, String arg1) {
-        // Being opponent = currentPlace
+        // Being opponent = currentPlace.getBeing
         // todo avec check null
-        Fightable.fight(player, (Fightable) new Being(arg1));
+        Fightable.fight(player, new Being(arg1));
     }
 
-    static void take(Player player, Place currentPlace, String arg1) {
+    static void take(Player player, Place currentPlace, String container, String item) {
+        //todo
+    }
+
+    static void take(Player player, Place currentPlace, String item) {
         // todo
     }
 
-    static void quit(World  world) {
+    static void quit(World world) {
         world.end();
     }
 
@@ -166,19 +201,33 @@ public interface Execute {
     }
 
     static void look(Place currentPlace, String arg1) {
-
-        // todo avec check null
+        Entity entity = currentPlace.getContainerByName(arg1);
+        if (entity != null) {
+            entity.look();
+        } else {
+            printErr("You can't look at" + arg1);
+        }
     }
 
-    static void help(Command command) {
-        // todo
+    static void help(String arg) {
+        if (! isACommand(arg)) {
+            printErr(arg + " is not a command");
+            help("help");
+        }
+        else {
+            printMsg(colorize(getCommandFromString(arg).getCommandUsage(), GREEN));
+        }
+    }
+
+    static void help() {
+        help("help");
     }
 
     static void drop(Player player, Place currentPlace, String arg1) {
         Item itemToDrop = player.getItem(arg1);
         player.removeItem(arg1);
-        // currentPlace.addItemToPlace(itemToDrop);
-        // todo check
+        currentPlace.addItemToPlace(itemToDrop);
+        // todo check & display
     }
 
     static void go(World world, Place currPlace, String arg1) {
@@ -191,7 +240,7 @@ public interface Execute {
         Exit destination = currPlace.getExitByName(arg1);
 
         if (destination == null) {
-            printErr("You can't access " + arg1 +" from here");
+            printErr("You can't access " + arg1 + " from here");
             return;
         }
 
@@ -210,7 +259,6 @@ public interface Execute {
     static void buy(Player player, String arg1, String arg2) {
         // todo
     }
-
 
 }
 
