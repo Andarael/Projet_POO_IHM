@@ -4,12 +4,14 @@ package world;
 
 import entity.*;
 import entity.item.Item;
+import entity.item.Key;
 import entity.place.Place;
 import game.MasterListEntity;
 
 import java.util.Set;
 
 import static game.MasterListEntity.*;
+import static utils.Col.RED;
 
 public class World implements WorldContains {
 
@@ -36,7 +38,7 @@ public class World implements WorldContains {
         this.player = new Player(baseHp);
         this.end = false;
         this.win = false;
-        this.currentPlace = null;
+        this.currentPlace = new Place("pog");
 
         entities = MasterListEntity.entityMasterList;
 
@@ -45,6 +47,8 @@ public class World implements WorldContains {
         hostiles = getHostiles();
         passives = getPassives();
         containers = getContainers();
+
+        player.addItem(redKey);
 
     }
 
