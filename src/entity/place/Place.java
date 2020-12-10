@@ -111,9 +111,8 @@ public class Place extends Entity {
         return null;
     }
 
-    public int GetIndexExit(String name) {
-        int index = listExits.indexOf(name);
-        return index;
+    public int getIndexExit(String name) {
+        return listExits.indexOf(new Place(name));
     }
 
     public int nbExit() {
@@ -122,11 +121,6 @@ public class Place extends Entity {
                               .count();
     }
 
-    public void displayExit() {
-        for (int i = 0; i < this.nbExit(); i++) {
-            //System.out.println("- " + this.listExits.get(i).destination.getName());
-        }
-    }
 
 
     /* ------ les containers ------*/
@@ -304,13 +298,7 @@ public class Place extends Entity {
 
 
     public void testDisplay() {
-        /*if (this.nbContainer() < 2) {
 
-        } else {
-            if (this.nbContainer() < 4) {
-
-            }
-        }*/
         String top = this.displayExitTopLine();
         String middle = this.displayExitMiddleLine();
         String bot = this.displayExitBotLine();
@@ -318,12 +306,14 @@ public class Place extends Entity {
         System.out.println(top + "\n" + middle + "\n" + bot);
     }
 
-    //todo ajouter de quoi récupérer une exit par son nom
-    // pour la méthode use(Exit) de Key et pour Player qui l'appel
-
 
     public void display() {
 
+    }
+
+    @Override
+    public String look() {
+        return draw();
     }
 
     @Override
