@@ -7,9 +7,8 @@ import world.World;
 
 import java.util.List;
 
-import static game.Interpreter.*;
+import static game.Interpreter.getUserInput;
 
-import static command.Command.execute;
 
 public class Game {
 
@@ -18,12 +17,10 @@ public class Game {
         List<String> userInput;
         boolean victory = false;
         boolean death = false;
+        World world = new World(difficulty);
+        displayWelcome();
 
-        while (! (victory ||death)) {
-
-            World world = new World(difficulty);
-
-            displayWelcome();
+        while (!(victory || death)) {
 
             world.getCurrentPlace().draw();
 
@@ -36,12 +33,11 @@ public class Game {
             victory = world.hasWin();
             death = world.getPlayer().isDead();
 
-            if (victory) {
+            if (victory)
                 displayVictory();
-            }
-            if (death) {
+
+            if (death)
                 displayDeath();
-            }
 
         }
 
