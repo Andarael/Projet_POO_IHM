@@ -11,19 +11,19 @@ import java.util.Set;
 
 import static game.MasterListEntity.*;
 
-public class World {
+public class World implements WorldContains {
 
     private final Player player;
     private boolean win;
     private Place currentPlace;
     private boolean end;
 
-    private final Set<Entity> entities;
-    private final Set<Item> items;
-    private final Set<Place> places;
-    private final Set<Hostile> hostiles;
-    private final Set<Passive> passives;
-    private final Set<Container> containers;
+    public final Set<Entity> entities;
+    public final Set<Item> items;
+    public final Set<Place> places;
+    public final Set<Hostile> hostiles;
+    public final Set<Passive> passives;
+    public final Set<Container> containers;
 
 
     public World(int difficulty) {
@@ -56,44 +56,6 @@ public class World {
     public Player getPlayer() {
         return player;
     }
-
-
-    public boolean haveEntity(Entity e) {
-        return entities.contains(e);
-    }
-
-    public boolean haveItem(Item item) {
-        return items.contains(item);
-    }
-
-    public boolean havePlace(Place place) {
-        return places.contains(place);
-    }
-
-    public boolean isCurrentPlace(Place place) {
-        return currentPlace.equals(place);
-    }
-
-    public boolean haveHostile(Hostile hostile) {
-        return hostiles.contains(hostile);
-    }
-
-    public boolean havePassive(Passive passive) {
-        return passives.contains(passive);
-    }
-
-    public boolean isHere(Container container) {
-        return false;
-    }
-
-    public boolean playerHaveItem(Item item) {
-        return player.contains(item);
-    }
-
-    public boolean ContainerHaveItem(Container container, Item item) {
-        return false;
-    }
-
 
     public boolean isEnd() {
         return end;
