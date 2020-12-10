@@ -35,9 +35,9 @@ public interface MasterListEntity {
 
     // Passive =================================================================
 
-    Set<Entity> entityMasterList = initAllEntities();
+    Set<Entity> entityMasterList = getAllEntities();
 
-    static Set<Entity> initAllEntities() {
+    static Set<Entity> getAllEntities() {
         HashSet<Entity> output = new HashSet<>();
 
         output.addAll(initItems());
@@ -48,13 +48,14 @@ public interface MasterListEntity {
 
         // todo implement
 
+
+
         return output;
     }
 
     static Set<Item> initItems() {
         Set<Item> output = new HashSet<>();
-
-        output.add(new Item("pogillon"));
+        output.add(new Item("pogillion"));
         output.add(redKey);
         //todo init items
         return output;

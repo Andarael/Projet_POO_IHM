@@ -10,6 +10,7 @@ import utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Place extends Entity {
@@ -70,6 +71,7 @@ public class Place extends Entity {
     public void addExit(Place place, int position) {
         Exit exitToAdd = new Exit(place);
 
+        // here List.contains() is okay because an exit must have the same shortname as its destination
         if (listExits.contains(exitToAdd))
             return;
 
@@ -85,15 +87,14 @@ public class Place extends Entity {
     }
 
     public void rmExit(int position) {
-        this.listExits.set(position,null);
+        this.listExits.set(position, null);
 
     }
 
     public Boolean exitExistName(String name) {
-        for (Exit exit : this.listExits) {
-            if (exit != null && (exit.destination.equals(new Place(name)))) return true;
-        }
-        return false;
+        return this.listExits.stream()
+                             .anyMatch(exit -> exit != null &&
+                                               exit.getDestination().isSameStr(name));
     }
 
     public Boolean exitExistIndex(int index) {
@@ -105,19 +106,27 @@ public class Place extends Entity {
     }
 
     public Exit getExitByName(String name) {
-        for (Exit exit : this.listExits) {
-            if (exit != null && (exit.destination.equals(new Place(name)))) return exit; //lazy evaluation
-        }
-        return null;
+        return this.listExits.stream()
+                             .filter(exit -> exit != null &&
+                                             exit.getDestination().isSameStr(name))
+                             .findFirst()
+                             .orElse(null);
     }
 
     public int getIndexExit(String name) {
-        return listExits.indexOf(new Place(name));
+        Exit temp;
+        for (int i = 0; i < listExits.size(); i++) {
+            temp = listExits.get(i);
+            if (temp != null && temp.getDestination().isSameStr(name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public int nbExit() {
         return (int) listExits.stream()
-                              .filter(x -> x != null)
+                              .filter(Objects::nonNull)
                               .count();
     }
 
@@ -125,20 +134,24 @@ public class Place extends Entity {
 
     /* ------ les containers ------*/
 
+    public boolean containsContainer(Container container) {
+        return listContainers.stream()
+                             .anyMatch(x -> x.isSame(container));
+    }
+
     public void addContainer(Container container) {
-        if (listContainers.contains(container))
+        if (containsContainer(container))
             return;
-        if (this.nbContainer() < this.containerMax) {
+
+        if (this.nbContainer() < this.containerMax)
             this.listContainers.add(container);
-        }
 
     }
 
-    public Container rmContainer(Container container) {
+    public void rmContainer(Container container) {
         if (!this.isEmptyContainer()) {
             this.listContainers.remove(container);
         }
-        return container;
     }
 
     public boolean isEmptyContainer() {
@@ -147,14 +160,14 @@ public class Place extends Entity {
 
     public Boolean containerExists(String name) {
         for (Container container : this.listContainers) {
-            if (container.getName().equals(name)) return true;
+            if (container.isSameStr(name)) return true;
         }
         return false;
     }
 
     public Container getContainer(Container container) {
         return listContainers.stream()
-                             .filter(x -> x.equals(container))
+                             .filter(x -> x.isSame(container))
                              .findFirst()
                              .orElse(null);
     }
@@ -176,14 +189,19 @@ public class Place extends Entity {
 
     /* ------ le place container ------*/
 
-    public void addItemToPlace(Item item){
-        if(item == null) return;
+    public void addItemToPlace(Item item) {
+        if (item == null)
+            return;
         this.placeContainer.addItem(item);
     }
 
+    // =============================================================================================
+
+    //todo make display work
+
 
     public String displayExitTopLine() {
-        String lineTop = "";
+        String lineTop;
 
         if (this.exitExistIndex(0)) {
             String str;
@@ -206,18 +224,17 @@ public class Place extends Entity {
     }
 
     public String displayExitMiddleLine() {
-        String lineMiddle = "";
+        String lineMiddle;
         if (this.exitExistIndex(1)) {
             String str;
             if (this.getExitByIndex(1) instanceof LockedExit)
                 str = "X";
             else
                 str = "@";
-            String line1 = StringUtils.leftPad(this.getExitByIndex(1).draw(), 0, ' ') + StringUtils.leftPad(str, 0, ' ');
-            lineMiddle = line1;
+            lineMiddle = StringUtils.leftPad(this.getExitByIndex(1).draw(), 0, ' ') +
+                         StringUtils.leftPad(str, 0, ' ');
         } else {
-            String line1 = StringUtils.leftPad("#", 5, ' ');
-            lineMiddle = line1;
+            lineMiddle = StringUtils.leftPad("#", 5, ' ');
         }
 
         if (this.exitExistIndex(2)) {
@@ -239,7 +256,7 @@ public class Place extends Entity {
     }
 
     public String displayExitBotLine() {
-        String lineBot = "";
+        String lineBot;
 
         if (this.exitExistIndex(3)) {
             String str;
@@ -282,13 +299,13 @@ public class Place extends Entity {
                                    StringUtils.leftPad(this.getContainerByIndex(i).draw(), 1, ' ') +
                                    StringUtils.leftPad("#", 6, ' ');
                     lineContainers = lineContainers + line2 + "\n";
-                    cpt = !cpt;
-                }else{
+                    cpt = false;
+                } else {
                     String line2 = StringUtils.leftPad("#", 5, ' ') +
                                    StringUtils.leftPad(this.getContainerByIndex(i).draw(), 6, ' ') +
                                    StringUtils.leftPad("#", 1, ' ');
                     lineContainers = lineContainers + line2 + "\n";
-                    cpt = !cpt;
+                    cpt = true;
                 }
             }
 
@@ -309,8 +326,6 @@ public class Place extends Entity {
         System.out.println(top + middle + bot);
         return top + middle + bot;
     }
-
-
 
 
     @Override

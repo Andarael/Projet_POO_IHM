@@ -3,10 +3,11 @@ package entity.place;
 import entity.Entity;
 
 public class Exit extends Entity {
-    protected final Place destination;
+    private final Place destination;
 
     public Exit(Place destination) {
         super(destination.getName());
+        this.setShortName(destination.getShortName());
         this.destination = destination;
     }
 

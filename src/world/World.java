@@ -40,7 +40,7 @@ public class World implements WorldContains {
         this.win = false;
         this.currentPlace = new Place("pog");
 
-        entities = MasterListEntity.entityMasterList;
+        entities = entityMasterList;
 
         items = getItems();
         places = getPlaces();
@@ -49,6 +49,13 @@ public class World implements WorldContains {
         containers = getContainers();
 
         initPlayer(player);
+
+        System.out.println(entities);
+        System.out.println(items);
+        System.out.println(places);
+        System.out.println(hostiles);
+        System.out.println(passives);
+        System.out.println(containers);
 
     }
 
@@ -83,7 +90,7 @@ public class World implements WorldContains {
 
     public Place getAPlace(Place place) {
         return places.stream()
-                     .filter(x -> x.equals(place))
+                     .filter(x -> x.isSame(place))
                      .findFirst()
                      .orElse(null);
     }

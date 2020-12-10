@@ -22,6 +22,7 @@ public abstract class Entity implements Lookable {
     private final String name;
     private String description;
     private String shortName;
+
     public Entity(String name, String description) {
         // le nom ne peut pas être null.
         if (name == null)
@@ -38,35 +39,43 @@ public abstract class Entity implements Lookable {
     }
 
     @Override
-    public String getName() {
+    final public String getName() {
         return name;
     }
 
     @Override
-    public String getDescription() {
+    final public String getDescription() {
         return description;
     }
 
     @Override
-    public void updateDescription(String update) {
+    final public void updateDescription(String update) {
         this.description = update;
     }
 
     @Override
-    public String getShortName() {
+    final public String getShortName() {
         return this.shortName;
     }
 
     @Override
-    public void setShortName(String s) {
+    final public void setShortName(String s) {
         this.shortName = shorten(s);
     }
 
+    final public boolean isSame(Entity entity) {
+        return haveSameNameShortName(this, entity);
+    }
+
+    final public boolean isSameStr(String str) {
+        return haveSameNameShortNameStr(this, str);
+    }
+
     /**
-     * The only qualification for 2 entities to be equal is their ShortName or name
-     * The only interaction the user will have with entities is via their shortname
-     * The obvious downside is that it won't be possible to add multiple items with
-     * different values but same name or shortname to a Set.
+     * Two Entities are considered equal if they have the same shortName
+     * Most interactions the user will have with entities is via their shortname
+     * Also this prevents (in combination with hashcode)
+     * the existence of 2 entities with the same shortname in sets.
      *
      * @return true if two items have the same name or shortName
      */
@@ -80,22 +89,12 @@ public abstract class Entity implements Lookable {
 
         Entity ComparedEntity = (Entity) o;
 
-        String comparedName = ComparedEntity.getName().toUpperCase();
-        String comparedShortName = ComparedEntity.getShortName().toUpperCase();
-
-        boolean part1 = (name.toUpperCase()).equals(comparedName);
-        boolean part2 = (shortName.toUpperCase()).equals(comparedShortName);
-
-        return (part1 || part2);
+        return (shortName).equalsIgnoreCase(ComparedEntity.getShortName());
     }
 
     @Override
     public int hashCode() {
-        int hash1 = hash(name.toUpperCase());
-        int hash2 = hash(shortName.toUpperCase());
-
-        // opération bit à bit sur sur les hash de name et ShortName pour correspondre à equals()
-        return hash(hash1 | hash2);
+        return hash(shortName.toUpperCase());
     }
 
     @Override

@@ -102,7 +102,7 @@ public class Player extends Being {
             return false;
 
         // si les mains du player sont l'item actuellement équipé
-        if (equipped.equals(HANDS))
+        if (equipped.isSame(HANDS))
             return true;
 
         limitedInventory.addItem(equipped);
@@ -132,7 +132,7 @@ public class Player extends Being {
     @Override
     public boolean removeItem(Item item) {
         if (!super.removeItem(item)) {
-            if (equipped.equals(item)) {
+            if (equipped.isSame(item)) {
                 equipped = HANDS;
                 return true;
             }
@@ -154,7 +154,7 @@ public class Player extends Being {
 
         // also check if item is equipped
         if (newItem == null)
-            if (equipped.equals(item))
+            if (equipped.isSame(item))
                 newItem = equipped;
 
         return newItem != null;

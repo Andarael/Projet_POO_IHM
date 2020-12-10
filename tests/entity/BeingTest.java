@@ -154,25 +154,6 @@ class BeingTest {
     }
 
     @Test
-    void testEquals() {
-        assertEquals(b2, b2);
-        assertNotEquals(b1, null);
-
-        Object o = new Object();
-        assertNotEquals(b1, o);
-
-
-        Being being = new Being("Spider", "silky beauty", 5);
-        assertEquals(being, b3);
-
-        being.levelUP(5);
-        assertNotEquals(being, b3);
-
-        being = new Being("pog");
-        assertNotEquals(being, b3);
-    }
-
-    @Test
     void Display() {
 
         Item item1 = new Item("apple", "a red apple", 1.0, 1);

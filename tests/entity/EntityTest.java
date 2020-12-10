@@ -110,7 +110,7 @@ class EntityTest {
 
         e2.setShortName("shortname1");
 
-        assertEquals(e1, e2);
+        assertTrue(e1.isSame(e2));
 
         e1 = new Entity("name") {
         };

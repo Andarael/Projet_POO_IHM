@@ -26,16 +26,18 @@ public class Key extends Item implements Usable {
     public Key(String name, String description, Col color) {
         super(name, description, 0, 0);
 
+
+
         if (color == null)
             color = RESET;
 
         this.color = color;
 
+        setShortName("Key" + color.getColorName().charAt(0));
     }
 
     public Key(Col color) {
-        this(color.getColorName() + "Key", null, color);
-        setShortName("Key" + color.getColorName().charAt(0));
+        this("Key" + color.getColorName(), null, color);
     }
 
     /**
@@ -62,13 +64,6 @@ public class Key extends Item implements Usable {
         return "KEY  : ";
     }
 
-    /**
-     * @return the name with the color of the key
-     */
-    @Override
-    public String getName() {
-        return colorize(super.getName(), color);
-    }
 
     @Override
     public String getSimpleDisplay() {

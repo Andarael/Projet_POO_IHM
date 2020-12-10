@@ -109,11 +109,9 @@ public enum Command {
         if (str == null)
             return null;
 
-        String temp = str.toUpperCase();
-
         for (Command command : Command.values()) {
-            if (command.toString().equals(temp) ||
-                command.getShortCommand().equals(temp)) {
+            if (command.toString().equalsIgnoreCase(str) ||
+                command.getShortCommand().equalsIgnoreCase(str)) {
                 return command;
             }
         }
@@ -121,12 +119,12 @@ public enum Command {
     }
 
     public static boolean isACommand(String str) {
-
-        String temp = str.toUpperCase();
+        if (str == null)
+            return false;
 
         for (Command command : Command.values()) {
-            if (command.toString().equals(temp) ||
-                command.getShortCommand().equals(temp)) {
+            if (command.toString().equalsIgnoreCase(str) ||
+                command.getShortCommand().equalsIgnoreCase(str)) {
                 return true;
             }
         }

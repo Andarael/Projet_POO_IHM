@@ -30,12 +30,13 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public Item getItem(Item item) {
+
         // on stream la liste d'items
         // en recherchant in item identique à celui demandé
-        // (identique selon la méthode equals() de item
+        // (identique selon la méthode isSameNameShortName() de item
         // donc juste le nom ou le shortname d'identique)
         return itemList.stream()
-                       .filter(x -> x.equals(item))
+                       .filter(x -> x.isSame(item))
                        .findFirst()
                        .orElse(null);
     }
@@ -63,7 +64,7 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public boolean removeItem(Item item) {
-        return itemList.remove(item);
+        return itemList.remove(getItem(item));
     }
 
     @Override
@@ -78,7 +79,8 @@ public class Inventory implements InventoryManagement {
 
     @Override
     public boolean contains(Item item) {
-        return itemList.contains(item);
+        return itemList.stream()
+                       .anyMatch(x -> (x.isSame(item)));
     }
 
     @Override
@@ -99,7 +101,7 @@ public class Inventory implements InventoryManagement {
     @Override
     public int getQuantity(Item item) {
         return (int) itemList.stream()
-                             .filter(x -> x.equals(item))
+                             .filter(x -> x.isSame(item))
                              .count();
     }
 
@@ -148,9 +150,9 @@ public class Inventory implements InventoryManagement {
 
         for (Item item : itemList) {
             if (detailed)
-                output = output.concat("    " + item.getDisplay() + "\n");
+                output = output + "    " + item.getDisplay() + "\n";
             else
-                output = output.concat(item.getSimpleDisplay() + "\n");
+                output = output + item.getSimpleDisplay() + "\n";
         }
 
         return output;

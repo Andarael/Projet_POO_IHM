@@ -1,23 +1,26 @@
 package command;
 
-import entity.Being;
-import entity.Entity;
 import entity.Player;
-import entity.item.Item;
-import entity.place.Exit;
 import entity.place.Place;
-import interfaces.Fightable;
 import world.World;
 
 import java.util.List;
 
-import static command.Command.*;
-import static utils.Col.GREEN;
-import static utils.Col.colorize;
+import static command.Attack.attack;
+import static command.Command.getCommandFromString;
+import static command.Command.isACommand;
+import static command.Drop.drop;
+import static command.Go.go;
+import static command.Help.help;
+import static command.Inv.inventory;
+import static command.Look.look;
+import static command.Quit.quit;
+import static command.Take.take;
+import static command.Trade.buy;
+import static command.Trade.sell;
+import static command.Use.use;
 import static utils.Printer.printErr;
-import static utils.Printer.printMsg;
 import static world.WorldContains.haveEntity;
-import static world.WorldContains.isPlace;
 
 public interface Execute {
 
@@ -51,8 +54,9 @@ public interface Execute {
 
         if (nbArgs > 0) {
             arg1 = args.get(1);
-            if (!(haveEntity(world, arg1) || isACommand(arg1)) ) {
-                printErr(arg1 + " does not exist");
+            if (!(haveEntity(world, arg1) || isACommand(arg1))) {
+                // todo faire marcher haveEntity avec name te ShortName
+                printErr(arg1 + " does not exist(arg1)");
                 return;
             }
         }
@@ -60,7 +64,7 @@ public interface Execute {
         if (nbArgs > 1) {
             arg2 = args.get(2);
             if (!haveEntity(world, arg2)) {
-                printErr(arg2 + " does not exist");
+                printErr(arg2 + " does not exist (arg2)");
                 return;
             }
         }
@@ -157,107 +161,6 @@ public interface Execute {
         // Buy // todo
 
         // Sell // todo
-    }
-
-    static void use(Player player, String item) {
-        player.use(item);
-    }
-
-    static void use(World world, Player player, String item1, String arg2) {
-
-        // if arg2 is a place we can reach, we call use(Item, Exit)
-        // else we call the default use(item, item)
-        if (isPlace(world, arg2)) {
-            Exit exit = world.getCurrentPlace().getExitByName(arg2);
-            if (exit != null)
-                player.use(item1, exit);
-            else
-                printErr(arg2 + " is not reachable from here");
-        } else {
-            player.use(item1, arg2);
-        }
-    }
-
-    static void attack(Player player, Place currentPlace, String arg1) {
-        // Being opponent = currentPlace.getBeing
-        // todo avec check null
-        Fightable.fight(player, new Being(arg1));
-    }
-
-    static void take(Player player, Place currentPlace, String container, String item) {
-        //todo
-    }
-
-    static void take(Player player, Place currentPlace, String item) {
-        // todo
-    }
-
-    static void quit(World world) {
-        world.end();
-    }
-
-    static void look(Place currentPlace) {
-        currentPlace.look();
-    }
-
-    static void look(Place currentPlace, String arg1) {
-        Entity entity = currentPlace.getContainerByName(arg1);
-        if (entity != null) {
-            entity.look();
-        } else {
-            printErr("You can't look at" + arg1);
-        }
-    }
-
-    static void help(String arg) {
-        if (! isACommand(arg)) {
-            printErr(arg + " is not a command");
-            help("help");
-        }
-        else {
-            printMsg(colorize(getCommandFromString(arg).getCommandUsage(), GREEN));
-        }
-    }
-
-    static void help() {
-        help("help");
-    }
-
-    static void drop(Player player, Place currentPlace, String arg1) {
-        Item itemToDrop = player.getItem(arg1);
-        player.removeItem(arg1);
-        currentPlace.addItemToPlace(itemToDrop);
-        // todo check & display
-    }
-
-    static void go(World world, Place currPlace, String arg1) {
-
-        if (!isPlace(world, arg1)) {
-            printErr(arg1 + " is not a place");
-            return;
-        }
-
-        Exit destination = currPlace.getExitByName(arg1);
-
-        if (destination == null) {
-            printErr("You can't access " + arg1 + " from here");
-            return;
-        }
-
-        world.setCurrentPlace(destination.getDestination());
-        printMsg("You enter " + destination.getName());
-    }
-
-    static void inventory(Player player) {
-        printMsg(player.getDisplay());
-    }
-
-    static void sell(Player player, String arg1, String arg2) {
-        // todo
-    }
-
-    static void buy(Player player, String arg1, String arg2) {
-        // todo
     }
 
 }

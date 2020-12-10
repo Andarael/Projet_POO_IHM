@@ -28,7 +28,7 @@ public class LockedExit extends Exit {
     @Override
     public Place goIn() {
         if (this.canGo())
-            return this.destination;
+            return this.getDestination();
         else
             return null;
 
@@ -56,10 +56,7 @@ public class LockedExit extends Exit {
         return colorize(super.draw(),this.color);
     }
 
-    @Override
-    public String getName() {
-        return colorize(super.getName(),this.color);
-    }
+
 
     @Override
     public String getSimpleDisplay() {
@@ -70,4 +67,6 @@ public class LockedExit extends Exit {
     public String getDisplay() {
         return colorize(super.getDisplay(),this.color);
     }
+
+
 }

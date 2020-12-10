@@ -122,27 +122,5 @@ public class Being extends Container implements Fightable, Comparable<Being> {
         return this.level - being.level;
     }
 
-    /**
-     * @param o the object to test equality with
-     * @return true if being have the same name (or shortname) level, and health
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-
-        if (o == null)
-            return false;
-
-        if (!(o instanceof Being))
-            return false;
-
-        if (!super.equals(o))
-            return false;
-
-        Being being = (Being) o;
-        return (hp == being.getHp() && level == being.getLevel());
-    }
-
 
 }

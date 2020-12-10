@@ -2,11 +2,20 @@
 
 package world;
 
+import entity.Entity;
+import entity.item.Item;
+import entity.item.Key;
 import entity.place.Place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.Col;
 
+import static game.MasterListEntity.entityMasterList;
+import static game.MasterListEntity.redKey;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static utils.Col.RED;
+import static world.WorldContains.haveEntity;
 
 class WorldTest {
 
@@ -53,8 +62,6 @@ class WorldTest {
 
         assertEquals(size, w.size());
 
-        p1.equals(new Place("P1"));
-
         assertEquals(new Place("P1"), p1);
 
         w.addPlace(new Place("P1"));
@@ -94,5 +101,9 @@ class WorldTest {
 
     @Test
     void testToString() {
+    }
+
+    @Test
+    void contains() {
     }
 }

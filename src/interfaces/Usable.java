@@ -24,4 +24,5 @@ public interface Usable {
     boolean use();
 
     boolean use(Entity entity);
+
 }

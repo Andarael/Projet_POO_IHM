@@ -70,7 +70,7 @@ public class Interpreter {
         List<String> stringList = new ArrayList<>();
         stringList.add("GO");
 
-        while (!stringList.get(0).equals("QUIT")) {
+        while (!stringList.get(0).equalsIgnoreCase("QUIT")) {
 
             stringList = getUserInput();
 

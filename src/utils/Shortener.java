@@ -15,7 +15,9 @@ public interface Shortener {
         if (str == null)
             return StringUtils.stringFill(SHORT_NAME_SIZE, ' ');
 
-        return StringUtils.rightPad(str, SHORT_NAME_SIZE, ' ').substring(0, SHORT_NAME_SIZE);
+        return str.substring(0,Math.min(str.length(),SHORT_NAME_SIZE)).trim();
+
+        // return StringUtils.rightPad(str, SHORT_NAME_SIZE, ' ').substring(0, SHORT_NAME_SIZE);
     }
 
 }

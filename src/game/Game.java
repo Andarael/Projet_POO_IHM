@@ -27,7 +27,7 @@ public class Game {
 
         while (!(victory || death || end)) {
 
-            world.getCurrentPlace().draw();
+            // world.getCurrentPlace().draw();
 
             displayWaitingInput();
 
