@@ -18,10 +18,29 @@ public enum Command {
        1
     ),
 
-    HELP("HELP help",
+    USE("Use an Item (possibly on another Item) \n" +
+        "For example : Use Chicken -> You eat the chicken it gives you back 5 hp \n" +
+        "            : Use Arrow Bow -> You add 1 arrow to the Bow",
+        "U",
+        1,
+        2
+    ),
+
+    HELP("Displays the help, try help [COMMAND] to see specific help. \n" +
+         "Available commands : \n" +
+         "     Use  : (u) Use  [Item] [Item?]" + "\n" +
+         "     Go   : (g) Go   [Place]" + "\n" +
+         "     Help : (h) Help [Command]" + "\n" +
+         "     Look : (l) Look [Entity]" + "\n" +
+         "     Quit : (q) Quit " + "\n" +
+         "     Sell : (s) Sell [Npc] [Item]" + "\n" +
+         "     Buy  : (b) Buy  [Npc] [Item] " + "\n" +
+         "     Take : (t) Take [Container] [Item]" + "\n" +
+         "     Attack : (a) Attack [Npc]" + "\n" +
+         "     Inventory : (i) Inventory" + "\n",
          "H",
          0,
-         0
+         1
     ),
 
     INVENTORY("Displays the content of your inventory",
@@ -52,13 +71,6 @@ public enum Command {
          2
     ),
 
-    USE("Use an Item (possibly on another Item) \n" +
-        "For example : Use Chicken -> You eat the chicken it gives you back 5 hp \n" +
-        "            : Use Arrow Bow -> You add 1 arrow to the Bow",
-        "U",
-        1,
-        2
-    ),
 
     ATTACK("Attack a Being in the current place\n" +
            "For example : Attack Cyclops -> You attack the Cyclops and deals him 5 damage",
@@ -108,6 +120,19 @@ public enum Command {
         return null;
     }
 
+    public static boolean isACommand(String str) {
+
+        String temp = str.toUpperCase();
+
+        for (Command command : Command.values()) {
+            if (command.toString().equals(temp) ||
+                command.getShortCommand().equals(temp)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean isValidCommand(Command command, int nb) {
         if (command == null)
             return false;
@@ -115,7 +140,9 @@ public enum Command {
     }
 
     public String getCommandUsage() {
-        return usage;
+        return this +
+               " (Shortcut '" + getShortCommand() + "')\n" +
+               usage;
     }
 
     public int minArg() {
