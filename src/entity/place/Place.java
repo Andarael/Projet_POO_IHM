@@ -25,6 +25,10 @@ public class Place extends Entity {
         super(name);
         this.name = name;
         this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
+        for (int i = 0; i < this.exitMax; i++) {
+            this.listExits.add(null);
+        }
+
         this.listContainers = new ArrayList<>(this.containerMax);
         this.placeContainer = new StaticContainer(name);
     }
@@ -54,20 +58,28 @@ public class Place extends Entity {
     }
 
 
-
+    /**
+     * this add an exit to another place in the curent place
+     *
+     * @param place    the place to add an exit to
+     * @param position the position in the place to add the exit
+     */
     /* ------ les Exits ------*/
+    //position dans la list = sa position dans la salle))
+    public void addExit(Place place, int position) {
+        Exit exitToAdd = new Exit(place);
 
-    public void addExit(Place place, int position) { //position dans la list = sa position dans la salle))
-        if (this.nbExit() < this.exitMax) {
-            Exit exit = new Exit(place);
-            this.listExits.add(position, exit);
-        }
+        if (listExits.contains(exitToAdd))
+            return;
+
+        if (this.nbExit() < this.exitMax)
+            this.listExits.set(position, exitToAdd);
     }
 
     public void addLockedExit(Place place, int position, Col color) {
         if (this.nbExit() < this.exitMax) {
             Exit exit = new LockedExit(place, color);
-            this.listExits.add(position, exit);
+            this.listExits.set(position, exit);
         }
     }
 
@@ -93,7 +105,7 @@ public class Place extends Entity {
 
     public Exit getExitByName(String name) {
         for (Exit exit : this.listExits) {
-            if (exit.getName().equals(name)) return exit;
+            if (exit != null && (exit.getName().equals(name))) return exit; //lazy evaluation
         }
         return null;
     }
@@ -104,7 +116,9 @@ public class Place extends Entity {
     }
 
     public int nbExit() {
-        return this.listExits.size();
+        return (int) listExits.stream()
+                              .filter(x -> x != null)
+                              .count();
     }
 
     public void displayExit() {
@@ -117,6 +131,8 @@ public class Place extends Entity {
     /* ------ les containers ------*/
 
     public void addContainer(Container container) {
+        if (listContainers.contains(container))
+            return;
         if (this.nbContainer() < this.containerMax) {
             this.listContainers.add(container);
         }
@@ -141,12 +157,19 @@ public class Place extends Entity {
         return false;
     }
 
-    public Container getContainerByString(String name) {
-        for (Container container : this.listContainers) {
-            if (container.getName().equals(name)) return container;
-        }
-        return null;
+    public Container getContainer(Container container) {
+        return listContainers.stream()
+                             .filter(x -> x.equals(container))
+                             .findFirst()
+                             .orElse(null);
     }
+
+    public Container getContainerByString(String name) {
+        return getContainer(new Container(name) {
+        });
+    }
+
+
     public Container getContainerByIndex(int index) {
         return this.listContainers.get(index);
     }
@@ -162,13 +185,10 @@ public class Place extends Entity {
     }
 
 
+    public String displayExitTopLine() {
+        String lineTop = "";
 
-
-
-    public String displayExitTopLine(){
-        String lineTop ="";
-
-        if (this.exitExistIndex(0)){
+        if (this.exitExistIndex(0)) {
             String str;
             if (this.getExitByIndex(1) instanceof LockedExit)
                 str = "XX";
@@ -179,7 +199,7 @@ public class Place extends Entity {
                            StringUtils.leftPad(str, 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
             lineTop = line1 + "\n" + line2 + "\n";
-        }else{
+        } else {
             String line2 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("##", 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
@@ -188,8 +208,8 @@ public class Place extends Entity {
         return lineTop;
     }
 
-    public String displayExitMiddleLine(){
-        String lineMiddle ="";
+    public String displayExitMiddleLine() {
+        String lineMiddle = "";
         if (this.exitExistIndex(1)) {
             String str;
             if (this.getExitByIndex(1) instanceof LockedExit)
@@ -198,33 +218,33 @@ public class Place extends Entity {
                 str = "@";
             String line1 = StringUtils.leftPad(this.getExitByIndex(0).draw(), 0, ' ');
             lineMiddle = line1;
-        }else{
+        } else {
             String line1 = StringUtils.leftPad("#", 5, ' ');
             lineMiddle = line1;
         }
 
-            if (this.exitExistIndex(2)){
-                String str;
-                if (this.getExitByIndex(2) instanceof LockedExit)
-                    str = "X";
-                else
-                    str = "@";
-                String line2 = StringUtils.leftPad(str, 12, ' ') +
-                               StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
-                lineMiddle = lineMiddle + line2 + "\n";
+        if (this.exitExistIndex(2)) {
+            String str;
+            if (this.getExitByIndex(2) instanceof LockedExit)
+                str = "X";
+            else
+                str = "@";
+            String line2 = StringUtils.leftPad(str, 12, ' ') +
+                           StringUtils.leftPad(this.getExitByIndex(2).draw(), 0, ' ');
+            lineMiddle = lineMiddle + line2 + "\n";
 
-            }else{
-                String line2 = StringUtils.leftPad("#", 12, ' ');
-                lineMiddle = lineMiddle + line2 + "\n";
-            }
+        } else {
+            String line2 = StringUtils.leftPad("#", 12, ' ');
+            lineMiddle = lineMiddle + line2 + "\n";
+        }
 
         return lineMiddle;
     }
 
-    public String displayExitBotLine(){
-        String lineBot ="";
+    public String displayExitBotLine() {
+        String lineBot = "";
 
-        if (this.exitExistIndex(3)){
+        if (this.exitExistIndex(3)) {
             String str;
             if (this.getExitByIndex(3) instanceof LockedExit)
                 str = "XX";
@@ -236,7 +256,7 @@ public class Place extends Entity {
             String line2 = StringUtils.leftPad(this.getExitByIndex(3).draw(), 10, ' ');
 
             lineBot = line1 + "\n" + line2 + "\n";
-        }else{
+        } else {
             String line1 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("##", 5, '#') +
                            StringUtils.leftPad("#", 5, '#');
@@ -246,21 +266,21 @@ public class Place extends Entity {
     }
 
 
-    public String displayContainers(){
-        String lineContainers ="";
-        if (this.isEmptyContainer()){
+    public String displayContainers() {
+        String lineContainers = "";
+        if (this.isEmptyContainer()) {
             String line2 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("#", 12, ' ');
             lineContainers = line2 + "\n";
-        }else{
-            int toPlaceMiddle = this.nbContainer()/2;
+        } else {
+            int toPlaceMiddle = this.nbContainer() / 2;
             boolean cpt = true;
-            for (int i = 0; i < this.nbContainer(); i++ ){
-                if (i == toPlaceMiddle){
+            for (int i = 0; i < this.nbContainer(); i++) {
+                if (i == toPlaceMiddle) {
                     lineContainers = lineContainers + this.displayExitMiddleLine();
                 }
 
-                if (cpt){
+                if (cpt) {
                     String line2 = StringUtils.leftPad("#", 5, ' ') +
                                    StringUtils.leftPad(this.getContainerByIndex(i).draw(), 1, ' ') +
                                    StringUtils.leftPad("#", 6, ' ');
@@ -298,5 +318,16 @@ public class Place extends Entity {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Place{" +
+               "name='" + name + '\'' + "\n" +
+               ", exitMax=" + exitMax + "\n" +
+               ", containerMax=" + containerMax + "\n" +
+               ", listExits=" + listExits + "\n" +
+               ", listContainers=" + listContainers + "\n" +
+               ", placeContainer=" + placeContainer + "\n" +
+               ", player=" + player +
+               '}';
+    }
 }

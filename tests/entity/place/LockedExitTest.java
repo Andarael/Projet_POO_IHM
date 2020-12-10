@@ -74,6 +74,6 @@ class LockedExitTest {
         assertTrue(lockedExit2.isLocked());
         lockedExit2.unLock(key1);
         assertFalse(lockedExit2.isLocked());
-
+        lockedExit2.lock();
     }
 }
