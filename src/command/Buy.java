@@ -1,4 +1,4 @@
 package command;
 
-public interface Buy extends Command{
+public interface Buy {
 }

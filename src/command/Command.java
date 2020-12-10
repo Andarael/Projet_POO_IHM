@@ -7,21 +7,21 @@ import world.World;
 
 import java.util.List;
 
-public interface Command extends Erreur, Go, Help, Inv, Look, Quit, Take, Use, Attack, Buy, Sell{
+public interface Command {
 
     static void execute(World world, List<String> args) {
         //todo
     }
 
-    public void execute();
+    void execute();
 
-    public void execute(Place p);
+    void execute(Place p);
 
-    public void execute(Item i);
+    void execute(Item i);
 
-    public void execute(Item i, Item i2);
+    void execute(Item i, Item i2);
 
-    public void execute(Item item, Exit exit);
+    void execute(Item item, Exit exit);
 
 }
 
