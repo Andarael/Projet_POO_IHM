@@ -18,6 +18,7 @@ public interface MasterListEntity {
     // Items ===================================================================
     Entity pog = new Item("Pog");
     Item golden_statue = new Item("golden statue", "a small statue with a frightful effigy",1,20);
+    Item divine_jewel = new Item("divine jewel", "as you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves...");
 
     Key redKey = new Key("redKey", "a red key", RED);
 
@@ -34,7 +35,7 @@ public interface MasterListEntity {
     // Food   ==================================================================
     Food chicken = new Food("chicken", "a raw chicken", 1, 2, 2);
     Food rotten_chicken = new Food("rotten chicken", "a fragrant chicken", 1,1,-2);
-    Food elixir_of_divine_life = new Food("elixir of divine life", "it just look like a bottle of perfume",1,10, 10);
+    Food elixir_of_mystic_life = new Food("elixir of mystic life", "it just look like a bottle of perfume",1,10, 10);
     Food coca_zero = new Food("coca zero", "it just look like oil, but with no sugar in it", 1,5,20);
     Food big_cake = new Food("big cake", "a big lemon cake", 1,3,3);
     Food poison = new Food("weird-looking bottle", "i wouldn't drink this if i were you", 1,10,-15);
@@ -61,8 +62,8 @@ public interface MasterListEntity {
     // Passive =================================================================
     Passive ordinary_guy = new Passive("ordinary guy", "a human just like you", "Hello sir, the weather is nice, don't you think?");
     Passive merchant = new Passive("merchant", "a big guy with all kinds of things in his bag", "Hello adventurer, would you like to take a look at my goods?");
-    Passive scandalf = new Passive("Scandalf the wizard", "He has a long beard and a pointy hat, you should listen to what he tells you", "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! Kill the dragon and you'll be a hero for ever");
-
+    Passive scandalf = new Passive("Scandalf the wizard", "He has a long beard and a pointy hat, you should listen to what he tells you", "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! If you kill the dragon and save the princess, you'll be a hero for ever!");
+    Passive annoying_princess = new Passive("annoying princess", "The beautifull princess you've been looking for, she has long golden hair and beautiful sapphire eyes", "deliver me quickly, you retarded incompetent!");
 
     Set<Entity> entityMasterList = getAllEntities();
 
@@ -89,6 +90,7 @@ public interface MasterListEntity {
         //init item
 
         output.add(golden_statue);
+        output.add(divine_jewel);
 
         //init weapon
 
@@ -103,7 +105,7 @@ public interface MasterListEntity {
 
         output.add(chicken);
         output.add(rotten_chicken);
-        output.add(elixir_of_divine_life);
+        output.add(elixir_of_mystic_life);
         output.add(coca_zero);
         output.add(big_cake);
         output.add(poison);
@@ -141,6 +143,7 @@ public interface MasterListEntity {
         output.add(ordinary_guy);
         output.add(merchant);
         output.add(scandalf);
+        output.add(annoying_princess);
         //todo init items
         return output;
     }
