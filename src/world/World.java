@@ -2,32 +2,48 @@
 
 package world;
 
-
-import entity.Player;
+import entity.*;
+import entity.item.Item;
 import entity.place.Place;
+import game.MasterListEntity;
 
-import java.util.HashSet;
 import java.util.Set;
+
+import static game.MasterListEntity.*;
 
 public class World {
 
     private final Player player;
-    private final Set<Place> placeList;
+    private final boolean win;
+    private final Set<Entity> entities;
+    private final Set<Item> items;
+    private final Set<Place> places;
+    private final Set<Hostile> hostiles;
+    private final Set<Passive> passives;
+    private final Set<Container> containers;
     private Place currentPlace;
     private boolean end;
-    private final boolean win;
+
 
     public World(int difficulty) {
         if (difficulty < 0 || difficulty > 2)
             difficulty = 1;
 
+        // difficulty formula
         int baseHp = (3 - difficulty) * 10;
 
         this.player = new Player(baseHp);
         this.end = false;
         this.win = false;
         this.currentPlace = null;
-        placeList = new HashSet<>();
+
+        entities = MasterListEntity.entityMasterList;
+
+        items = getItems();
+        places = getPlaces();
+        hostiles = getHostiles();
+        passives = getPassives();
+        containers = getContainers();
     }
 
     public World() {
@@ -47,7 +63,7 @@ public class World {
     }
 
     public int size() {
-        return placeList.size();
+        return places.size();
     }
 
     public boolean hasWin() {
@@ -55,19 +71,18 @@ public class World {
     }
 
     public void addPlace(Place place) {
-        placeList.add(place);
+        places.add(place);
     }
 
-    public Place getPlace(Place place) {
-        return
-                placeList.stream()
-                         .filter(x -> x.equals(place))
-                         .findFirst()
-                         .orElse(null);
+    public Place getAPlace(Place place) {
+        return places.stream()
+                     .filter(x -> x.equals(place))
+                     .findFirst()
+                     .orElse(null);
     }
 
     public Place getPlace(String str) {
-        return getPlace(new Place(str));
+        return getAPlace(new Place(str));
     }
 
     public Place getCurrentPlace() {
@@ -89,7 +104,7 @@ public class World {
     public String toString() {
         return "World {" + "\n" +
                player + "\n" +
-               ", placeList=" + placeList + "\n" +
+               ", placeList=" + places + "\n" +
                ", currentPlace=" + currentPlace + "\n" +
                ", end=" + end + "\n" +
                ", win=" + win + "\n" +

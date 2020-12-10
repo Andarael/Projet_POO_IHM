@@ -19,7 +19,6 @@ public interface MasterListEntity {
     // Items ===================================================================
     Entity pog = new Item("Pog");
 
-
     // todo add all entities
     // Weapons =================================================================
 
@@ -34,7 +33,6 @@ public interface MasterListEntity {
     // Hostiles ================================================================
 
     // Passive =================================================================
-
 
     Set<Entity> entityMasterList = initAllEntities();
 
