@@ -118,6 +118,7 @@ class PlayerTest {
         System.out.println(p.use("axe"));
         System.out.println(p.use("keyR"));
         System.out.println(p.use("poug"));
+        System.out.println(p.use((Item) null));
 
         p.equip("axe");
         System.out.println(p.use("axe"));
