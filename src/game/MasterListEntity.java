@@ -20,6 +20,7 @@ public interface MasterListEntity {
     Item golden_statue = new Item("golden statue", "a small statue with a frightful effigy",1,20);
     Item divine_jewel = new Item("divine jewel", "as you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves...");
 
+
     // todo add all entities
     // Weapons =================================================================
     Weapon great_sword = new Weapon("great sword", "a big and heavy sword made with steel", 5, 5, 5);
@@ -63,6 +64,10 @@ public interface MasterListEntity {
 
     // StaticContainers ========================================================
 
+    StaticContainer wooden_chest = new StaticContainer("wooden chest", "a massive chest that probably houses sumptuous treasures ...");
+    StaticContainer iron_chest = new StaticContainer("iron chest", "a massive chest that probably houses sumptuous treasures ...");
+    StaticContainer steel_chest = new StaticContainer("steel chest", "a massive chest that probably houses sumptuous treasures ...");
+    StaticContainer emerald_chest = new StaticContainer("emerald chest", "a massive chest that probably houses sumptuous treasures ...");
 
     // Hostiles ================================================================
     Hostile orc = new Hostile("orc", "a green creature", 5, 5);
