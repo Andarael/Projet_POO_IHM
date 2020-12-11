@@ -62,7 +62,7 @@ public class Inputer {
                     printErr(stringList +
                              " Is not a valid format for command '" +
                              commandString +
-                             "' , try 'HELP" + commandString + "'");
+                             "' , try 'HELP " + commandString + "'");
 
             }
             // todo test nouvelle implémentation

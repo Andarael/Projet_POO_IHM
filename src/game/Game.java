@@ -8,6 +8,7 @@ import java.util.List;
 
 import static command.Execute.execute;
 import static command.Inputer.getUserInput;
+import static utils.Printer.printErr;
 import static utils.Printer.printMsg;
 
 
@@ -25,12 +26,22 @@ public class Game {
         while (!(victory || death || end)) {
 
             // world.getCurrentPlace().draw();
+            // todo check combat
+            // todo faire le draw dans GO
 
             displayWaitingInput();
 
             userInput = getUserInput();
 
-            execute(world, userInput);
+            try {
+                execute(world, userInput);
+
+            } catch (NullPointerException nullException) {
+                printErr("This world is corrupted by some dark computer magic, \n" +
+                         "your adventure must stop now !");
+                break;
+            }
+
 
             end = world.isEnd();
 
@@ -42,8 +53,6 @@ public class Game {
 
             if (death)
                 displayDeath();
-
-
         }
 
         return (victory);
@@ -66,7 +75,8 @@ public class Game {
     }
 
     private static void displayVictory() {
-        printMsg("You defeated the dragon and saved the princess ! Now with this jewel, everyone will finally know that you are true hero");
+        printMsg(
+                "You defeated the dragon and saved the princess ! Now with this jewel, everyone will finally know that you are true hero");
         // todo
     }
 

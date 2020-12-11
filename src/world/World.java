@@ -114,12 +114,12 @@ public class World implements WorldContains {
 
     @Override
     public String toString() {
-        return "World {" + "\n" +
-               player + "\n" +
-               ", placeList=" + places + "\n" +
-               ", currentPlace=" + currentPlace + "\n" +
-               ", end=" + end + "\n" +
-               ", win=" + win + "\n" +
+        return "World { " + "\n" +
+               "placeList = " + places + "\n" +
+               ", currentPlace = " + currentPlace + "\n" +
+               ", end = " + end + "\n" +
+               ", win = " + win + "\n" +
+               "player = " + player + "\n" +
                '}';
     }
 }
