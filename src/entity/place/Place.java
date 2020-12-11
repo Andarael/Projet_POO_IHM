@@ -447,6 +447,7 @@ public class Place extends Entity {
         String bot = this.displayExitBotLine();
 
         System.out.println(top + middle + bot);
+        this.toString();
         return top + middle + bot;
     }
 
