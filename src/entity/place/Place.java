@@ -2,10 +2,7 @@
 
 package entity.place;
 
-import entity.Container;
-import entity.Entity;
-import entity.Hostile;
-import entity.StaticContainer;
+import entity.*;
 import entity.item.Item;
 import utils.Col;
 import utils.StringUtils;
@@ -160,6 +157,11 @@ public class Place extends Entity {
                               .count();
     }
 
+    public void displayExit(){
+
+
+    }
+
     /* ------ les containers ------*/
 
     /**
@@ -263,6 +265,20 @@ public class Place extends Entity {
         return this.listContainers.size();
     }
 
+    public void displayDescContainer(){
+        System.out.println("You see in the place : \n");
+        for (Container container : this.listContainers) {
+            if (container instanceof Hostile) {
+                System.out.println("Hostil :");
+                System.out.println(((Hostile) container).getSimpleDisplay());
+            }
+            if (container instanceof Passive) {
+                System.out.println("Passive:");
+                System.out.println(((Passive) container).getSimpleDisplay());
+            }
+        }
+    }
+
 
     /* ------ le place container ------*/
 
@@ -285,6 +301,17 @@ public class Place extends Entity {
             return;
         this.placeContainer.addItem(item);
     }
+
+
+    public void displayPlaceContainer(){
+        if (!this.getPlaceContainer().isEmpty()) {
+            System.out.println("\n And in floor : \n");
+            System.out.println(this.getPlaceContainer().getInventoryDisplay());
+        }
+    }
+
+
+
 
     public Hostile getAgressive() {
         return (Hostile) this.listContainers.stream()
@@ -435,7 +462,7 @@ public class Place extends Entity {
     }
 
     /**
-     * it displays all the drawing of the curent place
+     * it displays all the drawing of the curent place and descriptions
      *
      * @return all the drawing in string
      */
@@ -446,8 +473,11 @@ public class Place extends Entity {
         String middle = this.displayContainers();
         String bot = this.displayExitBotLine();
 
+        System.out.println("---> "+this.getName() + "\n");
         System.out.println(top + middle + bot);
-        this.toString();
+        this.displayDescContainer();
+        this.displayPlaceContainer();
+        //this.displayExit();
         return top + middle + bot;
     }
 
