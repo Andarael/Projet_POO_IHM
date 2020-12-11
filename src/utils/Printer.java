@@ -1,7 +1,5 @@
 package utils;
 
-import org.omg.PortableInterceptor.ServerRequestInfo;
-
 import static utils.Col.*;
 
 public interface Printer {

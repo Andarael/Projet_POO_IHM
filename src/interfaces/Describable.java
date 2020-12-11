@@ -5,7 +5,6 @@ package interfaces;
 /**
  * An interface for objects that can be described
  * Such objects have a name, a shortName and a description
- *
  */
 public interface Describable extends Shortenable {
 
@@ -41,6 +40,7 @@ public interface Describable extends Shortenable {
 
     /**
      * Same principle as getSimpleDisplay(), but with more information the the object if possible
+     *
      * @return a detailed version of the object to be displayed
      */
     default String getDisplay() {
@@ -49,6 +49,7 @@ public interface Describable extends Shortenable {
 
     /**
      * Same as getDisplay() but with possible last minute additions to the display
+     *
      * @return a final version of the object to be displayed
      */
     default String print() {

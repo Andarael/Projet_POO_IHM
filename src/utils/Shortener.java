@@ -24,7 +24,7 @@ public interface Shortener {
             return output;
         }
 
-        output = str.substring(0,Math.min(str.length(),SHORT_NAME_SIZE)).trim();
+        output = str.substring(0, Math.min(str.length(), SHORT_NAME_SIZE)).trim();
 
         return output;
     }

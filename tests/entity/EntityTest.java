@@ -16,17 +16,18 @@ class EntityTest {
 
     @BeforeEach
     void setUp() {
-        e1 = new Entity("apple", null,"a red apple") {
+        e1 = new Entity("apple", null, "a red apple") {
         };
         e2 = new Entity(null) {
         };
-        e3 = new Entity("pog", null,"a nice Pog") {
+        e3 = new Entity("pog", null, "a nice Pog") {
         };
     }
 
     @Test
     void Entity() {
-        Entity e = new Entity(null) {};
+        Entity e = new Entity(null) {
+        };
         System.out.println(e);
 
         assertNotNull(e.getName());
@@ -34,12 +35,14 @@ class EntityTest {
         assertEquals(Entity.DEFAULT_NAME, e.getName());
         assertNull(e.getDescription());
 
-        e = new Entity("un pog", "pog pog") {};
+        e = new Entity("un pog", "pog pog") {
+        };
         System.out.println(e);
         assertEquals("un_pog", e.getName());
         assertEquals("pog_p", e.getShortName());
 
-        e = new Entity("") {};
+        e = new Entity("") {
+        };
         System.out.println(e);
         assertSame(Entity.DEFAULT_NAME, e.getName());
     }
@@ -137,7 +140,8 @@ class EntityTest {
     void testHashCode() {
         assertNotEquals(e1.hashCode(), e2.hashCode());
 
-        Entity e = new Entity(e1.getName()) {};
+        Entity e = new Entity(e1.getName()) {
+        };
         assertEquals(e.hashCode(), e1.hashCode());
     }
 

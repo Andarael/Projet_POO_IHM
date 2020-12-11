@@ -3,7 +3,6 @@ package command;
 import entity.Player;
 import entity.item.Hand;
 import entity.item.Item;
-import interfaces.Equipable;
 
 import static utils.Printer.printMsg;
 

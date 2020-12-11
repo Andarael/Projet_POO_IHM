@@ -18,8 +18,8 @@ class FoodTest {
 
     @BeforeEach
     void setUp() {
-        f1 = new Food("apple",null, "a red apple", 0.2, 1, 3);
-        f2 = new Food("chicken",null, "a rotten chicken", -5);
+        f1 = new Food("apple", null, "a red apple", 0.2, 1, 3);
+        f2 = new Food("chicken", null, "a rotten chicken", -5);
     }
 
     @Test

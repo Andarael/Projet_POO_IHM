@@ -6,7 +6,6 @@ import entity.item.Item;
 
 /**
  * A Limited inventory is a special kind of inventory with a weight limit
- *
  */
 public class LimitedInventory extends Inventory {
 

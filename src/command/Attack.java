@@ -17,10 +17,9 @@ public interface Attack {
      * Attacks a valid opponent in the current room
      * Displays its own messages
      *
-     *
-     * @param player the player of tha game
+     * @param player       the player of tha game
      * @param currentPlace the place the fight occurs in
-     * @param arg1 the first arg of userinput (opponent name)
+     * @param arg1         the first arg of userinput (opponent name)
      */
     static void attack(Player player, Place currentPlace, String arg1) {
         Container opponent = currentPlace.getContainerByName(arg1);
@@ -58,7 +57,7 @@ public interface Attack {
 
         aggressiveEntity = currentPlace.getAgressive();
 
-        if (aggressiveEntity != null){
+        if (aggressiveEntity != null) {
             printMsg(aggressiveEntity.getName() + " Attacks You !");
             Fightable.fight(player, aggressiveEntity);
         }
@@ -68,7 +67,7 @@ public interface Attack {
      * removes a being from the room and adds its loot to the room
      *
      * @param currentPlace the current place
-     * @param opponent the dead opponent to add loot to the place
+     * @param opponent     the dead opponent to add loot to the place
      */
     static void addLootToPlace(Place currentPlace, Container opponent) {
         printMsg(opponent.getName() + " is dead and its loots fall on the ground");

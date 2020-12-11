@@ -27,8 +27,8 @@ class HostileTest {
 
         h.addGold(5);
         h.addItem(new Item("book"));
-        h.addItem(new Weapon("axe", null,null, 3.0, 2, 3));
-        h.addItem(new Key(RED,null));
+        h.addItem(new Weapon("axe", null, null, 3.0, 2, 3));
+        h.addItem(new Key(RED, null));
 
         System.out.println(h.getSimpleDisplay());
         System.out.println(h.getDisplay());
@@ -51,11 +51,11 @@ class HostileTest {
         assertTrue(h.isAgressive());
 
         h = new Hostile("monster",
-                                "monst",
-                                null,
-                                12,
-                                5,
-                                false);
+                        "monst",
+                        null,
+                        12,
+                        5,
+                        false);
 
         assertFalse(h.isAgressive());
     }

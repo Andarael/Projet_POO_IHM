@@ -11,7 +11,7 @@ public interface Drop {
 
     static void drop(Player player, Place currentPlace, String arg1) {
         if (player == null || currentPlace == null) {
-            printErr( "This does not exist");
+            printErr("This does not exist");
             return;
         }
 

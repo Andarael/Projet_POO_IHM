@@ -20,14 +20,14 @@ class KeyTest {
 
     @BeforeEach
     void setUp() {
-        k1 = new Key(BLUE,"a finely crafted blue key");
+        k1 = new Key(BLUE, "a finely crafted blue key");
         k2 = new Key(RED, "the  R E D  key");
-        k3 = new Key( RESET,null);
+        k3 = new Key(RESET, null);
     }
 
     @Test
     void Key() {
-        Key k = new Key(RED,null);
+        Key k = new Key(RED, null);
         System.out.println(k.toString());
         Key otherK = new Key(RED);
         assertTrue(k.isSame(otherK));
@@ -65,7 +65,7 @@ class KeyTest {
     @Test
     void use2() {
         Place destination = new Place("destination");
-        LockedExit lockedExit = new LockedExit(destination,BLUE);
+        LockedExit lockedExit = new LockedExit(destination, BLUE);
         LockedExit lockedExit2 = new LockedExit(destination, YELLOW);
 
         k1.use(lockedExit);
@@ -95,6 +95,6 @@ class KeyTest {
     void isSameColor() {
         assertFalse(k1.isSameColor(null));
         assertFalse(k1.isSameColor(k2));
-        assertTrue(k1.isSameColor(new Key(BLUE,null)));
+        assertTrue(k1.isSameColor(new Key(BLUE, null)));
     }
 }

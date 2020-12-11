@@ -3,6 +3,7 @@
 package game;
 
 import command.Attack;
+import entity.Player;
 import world.World;
 
 import java.util.List;
@@ -38,22 +39,25 @@ public class Game {
 
             try {
 
+
                 Attack.checkFight(world);
                 displayWaitingInput();
                 userInput = getUserInput();
                 execute(world, userInput);
 
+                // Update variables
+                end = world.isEnd();
+                victory = world.hasWin();
+                death = world.getPlayer().isDead();
+
+                // if world is incorrectly initialized
             } catch (NullPointerException nullException) {
                 printErr("This world is corrupted by some dark computer magic, \n" +
                          "your adventure must stop now !");
+                System.out.println("The devil comes from : " + nullException);
+                nullException.printStackTrace();
                 break;
             }
-
-            // Update variables
-            end = world.isEnd();
-            victory = world.hasWin();
-            death = world.getPlayer().isDead();
-
 
         }
 
@@ -64,16 +68,19 @@ public class Game {
         if (death)
             displayDeath();
 
-        displayStats(world);
+        displayStats(world.getPlayer());
 
         return (victory);
 
     }
 
-    private static void displayStats(World world) {
+    private static void displayStats(Player player) {
         printMsg("Some stats on your adventure : ");
-        printMsg("You killed a total of " + world.getPlayer().getKills() + " Beings !");
-        printMsg("and got " + world.getPlayer().getGold() + " golds ");
+        printMsg("You got to level " + player.getLevel());
+        printMsg("You killed a total of " + player.getKills() + " Beings !");
+        printMsg("and got " + player.getGold() + " golds ");
+        printMsg("In your inventory you had :");
+        printMsg(player.getInventoryDisplay());
     }
 
     private static void displayWelcome() {
@@ -82,20 +89,18 @@ public class Game {
     }
 
     private static void displayWaitingInput() {
-        // todo
         printMsg("What will be your next move ?");
         System.out.print(">");
     }
 
     private static void displayDeath() {
         printMsg("Your wounds led you to a slow and painful death");
-        // todo
     }
 
     private static void displayVictory() {
-        printMsg(
-                "You defeated the dragon and saved the princess ! Now with this jewel, everyone will finally know that you are true hero");
-        // todo
+        printMsg("You defeated the dragon and saved the princess ! " +
+                 "Now with this jewel, everyone will finally know that you are true hero");
+
     }
 
     public static void main(String[] args) {

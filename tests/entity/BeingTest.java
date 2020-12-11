@@ -18,7 +18,7 @@ class BeingTest {
     @BeforeEach
     void setUp() {
         b1 = new Being(null, null, null, -5, 0);
-        b2 = new Being("vieux_marchand", "vMarc", "un vieux marchand", 20,1);
+        b2 = new Being("vieux_marchand", "vMarc", "un vieux marchand", 20, 1);
         b3 = new Being("spider", 5);
         b4 = new Being("Cyclope");
     }
@@ -193,7 +193,7 @@ class BeingTest {
     @Test
     void getPower() {
         Being b1 = new Being("Pog", null, null, 10, -5);
-        Being b2 = new Being("Pog",null,  null, 10, 5);
+        Being b2 = new Being("Pog", null, null, 10, 5);
 
         assertEquals(1, b1.getPower());
         assertEquals(5, b2.getPower());

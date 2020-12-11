@@ -27,7 +27,7 @@ import static world.WorldContains.haveEntity;
 
 public interface Execute {
 
-    static void execute(World world, List<String> args)  throws NullPointerException {
+    static void execute(World world, List<String> args) throws NullPointerException {
 
         if (world == null || args == null) {
             printErr("World or command arguments are null, stopping Now !");
@@ -58,7 +58,6 @@ public interface Execute {
         if (nbArgs > 0) {
             arg1 = args.get(1);
             if (!(haveEntity(world, arg1) || isACommand(arg1))) {
-                // todo faire marcher haveEntity avec name te ShortName
                 printErr(arg1 + " does not exist");
                 return;
             }

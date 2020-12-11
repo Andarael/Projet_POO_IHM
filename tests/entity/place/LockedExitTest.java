@@ -18,16 +18,15 @@ class LockedExitTest {
     private Key key1;
 
 
-
     @BeforeEach
     void setUp() {
         place1 = new Place("Laboratory");
         place2 = new Place("Cave");
 
-        lockedExit1 = new LockedExit(place1,RED);
-        lockedExit2 = new LockedExit(place2,BLUE);
+        lockedExit1 = new LockedExit(place1, RED);
+        lockedExit2 = new LockedExit(place2, BLUE);
 
-        key1 = new Key(BLUE,"the  R E D  key");
+        key1 = new Key(BLUE, "the  R E D  key");
     }
 
     @Test
@@ -41,11 +40,10 @@ class LockedExitTest {
 
     @Test
     void goIn() {
-        assertSame(null,lockedExit1.goIn());
+        assertSame(null, lockedExit1.goIn());
 
         lockedExit2.unLock(key1);
-        assertSame(place2,lockedExit2.goIn());
-
+        assertSame(place2, lockedExit2.goIn());
     }
 
     @Test
@@ -58,8 +56,8 @@ class LockedExitTest {
 
     @Test
     void getColor() {
-        assertSame(RED,lockedExit1.getColor());
-        assertSame(BLUE,lockedExit2.getColor());
+        assertSame(RED, lockedExit1.getColor());
+        assertSame(BLUE, lockedExit2.getColor());
     }
 
     @Test
