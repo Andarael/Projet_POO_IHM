@@ -127,7 +127,7 @@ public class Place extends Entity {
 
     }
 
-    public void rmContainer(Container container) {
+    public void removeContainer(Container container) {
         if (!this.isEmptyContainer()) {
             this.listContainers.remove(container);
         }

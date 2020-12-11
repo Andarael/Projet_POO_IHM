@@ -158,7 +158,7 @@ class PlaceTest {
     void rmContainer() {
         place1.addContainer(cont1);
         System.out.println(place1);
-        place1.rmContainer(cont1);
+        place1.removeContainer(cont1);
         System.out.println(place1);
         assertEquals(null,place1.getContainer(cont1));
 
