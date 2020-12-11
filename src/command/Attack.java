@@ -23,7 +23,9 @@ public interface Attack {
             return;
         }
 
+        printMsg("Tou attack " + opponent.getName() + " !");
         Fightable.fight(player, new Being(arg1));
+
 
         if (((Fightable) opponent).isDead()) {
             player.addKill();
@@ -36,5 +38,7 @@ public interface Attack {
                 printMsg("You now have " + player.getMaxHp() + "hp, and do 1 more damage");
             }
         }
+
+        //todo ajouter l'inv du monstre dans la salle
     }
 }
