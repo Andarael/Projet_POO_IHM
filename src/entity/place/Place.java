@@ -157,7 +157,14 @@ public class Place extends Entity {
                               .count();
     }
 
-    public void displayExit(){
+    public void  displayExit(){
+        for (int i =0; i < this.exitMax; i++){
+            if(this.getExitByIndex(i) != null) {
+                System.out.println("= The exit in this place = \n");
+                System.out.println(this.getExitByIndex(i).getDisplay() + "\n");
+            }
+        }
+
 
 
     }
@@ -266,7 +273,7 @@ public class Place extends Entity {
     }
 
     public void displayDescContainer(){
-        System.out.println("You see in the place : \n");
+        System.out.println("= You see in the place = \n");
         for (Container container : this.listContainers) {
             if (container instanceof Hostile) {
                 System.out.println("Hostil :");
@@ -305,7 +312,7 @@ public class Place extends Entity {
 
     public void displayPlaceContainer(){
         if (!this.getPlaceContainer().isEmpty()) {
-            System.out.println("\n And in floor : \n");
+            System.out.println("\n= And on the ground = \n");
             System.out.println(this.getPlaceContainer().getInventoryDisplay());
         }
     }
@@ -477,7 +484,7 @@ public class Place extends Entity {
         System.out.println(top + middle + bot);
         this.displayDescContainer();
         this.displayPlaceContainer();
-        //this.displayExit();
+        this.displayExit();
         return top + middle + bot;
     }
 
