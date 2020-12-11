@@ -2,15 +2,12 @@
 
 package game;
 
-import command.Command;
-import sun.launcher.LauncherHelper;
 import world.World;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static command.Execute.execute;
-import static command.Interpreter.getUserInput;
+import static command.Inputer.getUserInput;
 import static utils.Printer.printMsg;
 
 
