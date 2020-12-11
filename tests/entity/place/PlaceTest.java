@@ -3,7 +3,10 @@
 package entity.place;
 
 import entity.Container;
+import entity.Hostile;
 import entity.Player;
+import entity.StaticContainer;
+import entity.item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +31,7 @@ class PlaceTest {
     private Container cont9;
 
 
-    private Player player;
+    private Item item1;
 
     @BeforeEach
     void setUp() {
@@ -48,7 +51,6 @@ class PlaceTest {
         cont8 = new Container("OldMan"){};
         cont9 = new Container("YoungMan"){};
 
-        player = new Player(20);
 
 
         place2.addContainer(cont1);
@@ -59,6 +61,13 @@ class PlaceTest {
         place2.addExit(place1,0);
         place3.addExit(place2,1);
         place3.addExit(place1,3);
+
+        item1 = new Item("golden statue",
+                         "gStat",
+                         "a small statue with a frightful effigy",
+                         1,
+                         2);
+
 
     }
 
@@ -73,6 +82,11 @@ class PlaceTest {
 
         assertEquals(new Exit(place3),place1.getExitByName("Laboratory"));
         assertEquals(new Exit(place2),place1.getExitByIndex(3));
+
+        System.out.println(place3);
+        place3.addExit(place1,0);
+        System.out.println(place3);
+
     }
 
     @Test
@@ -134,6 +148,7 @@ class PlaceTest {
     @Test
     void getIndexExit() {
         assertEquals(1,place3.getIndexExit("Cave"));
+        assertEquals(-1,place3.getIndexExit("Nop"));
 
     }
 
@@ -152,6 +167,11 @@ class PlaceTest {
         place1.addContainer(cont3);
         System.out.println(place1);
         assertEquals(cont1,place1.getContainer(cont1));
+
+        assertNull(place2.getContainer(cont3));
+        place2.addContainer(cont3);
+        place2.addContainer(cont3);
+        System.out.println(place2);
     }
 
     @Test
@@ -175,6 +195,8 @@ class PlaceTest {
         place1.addContainer(cont1);
         System.out.println(place1);
         assertTrue(place1.containerExists("Skeleton"));
+
+        assertFalse(place1.containerExists("Nop"));
     }
 
     @Test
@@ -203,6 +225,34 @@ class PlaceTest {
     }
 
 
+
+
+    @Test
+    void getPlaceContainer() {
+        assertEquals(new Place("Tavern").getPlaceContainer(),place1.getPlaceContainer());
+
+    }
+
+    @Test
+    void addItemToPlace() {
+        System.out.println(place1);
+        place1.addItemToPlace(item1);
+        System.out.println(place1);
+        assertTrue(place1.getPlaceContainer().contains(item1));
+
+        place1.addItemToPlace(null);
+        System.out.println(place1);
+
+    }
+
+    @Test
+    void getAgressive(){
+        Hostile orc = new Hostile("orc", "orc", "a green creature", 5, 5);
+        place3.addContainer(orc);
+        assertEquals(orc,place3.getAgressive());
+    }
+
+
     @Test
     void displayExitTopLine() {
         System.out.println(place1.displayExitTopLine());
@@ -211,8 +261,9 @@ class PlaceTest {
 
     @Test
     void displayExitMiddleLine() {
-        /*System.out.println(place1.displayExitMiddleLine());
-        System.out.println(place2.displayExitMiddleLine());*/
+        place1.addLockedExit(place2,2,BLUE);
+        System.out.println(place1.displayExitMiddleLine());
+        System.out.println(place2.displayExitMiddleLine());
         System.out.println(place3.displayExitMiddleLine());
     }
 
@@ -251,6 +302,11 @@ class PlaceTest {
         place4.addContainer(cont9);*/
 
         place4.draw();
+    }
+
+    @Test
+    void look(){
+        assertEquals(place1.draw(),place1.look());
     }
 
 
