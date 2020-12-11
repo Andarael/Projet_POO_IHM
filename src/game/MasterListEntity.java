@@ -442,6 +442,10 @@ public interface MasterListEntity {
                                     "Young girl with black hair, child of Ulric",
                                     "please save us sir");
 
+
+
+
+
     Set<Entity> entityMasterList = getAllEntities();
 
     static Set<Entity> getAllEntities() {
@@ -539,6 +543,39 @@ public interface MasterListEntity {
         output.add(banditLair);
         output.add(waterSource);
 
+        entrance.addItemToPlace(redKey);
+        entrance.addItemToPlace(dagger);
+        entrance.addExit(barn,2);
+        entrance.addContainer(scandalf);
+
+        barn.addContainer(iron_chest);
+        barn.addContainer(ordinary_guy);
+        barn.addContainer(orc);
+        barn.addExit(cave,0);
+        barn.addExit(entrance,1);
+        barn.addLockedExit(laboratory,2,RED);
+        barn.addLockedExit(forest,3,GREEN);
+
+        forest.addExit(barn,0);
+
+        cave.addContainer(merchant);
+        cave.addContainer(minotaur);
+        cave.addContainer(skeleton);
+        cave.addExit(barn,3);
+
+        laboratory.addItemToPlace(esoteric_manual);
+        laboratory.addExit(barn,3);
+        laboratory.addLockedExit(church,0,BLUE);
+
+
+
+
+
+
+
+
+
+
         //todo init items
         return output;
     }
@@ -554,6 +591,9 @@ public interface MasterListEntity {
         output.add(ghost);
         output.add(skeleton);
         output.add(wolf);
+
+        minotaur.addItem(spiked_mass);
+        skeleton.addItem(one_handed_sword);
 
         return output;
     }
@@ -572,6 +612,8 @@ public interface MasterListEntity {
         output.add(arthurBrave);
         output.add(madelaine);
 
+        merchant.addItem(irons_arrow);
+
         return output;
     }
 
@@ -582,6 +624,13 @@ public interface MasterListEntity {
         output.add(iron_chest);
         output.add(steel_chest);
         output.add(emerald_chest);
+
+
+        iron_chest.addItem(apple);
+        iron_chest.addItem(poison);
+
+        steel_chest.addItem(greenKey);
+        steel_chest.addItem(coca_zero);
 
         return output;
     }
