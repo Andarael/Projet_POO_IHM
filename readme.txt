@@ -5,7 +5,7 @@ projet de POO 2020
 Aide de jeu
 
 Il est vivement recommandé d'utiliser un terminal qui supporte les "ANSI escape code"
-nottament le terminal windows cmd.exe et powershell ne supportent pas ce format.
+notamment le terminal windows cmd.exe et powershell ne supportent pas ce format.
 
 Pour lancer le jeu
 cd ./out
