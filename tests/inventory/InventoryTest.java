@@ -22,11 +22,9 @@ class InventoryTest {
         inv1 = new Inventory();
         inv2 = new Inventory();
 
-        item1 = new Item("apple", "a red apple", 1.0, 1);
+        item1 = new Item("apple", "a", "a red apple", 1.0, 1);
         item2 = new Item("apple");
         item3 = new Item("shield");
-
-        item1.setShortName("a");
 
         inv2.addItem(item1);
         inv2.addItem(item2);

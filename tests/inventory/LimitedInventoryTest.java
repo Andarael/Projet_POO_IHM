@@ -21,10 +21,10 @@ class LimitedInventoryTest {
     void setUp() {
         inv1 = new LimitedInventory(10.0);
 
-        item1 = new Item("apple", 1.0, 1);
-        item2 = new Item("sword", 3.0, 1);
-        item3 = new Item("shield", 5.0, 1);
-        item4 = new Item("heavy_thing", 500.0, 1);
+        item1 = new Item("apple", null, null, 1.0, 1);
+        item2 = new Item("sword", null, null, 3.0, 1);
+        item3 = new Item("shield", null, null, 5.0, 1);
+        item4 = new Item("heavy_thing", null, null, 500.0, 1);
     }
 
     @Test
