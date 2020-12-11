@@ -7,8 +7,6 @@ package entity;
  */
 public class Hostile extends Being {
 
-    //todo check agressive value
-
     private final boolean agressive;
 
     public Hostile(String name, String shortName, String description, int hp, int power) {

@@ -58,7 +58,6 @@ public interface Execute {
         if (nbArgs > 0) {
             arg1 = args.get(1);
             if (!(haveEntity(world, arg1) || isACommand(arg1))) {
-                // todo faire marcher haveEntity avec name te ShortName
                 printErr(arg1 + " does not exist");
                 return;
             }
