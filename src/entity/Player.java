@@ -29,6 +29,7 @@ public class Player extends Being {
     private static final Hand HANDS = new Hand();
     private final LimitedInventory limitedInventory;
     private Item equipped;
+    //todo ajout cpt de kill pour up lvl (et modif getPower() + lvl -1)
 
     public Player(int hp) {
         super("player", null, hp, 1);
