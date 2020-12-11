@@ -38,22 +38,25 @@ public class Game {
 
             try {
 
+
                 Attack.checkFight(world);
                 displayWaitingInput();
                 userInput = getUserInput();
                 execute(world, userInput);
 
+                // Update variables
+                end = world.isEnd();
+                victory = world.hasWin();
+                death = world.getPlayer().isDead();
+
+            // if world is incorrectly initialized
             } catch (NullPointerException nullException) {
                 printErr("This world is corrupted by some dark computer magic, \n" +
                          "your adventure must stop now !");
+                System.out.println("The devil comes from : " + nullException);
+                nullException.printStackTrace();
                 break;
             }
-
-            // Update variables
-            end = world.isEnd();
-            victory = world.hasWin();
-            death = world.getPlayer().isDead();
-
 
         }
 
