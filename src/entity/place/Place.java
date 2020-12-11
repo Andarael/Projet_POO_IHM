@@ -157,14 +157,13 @@ public class Place extends Entity {
                               .count();
     }
 
-    public void  displayExit(){
+    public void displayExit() {
         System.out.println("= The exits in this place = \n");
-        for (int i =0; i < this.exitMax; i++){
-            if(this.getExitByIndex(i) != null) {
+        for (int i = 0; i < this.exitMax; i++) {
+            if (this.getExitByIndex(i) != null) {
                 System.out.println(this.getExitByIndex(i).getDisplay() + "\n");
             }
         }
-
 
 
     }
@@ -191,10 +190,10 @@ public class Place extends Entity {
         if (!this.listContainers.isEmpty()) {
             if (containsContainer(container))
                 return;
-
-            if (this.nbContainer() < this.containerMax)
-                this.listContainers.add(container);
         }
+        if (this.nbContainer() < this.containerMax)
+            this.listContainers.add(container);
+
 
     }
 
@@ -274,16 +273,16 @@ public class Place extends Entity {
         return this.listContainers.size();
     }
 
-    public void displayDescContainer(){
+    public void displayDescContainer() {
         System.out.println("= You see in the place = \n");
         for (Container container : this.listContainers) {
             if (container instanceof Hostile) {
                 System.out.println("Hostil :");
-                System.out.println(((Hostile) container).getSimpleDisplay());
+                System.out.println(container.getSimpleDisplay());
             }
             if (container instanceof Passive) {
                 System.out.println("Passive:");
-                System.out.println(((Passive) container).getSimpleDisplay());
+                System.out.println(container.getSimpleDisplay());
             }
         }
     }
@@ -312,14 +311,12 @@ public class Place extends Entity {
     }
 
 
-    public void displayPlaceContainer(){
+    public void displayPlaceContainer() {
         if (!this.getPlaceContainer().isEmpty()) {
             System.out.println("\n= And on the ground = \n");
             System.out.println(this.getPlaceContainer().getInventoryDisplay());
         }
     }
-
-
 
 
     public Hostile getAgressive() {
@@ -482,7 +479,7 @@ public class Place extends Entity {
         String middle = this.displayContainers();
         String bot = this.displayExitBotLine();
 
-        System.out.println("---> "+this.getName() + "\n");
+        System.out.println("---> " + this.getName() + "\n");
         System.out.println(top + middle + bot);
         this.displayDescContainer();
         this.displayPlaceContainer();
