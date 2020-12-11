@@ -32,7 +32,7 @@ class ShortenerTest {
     void shortenName1() {
         assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s1).length());
         assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s2).length());
-        assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s3).length());
+        assertEquals(s3.length(), Shortener.shorten(s3).length());
         assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s4).length());
         assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s5).length());
         assertEquals(Shortener.SHORT_NAME_SIZE, Shortener.shorten(s6).length());
@@ -42,10 +42,10 @@ class ShortenerTest {
     void shortenName2() {
         assertEquals("longN", Shortener.shorten(s1));
         assertEquals("short", Shortener.shorten(s2));
-        assertEquals("vs   ", Shortener.shorten(s3));
-        assertEquals("     ", Shortener.shorten(s4));
-        assertEquals("     ", Shortener.shorten(s5));
-        assertEquals("     ", Shortener.shorten(s6));
+        assertEquals("vs", Shortener.shorten(s3));
+        assertEquals("_____", Shortener.shorten(s4));
+        assertEquals("_____", Shortener.shorten(s5));
+        assertEquals("_____", Shortener.shorten(s6));
     }
 
     @Test

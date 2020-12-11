@@ -12,12 +12,21 @@ public interface Shortener {
      * @return shortened String
      */
     static String shorten(String str) {
+        String output = StringUtils.stringFill(SHORT_NAME_SIZE, '_');
+
         if (str == null)
-            return StringUtils.stringFill(SHORT_NAME_SIZE, ' ');
+            return output;
 
-        return str.substring(0,Math.min(str.length(),SHORT_NAME_SIZE)).trim();
+        if (str.length() < 1)
+            return output;
 
-        // return StringUtils.rightPad(str, SHORT_NAME_SIZE, ' ').substring(0, SHORT_NAME_SIZE);
+        if (str.trim().length() < 1) {
+            return output;
+        }
+
+        output = str.substring(0,Math.min(str.length(),SHORT_NAME_SIZE)).trim();
+
+        return output;
     }
 
 }
