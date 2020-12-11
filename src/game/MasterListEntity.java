@@ -16,7 +16,6 @@ public interface MasterListEntity {
     // =========================================================================
 
     // Items ===================================================================
-    Entity pog = new Item("Pog");
     Item golden_statue = new Item("golden statue", "a small statue with a frightful effigy",1,20);
     Item divine_jewel = new Item("divine jewel", "as you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves...");
 
@@ -25,15 +24,15 @@ public interface MasterListEntity {
     Weapon great_sword = new Weapon("great sword", "a big and heavy sword made with steel", 5, 5, 5);
     Weapon one_handed_sword = new Weapon("one-handed sword", "a short but sharp sword made with iron", 3, 3, 3);
     Weapon dagger = new Weapon("dagger", "a tiny dagger", 1, 1, 1);
+    Weapon spear = new Weapon("spear", "a long stick with a piece of metal at the end", 4,4,4);
     Bow hunters_bow = new Bow("hunter's bow", "a small but tough bow, made for sharpened arrows", 3, 3, 3);
     Arrow irons_arrow = new Arrow();
-    Weapon spear = new Weapon("spear", "a long stick with a piece of metal at the end", 4,4,4);
 
     // Food   ==================================================================
     Food chicken = new Food("chicken", "a raw chicken", 1, 2, 2);
     Food rotten_chicken = new Food("rotten chicken", "a fragrant chicken", 1,1,-2);
     Food elixir_of_mystic_life = new Food("elixir of mystic life", "it just look like a bottle of perfume",1,10, 10);
-    Food coca_zero = new Food("coca zero", "it just look like oil, but with no sugar in it", 1,5,20);
+    Food coca_zero = new Food("coca zero", "it just look like oil, but with no sugar in it", 1,5,20); // wtf
     Food big_cake = new Food("big cake", "a big lemon cake", 1,3,3);
     Food poison = new Food("weird-looking bottle", "i wouldn't drink this if i were you", 1,10,-15);
     Food apple = new Food("apple","a mouthwatering apple",1,1,1);
@@ -232,6 +231,15 @@ public interface MasterListEntity {
     static void initPlayer(Player player) {
         // todo player.addItem(...)
         player.addItem(redKey);
+        player.addItem(chicken);
+        player.addItem(rotten_chicken);
+        player.addItem(irons_arrow);
+        player.addItem(irons_arrow);
+        player.addItem(hunters_bow);
+        player.addItem(dagger);
+        player.addItem(poison);
+        player.addItem(poison);
+        player.addItem(golden_statue);
     }
 
 }

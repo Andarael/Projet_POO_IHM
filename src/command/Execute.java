@@ -59,7 +59,7 @@ public interface Execute {
             arg1 = args.get(1);
             if (!(haveEntity(world, arg1) || isACommand(arg1))) {
                 // todo faire marcher haveEntity avec name te ShortName
-                printErr(arg1 + " does not exist(arg1)");
+                printErr(arg1 + " does not exist");
                 return;
             }
         }
@@ -67,7 +67,7 @@ public interface Execute {
         if (nbArgs > 1) {
             arg2 = args.get(2);
             if (!haveEntity(world, arg2)) {
-                printErr(arg2 + " does not exist (arg2)");
+                printErr(arg2 + " does not exist");
                 return;
             }
         }
@@ -133,9 +133,14 @@ public interface Execute {
 
             case EQUIP:
                 equip(player, arg1);
+                break;
 
             case UNEQUIP:
                 unequip(player);
+                break;
+
+            default:
+                printErr("this command is not implemented yet ..");
         }
 
         // use [item] : player.use(item1)

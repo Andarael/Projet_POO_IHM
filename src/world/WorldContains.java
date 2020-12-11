@@ -23,7 +23,7 @@ public interface WorldContains {
                           .anyMatch( x -> (x.isSameStr(item)));
     }
 
-    static boolean isPlace(World world, String place) {
+    static boolean isAPlace(World world, String place) {
         return world.places.stream()
                            .anyMatch( x -> (x.isSameStr(place)));
     }

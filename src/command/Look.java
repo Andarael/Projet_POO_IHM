@@ -15,7 +15,7 @@ public interface Look {
         if (entity != null) {
             entity.look();
         } else {
-            printErr("You can't look at" + arg1);
+            printErr("You can't look at " + arg1 + " from here");
         }
     }
 }
