@@ -2,6 +2,8 @@
 
 package entity.item;
 
+import entity.Entity;
+import entity.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +31,7 @@ class ArrowTest {
 
     @Test
     void testUse() {
-        Bow bow = new Bow("Bow","null", null, 5, 10,4);
+        Bow bow = new Bow("Bow", "null", null, 5, 10, 4);
 
         a.use(bow);
         a.use(bow);
@@ -42,6 +44,9 @@ class ArrowTest {
 
         a.use(new Item("pog"));
         assertEquals(3, bow.getArrows());
+
+        a.use(new Player());
+        a.use((new Entity("bow") {}));
 
     }
 

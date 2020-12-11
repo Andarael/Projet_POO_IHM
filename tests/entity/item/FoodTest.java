@@ -2,15 +2,18 @@
 
 package entity.item;
 
+import entity.Being;
+import entity.Player;
+import interfaces.Usable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static utils.Col.RED;
 
 class FoodTest {
 
-    Item f1;
+    Usable f1;
     Food f2;
 
     @BeforeEach
@@ -30,11 +33,44 @@ class FoodTest {
         System.out.println(f1);
         System.out.println(f2);
 
-        assertTrue(f1.getDisplay().contains("3"));
+        assertTrue(((Item) f1).getDisplay().contains("3"));
     }
 
     @Test
     void getPrefix() {
-        assertTrue(f1.getPrefix().contains("FOOD"));
+        assertTrue(((Item) f1).getPrefix().contains("FOOD"));
     }
+
+    @Test
+    void getUsage() {
+        assertTrue(f2.getUsage().contains("try"));
+    }
+
+    @Test
+    void use() {
+        assertFalse(f1.use());
+        assertFalse(f2.use());
+    }
+
+    @Test
+    void testUse() {
+        assertFalse(f1.use(new Key(RED)));
+        assertFalse(f1.use(new Being("paul")));
+        assertFalse(f1.use(null));
+
+        Player p = null;
+        assertFalse(f1.use(p));
+
+        p = new Player();
+        assertTrue(f1.use(p));
+
+        p.hurt(10);
+
+        assertTrue(f1.use(p));
+        assertSame(13, p.getHp());
+
+        assertTrue(f2.use(p));
+        assertSame(8, p.getHp());
+    }
+
 }

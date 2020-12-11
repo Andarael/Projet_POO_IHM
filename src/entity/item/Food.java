@@ -68,6 +68,11 @@ public class Food extends Item implements Usable {
      */
     @Override
     public boolean use(Entity entity) {
+        if (entity == null) {
+            System.out.println("This Being does not exist" + getUsage());
+            return false;
+        }
+
         if (entity instanceof Player) {
             return use((Player) entity);
         }
@@ -82,12 +87,7 @@ public class Food extends Item implements Usable {
      * @param player the Player of the game
      * @return true if the player was fed
      */
-    public boolean use(Player player) {
-        if (player == null) {
-            System.out.println("This Being does not exist" + getUsage());
-            return false;
-        }
-
+    protected boolean use(Player player) {
         String message = restoreValue + " hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);

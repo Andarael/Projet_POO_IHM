@@ -26,14 +26,22 @@ class EntityTest {
 
     @Test
     void Entity() {
-        Entity e = new Entity(null) {
-        };
+        Entity e = new Entity(null) {};
         System.out.println(e);
 
         assertNotNull(e.getName());
         assertNotNull(e.getShortName());
         assertEquals(Entity.DEFAULT_NAME, e.getName());
         assertNull(e.getDescription());
+
+        e = new Entity("un pog", "pog pog") {};
+        System.out.println(e);
+        assertEquals("un_pog", e.getName());
+        assertEquals("pog_p", e.getShortName());
+
+        e = new Entity("") {};
+        System.out.println(e);
+        assertSame(Entity.DEFAULT_NAME, e.getName());
     }
 
     @Test
@@ -77,7 +85,9 @@ class EntityTest {
     }
 
     @Test
-    void testSame() {
+    void isSame() {
+
+        assertEquals(e1, e1);
         assertNotEquals(null, e1);
 
         Object o = new Object();
@@ -89,6 +99,7 @@ class EntityTest {
         };
 
         assertTrue(e1.isSame(e2));
+        assertTrue(e1.isSameStr("name"));
 
         e1 = new Entity("name") {
         };
@@ -101,8 +112,33 @@ class EntityTest {
     }
 
     @Test
+    void isSame2() {
+        assertFalse(e1.isSame(e2));
+        assertFalse(e1.isSame(null));
+        assertFalse(e1.isSameStr("pog"));
+        assertFalse(e1.isSameStr(null));
+    }
+
+    @Test
     void look() {
         assertTrue(e1.look().contains(e1.getDisplay()));
         e1.look();
     }
+
+    @Test
+    void getDescription() {
+        assertTrue(e1.getDisplay().contains("red"));
+
+        e1.updateDescription(null);
+        assertNull(e1.getDescription());
+    }
+
+    @Test
+    void testHashCode() {
+        assertNotEquals(e1.hashCode(), e2.hashCode());
+
+        Entity e = new Entity(e1.getName()) {};
+        assertEquals(e.hashCode(), e1.hashCode());
+    }
+
 }

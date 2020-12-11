@@ -9,6 +9,9 @@ public interface Talkable extends Describable {
     void setDialogue(String str);
 
     default String talk() {
-        return getName() + " : " + getDialogue();
+        if (getDialogue() == null)
+            return getName() + " have nothing to say";
+        else
+            return getName() + " : " + getDialogue();
     }
 }

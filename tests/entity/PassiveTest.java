@@ -33,4 +33,5 @@ class PassiveTest {
         passive.setDialogue("je susi un jeune marchand !");
         assertTrue(passive.getDialogue().contains("jeune"));
     }
+
 }

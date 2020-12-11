@@ -24,6 +24,10 @@ class BowTest {
         b = new Bow(4);
         assertEquals(Bow.DEFAULT_WEIGHT, b.getWeight());
         assertEquals(0, b.getArrows());
+
+        b = new Bow();
+        assertEquals(Bow.DEFAULT_WEIGHT, b.getWeight());
+        assertEquals(0, b.getArrows());
     }
 
     @Test

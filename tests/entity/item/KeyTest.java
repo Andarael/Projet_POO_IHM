@@ -2,6 +2,7 @@
 
 package entity.item;
 
+import entity.Entity;
 import entity.place.Exit;
 import entity.place.LockedExit;
 import entity.place.Place;
@@ -28,6 +29,9 @@ class KeyTest {
     void Key() {
         Key k = new Key(RED,null);
         System.out.println(k.toString());
+        Key otherK = new Key(RED);
+        assertTrue(k.isSame(otherK));
+        assertTrue(k.isSameColor(otherK));
     }
 
     @Test
@@ -43,7 +47,7 @@ class KeyTest {
     void getColor() {
         assertSame(BLUE, k1.getColor());
         assertSame(RED, k2.getColor());
-        assertSame(RESET, k3.getColor());
+        assertSame(WHITE, k3.getColor());
     }
 
     @Test
@@ -55,13 +59,14 @@ class KeyTest {
     void use() {
         assertFalse(k1.use());
         assertFalse(k1.use(null));
+
     }
 
     @Test
     void use2() {
         Place destination = new Place("destination");
         LockedExit lockedExit = new LockedExit(destination,BLUE);
-        LockedExit lockedExit2 = new LockedExit(destination,YELLOW);
+        LockedExit lockedExit2 = new LockedExit(destination, YELLOW);
 
         k1.use(lockedExit);
         assertFalse(lockedExit.isLocked());
@@ -72,6 +77,13 @@ class KeyTest {
 
         Exit exit = new Exit(destination);
         assertFalse(k1.use(exit));
+    }
+
+    @Test
+    void use3() {
+        assertFalse(k1.use(new Place("tavern")));
+        Entity tavern = new LockedExit(new Place("tavern"), BLUE);
+        assertTrue(k1.use(tavern));
     }
 
     @Test

@@ -13,12 +13,14 @@ class BeingTest {
     private Being b1;
     private Being b2;
     private Being b3;
+    private Being b4;
 
     @BeforeEach
     void setUp() {
         b1 = new Being(null, null, null, -5, 0);
         b2 = new Being("vieux_marchand", "vMarc", "un vieux marchand", 20,1);
         b3 = new Being("spider", 5);
+        b4 = new Being("Cyclope");
     }
 
     @Test
@@ -26,6 +28,7 @@ class BeingTest {
         assertEquals(5, b3.getHp());
         assertEquals(20, b2.getHp());
         assertEquals(20, b1.getHp());
+        assertEquals(Being.DEFAULT_HEALTH, b4.getHp());
     }
 
     @Test
@@ -123,8 +126,6 @@ class BeingTest {
 
     @Test
     void levelUP2() {
-
-
         int expectedMaxHp = b3.getMaxHp();
         expectedMaxHp = expectedMaxHp + (expectedMaxHp * 10 / 2);
 
@@ -196,6 +197,5 @@ class BeingTest {
 
         assertEquals(1, b1.getPower());
         assertEquals(5, b2.getPower());
-
     }
 }

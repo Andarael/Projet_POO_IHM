@@ -8,8 +8,7 @@ import entity.place.LockedExit;
 import interfaces.Usable;
 import utils.Col;
 
-import static utils.Col.RESET;
-import static utils.Col.colorize;
+import static utils.Col.*;
 
 /**
  * Key is a special kind of Item that can open a locked exit
@@ -25,8 +24,8 @@ public class Key extends Item implements Usable {
     private Key(String name, String shortName, String description, Col color) {
         super(name, shortName, description, 0, 0);
 
-        if (color == null)
-            color = RESET;
+        if (color == null || color == BLACK || color == RESET)
+            color = WHITE;
 
         this.color = color;
     }

@@ -207,4 +207,14 @@ class ContainerTest {
         System.out.println(cont2);
     }
 
+    @Test
+    void canAddItem() {
+        assertTrue(cont1.canAddItem(item1));
+        assertFalse(cont1.canAddItem(null));
+    }
+
+    @Test
+    void getInventoryDisplay() {
+        System.out.println(cont2.getInventoryDisplay());
+    }
 }

@@ -15,9 +15,6 @@ public class Passive extends Being implements Talkable {
     public Passive(String name, String shortName, String description, String dialogue) {
         super(name, shortName, description, PASSIVE_HEALTH, PASSIVE_POWER);
 
-        if (dialogue == null)
-            dialogue = DEFAULT_DIALOGUE;
-
         this.dialogue = dialogue;
     }
 

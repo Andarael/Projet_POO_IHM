@@ -44,6 +44,10 @@ public class Player extends Being {
         this(DEFAULT_HEALTH);
     }
 
+    /**
+     * @param item the item to check
+     * @return true if the player have enough space in his inventory to add the item
+     */
     @Override
     public boolean canAddItem(Item item) {
         return ((LimitedInventory) inventory).canAddItem(item);
@@ -54,6 +58,23 @@ public class Player extends Being {
      */
     public Item getEquipped() {
         return equipped;
+    }
+
+    /**
+     * This method also checks if the item is in the equip slot
+     *
+     * @param item a copy of the item to get
+     * @return the actual item from the player's inventory
+     */
+    @Override
+    public Item getItem(Item item) {
+        Item newItem = super.getItem(item);
+
+        if (newItem == null)
+            if (equipped.isSame(item))
+                newItem = equipped;
+
+        return newItem;
     }
 
     /**
@@ -144,9 +165,13 @@ public class Player extends Being {
                 equipped = HANDS;
                 return true;
             }
-            return false;
         }
         return false;
+    }
+
+    @Override
+    public boolean removeItem(String str) {
+        return removeItem(new Item(str));
     }
 
     @Override
@@ -155,17 +180,6 @@ public class Player extends Being {
                ", hp : " + getHp() + "/" + getMaxHp() +
                ", pow : " + getPower() + "\n" +
                "equipped : " + equipped.getSimpleDisplay();
-    }
-
-    public boolean haveItem(Item item) {
-        Item newItem = getItem(item);
-
-        // also check if item is equipped
-        if (newItem == null)
-            if (equipped.isSame(item))
-                newItem = equipped;
-
-        return newItem != null;
     }
 
     /**
@@ -183,7 +197,7 @@ public class Player extends Being {
             return false;
         }
 
-        if (!haveItem(item)) {
+        if (!contains(item)) {
             printMsg("You don't have " + item.getName() + " in your inventory");
             return false;
         }
@@ -244,12 +258,12 @@ public class Player extends Being {
             return false;
         }
 
-        if (!haveItem(item1)) {
+        if (!contains(item1)) {
             printErr("You don't have " + item1.getName() + " in your inventory");
             return false;
         }
 
-        if (!haveItem(item2)) {
+        if (!contains(item2)) {
             printErr("You don't have " + item2.getName() + " in your inventory");
             return false;
         }
@@ -306,7 +320,7 @@ public class Player extends Being {
             return false;
         }
 
-        if (!haveItem(item)) {
+        if (!contains(item)) {
             printMsg("You don't have " + item.getName() + " in your inventory");
             return false;
         }

@@ -4,23 +4,15 @@ package world;
 
 import entity.*;
 import entity.item.Item;
-import entity.item.Key;
 import entity.place.Place;
-import game.MasterListEntity;
 
 import java.util.Set;
 
 import static game.MasterListEntity.*;
-import static utils.Col.RED;
 
 public class World implements WorldContains {
 
     // todo check victoire
-
-    private final Player player;
-    private boolean win;
-    private Place currentPlace;
-    private boolean end;
 
     public final Set<Entity> entities;
     public final Set<Item> items;
@@ -28,6 +20,10 @@ public class World implements WorldContains {
     public final Set<Hostile> hostiles;
     public final Set<Passive> passives;
     public final Set<Container> containers;
+    private final Player player;
+    private final boolean win;
+    private Place currentPlace;
+    private boolean end;
 
 
     public World(int difficulty) {
@@ -51,14 +47,6 @@ public class World implements WorldContains {
         containers = getContainers();
 
         initPlayer(player);
-
-/*        System.out.println(entities);
-        System.out.println(items);
-        System.out.println(places);
-        System.out.println(hostiles);
-        System.out.println(passives);
-        System.out.println(containers);*/
-
     }
 
 

@@ -3,6 +3,9 @@
 package entity;
 
 import entity.item.*;
+import entity.place.Exit;
+import entity.place.LockedExit;
+import entity.place.Place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,33 +19,33 @@ class PlayerTest {
     private Item lourd2;
     private Item heavy2;
     private Item item1;
-    private Item item2;
-    private Item item3;
-    private Item item4;
-    private Item item5;
-    private Item item6;
+    private Item hands;
+    private Item bow;
+    private Item arrow;
+    private Item axe;
+    private Item redKey;
 
     @BeforeEach
     void setUp() {
         p = new Player();
 
         item1 = new Item("pog");
-        item2 = new Hand();
-        item3 = new Bow();
-        item4 = new Arrow();
-        item5 = new Weapon("Axe", null, null, 3.0, 13, 5);
-        item6 = new Key(RED);
+        hands = new Hand();
+        bow = new Bow();
+        arrow = new Arrow();
+        axe = new Weapon("Axe", null, null, 3.0, 13, 5);
+        redKey = new Key(RED);
 
         lourd = new Item("lrd1", null, null, 8.8, 0);
         lourd2 = new Item("lrd2", null, null, 11.8, 0);
         heavy2 = new Item("heavy2", null, null, 10000, 1000);
 
         p.addItem(item1);
-        p.addItem(item2);
-        p.addItem(item3);
-        p.addItem(item4);
-        p.addItem(item5);
-        p.addItem(item6);
+        p.addItem(hands);
+        p.addItem(bow);
+        p.addItem(arrow);
+        p.addItem(axe);
+        p.addItem(redKey);
     }
 
     @Test
@@ -50,7 +53,7 @@ class PlayerTest {
         assertFalse(p.addItem(heavy2));
         p.addItem(lourd);
         System.out.println(p);
-        assertFalse(p.addItem(item5));
+        assertFalse(p.addItem(axe));
     }
 
     @Test
@@ -67,22 +70,22 @@ class PlayerTest {
         assertEquals(new Hand(), p.getEquipped());
 
         p.equip("axe");
-        assertEquals(item5, p.getEquipped());
+        assertEquals(axe, p.getEquipped());
     }
 
     @Test
     void equip() {
         p.equip("axe");
-        assertEquals(item5, p.getEquipped());
+        assertEquals(axe, p.getEquipped());
         assertEquals(13, p.getEquipped().getValue());
 
-        assertFalse(p.contains("axe"));
+        assertTrue(p.contains("axe"));
 
         assertFalse(p.equip((Item) null));
-        assertEquals(item5, p.getEquipped());
+        assertEquals(axe, p.getEquipped());
 
         assertFalse(p.equip("crayon"));
-        assertEquals(item5, p.getEquipped());
+        assertEquals(axe, p.getEquipped());
     }
 
     @Test
@@ -115,29 +118,110 @@ class PlayerTest {
 
     @Test
     void use() {
-        System.out.println(p.use("axe"));
-        System.out.println(p.use("keyR"));
-        System.out.println(p.use("poug"));
-        System.out.println(p.use((Item) null));
+        assertFalse(p.use("axe"));
+        assertFalse(p.use("keyR"));
+        assertFalse(p.use("poug"));
+        assertFalse(p.use((Item) null));
+        assertFalse(p.use((String) null));
+
+        assertFalse(p.use((Item) null));
+
+        assertFalse(p.use((String) null));
 
         p.equip("axe");
-        System.out.println(p.use("axe"));
-        System.out.println(p.use("poug"));
+        assertFalse(p.use("axe"));
+        assertFalse(p.use("poug"));
 
-        System.out.println(p.use("h"));
+        assertFalse(p.use("h"));
     }
 
     @Test
     void use2() {
-        System.out.println(p.use(item1, item2));
-        System.out.println(p.use(item4, item3));
+        assertFalse(p.use(item1, hands));
+        assertTrue(p.use(arrow, bow));
+
         System.out.println(p);
+
         assertEquals(1, ((Bow) p.getItem("bow")).getArrows());
         assertFalse(p.contains("arrow"));
+
+        p.addItem(arrow);
+        p.addItem(arrow);
+        p.addItem(arrow);
+
+        assertTrue(p.use("arrow", "bow"));
+        assertFalse(p.use("arrow", "pog"));
+        assertFalse(p.use("pog", "bow"));
+        assertFalse(p.use(null, "bow"));
+        assertFalse(p.use("banana", "bow"));
+        assertFalse(p.use("arrow", "banana"));
+    }
+
+    @Test
+    void use3() {
+        p.addItem(new Food("apple", null, null, 5));
+        assertTrue(p.use("apple"));
+
+        assertFalse(p.use(null, (Item) null));
+        assertFalse(p.use(null, (String) null));
+
+        Exit exit1 = new LockedExit(new Place("tavern"), RED);
+        Exit exit2 = new Exit(new Place("tavern2"));
+
+        p.addItem(redKey);
+        p.addItem(redKey);
+        p.addItem(redKey);
+        p.addItem(redKey);
+
+        assertTrue(p.use("keyR", exit1));
+        assertFalse(p.use("keyr", exit2));
+        assertFalse(p.use((String) null, exit1));
+        assertFalse(p.use((Item) null, exit1));
+        assertFalse(p.use("pog", exit1));
+        assertFalse(p.use("banana", exit1));
+
     }
 
     @Test
     void display() {
         System.out.println(p);
+    }
+
+    @Test
+    void canAddItem() {
+        assertFalse(p.canAddItem(heavy2));
+        assertTrue(p.canAddItem(new Key(RED)));
+    }
+
+    @Test
+    void removeItem() {
+        p.removeItem("pog");
+        assertFalse(p.contains(item1));
+
+
+        p = new Player();
+        Item equipable = new Bow();
+
+        p.addItem(equipable);
+        p.equip("bow");
+        assertTrue(p.getEquipped().isSameStr("bow"));
+
+        assertFalse(p.removeItem("pog"));
+        assertTrue(p.removeItem("bow"));
+        assertFalse(p.contains("bow"));
+
+    }
+
+    @Test
+    void getKills() {
+        assertEquals(0, p.getKills());
+        p.addKill();
+        p.addKill();
+        p.addKill();
+        assertEquals(3, p.getKills());
+    }
+
+    @Test
+    void getItem() {
     }
 }

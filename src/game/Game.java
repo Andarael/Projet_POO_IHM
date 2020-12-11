@@ -42,7 +42,6 @@ public class Game {
                 break;
             }
 
-
             end = world.isEnd();
 
             victory = world.hasWin();
@@ -54,6 +53,10 @@ public class Game {
             if (death)
                 displayDeath();
         }
+
+        printMsg("Some stats on your adventure : ");
+        printMsg("You killed a total of " + world.getPlayer().getKills() + " Beings !");
+        printMsg("and got " + world.getPlayer().getGold() + " golds ");
 
         return (victory);
 

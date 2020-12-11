@@ -49,9 +49,6 @@ public class Arrow extends Weapon implements UsableOnItem {
      */
     @Override
     public boolean use(Entity entity) {
-        if (entity instanceof Item) {
-            return use((Item) entity);
-        }
         System.out.println("Invalid use of Arrow, " + getUsage());
         return false;
     }

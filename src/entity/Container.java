@@ -28,7 +28,7 @@ public abstract class Container extends Entity implements InventoryManagement {
     }
 
     public boolean canAddItem(Item item) {
-        return true;
+        return item != null;
     }
 
     @Override
@@ -73,12 +73,12 @@ public abstract class Container extends Entity implements InventoryManagement {
 
     @Override
     public boolean contains(Item item) {
-        return inventory.contains(item);
+        return getItem(item) != null;
     }
 
     @Override
     public boolean contains(String str) {
-        return inventory.contains(str);
+        return contains(new Item(str));
     }
 
     @Override

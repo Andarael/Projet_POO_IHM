@@ -11,6 +11,7 @@ import static utils.Shortener.shorten;
  * An Entity is an object that is Lookable, drawable and describable
  * An entity have a name, a shortName and a description
  * Only the description can be null
+ * Name and ShortName are formatted (trim and replacement of ' ' with '_')
  * If an Entity is miss constructed, default values are used to avoid an ill formed Entity.
  * <p>
  * An entity is equal to another if their name or shortName are the same, their description could be different.
@@ -24,22 +25,25 @@ public abstract class Entity implements Lookable {
     private final String shortName;
 
     public Entity(String name, String shortName ,String description) {
-        // le nom ne peut pas être null.
+        // Check name is valid
         if (name == null)
             name = DEFAULT_NAME;
 
+        name = name.trim().replaceAll(" ", "_");
+        if (name.length()<1)
+            name = DEFAULT_NAME;
+
+        // Check shortName
         if (shortName == null)
             shortName = name;
 
+        shortName = shortName.trim().replaceAll(" ", "_");
         if (shortName.length()<1)
             shortName = name;
 
+        this.name = name;
         this.shortName = shorten(shortName);
-
-        this.name = name.replaceAll(" ", "_");
         this.description = description;
-
-
     }
 
     public Entity(String name, String shortName) {
