@@ -2,10 +2,7 @@
 
 package game;
 
-import entity.Hostile;
-import entity.Player;
-import entity.place.Place;
-import interfaces.Fightable;
+import command.Attack;
 import world.World;
 
 import java.util.List;
@@ -18,6 +15,14 @@ import static utils.Printer.printMsg;
 
 public class Game {
 
+    /**
+     * Execute the game in the terminal
+     * Please use a terminal that supports escape codes
+     * Difficulty ranges from 0 to 3
+     *
+     * @param difficulty difficulty of the game (0 is easy and 3 is hard)
+     * @return true if the use won the game
+     */
     public static boolean play(int difficulty) {
 
         List<String> userInput;
@@ -31,14 +36,11 @@ public class Game {
 
         while (!(victory || death || end)) {
 
-            checkFight(world);
-
-
-            displayWaitingInput();
-
-            userInput = getUserInput();
-
             try {
+
+                Attack.checkFight(world);
+                displayWaitingInput();
+                userInput = getUserInput();
                 execute(world, userInput);
 
             } catch (NullPointerException nullException) {
@@ -47,17 +49,20 @@ public class Game {
                 break;
             }
 
+            // Update variables
             end = world.isEnd();
-
             victory = world.hasWin();
             death = world.getPlayer().isDead();
 
-            if (victory)
-                displayVictory();
 
-            if (death)
-                displayDeath();
         }
+
+        // display when game ends
+        if (victory)
+            displayVictory();
+
+        if (death)
+            displayDeath();
 
         displayStats(world);
 
@@ -71,17 +76,6 @@ public class Game {
         printMsg("and got " + world.getPlayer().getGold() + " golds ");
     }
 
-    private static void checkFight(World world) {
-        Place currentPlace = world.getCurrentPlace();
-        Player player = world.getPlayer();
-        Hostile aggressiveEntity;
-
-        aggressiveEntity = currentPlace.getAgressive();
-
-        if (aggressiveEntity != null)
-            Fightable.fight(player, aggressiveEntity);
-    }
-
     private static void displayWelcome() {
         printMsg("Prepare to enter Xak Tsaroth!");
         printMsg("You awake in a room, here is your inventory");
@@ -89,7 +83,8 @@ public class Game {
 
     private static void displayWaitingInput() {
         // todo
-        printMsg("What will be your next move sir ?");
+        printMsg("What will be your next move ?");
+        System.out.print(">");
     }
 
     private static void displayDeath() {
