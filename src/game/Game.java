@@ -54,7 +54,7 @@ public class Game {
     }
 
     private static void displayWelcome() {
-        printMsg("You enter the dungeon of Xar Tsaroth, but you're starting to regret this decision");
+        printMsg("Prepare to enter Xak Tsaroth");
         printMsg("You awake in a room, here is your inventory");
     }
 
