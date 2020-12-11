@@ -1,7 +1,8 @@
 package utils;
 
-import static utils.Col.RED;
-import static utils.Col.colorize;
+import org.omg.PortableInterceptor.ServerRequestInfo;
+
+import static utils.Col.*;
 
 public interface Printer {
 
@@ -12,5 +13,9 @@ public interface Printer {
 
     static void printMsg(String str) {
         System.out.println(str);
+    }
+
+    static void printDialogue(String str) {
+        System.out.println(colorize(str, CYAN));
     }
 }

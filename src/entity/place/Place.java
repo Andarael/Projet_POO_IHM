@@ -111,8 +111,6 @@ public class Place extends Entity {
                               .count();
     }
 
-
-
     /* ------ les containers ------*/
 
     public boolean containsContainer(Container container) {
@@ -153,11 +151,14 @@ public class Place extends Entity {
                              .orElse(null);
     }
 
+    public StaticContainer getPlaceContainer() {
+        return placeContainer;
+    }
+
     public Container getContainerByName(String name) {
         return getContainer(new Container(name) {
         });
     }
-
 
     public Container getContainerByIndex(int index) {
         return this.listContainers.get(index);
@@ -167,7 +168,6 @@ public class Place extends Entity {
         return this.listContainers.size();
     }
 
-
     /* ------ le place container ------*/
 
     public void addItemToPlace(Item item) {
@@ -176,10 +176,10 @@ public class Place extends Entity {
         this.placeContainer.addItem(item);
     }
 
+    // Display
     // =============================================================================================
 
     //todo make display work
-
 
     public String displayExitTopLine() {
         String lineTop;
@@ -260,7 +260,6 @@ public class Place extends Entity {
         return lineBot;
     }
 
-
     public String displayContainers() {
         String lineContainers = "";
         if (this.isEmptyContainer()) {
@@ -296,7 +295,6 @@ public class Place extends Entity {
         return lineContainers;
     }
 
-
     @Override
     public String draw() {
 
@@ -307,7 +305,6 @@ public class Place extends Entity {
         System.out.println(top + middle + bot);
         return top + middle + bot;
     }
-
 
     @Override
     public String look() {

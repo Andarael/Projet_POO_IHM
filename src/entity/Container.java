@@ -27,6 +27,10 @@ public abstract class Container extends Entity implements InventoryManagement {
         this(name, name, null);
     }
 
+    public boolean canAddItem(Item item) {
+        return true;
+    }
+
     @Override
     public boolean isEmpty() {
         return inventory.isEmpty();
@@ -115,6 +119,10 @@ public abstract class Container extends Entity implements InventoryManagement {
     @Override
     public int getQuantity(String str) {
         return inventory.getQuantity(str);
+    }
+
+    public String getInventoryDisplay() {
+        return inventory.getInvDisplayDetails();
     }
 
     @Override

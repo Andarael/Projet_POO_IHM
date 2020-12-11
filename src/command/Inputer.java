@@ -10,8 +10,9 @@ import java.util.stream.Collectors;
 
 import static command.Command.getCommandFromString;
 import static command.Command.isValidCommand;
+import static utils.Printer.printErr;
 
-public class Interpreter {
+public class Inputer {
 
     /**
      * Get a command input from the user
@@ -25,6 +26,7 @@ public class Interpreter {
 
         List<String> stringList = new ArrayList<>();
         String commandString;
+        Command command;
         int args;
         boolean isInvalid = true;
 
@@ -36,33 +38,37 @@ public class Interpreter {
                 commandString = stringList.get(0);
                 args = stringList.size() - 1;
 
+                command = getCommandFromString(commandString);
+                if (command == null) {
+                    printErr(commandString + " is not a valid command, try 'help'");
+                    continue;
+                }
+
                 // test d'invalidité
-                isInvalid = !isValidCommand(getCommandFromString(commandString), args);
+                isInvalid = !isValidCommand(command, args);
+
+
+                // conversion en majuscules de la liste des arguments de la commande
+                stringList = stringList.stream()
+                                       .map(x -> {
+                                           x = x.toUpperCase();
+                                           return x;
+                                       })
+                                       .collect(Collectors.toList());
+
+                // si invalide on affiche un msg d'erreur
+                // et on reprend à la prochaine itération de la boucle
+                if (isInvalid)
+                    printErr(stringList +
+                             " Is not a valid format for command '" +
+                             commandString +
+                             "' , try 'HELP" + commandString + "'");
+
             }
-
-            // conversion en majuscules de la liste des arguments de la commande
-            stringList = stringList.stream()
-                                   .map(x -> {
-                                       x = x.toUpperCase();
-                                       return x;
-                                   })
-                                   .collect(Collectors.toList());
-
-            // si invalide on affiche un msg d'erreur
-            // et on reprend à la prochaine itération de la boucle
-            if (isInvalid)
-                System.out.println(stringList + " Is not a valid command, try 'HELP'");
-
+            // todo test nouvelle implémentation
         }
 
         return stringList;
-    }
-
-
-    public static void interpret(List<String> args) {
-        // todo : prends une commande en str et renvoie
-
-
     }
 
     public static void main(String[] args) {
