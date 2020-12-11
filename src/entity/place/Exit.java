@@ -12,10 +12,20 @@ public class Exit extends Entity {
         this.destination = destination;
     }
 
+    /**
+     * this retrieve the destination of the exit
+     *
+     * @return a place which is the destination of the exit
+     */
     public Place getDestination() {
         return this.destination;
     }
 
+    /**
+     * this retrieve the place where we go
+     *
+     * @return the place destination
+     */
     public Place goIn() {
         return this.destination;
     }
