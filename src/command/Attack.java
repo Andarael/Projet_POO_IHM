@@ -1,6 +1,5 @@
 package command;
 
-import entity.Being;
 import entity.Container;
 import entity.Hostile;
 import entity.Player;
@@ -87,7 +86,7 @@ public interface Attack {
     static void updatedPlayerKills(Player player) {
         player.addKill();
 
-        if (player.getKills()/5 > (player.getLevel() - 1)) {
+        if (player.getKills() / 5 > (player.getLevel() - 1)) {
             player.levelUP();
 
             printMsg("Congratulation you killed " +

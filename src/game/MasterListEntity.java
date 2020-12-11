@@ -562,12 +562,12 @@ public interface MasterListEntity {
 
         church.addContainer(ulricWise);
         church.addContainer(necromancer);
-        church.addExit(laboratory,3);
-        church.addExit(eternity_room,2);
+        church.addExit(laboratory, 3);
+        church.addExit(eternity_room, 2);
 
         eternity_room.addContainer(annoying_princess);
         eternity_room.addContainer(dragon);
-        eternity_room.addExit(church,1);
+        eternity_room.addExit(church, 1);
 
 
         return output;
@@ -627,7 +627,6 @@ public interface MasterListEntity {
 
         steel_chest.addItem(greenKey);
         steel_chest.addItem(coca_zero);
-
 
 
         return output;
