@@ -95,7 +95,7 @@ public enum Command {
          2,
          2
     ),
-    EQUIP("Equips an item from your inventory \n" +
+    EQUIP("Equips a weapon from your inventory \n" +
           "For example : Equip Sword -> You equipped : Sword",
           "EQ",
           1,
