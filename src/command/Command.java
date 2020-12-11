@@ -95,14 +95,14 @@ public enum Command {
          2,
          2
     ),
-    EQUIP("Equips an item from your inventory \n" +
+    EQUIP("Equips a weapon from your inventory \n" +
           "For example : Equip Sword -> You equipped : Sword",
           "EQ",
           1,
           1
     ),
 
-    UNEQUIP("Unequip you current equipped item (if anything is equipped)\n" +
+    UNEQUIP("Unequip you current equipped weapon (if anything is equipped)\n" +
             "For Example : Unequip -> You unequipped Sword",
             "UN",
             0,
