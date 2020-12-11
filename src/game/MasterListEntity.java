@@ -79,7 +79,7 @@ public interface MasterListEntity {
                                          3,
                                          3);
 
-    Weapon dagger = new Weapon("dagger", "dagge", "a tiny dagger", 1, 1, 10);
+    Weapon dagger = new Weapon("dagger", "dagge", "a tiny dagger", 1, 1, 2);
 
     Weapon spear = new Weapon("spear",
                               "spear",
@@ -349,7 +349,7 @@ public interface MasterListEntity {
                                                         "a massive chest that probably houses sumptuous treasures ...");
 
     // Hostiles ================================================================
-    Hostile orc = new Hostile("orc", "orc", "a green creature", 5, 5);
+    Hostile orc = new Hostile("orc", "orc", "a green creature", 4, 2);
 
     Hostile goblin = new Hostile("goblin", "gobli", "a small and pathetic creature", 3, 3);
 
