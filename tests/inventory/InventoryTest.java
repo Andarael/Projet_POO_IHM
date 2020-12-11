@@ -93,7 +93,6 @@ class InventoryTest {
         assertEquals(2, inv2.getNbItems());
     }
 
-
     @Test
     void removeAllItems() {
         inv2.removeAllItems();
@@ -124,7 +123,6 @@ class InventoryTest {
 
         assertTrue(inv2.contains(item1));
     }
-
 
     @Test
     void sortInventory() {
@@ -199,7 +197,6 @@ class InventoryTest {
         assertSame(5, inv2.getGold());
     }
 
-
     @Test
     void getItemListDisplay() {
         assertTrue(inv2.getItemListDisplay(true).contains("red"));
@@ -233,5 +230,16 @@ class InventoryTest {
     void testToString() {
         System.out.println(inv1);
         System.out.println(inv2);
+    }
+
+    @Test
+    void addAllItems() {
+        inv1.addAllItems(inv2);
+        inv1.addAllItems(null);
+        System.out.println(inv2);
+
+        assertFalse(inv1.isEmpty());
+        assertEquals(inv2.getNbItems(), inv1.getNbItems());
+        assertEquals(inv2.getGold(), inv1.getGold());
     }
 }

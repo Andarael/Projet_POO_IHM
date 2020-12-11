@@ -68,13 +68,18 @@ public abstract class Container extends Entity implements InventoryManagement {
 
     @Override
     public void addAllItems(Inventory inventoryToAdd) {
-        if (inventoryToAdd == null)
-            return;
 
         inventory.addAllItems(inventoryToAdd);
     }
 
-    public Inventory getInventory() {
+    public void addAllItems(Container containerToAdd) {
+        if (containerToAdd == null)
+            return;
+
+        inventory.addAllItems(containerToAdd.getInventory());
+    }
+
+    private Inventory getInventory() {
         return inventory;
     }
 

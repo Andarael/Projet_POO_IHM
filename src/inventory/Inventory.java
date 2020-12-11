@@ -77,6 +77,8 @@ public class Inventory implements InventoryManagement {
         if (inventoryToAdd == null)
             return;
 
+        this.gold += inventoryToAdd.getGold();
+
         List<Item> itemListToAdd = inventoryToAdd.getItemList();
         itemListToAdd.forEach(this::addItem);
     }

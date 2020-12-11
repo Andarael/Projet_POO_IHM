@@ -3,6 +3,7 @@
 package entity;
 
 import entity.item.Item;
+import inventory.Inventory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -216,5 +217,18 @@ class ContainerTest {
     @Test
     void getInventoryDisplay() {
         System.out.println(cont2.getInventoryDisplay());
+    }
+
+    @Test
+    void addAllItems() {
+        cont1.addAllItems(cont2);
+        cont1.addAllItems((Container) null);
+        cont1.addAllItems((Inventory) null);
+        System.out.println(cont2);
+
+        assertFalse(cont1.isEmpty());
+        assertEquals(cont2.getNbItems(), cont1.getNbItems());
+        assertEquals(cont2.getGold(), cont1.getGold());
+
     }
 }

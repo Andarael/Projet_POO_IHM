@@ -36,7 +36,7 @@ public interface Attack {
 
     static void addLootToPlace(Place currentPlace, Container opponent) {
         printMsg(opponent.getName() + " is dead and its loots fall on the ground");
-        currentPlace.getPlaceContainer().addAllItems((opponent.getInventory()));
+        currentPlace.getPlaceContainer().addAllItems((opponent));
         currentPlace.removeContainer(opponent);
     }
 
