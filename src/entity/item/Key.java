@@ -136,11 +136,11 @@ public class Key extends Item implements Usable {
         lockedExit.unLock(this);
 
         if (lockedExit.isLocked()) {
-            System.out.println("You can't unlock " + exit + "with " + this.getName());
+            System.out.println("You can't unlock " + exit + " with " + this.getName());
             return false;
         }
 
-        System.out.println("You unlocked " + exit + "with " + this.getName());
+        System.out.println("You unlocked " + exit + " with " + this.getName());
         return true;
     }
 }

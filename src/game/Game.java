@@ -39,7 +39,6 @@ public class Game {
 
             try {
 
-
                 Attack.checkFight(world);
                 displayWaitingInput();
                 userInput = getUserInput();
@@ -75,6 +74,7 @@ public class Game {
     }
 
     private static void displayStats(Player player) {
+        printMsg("\n=====================\n");
         printMsg("Some stats on your adventure : ");
         printMsg("You got to level " + player.getLevel());
         printMsg("You killed a total of " + player.getKills() + " Beings !");
@@ -86,6 +86,7 @@ public class Game {
     private static void displayWelcome() {
         printMsg("Prepare to enter Xak Tsaroth!");
         printMsg("You awake in a room, here is your inventory");
+        //todo display l'inventaire
     }
 
     private static void displayWaitingInput() {
@@ -102,9 +103,4 @@ public class Game {
                  "Now with this jewel, everyone will finally know that you are true hero");
 
     }
-
-    public static void main(String[] args) {
-        play(1);
-    }
-
 }

@@ -23,11 +23,16 @@ public interface Go {
             return;
         }
 
+        if (destination.goIn() == null) {
+            printMsg("This door is locked");
+            return;
+        }
+
         world.setCurrentPlace(destination.getDestination());
         printMsg("You enter " + destination.getName());
         printMsg("\n");
 
-        destination.draw();
+        destination.getDestination().draw();
 
         Attack.checkFight(world);
     }
