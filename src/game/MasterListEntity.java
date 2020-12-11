@@ -285,6 +285,51 @@ public interface MasterListEntity {
                                   "sWate",
                                   "A great spring of pure water flows before you");
 
+    Place mercyDreams = new Place("Mercy Dreams",
+                           "mercy",
+                           "a church deep underground");
+
+    Place desecratedCistern = new Place("Desecrated Cistern",
+                           "desec",
+                           "Very large sewer, don't mind the smell");
+
+    Place echoesOfSalt = new Place("Echoes of Salt",
+                           "eSalt",
+                           "with all that salt, we could conserve tons of meat!");
+
+    Place whereTreesWither = new Place("Where Trees Wither",
+                           "trees",
+                           "one of the largest and oldest forests in the region, but recently this one is dying");
+
+    Place graveyardPeaks = new Place("Graveyard of the Peaks",
+                           "Peaks",
+                           "");
+
+    Place patioSilentSteps = new Place("Patio of the Silent Steps",
+                           "steps",
+                           "");
+
+    Place archicathedral = new Place("Archicathedral Mother of Mothers",
+                           "archi",
+                           "");
+
+    Place libraryNegatedWords = new Place("Library of the Negated Words",
+                           "libra",
+                           "");
+
+    Place sleepingCanvases = new Place("The Sleeping Canvases",
+                           "canva",
+                           "");
+
+    Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions",
+                                       "wallH",
+                                       "");
+
+    Place deambulatoryHoliness = new Place("Deambulatory of His Holiness",
+                                           "deamb",
+                                           "");
+
+
     // StaticContainers ========================================================
 
     StaticContainer wooden_chest = new StaticContainer("wooden chest",
