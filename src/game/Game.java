@@ -54,7 +54,7 @@ public class Game {
     }
 
     private static void displayWelcome() {
-        printMsg("Prepare to enter Xak Tsaroth");
+        printMsg("Prepare to enter Xak Tsaroth!");
         printMsg("You awake in a room, here is your inventory");
     }
 
