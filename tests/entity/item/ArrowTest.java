@@ -46,7 +46,8 @@ class ArrowTest {
         assertEquals(3, bow.getArrows());
 
         a.use(new Player());
-        a.use((new Entity("bow") {}));
+        a.use((new Entity("bow") {
+        }));
 
     }
 

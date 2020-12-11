@@ -5,7 +5,7 @@ package entity.place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class ExitTest {
     private Place place1;
@@ -25,13 +25,13 @@ class ExitTest {
 
     @Test
     void getDestination() {
-        assertSame(place1,exit1.getDestination());
-        assertSame(place2,exit2.getDestination());
+        assertSame(place1, exit1.getDestination());
+        assertSame(place2, exit2.getDestination());
     }
 
     @Test
     void goIn() {
-        assertSame(place1,exit1.goIn());
-        assertSame(place2,exit2.goIn());
+        assertSame(place1, exit1.goIn());
+        assertSame(place2, exit2.goIn());
     }
 }

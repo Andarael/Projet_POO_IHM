@@ -27,7 +27,7 @@ import static world.WorldContains.haveEntity;
 
 public interface Execute {
 
-    static void execute(World world, List<String> args)  throws NullPointerException {
+    static void execute(World world, List<String> args) throws NullPointerException {
 
         if (world == null || args == null) {
             printErr("World or command arguments are null, stopping Now !");

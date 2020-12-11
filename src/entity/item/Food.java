@@ -15,13 +15,18 @@ public class Food extends Item implements Usable {
 
     private final int restoreValue;
 
-    public Food(String name, String shortName, String description, double weight, int value, int restoreValue) {
+    public Food(String name,
+                String shortName,
+                String description,
+                double weight,
+                int value,
+                int restoreValue) {
         super(name, shortName, description, weight, value);
 
         this.restoreValue = restoreValue;
     }
 
-    public Food(String name,String shortName, String description, int restoreValue) {
+    public Food(String name, String shortName, String description, int restoreValue) {
         this(name, shortName, description, DEFAULT_WEIGHT, DEFAULT_VALUE, restoreValue);
     }
 

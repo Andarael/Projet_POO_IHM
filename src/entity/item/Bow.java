@@ -13,7 +13,12 @@ public class Bow extends Weapon {
     private static final int ARROW_POWER = new Arrow().getPower();
     private int arrows;
 
-    public Bow(String name, String shortName, String description, double weight, int value, int damage) {
+    public Bow(String name,
+               String shortName,
+               String description,
+               double weight,
+               int value,
+               int damage) {
         super(name, shortName, description, weight, value, damage);
 
         arrows = 0;

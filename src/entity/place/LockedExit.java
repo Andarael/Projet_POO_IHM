@@ -72,19 +72,17 @@ public class LockedExit extends Exit {
 
     @Override
     public String draw() {
-        return colorize(super.draw(),this.color); //on ajoute des couleurs
+        return colorize(super.draw(), this.color); //on ajoute des couleurs
     }
-
-
 
     @Override
     public String getSimpleDisplay() {
-        return colorize(super.getSimpleDisplay(),this.color); //on ajoute des couleurs
+        return colorize(super.getSimpleDisplay(), this.color); //on ajoute des couleurs
     }
 
     @Override
     public String getDisplay() {
-        return colorize(super.getDisplay(),this.color); //on ajoute des couleurs
+        return colorize(super.getDisplay(), this.color); //on ajoute des couleurs
     }
 
 

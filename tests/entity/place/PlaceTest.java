@@ -4,8 +4,6 @@ package entity.place;
 
 import entity.Container;
 import entity.Hostile;
-import entity.Player;
-import entity.StaticContainer;
 import entity.item.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,16 +39,24 @@ class PlaceTest {
         place3 = new Place("Laboratory");
         place4 = new Place("Room");
 
-        cont1 = new Container("Skeleton"){};
-        cont2 = new Container("Monster"){};
-        cont3 = new Container("Spider"){};
-        cont4 = new Container("Merchant"){};
-        cont5 = new Container("Thief"){};
-        cont6 = new Container("Murlock"){};
-        cont7 = new Container("Tauren"){};
-        cont8 = new Container("OldMan"){};
-        cont9 = new Container("YoungMan"){};
-
+        cont1 = new Container("Skeleton") {
+        };
+        cont2 = new Container("Monster") {
+        };
+        cont3 = new Container("Spider") {
+        };
+        cont4 = new Container("Merchant") {
+        };
+        cont5 = new Container("Thief") {
+        };
+        cont6 = new Container("Murlock") {
+        };
+        cont7 = new Container("Tauren") {
+        };
+        cont8 = new Container("OldMan") {
+        };
+        cont9 = new Container("YoungMan") {
+        };
 
 
         place2.addContainer(cont1);
@@ -58,9 +64,9 @@ class PlaceTest {
         place3.addContainer(cont2);
 
 
-        place2.addExit(place1,0);
-        place3.addExit(place2,1);
-        place3.addExit(place1,3);
+        place2.addExit(place1, 0);
+        place3.addExit(place2, 1);
+        place3.addExit(place1, 3);
 
         item1 = new Item("golden statue",
                          "gStat",
@@ -74,40 +80,40 @@ class PlaceTest {
 
     @Test
     void addExit() {
-        assertSame(null,place1.getExitByIndex(1));
-        place1.addExit(place3,1);
-        place1.addExit(place2,3);
+        assertSame(null, place1.getExitByIndex(1));
+        place1.addExit(place3, 1);
+        place1.addExit(place2, 3);
 
         System.out.println(place1);
 
-        assertEquals(new Exit(place3),place1.getExitByName("Laboratory"));
-        assertEquals(new Exit(place2),place1.getExitByIndex(3));
+        assertEquals(new Exit(place3), place1.getExitByName("Laboratory"));
+        assertEquals(new Exit(place2), place1.getExitByIndex(3));
 
         System.out.println(place3);
-        place3.addExit(place1,0);
+        place3.addExit(place1, 0);
         System.out.println(place3);
 
     }
 
     @Test
     void addLockedExit() {
-        assertSame(null,place1.getExitByIndex(1));
-        place1.addLockedExit(place3,1,RED);
-        place1.addLockedExit(place2,3,BLUE);
+        assertSame(null, place1.getExitByIndex(1));
+        place1.addLockedExit(place3, 1, RED);
+        place1.addLockedExit(place2, 3, BLUE);
 
         System.out.println(place1);
 
 
-        assertEquals(new LockedExit(place3,RED),place1.getExitByName("Laboratory"));
-        assertEquals(new LockedExit(place3,RED),place1.getExitByIndex(1));
-        assertEquals(new LockedExit(place2,BLUE),place1.getExitByIndex(3));
+        assertEquals(new LockedExit(place3, RED), place1.getExitByName("Laboratory"));
+        assertEquals(new LockedExit(place3, RED), place1.getExitByIndex(1));
+        assertEquals(new LockedExit(place2, BLUE), place1.getExitByIndex(3));
 
     }
 
     @Test
     void rmExit() {
-        place1.addLockedExit(place3,1,RED);
-        place1.addLockedExit(place2,3,BLUE);
+        place1.addLockedExit(place3, 1, RED);
+        place1.addLockedExit(place2, 3, BLUE);
         System.out.println(place1);
 
         place1.rmExit(1);
@@ -134,27 +140,27 @@ class PlaceTest {
     @Test
     void getExitByIndex() {
         System.out.println(place2.getExitByIndex(0));
-        assertEquals(new Exit(place1),place2.getExitByIndex(0));
+        assertEquals(new Exit(place1), place2.getExitByIndex(0));
     }
 
     @Test
     void getExitByName() {
-        assertEquals(new Exit(place1),place2.getExitByName("Tavern"));
+        assertEquals(new Exit(place1), place2.getExitByName("Tavern"));
         System.out.println(place2.getExitByName("Tavern"));
-        assertEquals(new Exit(place2),place3.getExitByName("Cave"));
+        assertEquals(new Exit(place2), place3.getExitByName("Cave"));
         System.out.println(place3.getExitByName("Cave"));
     }
 
     @Test
     void getIndexExit() {
-        assertEquals(1,place3.getIndexExit("Cave"));
-        assertEquals(-1,place3.getIndexExit("Nop"));
+        assertEquals(1, place3.getIndexExit("Cave"));
+        assertEquals(-1, place3.getIndexExit("Nop"));
 
     }
 
     @Test
     void nbExit() {
-        assertEquals(2,place3.nbExit());
+        assertEquals(2, place3.nbExit());
     }
 
 
@@ -166,7 +172,7 @@ class PlaceTest {
         place1.addContainer(cont2);
         place1.addContainer(cont3);
         System.out.println(place1);
-        assertEquals(cont1,place1.getContainer(cont1));
+        assertEquals(cont1, place1.getContainer(cont1));
 
         assertNull(place2.getContainer(cont3));
         place2.addContainer(cont3);
@@ -180,7 +186,7 @@ class PlaceTest {
         System.out.println(place1);
         place1.removeContainer(cont1);
         System.out.println(place1);
-        assertEquals(null,place1.getContainer(cont1));
+        assertEquals(null, place1.getContainer(cont1));
 
     }
 
@@ -202,34 +208,32 @@ class PlaceTest {
     @Test
     void getContainer() {
         place1.addContainer(cont1);
-        assertEquals(cont1,place1.getContainer(cont1));
+        assertEquals(cont1, place1.getContainer(cont1));
     }
 
     @Test
     void getContainerByName() {
         place1.addContainer(cont1);
-        assertEquals(cont1,place1.getContainerByName("Skeleton"));
+        assertEquals(cont1, place1.getContainerByName("Skeleton"));
     }
 
     @Test
     void getContainerByIndex() {
         place1.addContainer(cont1);
-        assertEquals(cont1,place1.getContainerByIndex(0));
+        assertEquals(cont1, place1.getContainerByIndex(0));
     }
 
     @Test
     void nbContainer() {
-        assertEquals(0,place1.nbContainer());
+        assertEquals(0, place1.nbContainer());
         place1.addContainer(cont1);
-        assertEquals(1,place1.nbContainer());
+        assertEquals(1, place1.nbContainer());
     }
-
-
 
 
     @Test
     void getPlaceContainer() {
-        assertEquals(new Place("Tavern").getPlaceContainer(),place1.getPlaceContainer());
+        assertEquals(new Place("Tavern").getPlaceContainer(), place1.getPlaceContainer());
 
     }
 
@@ -246,10 +250,10 @@ class PlaceTest {
     }
 
     @Test
-    void getAgressive(){
+    void getAgressive() {
         Hostile orc = new Hostile("orc", "orc", "a green creature", 5, 5);
         place3.addContainer(orc);
-        assertEquals(orc,place3.getAgressive());
+        assertEquals(orc, place3.getAgressive());
     }
 
 
@@ -261,7 +265,7 @@ class PlaceTest {
 
     @Test
     void displayExitMiddleLine() {
-        place1.addLockedExit(place2,2,BLUE);
+        place1.addLockedExit(place2, 2, BLUE);
         System.out.println(place1.displayExitMiddleLine());
         System.out.println(place2.displayExitMiddleLine());
         System.out.println(place3.displayExitMiddleLine());
@@ -286,10 +290,10 @@ class PlaceTest {
         place2.draw();
         place3.draw();
 
-        place4.addLockedExit(place1,0,RED);
-        place4.addLockedExit(place2,1,BLUE);
-        place4.addExit(place3,2);
-        place4.addLockedExit(place4,3,GREEN);
+        place4.addLockedExit(place1, 0, RED);
+        place4.addLockedExit(place2, 1, BLUE);
+        place4.addExit(place3, 2);
+        place4.addLockedExit(place4, 3, GREEN);
 
         place4.addContainer(cont1);
         place4.addContainer(cont2);
@@ -305,8 +309,8 @@ class PlaceTest {
     }
 
     @Test
-    void look(){
-        assertEquals(place1.draw(),place1.look());
+    void look() {
+        assertEquals(place1.draw(), place1.look());
     }
 
 

@@ -44,6 +44,7 @@ public class Place extends Entity {
 
 
     /* ------ les Exits ------*/
+
     /**
      * this add an exit to another place in the curent place
      *
@@ -64,9 +65,9 @@ public class Place extends Entity {
     /**
      * this add an locked exit to another place in the curent place
      *
-     * @param place the place to add an exit to
+     * @param place    the place to add an exit to
      * @param position the position in the place to add the exit
-     * @param color the color of the locked exit (which requires a key of the same color to be unlocked)
+     * @param color    the color of the locked exit (which requires a key of the same color to be unlocked)
      */
     public void addLockedExit(Place place, int position, Col color) {
         if (this.nbExit() < this.exitMax) {
@@ -162,7 +163,7 @@ public class Place extends Entity {
     /* ------ les containers ------*/
 
     /**
-     *check if there are particular containers in the curent place
+     * check if there are particular containers in the curent place
      *
      * @param container the desired container (obj)
      * @return true if the container is in curent place

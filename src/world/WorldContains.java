@@ -6,7 +6,6 @@ import entity.place.Exit;
 import entity.place.Place;
 
 
-
 public interface WorldContains {
 
     // todo check for null in all
@@ -15,32 +14,32 @@ public interface WorldContains {
     // Contains globally
     static boolean haveEntity(World world, String str) {
         return world.entities.stream()
-                             .anyMatch( x -> (x.isSameStr(str)));
+                             .anyMatch(x -> (x.isSameStr(str)));
     }
 
     static boolean isItem(World world, String item) {
         return world.items.stream()
-                          .anyMatch( x -> (x.isSameStr(item)));
+                          .anyMatch(x -> (x.isSameStr(item)));
     }
 
     static boolean isAPlace(World world, String place) {
         return world.places.stream()
-                           .anyMatch( x -> (x.isSameStr(place)));
+                           .anyMatch(x -> (x.isSameStr(place)));
     }
 
     static boolean isHostile(World world, String hostile) {
         return world.hostiles.stream()
-                             .anyMatch( x -> (x.isSameStr(hostile)));
+                             .anyMatch(x -> (x.isSameStr(hostile)));
     }
 
     static boolean isPassive(World world, String passive) {
         return world.passives.stream()
-                             .anyMatch( x -> (x.isSameStr(passive)));
+                             .anyMatch(x -> (x.isSameStr(passive)));
     }
 
     static boolean isContainer(World world, String container) {
         return world.containers.stream()
-                               .anyMatch( x -> (x.isSameStr(container)));
+                               .anyMatch(x -> (x.isSameStr(container)));
     }
 
     // ===========================================================

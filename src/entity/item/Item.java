@@ -21,7 +21,7 @@ public class Item extends Entity implements Comparable<Item> {
     private final double weight;
     private final int value;
 
-    public Item(String name,String shortName, String description, double weight, int value) {
+    public Item(String name, String shortName, String description, double weight, int value) {
         super(name, shortName, description);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port

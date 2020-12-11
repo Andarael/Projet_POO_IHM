@@ -21,16 +21,16 @@ public abstract class Entity implements Lookable {
     public static final String DEFAULT_NAME = "null";
 
     private final String name;
-    private String description;
     private final String shortName;
+    private String description;
 
-    public Entity(String name, String shortName ,String description) {
+    public Entity(String name, String shortName, String description) {
         // Check name is valid
         if (name == null)
             name = DEFAULT_NAME;
 
         name = name.trim().replaceAll(" ", "_");
-        if (name.length()<1)
+        if (name.length() < 1)
             name = DEFAULT_NAME;
 
         // Check shortName
@@ -38,7 +38,7 @@ public abstract class Entity implements Lookable {
             shortName = name;
 
         shortName = shortName.trim().replaceAll(" ", "_");
-        if (shortName.length()<1)
+        if (shortName.length() < 1)
             shortName = name;
 
         this.name = name;

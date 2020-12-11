@@ -7,7 +7,7 @@ import entity.item.Item;
 /**
  * An interface to with an inventory of items
  * And to perform operation on gold stored int said inventory
- *
+ * <p>
  * (Remember that items are equal if their name or shortname are equals as specified in Entity )
  */
 public interface InventoryManagement {
@@ -19,7 +19,6 @@ public interface InventoryManagement {
     boolean isEmpty();
 
     /**
-     *
      * @param item the item to search for in the inventory
      * @return an item from the inventory equal to the one given
      */
@@ -38,6 +37,7 @@ public interface InventoryManagement {
 
     /**
      * Add an item to an inventory
+     *
      * @param item the item to add
      * @return true if the item was added to the inventory
      */
@@ -45,6 +45,7 @@ public interface InventoryManagement {
 
     /**
      * removes an item from the inventory with the same name or shortname as the one given
+     *
      * @param item the item to remove
      * @return true if the item was present in the inventory
      */
@@ -70,6 +71,7 @@ public interface InventoryManagement {
 
     /**
      * Checks if the inventory contains at least one item with the same name as the specified item
+     *
      * @param item the item to check ofr
      * @return true if the item was present
      */

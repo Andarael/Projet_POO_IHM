@@ -20,7 +20,7 @@ public interface Trade {
             return;
         }
 
-        if (! (buyer instanceof Passive)) {
+        if (!(buyer instanceof Passive)) {
             printErr("You can't buy from " + npcName);
             return;
         }
@@ -37,7 +37,7 @@ public interface Trade {
             return;
         }
 
-        if (! (seller instanceof Passive)) {
+        if (!(seller instanceof Passive)) {
             printErr("You can't sell to " + npcName);
             return;
         }

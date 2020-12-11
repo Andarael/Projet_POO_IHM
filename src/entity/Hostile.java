@@ -16,7 +16,12 @@ public class Hostile extends Being {
         this.agressive = true;
     }
 
-    public Hostile(String name, String shortName, String description, int hp, int power, boolean aggr){
+    public Hostile(String name,
+                   String shortName,
+                   String description,
+                   int hp,
+                   int power,
+                   boolean aggr) {
         super(name, shortName, description, hp, power);
         this.agressive = aggr;
     }

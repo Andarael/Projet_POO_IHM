@@ -13,7 +13,12 @@ public class Weapon extends Item implements Equipable {
     private static final int DEFAULT_DAMAGE = 1;
     private final int damage;
 
-    public Weapon(String name, String shortName, String description, double weight, int value, int damage) {
+    public Weapon(String name,
+                  String shortName,
+                  String description,
+                  double weight,
+                  int value,
+                  int damage) {
         super(name, shortName, description, weight, value);
         if (damage < 1)
             damage = DEFAULT_DAMAGE;

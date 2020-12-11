@@ -16,7 +16,7 @@ class BowTest {
     @BeforeEach
     void setUp() {
         a = new Arrow();
-        b = new Bow("IronBow",null, "a bow made of iron", 6.0, 5, 4);
+        b = new Bow("IronBow", null, "a bow made of iron", 6.0, 5, 4);
     }
 
     @Test

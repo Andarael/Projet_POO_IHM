@@ -14,7 +14,7 @@ class PassiveTest {
 
     @BeforeEach
     void setUp() {
-        passive = new Passive("Marchand", null,null, "bonjour aventurier, je suis vieux");
+        passive = new Passive("Marchand", null, null, "bonjour aventurier, je suis vieux");
     }
 
     @Test

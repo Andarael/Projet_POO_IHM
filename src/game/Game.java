@@ -49,7 +49,7 @@ public class Game {
                 victory = world.hasWin();
                 death = world.getPlayer().isDead();
 
-            // if world is incorrectly initialized
+                // if world is incorrectly initialized
             } catch (NullPointerException nullException) {
                 printErr("This world is corrupted by some dark computer magic, \n" +
                          "your adventure must stop now !");
