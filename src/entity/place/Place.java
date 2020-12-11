@@ -158,9 +158,9 @@ public class Place extends Entity {
     }
 
     public void  displayExit(){
+        System.out.println("= The exits in this place = \n");
         for (int i =0; i < this.exitMax; i++){
             if(this.getExitByIndex(i) != null) {
-                System.out.println("= The exit in this place = \n");
                 System.out.println(this.getExitByIndex(i).getDisplay() + "\n");
             }
         }
