@@ -285,7 +285,7 @@ public class Place extends Entity {
         this.placeContainer.addItem(item);
     }
 
-    public Hostile getAgressiveContainer() {
+    public Hostile getAgressive() {
         return (Hostile) this.listContainers.stream()
                                             .filter(actualElement -> actualElement instanceof Hostile)
                                             .filter(actualElement -> ((Hostile) actualElement).isAgressive())

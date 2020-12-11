@@ -21,7 +21,6 @@ public class Hostile extends Being {
         this.agressive = aggr;
     }
 
-
     public boolean isAgressive() {
         return agressive;
     }

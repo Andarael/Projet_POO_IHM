@@ -2,6 +2,10 @@
 
 package game;
 
+import entity.Hostile;
+import entity.Player;
+import entity.place.Place;
+import interfaces.Fightable;
 import world.World;
 
 import java.util.List;
@@ -21,13 +25,14 @@ public class Game {
         boolean death = false;
         boolean end = false;
         World world = new World(difficulty);
+
+
         displayWelcome();
 
         while (!(victory || death || end)) {
 
-            // world.getCurrentPlace().draw();
-            // todo check combat
-            // todo faire le draw dans GO
+            checkFight(world);
+
 
             displayWaitingInput();
 
@@ -54,12 +59,27 @@ public class Game {
                 displayDeath();
         }
 
-        printMsg("Some stats on your adventure : ");
-        printMsg("You killed a total of " + world.getPlayer().getKills() + " Beings !");
-        printMsg("and got " + world.getPlayer().getGold() + " golds ");
+        displayStats(world);
 
         return (victory);
 
+    }
+
+    private static void displayStats(World world) {
+        printMsg("Some stats on your adventure : ");
+        printMsg("You killed a total of " + world.getPlayer().getKills() + " Beings !");
+        printMsg("and got " + world.getPlayer().getGold() + " golds ");
+    }
+
+    private static void checkFight(World world) {
+        Place currentPlace = world.getCurrentPlace();
+        Player player = world.getPlayer();
+        Hostile aggressiveEntity;
+
+        aggressiveEntity = currentPlace.getAgressive();
+
+        if (aggressiveEntity != null)
+            Fightable.fight(player, aggressiveEntity);
     }
 
     private static void displayWelcome() {
