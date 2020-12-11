@@ -1,11 +1,5 @@
 package world;
 
-import entity.Container;
-import entity.item.Item;
-import entity.place.Exit;
-import entity.place.Place;
-
-
 public interface WorldContains {
 
     static boolean haveEntity(World world, String str) {
