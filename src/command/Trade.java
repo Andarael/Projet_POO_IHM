@@ -65,11 +65,13 @@ public interface Trade {
             printMsg(buyer.getName() +
                      " can't add" +
                      item.getName() +
-                     "to its inventory, it weigts too much ");
+                     "to its inventory, it weights too much ");
         }
 
         buyer.removeGold(itemValue);
         seller.addGold(itemValue);
+        seller.removeItem(item);
+        buyer.addItem(item);
 
         printMsg(buyer.getName() +
                  " bought " +

@@ -106,11 +106,11 @@ public interface Execute {
                 break;
 
             case SELL:
-                buy(player, currentPlace, arg1, arg2);
+                sell(player, currentPlace, arg1, arg2);
                 break;
 
             case BUY:
-                sell(player, currentPlace, arg1, arg2);
+                buy(player, currentPlace, arg1, arg2);
                 break;
 
             case TAKE:
@@ -127,8 +127,10 @@ public interface Execute {
             case INVENTORY:
                 inventory(player);
                 break;
+
             case TALK:
                 talk(currentPlace, arg1);
+                break;
 
             case EQUIP:
                 equip(player, arg1);

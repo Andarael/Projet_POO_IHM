@@ -34,8 +34,8 @@ public interface Attack {
             return;
         }
 
-        printMsg("Tou attack " + opponent.getName() + " !");
-        Fightable.fight(player, new Being(arg1));
+        printMsg("You attack " + opponent.getName() + " !");
+        Fightable.fight(player, (Fightable) opponent);
 
 
         if (((Fightable) opponent).isDead()) {
@@ -60,6 +60,8 @@ public interface Attack {
         if (aggressiveEntity != null) {
             printMsg(aggressiveEntity.getName() + " Attacks You !");
             Fightable.fight(player, aggressiveEntity);
+            if (aggressiveEntity.isDead())
+                addLootToPlace(currentPlace, aggressiveEntity);
         }
     }
 
@@ -85,15 +87,15 @@ public interface Attack {
     static void updatedPlayerKills(Player player) {
         player.addKill();
 
-        if (player.getKills() > player.getLevel() - 1) {
+        if (player.getKills()/5 > (player.getLevel() - 1)) {
             player.levelUP();
 
             printMsg("Congratulation you killed " +
                      player.getKills() +
-                     "monsters, You are now level" +
+                     " opponents, You are now level " +
                      player.getLevel());
 
-            printMsg("You now have " + player.getMaxHp() + "hp, and do 1 more damage");
+            printMsg("You now have " + player.getMaxHp() + " hp, and do 1 more damage");
         }
     }
 }

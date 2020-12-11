@@ -21,11 +21,11 @@ public interface Talk {
             return;
         }
 
-        printMsg(npc.getName() + "says :");
+        printMsg(npc.getName() + " says : ");
         printDialogue(((Talkable) npc).talk());
 
         if (!npc.isEmpty()) {
-            printDialogue("Here is what I may have for you :");
+            printDialogue(" Here is what I may have for you :");
             printMsg(npc.getInventoryDisplay());
         }
     }

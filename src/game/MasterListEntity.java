@@ -79,7 +79,7 @@ public interface MasterListEntity {
                                          3,
                                          3);
 
-    Weapon dagger = new Weapon("dagger", "dagge", "a tiny dagger", 1, 1, 1);
+    Weapon dagger = new Weapon("dagger", "dagge", "a tiny dagger", 1, 1, 10);
 
     Weapon spear = new Weapon("spear",
                               "spear",
@@ -286,44 +286,44 @@ public interface MasterListEntity {
                                   "A great spring of pure water flows before you");
 
     Place mercyDreams = new Place("Mercy Dreams",
-                           "mercy",
-                           "a church deep underground");
+                                  "mercy",
+                                  "a church deep underground");
 
     Place desecratedCistern = new Place("Desecrated Cistern",
-                           "desec",
-                           "Very large sewer, don't mind the smell");
+                                        "desec",
+                                        "Very large sewer, don't mind the smell");
 
     Place echoesOfSalt = new Place("Echoes of Salt",
-                           "eSalt",
-                           "with all that salt, we could conserve tons of meat!");
+                                   "eSalt",
+                                   "with all that salt, we could conserve tons of meat!");
 
     Place whereTreesWither = new Place("Where Trees Wither",
-                           "trees",
-                           "one of the largest and oldest forests in the region, but recently this one is dying");
+                                       "trees",
+                                       "one of the largest and oldest forests in the region, but recently this one is dying");
 
     Place graveyardPeaks = new Place("Graveyard of the Peaks",
-                           "Peaks",
-                           "");
+                                     "Peaks",
+                                     "");
 
     Place patioSilentSteps = new Place("Patio of the Silent Steps",
-                           "steps",
-                           "");
+                                       "steps",
+                                       "");
 
     Place archicathedral = new Place("Archicathedral Mother of Mothers",
-                           "archi",
-                           "");
+                                     "archi",
+                                     "");
 
     Place libraryNegatedWords = new Place("Library of the Negated Words",
-                           "libra",
-                           "");
+                                          "libra",
+                                          "");
 
     Place sleepingCanvases = new Place("The Sleeping Canvases",
-                           "canva",
-                           "");
+                                       "canva",
+                                       "");
 
     Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions",
-                                       "wallH",
-                                       "");
+                                           "wallH",
+                                           "");
 
     Place deambulatoryHoliness = new Place("Deambulatory of His Holiness",
                                            "deamb",
@@ -349,7 +349,7 @@ public interface MasterListEntity {
                                                         "a massive chest that probably houses sumptuous treasures ...");
 
     // Hostiles ================================================================
-    Hostile orc = new Hostile("orc", "orc", "a green creature", 5, 5);
+    Hostile orc = new Hostile("orc", "orc", "a green creature", 5, 5, false);
 
     Hostile goblin = new Hostile("goblin", "gobli", "a small and pathetic creature", 3, 3);
 
@@ -441,9 +441,6 @@ public interface MasterListEntity {
                                     "Madel",
                                     "Young girl with black hair, child of Ulric",
                                     "please save us sir");
-
-
-
 
 
     Set<Entity> entityMasterList = getAllEntities();
@@ -545,35 +542,27 @@ public interface MasterListEntity {
 
         entrance.addItemToPlace(redKey);
         entrance.addItemToPlace(dagger);
-        entrance.addExit(barn,2);
+        entrance.addExit(barn, 2);
         entrance.addContainer(scandalf);
 
         barn.addContainer(iron_chest);
         barn.addContainer(ordinary_guy);
         barn.addContainer(orc);
-        barn.addExit(cave,0);
-        barn.addExit(entrance,1);
-        barn.addLockedExit(laboratory,2,RED);
-        barn.addLockedExit(forest,3,GREEN);
+        barn.addExit(cave, 0);
+        barn.addExit(entrance, 1);
+        barn.addLockedExit(laboratory, 2, RED);
+        barn.addLockedExit(forest, 3, GREEN);
 
-        forest.addExit(barn,0);
+        forest.addExit(barn, 0);
 
         cave.addContainer(merchant);
         cave.addContainer(minotaur);
         cave.addContainer(skeleton);
-        cave.addExit(barn,3);
+        cave.addExit(barn, 3);
 
         laboratory.addItemToPlace(esoteric_manual);
-        laboratory.addExit(barn,3);
-        laboratory.addLockedExit(church,0,BLUE);
-
-
-
-
-
-
-
-
+        laboratory.addExit(barn, 3);
+        laboratory.addLockedExit(church, 0, BLUE);
 
 
         //todo init items
@@ -613,6 +602,8 @@ public interface MasterListEntity {
         output.add(madelaine);
 
         merchant.addItem(irons_arrow);
+        merchant.addItem(hunters_bow);
+        merchant.addGold(10);
 
         return output;
     }
@@ -684,6 +675,11 @@ public interface MasterListEntity {
         // todo player.addItem(...)
 
         player.addItem(rotten_chicken);
+        player.addItem(hunters_bow);
+        player.addItem(irons_arrow);
+        player.addItem(irons_arrow);
+        player.addItem(irons_arrow);
+        player.addItem(irons_arrow);
 
 
     }

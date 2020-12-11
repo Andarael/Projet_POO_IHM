@@ -131,8 +131,8 @@ public interface Fightable extends Describable {
         if (amount < 1)
             amount = 1;
 
-        printMsg(getName() + "attacks " + opponent.getName() +
-                 "and deals " + amount + " Damage !");
+        printMsg(getName() + " attacks " + opponent.getName() +
+                 " and deals " + amount + " Damage !");
 
         opponent.hurt(amount);
     }
