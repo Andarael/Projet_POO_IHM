@@ -107,11 +107,11 @@ public interface Execute {
                 break;
 
             case SELL:
-                buy(player, arg1, arg2);
+                buy(player, currentPlace, arg1, arg2);
                 break;
 
             case BUY:
-                sell(player, arg1, arg2);
+                sell(player, currentPlace, arg1, arg2);
                 break;
 
             case TAKE:
@@ -143,40 +143,6 @@ public interface Execute {
                 printErr("this command is not implemented yet ..");
         }
 
-        // use [item] : player.use(item1)
-
-        // use [item] [exit] :  player.use(item1, exit)
-
-        // use [item1] [item2] : player.use(item1, item2)
-
-        // help : help();
-
-        // help [Commande] : help(Command c)
-
-        // take [item] : player.take(getContainer(default).getItem(item))
-
-        // take [container] [item] : player.take(container.getItem(item2))
-        // take : player.addItem(currentPlace.getContainer.getItem(item)))
-
-        // look : currentPlace.look()
-
-        // look [arg1] : currentPlace.getEntity.look()
-
-        // Inventory : player.look() / ou player.getDisplay() / ou player.draw()
-
-        // GO [place] :
-        // if currentPlace.canGo(getExit(place))
-        //      world.setCurrentPlace(currentPlace.getExit(place))
-        // else rien
-
-        // drop [item] : getContainer.addItem(item)
-        //             : player.removeItem(item)
-
-        // attack [being] : fight(player, being)
-
-        // Buy // todo
-
-        // Sell // todo
     }
 
 }
