@@ -24,11 +24,9 @@ class ContainerTest {
         cont2 = new Container("Monster") {
         };
 
-        item1 = new Item("apple", "a red apple", 1.0, 1);
+        item1 = new Item("apple", "a", "a red apple", 1.0, 1);
         item2 = new Item("apple");
         item3 = new Item("shield");
-
-        item1.setShortName("a");
 
         cont2.addItem(item1);
         cont2.addItem(item2);

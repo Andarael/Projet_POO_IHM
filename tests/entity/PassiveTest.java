@@ -14,12 +14,12 @@ class PassiveTest {
 
     @BeforeEach
     void setUp() {
-        passive = new Passive("Marchand", null, "bonjour aventurier, je suis vieux");
+        passive = new Passive("Marchand", null,null, "bonjour aventurier, je suis vieux");
     }
 
     @Test
     void Passive() {
-        passive = new Passive(null, null, null);
+        passive = new Passive(null, null, null, "je suis vieux");
         assertNotNull(passive.getDialogue());
     }
 

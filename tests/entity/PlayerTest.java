@@ -28,14 +28,14 @@ class PlayerTest {
 
         item1 = new Item("pog");
         item2 = new Hand();
-        item3 = new Bow("Bow", "a wooden bow", 4);
+        item3 = new Bow();
         item4 = new Arrow();
-        item5 = new Weapon("Axe", null, 3.0, 13, 5);
+        item5 = new Weapon("Axe", null, null, 3.0, 13, 5);
         item6 = new Key(RED);
 
-        lourd = new Item("lrd1", 8.8, 0);
-        lourd2 = new Item("lrd2", 11.8, 0);
-        heavy2 = new Item("heavy2", 10000, 1000);
+        lourd = new Item("lrd1", null, null, 8.8, 0);
+        lourd2 = new Item("lrd2", null, null, 11.8, 0);
+        heavy2 = new Item("heavy2", null, null, 10000, 1000);
 
         p.addItem(item1);
         p.addItem(item2);

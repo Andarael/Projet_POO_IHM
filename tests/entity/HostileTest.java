@@ -19,11 +19,11 @@ class HostileTest {
 
     @Test
     void Hostile() {
-        Hostile h = new Hostile("spider", "qui fait peur", 5, 3);
+        Hostile h = new Hostile("spider", "spid", "qui fait peur", 5, 3);
         h.addGold(5);
         h.addItem(new Item("book"));
-        h.addItem(new Weapon("axe", null, 3));
-        h.addItem(new Key("redKey", null, RED));
+        h.addItem(new Weapon("axe", null,null, 3.0, 2, 3));
+        h.addItem(new Key(RED,null));
 
 
         assertEquals(5, h.getHp());
