@@ -1,48 +1,77 @@
 
 Aide de jeu
 
+Attaquer un monstre
+(A) Attack <Entité>
+Attaque le personnage spécifié avec l’arme actuellement équipée si le personnage se trouve dans la pièce. Le combat ne se termine que lorsque le joueur ou l’adversaire meurt, chacun s’attaquant successivement.
+Exemple : Attack Orc
 
-Une fois le jeu lancé, il vous sera proposé d'avancer dans une salle (go n).
-Ici vous êtes confronté à un ennemi, il vous faut entrer un entier afin d'avancer vers lui pour le combattre.
-Suite à quoi vous découvrirez une nouvelle salle, vous pouvez faire votre choix suivant les possibilités affichées
-La commande go prend une direction {N,E,S,W} en argument, elle est affichée à côté du numéro de la salle lorsque vous tapez look.
+Lâcher un objet
+(D) Drop <objet>
+Lâche l’objet spécifié de votre inventaire par terre (il se trouvera ainsi sur le sol de la pièce où vous vous situez) si le dit objet se trouve dans votre inventaire.
+Exemple : Drop Sword
 
-Hors combat : help pour afficher les commandes possibles
-		
-		- go <direction>      : permet de se deplacer dans une salle adjacente
-		- help                : affiche la liste des commandes
-		- look                : donne une description de la piece
-		- look <objet>        : donne un descriptif de l'objet
-		- take <objet>        : recupere l'objet et le place dans l'inventaire
-		- quit                : quitte la partie
-		- use <objet>         : utilise l'objet
-		- use <objet> <objet> : utilise les deux objets si une combinaison est possible
-		- inv                 : affiche l'inventaire du joueur
+Aller dans une pièce
+(G) Go <endroit>
+Vous déplace dans l’endroit spécifié si il y a un accès à cet endroit depuis là où vous êtes et qu’il n’est pas verrouillé.
+Exemple : Go Laboratory
 
+Obtenir de l’aide sur les commandes
+Help
+(H) Help <Commande?>
+Vous donne des indications quant à l’utilisation des commandes, et qui sont plus spécifiques si vous indiquez précisément sur quelle commande vous voulez des renseignements.
+Exemple : Help Go
 
+Afficher l’inventaire
+Inventory
+Affiche le contenu de votre inventaire, y compris vos PV, nombre d’items, le poids total, et les pièces d’or.
+Exemple : Inventory
 
-Marchand :
-Lorsqu’un marchand vous propose des objets, il faut rentrer le nombre entier correspondant à l’objet proposé précédemment.
- Par exemple si vous voyez ceci :
-Vous pouvez acheter une lance pour 15PO en entrant la valeur 2 sur la ligne de commande.
-Si vous ne souhaitez pas acheter d’objet, il suffit d’entrer une valeur négative.
+Regarder quelque chose
+(L) Look <chose?>
+Regarde l’entité spécifiée ou la pièce s’il n’y a pas d’arguments. Regarder une entité donne plus de détails sur celle-ci, comme la description, ou le contenu de son inventaire.
+Exemple : Look orc
 
+Quitter le jeu
+(Q) Quit
+Vous fait quitter le jeu.
 
+Prendre un objet
+(T) Take <Objet>
+Vous permet de prendre l’objet objet spécifié s’il est au sol du lieu actuel et que votre inventaire n’est pas plein.
+Take <conteneur> <objet>
+Vous permet de prendre un objet dans le conteneur spécifié, si le conteneur est bien dans la pièce, et que l'objet est bien dans le conteneur, et que votre inventaire n’est pas plein.
+Exemple : Take Chest Sword
 
+Acheter un objet
+(B) Buy <Personnage> <Objet>
+Vous permet d’acheter l’objet spécifié à un personnage, si le personnage se trouve bien dans la pièce et qu’il possède bien dans son inventaire l’objet spécifié et que votre inventaire a assez de place pour pouvoir accueillir le dit objet, et enfin que vous avez assez d’or pour pouvoir l’acheter.
+Exemple : Buy Merchant Sword
 
-Combat :
-Lorsqu’une salle contient un ennemi et que vous rentrez dedans, un combat se lance automatiquement. On peut voir une interface en 2D qui montre la position du joueur (P), celle de l’ennemi (E) et si tous les deux sont sur la même case (B).
-Les cases vides sont représentées par un “-” .
-Vous pouvez entrer un nombre positif pour vous déplacer vers la droite et un négatif pour aller vers la gauche.
-Une fois que le joueur a avancé, il attaque puis l’ennemi fait un déplacement et attaque à son tour.
-Après un combat, si vous gagnez vous récupérez l’or que l’ennemi possédait et tous ses objets sont déposés dans la salle.
+Vendre un objet
+(S) Sell <Personnage <Objet>
+Vous permet de vendre l’objet spécifié au personnage, si le personnage se trouve bien dans la pièce, que vous possédez bien dans votre inventaire l’objet spécifié, que l’inventaire du dit personnage ait assez de place pour pouvoir accueillir le dit objet, et enfin que le dit personnage possède assez d’or pour pouvoir vous l’acheter.
+Exemple : Sell Merchant Sword
 
+Utiliser des objets
+(U) Use <objet> <?objet2>
+Vous permet d’utiliser un objet, si le dit objet est bien dans votre inventaire, et qu’il est utilisable.
+Vous permet également d’utiliser l’objet1 sur l’objet2, si ces deux objets sont bien dans votre inventaire, que l’objet1 et bien utilisable, et qu’il peut être utilisable sur l’objet2.
+Exemples : Use Chicken
+   Use Arrow Bow
+   Use keyR Laboratory
 
-Portes bloquées :
-Lorsque vous voyez qu’une porte est bloquée par un rocher, il faut trouver une pioche et utiliser la commande use dans la salle pour libérer le passage.
-Si la porte est verrouillée, il faut faire la même manipulation avec une clé.
+Équiper une arme
+(EQ) Equip <Arme>
+Vous équipe de l’arme spécifiée si celle-ci se trouve dans votre inventaire. Elle sera utilisée pour les combats. Si une autre arme est équipée, elle sera remise dans votre inventaire. Si pour des raisons de limite de poids l’arme actuelle ne peut être déséquipée, rien ne se passe. L’objet équipé ne rentre pas compte dans le calcul de la limite de poids de l’inventaire.
+Exemple : Equip Sword
 
+Déséquiper une arme
+(UN) Unequip
+Vous déséquipez l’arme équipée si vous en avez une. Si pour des raisons de limite de poids l’objet actuel ne peut pas être déséquipé alors rien ne se passe.
+Exemple : Unequip
 
-Objets :
-La nourriture peut être consommée avec la commande use pour regagner un certain nombre de points de vie.
-L’arme équipée par le joueur peut être échangée par une autre que vous pourrez trouver pendant votre aventure en utilisant la commande use. L’ancienne arme se trouve désormais dans l’inventaire du joueur.
+Parler à un personnage
+(TAL) Talk <personnage>
+Vous fait parler au personnage spécifié, s'il se trouve dans la pièce et qu’il est amical. S’il a des objets à vendre il vous les présentera.
+Exemple : Talk Merchant
