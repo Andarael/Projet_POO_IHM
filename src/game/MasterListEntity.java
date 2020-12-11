@@ -62,7 +62,6 @@ public interface MasterListEntity {
                                2);
 
 
-    // todo add all entities
     // Weapons =================================================================
 
     Weapon great_sword = new Weapon("great sword",
@@ -455,9 +454,6 @@ public interface MasterListEntity {
         output.addAll(initPassives());
         output.addAll(initContainers());
 
-        // todo implement
-
-
         return output;
     }
 
@@ -520,7 +516,6 @@ public interface MasterListEntity {
         output.add(purpleKey);
 
 
-        //todo init items
         return output;
     }
 
@@ -575,9 +570,6 @@ public interface MasterListEntity {
         eternity_room.addExit(church,1);
 
 
-
-
-        //todo init items
         return output;
     }
 
@@ -687,7 +679,6 @@ public interface MasterListEntity {
     }
 
     static void initPlayer(Player player) {
-        // todo player.addItem(...)
 
         player.addItem(rotten_chicken);
         player.addItem(hunters_bow);
@@ -696,7 +687,6 @@ public interface MasterListEntity {
         player.addItem(irons_arrow);
         player.addItem(irons_arrow);
         player.addItem(blueKey);
-
 
     }
 

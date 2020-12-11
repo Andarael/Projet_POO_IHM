@@ -330,9 +330,6 @@ public class Place extends Entity {
     // Display
     // =============================================================================================
 
-    //todo make display work
-    // todo ajouter description des entités
-
     /**
      * this form the top wall and the exit of the curent place
      *

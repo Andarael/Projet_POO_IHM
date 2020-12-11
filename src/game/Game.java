@@ -6,6 +6,7 @@ import command.Attack;
 import entity.Player;
 import world.World;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.List;
 
 import static command.Execute.execute;
@@ -33,7 +34,7 @@ public class Game {
         World world = new World(difficulty);
 
 
-        displayWelcome();
+        displayWelcome(world);
 
         while (!(victory || death || end)) {
 
@@ -83,10 +84,11 @@ public class Game {
         printMsg(player.getInventoryDisplay());
     }
 
-    private static void displayWelcome() {
+    private static void displayWelcome(World world) {
         printMsg("Prepare to enter Xak Tsaroth!");
         printMsg("You awake in a room, here is your inventory");
-        //todo display l'inventaire
+        world.getPlayer().getInventoryDisplay();
+        world.getCurrentPlace().draw();
     }
 
     private static void displayWaitingInput() {

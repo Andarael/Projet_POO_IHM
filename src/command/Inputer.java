@@ -65,7 +65,6 @@ public class Inputer {
                              "' , try 'HELP " + commandString + "'");
 
             }
-            // todo test nouvelle implémentation
         }
 
         return stringList;
