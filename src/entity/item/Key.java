@@ -38,6 +38,10 @@ public class Key extends Item implements Usable {
              color);
     }
 
+    public Key(Col color) {
+        this(color, null);
+    }
+
     /**
      * @return the color of the Key
      */
