@@ -200,6 +200,12 @@ public interface MasterListEntity {
     Place tavern = new Place("Tavern",
                              "taver",
                              "A tavern with a festive atmosphere, just watch out for the flying mug !");
+    Place entrance = new Place("Entrance",
+                               "Entra",
+                               "The entrance of the dungeon, you're not ready for what's next.");
+    Place eternity_room = new Place("eternity room",
+                                    "etern",
+                                    "The chamber of the dragon. Your journey comes to an end.");
     Place cave = new Place("Cave", "cave", "A big dark cave, your voice echoes endlessly");
     Place graveyard = new Place("Graveyard",
                                 " grave",
@@ -214,7 +220,7 @@ public interface MasterListEntity {
                                  "labor",
                                  "A laboratory like any other, with all kinds of gadgets and flasks on the shelves");
     Place barn = new Place("Barn",
-                           "bearn",
+                           "barn",
                            "At the entrance of the barn, you can see a huge pile of hay, the smell goes with it of course, but that's nature !");
     Place courtyard = new Place("Courtyard",
                                 "court",
@@ -301,21 +307,21 @@ public interface MasterListEntity {
                                     "Former ruler of the dungeon, he fled the takeover of the Necromancer, this dragon story really did not help matters!",
                                     "take this key and deliver my kingdom!");
     Passive WillyPillager = new Passive("Willy the pillager",
-                                       "Willy",
-                                       "Little man with graying hair, take advantage of the discord to plunder the dungeon",
-                                       "I found lots of beautiful things! You want some ?");
+                                        "Willy",
+                                        "Little man with graying hair, take advantage of the discord to plunder the dungeon",
+                                        "I found lots of beautiful things! You want some ?");
     Passive piousHelen = new Passive("Pious helen",
-                                "helen",
-                                "Girl with blond hair",
-                                "I lost my statuette, if you found it, keep it in memory of me sir");
+                                     "helen",
+                                     "Girl with blond hair",
+                                     "I lost my statuette, if you found it, keep it in memory of me sir");
     Passive torakStrange = new Passive("Torak the strange",
                                        "torak",
                                        "Elderly man with red head",
                                        "At a time I could have helped you... at a time ...");
     Passive arthurBrave = new Passive("Arthur the brave",
-                                 "Arthu",
-                                 "Young knight",
-                                 "Hello, my sword send you it's regards!");
+                                      "Arthu",
+                                      "Young knight",
+                                      "Hello, my sword send you it's regards!");
     Passive madelaine = new Passive("Madelaine the beloved",
                                     "Madel",
                                     "Young girl with black hair, child of Ulric",
@@ -403,7 +409,10 @@ public interface MasterListEntity {
 
     static Set<Place> initPlaces() {
         Set<Place> output = new HashSet<>();
+
         output.add(tavern);
+        output.add(entrance);
+        output.add(eternity_room);
         output.add(cave);
         output.add(graveyard);
         output.add(forest);
@@ -421,6 +430,7 @@ public interface MasterListEntity {
 
     static Set<Hostile> initHostiles() {
         Set<Hostile> output = new HashSet<>();
+
         output.add(orc);
         output.add(goblin);
         output.add(dragon);
@@ -435,6 +445,7 @@ public interface MasterListEntity {
 
     static Set<Passive> initPassives() {
         Set<Passive> output = new HashSet<>();
+
         output.add(ordinary_guy);
         output.add(merchant);
         output.add(scandalf);
@@ -457,10 +468,6 @@ public interface MasterListEntity {
         output.add(steel_chest);
         output.add(emerald_chest);
 
-
-
-
-        //todo init items
         return output;
     }
 
@@ -511,16 +518,11 @@ public interface MasterListEntity {
 
     static void initPlayer(Player player) {
         // todo player.addItem(...)
-        player.addItem(redKey);
-        player.addItem(chicken);
+
         player.addItem(rotten_chicken);
-        player.addItem(irons_arrow);
-        player.addItem(irons_arrow);
-        player.addItem(hunters_bow);
-        player.addItem(dagger);
-        player.addItem(poison);
-        player.addItem(poison);
-        player.addItem(golden_statue);
+
+
+
     }
 
 }
