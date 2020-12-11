@@ -188,11 +188,13 @@ public class Place extends Entity {
      * @param container the container you want to add
      */
     public void addContainer(Container container) {
-        if (containsContainer(container))
-            return;
+        if (!this.listContainers.isEmpty()) {
+            if (containsContainer(container))
+                return;
 
-        if (this.nbContainer() < this.containerMax)
-            this.listContainers.add(container);
+            if (this.nbContainer() < this.containerMax)
+                this.listContainers.add(container);
+        }
 
     }
 
