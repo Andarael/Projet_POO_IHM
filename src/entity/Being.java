@@ -114,5 +114,4 @@ public class Being extends Container implements Fightable, Comparable<Being> {
         return this.level - being.level;
     }
 
-
 }

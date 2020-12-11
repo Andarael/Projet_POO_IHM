@@ -101,7 +101,9 @@ public abstract class Entity implements Lookable {
         if (this == o)
             return true;
 
-        if ((o == null) || !(o instanceof Entity))
+        if (o == null)
+            return false;
+        else if (!(o instanceof Entity))
             return false;
 
         Entity ComparedEntity = (Entity) o;
