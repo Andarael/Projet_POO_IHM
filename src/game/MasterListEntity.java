@@ -174,7 +174,7 @@ public interface MasterListEntity {
                                  1,
                                  2,
                                  -9);
-    Food countryPâté = new Food("Country pâté", "cPate", "A good old paté from the past!", 1, 1, 4);
+    Food countryPate = new Food("Country pâté", "cPate", "A good old paté from the past!", 1, 1, 4);
     Food remedyNecromantic = new Food("Remedy for necromantic",
                                       "nReme",
                                       "The smell emanating from it made the flies fall",
@@ -294,8 +294,8 @@ public interface MasterListEntity {
                                    "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! If you kill the dragon and save the princess, you'll be a hero for ever!");
     Passive annoying_princess = new Passive("annoying princess",
                                             "aPrin",
-                                            "The beautifull princess you've been looking for, she has long golden hair and beautiful sapphire eyes",
-                                            "deliver me quickly, you retarded incompetent!");
+                                            "The beautiful princess you've been looking for, she has long golden hair and beautiful sapphire eyes",
+                                            "free me quick, you retarded incompetent!");
     Passive ulricWise = new Passive("Ulric the Wise",
                                     "ulric",
                                     "Former ruler of the dungeon, he fled the takeover of the Necromancer, this dragon story really did not help matters!",
@@ -307,15 +307,15 @@ public interface MasterListEntity {
     Passive piousHelen = new Passive("Pious helen",
                                 "helen",
                                 "Girl with blond hair",
-                                "I lost my statuette, if you found it, kept it in memory of me sir");
+                                "I lost my statuette, if you found it, keep it in memory of me sir");
     Passive torakStrange = new Passive("Torak the strange",
                                        "torak",
                                        "Elderly man with red head",
-                                       "At one time I could have been in your place ... at a time ...");
+                                       "At a time I could have helped you... at a time ...");
     Passive arthurBrave = new Passive("Arthur the brave",
                                  "Arthu",
                                  "Young knight",
-                                 "Hello, my sword send you it's regard !");
+                                 "Hello, my sword send you it's regards!");
     Passive madelaine = new Passive("Madelaine the beloved",
                                     "Madel",
                                     "Young girl with black hair, child of Ulric",
@@ -346,6 +346,12 @@ public interface MasterListEntity {
 
         output.add(golden_statue);
         output.add(divine_jewel);
+        output.add(seer_thorn);
+        output.add(SignetUlric);
+        output.add(collectionPrayers);
+        output.add(SmallWoodenStatuette);
+        output.add(humanSkull);
+        output.add(sacredBook);
 
         //init weapon
 
@@ -357,6 +363,10 @@ public interface MasterListEntity {
         output.add(spear);
         output.add(spiked_mass);
         output.add(esoteric_manual);
+        output.add(staff);
+        output.add(daggerFaith);
+        output.add(limboLament);
+        output.add(swordFatality);
 
         //init food
 
@@ -367,6 +377,16 @@ public interface MasterListEntity {
         output.add(big_cake);
         output.add(poison);
         output.add(apple);
+        output.add(messiahBlood);
+        output.add(sinnerTear);
+        output.add(oldHam);
+        output.add(staleWheatPancake);
+        output.add(nourishingWine);
+        output.add(strangeFlask);
+        output.add(countryPate);
+        output.add(remedyNecromantic);
+        output.add(HandfulBean);
+
 
         //init keys
 
@@ -408,7 +428,8 @@ public interface MasterListEntity {
         output.add(minotaur);
         output.add(ghost);
         output.add(skeleton);
-        //todo init items
+        output.add(wolf);
+
         return output;
     }
 
@@ -418,12 +439,27 @@ public interface MasterListEntity {
         output.add(merchant);
         output.add(scandalf);
         output.add(annoying_princess);
-        //todo init items
+        output.add(ulricWise);
+        output.add(WillyPillager);
+        output.add(piousHelen);
+        output.add(torakStrange);
+        output.add(arthurBrave);
+        output.add(madelaine);
+
         return output;
     }
 
     static Set<Container> initContainers() {
         Set<Container> output = new HashSet<>();
+
+        output.add(wooden_chest);
+        output.add(iron_chest);
+        output.add(steel_chest);
+        output.add(emerald_chest);
+
+
+
+
         //todo init items
         return output;
     }
