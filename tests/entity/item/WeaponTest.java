@@ -14,7 +14,7 @@ class WeaponTest {
 
     @BeforeEach
     void setUp() {
-        w1 = new Weapon("sword",null, "a sword made of steel", 10, 6, 2);
+        w1 = new Weapon("sword",null, "a sword made of steel", 2, 6, 10);
         w2 = new Weapon("sword",null, "a sword made of iron", 4.0, 5, 0);
     }
 
@@ -35,7 +35,7 @@ class WeaponTest {
 
     @Test
     void getPower() {
-        assertEquals(10, ((Weapon) w1).getPower());
+        assertEquals(((Weapon) w1).getDamage(), ((Weapon) w1).getPower());
         assertEquals(1, ((Weapon) w2).getPower());
     }
 

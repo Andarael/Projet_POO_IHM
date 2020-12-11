@@ -64,4 +64,5 @@ public class Item extends Entity implements Comparable<Item> {
             return 0;
         return this.getName().compareTo(item.getName());
     }
+
 }

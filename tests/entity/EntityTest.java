@@ -16,11 +16,11 @@ class EntityTest {
 
     @BeforeEach
     void setUp() {
-        e1 = new Entity("apple", "a red apple") {
+        e1 = new Entity("apple", null,"a red apple") {
         };
         e2 = new Entity(null) {
         };
-        e3 = new Entity("pog", "a nice Pog") {
+        e3 = new Entity("pog", null,"a nice Pog") {
         };
     }
 

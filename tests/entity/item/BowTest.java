@@ -21,9 +21,8 @@ class BowTest {
 
     @Test
     void Bow() {
-        b = new Bow("WoodenBow",null, null, 1,10,4);
+        b = new Bow(4);
         assertEquals(Bow.DEFAULT_WEIGHT, b.getWeight());
-        assertEquals(b.getDamage(), b.getValue());
         assertEquals(0, b.getArrows());
     }
 
