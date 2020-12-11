@@ -26,6 +26,9 @@ public interface Go {
         world.setCurrentPlace(destination.getDestination());
         printMsg("You enter " + destination.getName());
         printMsg("\n");
+
         destination.draw();
+
+        Attack.checkFight(world);
     }
 }
