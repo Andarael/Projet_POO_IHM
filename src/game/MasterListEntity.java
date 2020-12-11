@@ -357,7 +357,8 @@ public interface MasterListEntity {
                                  "drago",
                                  "a gigantic dragon with emerald reflections",
                                  20,
-                                 20);
+                                 5,
+                                 false);
 
     Hostile necromancer = new Hostile("necromancer",
                                       "necro",
@@ -694,6 +695,7 @@ public interface MasterListEntity {
         player.addItem(irons_arrow);
         player.addItem(irons_arrow);
         player.addItem(irons_arrow);
+        player.addItem(blueKey);
 
 
     }
