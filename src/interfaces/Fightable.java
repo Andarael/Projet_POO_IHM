@@ -48,6 +48,7 @@ public interface Fightable extends Describable {
 
         if (opponent.isDead())
             printMsg("Bravo, vous avez gagné le combat contre " + opponent.getName());
+        // todo ajouter du text pout le lvl up et mettre txt en EN
     }
 
     /**
