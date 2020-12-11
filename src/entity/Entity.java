@@ -28,10 +28,18 @@ public abstract class Entity implements Lookable {
         if (name == null)
             name = DEFAULT_NAME;
 
+        if (shortName == null)
+            shortName = name;
+
+        if (shortName.length()<1)
+            shortName = name;
+
+        this.shortName = shorten(shortName);
+
         this.name = name.replaceAll(" ", "_");
         this.description = description;
 
-        this.shortName = shorten(shortName);
+
     }
 
     public Entity(String name, String shortName) {
