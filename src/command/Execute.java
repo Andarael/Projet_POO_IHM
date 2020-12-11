@@ -10,12 +10,15 @@ import static command.Attack.attack;
 import static command.Command.getCommandFromString;
 import static command.Command.isACommand;
 import static command.Drop.drop;
+import static command.EquipUnequip.equip;
+import static command.EquipUnequip.unequip;
 import static command.Go.go;
 import static command.Help.help;
 import static command.Inv.inventory;
 import static command.Look.look;
 import static command.Quit.quit;
 import static command.Take.take;
+import static command.Talk.talk;
 import static command.Trade.buy;
 import static command.Trade.sell;
 import static command.Use.use;
@@ -125,6 +128,14 @@ public interface Execute {
             case INVENTORY:
                 inventory(player);
                 break;
+            case TALK:
+                talk(currentPlace, arg1);
+
+            case EQUIP:
+                equip(player, arg1);
+
+            case UNEQUIP:
+                unequip(player);
         }
 
         // use [item] : player.use(item1)

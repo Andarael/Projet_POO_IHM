@@ -36,7 +36,10 @@ public enum Command {
          "     Sell : (s) Sell [Npc] [Item]" + "\n" +
          "     Buy  : (b) Buy  [Npc] [Item] " + "\n" +
          "     Take : (t) Take [Container] [Item]" + "\n" +
-         "     Attack : (a) Attack [Npc]" + "\n" +
+         "     Talk : (tal) Talk [Npc]" + "\n" +
+         "     Equip   : (eq) Equip [Item]" + "\n" +
+         "     Unequip : (un) Unequip" + "\n" +
+         "     Attack  : (a) Attack [Npc]" + "\n" +
          "     Inventory : (i) Inventory" + "\n",
          "H",
          0,
@@ -91,6 +94,26 @@ public enum Command {
          "S",
          2,
          2
+    ),
+    EQUIP("Equips an item from your inventory \n" +
+          "For example : Equip Sword -> You equipped : Sword",
+          "EQ",
+          1,
+          1
+    ),
+
+    UNEQUIP("Unequip you current equipped item (if anything is equipped)\n" +
+            "For Example : Unequip -> You unequipped Sword",
+            "UN",
+            0,
+            0
+    ),
+
+    TALK("Talk to a friendly Npc \n" +
+         "For Example : Talk Princess -> 'Princess : Oh you are so rude with me !",
+         "TAL",
+         1,
+         1
     );
 
     private final String usage;

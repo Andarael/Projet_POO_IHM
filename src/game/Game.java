@@ -55,15 +55,16 @@ public class Game {
 
     private static void displayWelcome() {
         printMsg("You enter the dungeon of Xar Tsaroth, but you're starting to regret this decision");
-        printMsg("you awake in a room, here is your inventory");
+        printMsg("You awake in a room, here is your inventory");
     }
 
     private static void displayWaitingInput() {
         // todo
+        printMsg("What will be your next move sir ?");
     }
 
     private static void displayDeath() {
-        printMsg("your wounds led you to a slow and painful death");
+        printMsg("Your wounds led you to a slow and painful death");
         // todo
     }
 
