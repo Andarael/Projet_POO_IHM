@@ -28,6 +28,8 @@ public interface MasterListEntity {
     Bow hunters_bow = new Bow("hunter's bow", "a small but tough bow, made for sharpened arrows", 3, 3, 3);
     Arrow irons_arrow = new Arrow();
     Weapon spear = new Weapon("spear", "a long stick with a piece of metal at the end", 4,4,4);
+    Weapon spiked_mass = new Weapon("spiked mass", "a very heavy mass with spikes at the end", 7,7,7);
+    Weapon esoteric_manual = new Weapon("esoteric manual", "a book with weird symbols on its cover", 1, 20, 10);
 
     // Food   ==================================================================
     Food chicken = new Food("chicken", "a raw chicken", 1, 2, 2);
@@ -53,7 +55,7 @@ public interface MasterListEntity {
     Place forest = new Place("Forest","An endless and sinister forest faces you, straining your ears you might hear screams of agony in the distance");
     Place church= new Place("church","A charming little church, with beautiful stained glass windows");
     Place laboratory = new Place("Laboratory","A laboratory like any other, with all kinds of gadgets and flasks on the shelves");
-    Place barn = new Place("Barn", "At the entrance to the barn, you can see a huge pile of hay, the smell goes with it of course, but that's nature !");
+    Place barn = new Place("Barn", "At the entrance of the barn, you can see a huge pile of hay, the smell goes with it of course, but that's nature !");
     Place courtyard = new Place("Courtyard","In the courtyard there is a small garden and next to a lot of training dummies");
     Place marketPlace = new Place("Marketplace","In the marketplace, lots of people are jostling for their purchases, but watch out for thieves");
     Place banditLair = new Place("Bandit lair","You see tables overturned, barrels full of swords and of course a crowd of terrifying bandits");
@@ -113,6 +115,8 @@ public interface MasterListEntity {
         output.add(hunters_bow);
         output.add(irons_arrow);
         output.add(spear);
+        output.add(spiked_mass);
+        output.add(esoteric_manual);
 
         //init food
 
