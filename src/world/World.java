@@ -15,6 +15,8 @@ import static utils.Col.RED;
 
 public class World implements WorldContains {
 
+    // todo check victoire
+
     private final Player player;
     private boolean win;
     private Place currentPlace;
@@ -50,12 +52,12 @@ public class World implements WorldContains {
 
         initPlayer(player);
 
-        System.out.println(entities);
+/*        System.out.println(entities);
         System.out.println(items);
         System.out.println(places);
         System.out.println(hostiles);
         System.out.println(passives);
-        System.out.println(containers);
+        System.out.println(containers);*/
 
     }
 
@@ -88,15 +90,11 @@ public class World implements WorldContains {
         places.add(place);
     }
 
-    public Place getAPlace(Place place) {
+    public Place getPlace(String str) {
         return places.stream()
-                     .filter(x -> x.isSame(place))
+                     .filter(x -> x.isSameStr(str))
                      .findFirst()
                      .orElse(null);
-    }
-
-    public Place getPlace(String str) {
-        return getAPlace(new Place(str));
     }
 
     public Place getCurrentPlace() {
