@@ -4,6 +4,7 @@ package entity.item;
 
 import entity.place.Exit;
 import entity.place.LockedExit;
+import entity.place.Place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ class KeyTest {
     void setUp() {
         k1 = new Key(BLUE,"a finely crafted blue key");
         k2 = new Key(RED, "the  R E D  key");
-        k3 = new Key( null,null);
+        k3 = new Key( RESET,null);
     }
 
     @Test
@@ -58,8 +59,9 @@ class KeyTest {
 
     @Test
     void use2() {
-        LockedExit lockedExit = new LockedExit(null,BLUE);
-        LockedExit lockedExit2 = new LockedExit(null,YELLOW);
+        Place destination = new Place("destination");
+        LockedExit lockedExit = new LockedExit(destination,BLUE);
+        LockedExit lockedExit2 = new LockedExit(destination,YELLOW);
 
         k1.use(lockedExit);
         assertFalse(lockedExit.isLocked());
@@ -68,7 +70,7 @@ class KeyTest {
         k1.use(lockedExit2);
         assertTrue(lockedExit2.isLocked());
 
-        Exit exit = new Exit(null);
+        Exit exit = new Exit(destination);
         assertFalse(k1.use(exit));
     }
 

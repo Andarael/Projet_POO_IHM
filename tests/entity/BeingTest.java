@@ -17,7 +17,7 @@ class BeingTest {
     @BeforeEach
     void setUp() {
         b1 = new Being(null, null, null, -5, 0);
-        b2 = new Being("vieux_marchand", "vMarc", "un vieux marchand", 15,1);
+        b2 = new Being("vieux_marchand", "vMarc", "un vieux marchand", 20,1);
         b3 = new Being("spider", 5);
     }
 
