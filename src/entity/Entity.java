@@ -21,21 +21,25 @@ public abstract class Entity implements Lookable {
 
     private final String name;
     private String description;
-    private String shortName;
+    private final String shortName;
 
-    public Entity(String name, String description) {
+    public Entity(String name, String shortName ,String description) {
         // le nom ne peut pas être null.
         if (name == null)
             name = DEFAULT_NAME;
 
-        this.name = name;
+        this.name = name.replaceAll(" ", "_");
         this.description = description;
 
-        this.shortName = shorten(name);
+        this.shortName = shorten(shortName);
+    }
+
+    public Entity(String name, String shortName) {
+        this(name, shortName, null);
     }
 
     public Entity(String name) {
-        this(name, null);
+        this(name, name, null);
     }
 
     @Override
@@ -56,11 +60,6 @@ public abstract class Entity implements Lookable {
     @Override
     final public String getShortName() {
         return this.shortName;
-    }
-
-    @Override
-    final public void setShortName(String s) {
-        this.shortName = shorten(s);
     }
 
     final public boolean isSame(Entity entity) {

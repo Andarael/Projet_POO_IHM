@@ -9,11 +9,15 @@ public class Passive extends Being implements Talkable {
     public static final String DEFAULT_DIALOGUE = "Hello adventurer, i am old";
 
     private String dialogue;
+    public static final int PASSIVE_HEALTH = 10;
+    public static final int PASSIVE_POWER = 3;
 
-    public Passive(String name, String description, String dialogue) {
-        super(name, description);
+    public Passive(String name, String shortName, String description, String dialogue) {
+        super(name, shortName, description, PASSIVE_HEALTH, PASSIVE_POWER);
+
         if (dialogue == null)
             dialogue = DEFAULT_DIALOGUE;
+
         this.dialogue = dialogue;
     }
 

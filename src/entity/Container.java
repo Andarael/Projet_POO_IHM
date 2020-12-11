@@ -17,14 +17,14 @@ public abstract class Container extends Entity implements InventoryManagement {
 
     protected Inventory inventory;
 
-    public Container(String name, String description) {
-        super(name, description);
+    public Container(String name, String shortName, String description) {
+        super(name, shortName, description);
 
         this.inventory = new Inventory();
     }
 
     public Container(String name) {
-        this(name, null);
+        this(name, name, null);
     }
 
     @Override
