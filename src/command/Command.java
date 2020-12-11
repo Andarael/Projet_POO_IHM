@@ -102,7 +102,7 @@ public enum Command {
           1
     ),
 
-    UNEQUIP("Unequip you current equipped item (if anything is equipped)\n" +
+    UNEQUIP("Unequip you current equipped weapon (if anything is equipped)\n" +
             "For Example : Unequip -> You unequipped Sword",
             "UN",
             0,
