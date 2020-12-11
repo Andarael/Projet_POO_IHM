@@ -47,7 +47,7 @@ public interface Fightable extends Describable {
         }
 
         if (opponent.isDead())
-            printMsg("Bravo, vous avez gagné le combat contre " + opponent.getName());
+            printMsg("Well done, you won the fight against " + opponent.getName());
     }
 
     /**
