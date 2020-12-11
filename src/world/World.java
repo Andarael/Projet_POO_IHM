@@ -12,7 +12,6 @@ import static game.MasterListEntity.*;
 
 public class World implements WorldContains {
 
-    // todo check victoire
 
     public final Set<Entity> entities;
     public final Set<Item> items;
@@ -24,6 +23,7 @@ public class World implements WorldContains {
     private final boolean win;
     private Place currentPlace;
     private boolean end;
+    private static final Item itemToGetToWin = divine_jewel;
 
 
     public World(int difficulty) {
@@ -71,7 +71,7 @@ public class World implements WorldContains {
     }
 
     public boolean hasWin() {
-        return win;
+        return player.contains(itemToGetToWin);
     }
 
     public void addPlace(Place place) {
