@@ -35,7 +35,7 @@ public enum Command {
          "     Quit : (q) Quit " + "\n" +
          "     Sell : (s) Sell [Npc] [Item]" + "\n" +
          "     Buy  : (b) Buy  [Npc] [Item] " + "\n" +
-         "     Take : (t) Take [Container] [Item]" + "\n" +
+         "     Take : (t) Take [Container?] [Item]" + "\n" +
          "     Talk : (tal) Talk [Npc]" + "\n" +
          "     Equip   : (eq) Equip [Item]" + "\n" +
          "     Unequip : (un) Unequip" + "\n" +
