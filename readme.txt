@@ -69,15 +69,15 @@ Si l'argument est optionnelle est est accolée à un symbole '?'
                : affiche votre inventaire
 
 
-Les différents objets, lieux, personnages etc ... du jeu sont affiché avec leur nom raccourci (shortName) entre parthèses dans le terminal. 
-Le shortName ou le nom complet de l'objet permetent d'intéragire avec les entités dans le jeu. 
+Les différents objets, lieux, personnages etc ... du jeu sont affiché avec leur nom raccourci (shortName) entre parenthèses dans le terminal.
+Le shortName ou le nom complet de l'objet permettent d'interagir avec les entités dans le jeu.
 
 
-Votre inventaire est limité : vous ne pouvez pas prendre les objets trop lours. Pour vous débarasser des objets encombrants utilisez 'DROP', vous pouvez voir votre inventaire avec la commande 'inventory'
+Votre inventaire est limité : vous ne pouvez pas prendre les objets trop lours. Pour vous débarrasser des objets encombrants utilisez 'DROP', vous pouvez voir votre inventaire avec la commande 'inventory'
 
-Lorsque vous entrez dans une salle avec un personnage agréssife (par exemple un orc), il vous attaquera à vue. Préaprez vous avec votre meilleur arme avant de changer de salle. 
+Lorsque vous entrez dans une salle avec un personnage agressif (par exemple un orc), il vous attaquera à vue. Préparez vous avec votre meilleur arme avant de changer de salle.
 
-Lorsqu'un personnage meurt, ses effets tombent à terre. Vous pouvez les ramsser ensuite.
+Lorsqu'un personnage meurt, ses effets tombent à terre. Vous pouvez les ramasser ensuite.
 
 Si vous mourrez alors le jeu s'arrête. 
 
