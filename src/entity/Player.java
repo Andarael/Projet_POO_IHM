@@ -44,6 +44,11 @@ public class Player extends Being {
         this(DEFAULT_HEALTH);
     }
 
+    @Override
+    public boolean canAddItem(Item item) {
+        return ((LimitedInventory) inventory).canAddItem(item);
+    }
+
     /**
      * @return the current equipped item
      */
