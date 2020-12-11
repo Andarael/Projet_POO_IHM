@@ -88,12 +88,12 @@ public class Food extends Item implements Usable {
             return false;
         }
 
-        String message = restoreValue + "hp";
+        String message = restoreValue + " hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);
             System.out.println("You healed " + message);
         } else {
-            player.hurt(restoreValue);
+            player.hurt(-restoreValue);
             System.out.println("You got poisoned by " + message);
         }
         return true;

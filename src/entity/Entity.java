@@ -64,10 +64,16 @@ public abstract class Entity implements Lookable {
     }
 
     final public boolean isSame(Entity entity) {
+        if (entity == null)
+            return false;
+
         return haveSameNameShortName(this, entity);
     }
 
     final public boolean isSameStr(String str) {
+        if (str == null)
+            return false;
+
         return haveSameNameShortNameStr(this, str);
     }
 
@@ -84,7 +90,7 @@ public abstract class Entity implements Lookable {
         if (this == o)
             return true;
 
-        if (!(o instanceof Entity))
+        if ((o == null) || !(o instanceof Entity))
             return false;
 
         Entity ComparedEntity = (Entity) o;

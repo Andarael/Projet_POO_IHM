@@ -207,14 +207,4 @@ addMonsterInventoryOnDeath(Hostile h) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
+// todo ajouter msg si on ramasse un truc avec la limite de poids pour expliquer qu'on peut pas le prendre

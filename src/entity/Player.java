@@ -29,10 +29,11 @@ public class Player extends Being {
     private static final Hand HANDS = new Hand();
     private final LimitedInventory limitedInventory;
     private Item equipped;
-    //todo ajout cpt de kill pour up lvl (et modif getPower() + lvl -1)
+    private int killCounter;
 
     public Player(int hp) {
         super("player", null, hp, 1);
+        killCounter = 0;
         limitedInventory = new LimitedInventory();
         this.inventory = limitedInventory;
         equipped = HANDS;
@@ -113,7 +114,7 @@ public class Player extends Being {
     }
 
     /**
-     * gets the power of the player taking int account its equipped item
+     * Gets the power of the player taking int account its equipped item and its current level
      *
      * @return the power of the player
      */
@@ -121,7 +122,7 @@ public class Player extends Being {
     public int getPower() {
         if (equipped == null || (!(equipped instanceof Equipable))) return 1;
 
-        return ((Equipable) equipped).getPower();
+        return ((Equipable) equipped).getPower() + getLevel() - 1;
     }
 
     /**
@@ -332,4 +333,11 @@ public class Player extends Being {
         return use(new Item(itemName), exit);
     }
 
+    public void addKill() {
+        killCounter++;
+    }
+
+    public int getKills() {
+        return killCounter;
+    }
 }

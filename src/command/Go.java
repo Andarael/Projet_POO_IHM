@@ -6,12 +6,12 @@ import world.World;
 
 import static utils.Printer.printErr;
 import static utils.Printer.printMsg;
-import static world.WorldContains.isPlace;
+import static world.WorldContains.isAPlace;
 
 public interface Go {
     static void go(World world, Place currPlace, String arg1) {
 
-        if (!isPlace(world, arg1)) {
+        if (!isAPlace(world, arg1)) {
             printErr(arg1 + " is not a place");
             return;
         }
