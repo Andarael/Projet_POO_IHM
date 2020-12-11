@@ -73,6 +73,19 @@ public class Inventory implements InventoryManagement {
     }
 
     @Override
+    public void addAllItems(Inventory inventoryToAdd) {
+        if (inventoryToAdd == null)
+            return;
+
+        List<Item> itemListToAdd = inventoryToAdd.getItemList();
+        itemListToAdd.forEach(this::addItem);
+    }
+
+    private List<Item> getItemList() {
+        return itemList;
+    }
+
+    @Override
     public void removeAllItems() {
         itemList.clear();
     }

@@ -62,6 +62,13 @@ public interface InventoryManagement {
     void removeAllItems();
 
     /**
+     * Adds all items from an inventory to this one
+     *
+     * @param inventory the inventory to get the items from
+     */
+    void addAllItems(Inventory inventory);
+
+    /**
      * Checks if the inventory contains at least one item with the same name as the specified item
      * @param item the item to check ofr
      * @return true if the item was present

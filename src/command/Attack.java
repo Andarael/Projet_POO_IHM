@@ -28,17 +28,31 @@ public interface Attack {
 
 
         if (((Fightable) opponent).isDead()) {
-            player.addKill();
-            if (player.getKills() > player.getLevel() - 1) {
-                player.levelUP();
-                printMsg("Congratulation you killed " +
-                         player.getKills() +
-                         "monsters, You are now level" +
-                         player.getLevel());
-                printMsg("You now have " + player.getMaxHp() + "hp, and do 1 more damage");
-            }
+            updatedPlayerKills(player);
+            addLootToPlace(currentPlace, opponent);
         }
 
-        //todo ajouter l'inv du monstre dans la salle
     }
+
+    static void addLootToPlace(Place currentPlace, Container opponent) {
+        printMsg(opponent.getName() + " is dead and its loots fall on the ground");
+        currentPlace.getPlaceContainer().addAllItems((opponent.getInventory()));
+        currentPlace.removeContainer(opponent);
+    }
+
+    static void updatedPlayerKills(Player player) {
+        player.addKill();
+
+        if (player.getKills() > player.getLevel() - 1) {
+            player.levelUP();
+
+            printMsg("Congratulation you killed " +
+                     player.getKills() +
+                     "monsters, You are now level" +
+                     player.getLevel());
+
+            printMsg("You now have " + player.getMaxHp() + "hp, and do 1 more damage");
+        }
+    }
+
 }
