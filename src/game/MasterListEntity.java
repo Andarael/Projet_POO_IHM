@@ -567,12 +567,14 @@ public interface MasterListEntity {
         laboratory.addExit(barn,3);
         laboratory.addLockedExit(church,0,BLUE);
 
+        church.addContainer(ulricWise);
+        church.addContainer(necromancer);
+        church.addExit(laboratory,3);
+        church.addExit(eternity_room,2);
 
-
-
-
-
-
+        eternity_room.addContainer(annoying_princess);
+        eternity_room.addContainer(dragon);
+        eternity_room.addExit(church,1);
 
 
 
@@ -594,6 +596,7 @@ public interface MasterListEntity {
 
         minotaur.addItem(spiked_mass);
         skeleton.addItem(one_handed_sword);
+        dragon.addItem(divine_jewel);
 
         return output;
     }
@@ -631,6 +634,8 @@ public interface MasterListEntity {
 
         steel_chest.addItem(greenKey);
         steel_chest.addItem(coca_zero);
+
+
 
         return output;
     }
