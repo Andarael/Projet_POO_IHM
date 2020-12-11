@@ -27,7 +27,7 @@ class LockedExitTest {
         lockedExit1 = new LockedExit(place1,RED);
         lockedExit2 = new LockedExit(place2,BLUE);
 
-        key1 = new Key("red_key", "the  R E D  key", BLUE);
+        key1 = new Key(BLUE,"the  R E D  key");
     }
 
     @Test

@@ -54,7 +54,6 @@ class PlaceTest {
         place2.addContainer(cont1);
         place3.addContainer(cont1);
         place3.addContainer(cont2);
-        place3.addPlayer(player);
 
 
         place2.addExit(place1,0);
@@ -63,33 +62,6 @@ class PlaceTest {
 
     }
 
-    @Test
-    void hasPlayer() {
-        assertFalse(place1.hasPlayer());
-        assertFalse(place2.hasPlayer());
-        assertTrue(place3.hasPlayer());
-    }
-
-    @Test
-    void getPlayer() {
-        assertSame(null,place1.getPlayer());
-        assertSame(null,place2.getPlayer());
-        assertSame(player,place3.getPlayer());
-    }
-
-    @Test
-    void addPlayer() {
-        assertSame(null,place1.getPlayer());
-        place1.addPlayer(player);
-        assertSame(player,place1.getPlayer());
-    }
-
-    @Test
-    void rmPlayer() {
-        assertSame(player,place3.getPlayer());
-        place3.rmPlayer();
-        assertSame(null,place3.getPlayer());
-    }
 
     @Test
     void addExit() {

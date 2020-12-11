@@ -13,7 +13,6 @@ class HandTest {
     void handTest() {
         Item h1 = new Hand();
         Item h2 = new Hand();
-        h2.setShortName("h");
         assertEquals(h1, h2);
 
         System.out.println(h1);

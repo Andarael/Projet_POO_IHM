@@ -15,8 +15,8 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        item1 = new Item("apple", "a red apple", 0.2, 3);
-        item2 = new Item("shield", -10, -10);
+        item1 = new Item("apple",null, "a red apple", 0.2, 3);
+        item2 = new Item("shield",null,null, -10, -10);
         item3 = new Item("pog");
 
     }

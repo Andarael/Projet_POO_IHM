@@ -16,12 +16,12 @@ class BowTest {
     @BeforeEach
     void setUp() {
         a = new Arrow();
-        b = new Bow("IronBow", "a bow made of iron", 6.0, 5, 4);
+        b = new Bow("IronBow",null, "a bow made of iron", 6.0, 5, 4);
     }
 
     @Test
     void Bow() {
-        b = new Bow("WoodenBow", null, 1);
+        b = new Bow("WoodenBow",null, null, 1,10,4);
         assertEquals(Bow.DEFAULT_WEIGHT, b.getWeight());
         assertEquals(b.getDamage(), b.getValue());
         assertEquals(0, b.getArrows());

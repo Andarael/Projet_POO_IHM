@@ -29,7 +29,7 @@ class ArrowTest {
 
     @Test
     void testUse() {
-        Bow bow = new Bow("Bow", null, 5);
+        Bow bow = new Bow("Bow","null", null, 5, 10,4);
 
         a.use(bow);
         a.use(bow);
