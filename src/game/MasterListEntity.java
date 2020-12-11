@@ -81,7 +81,7 @@ public interface MasterListEntity {
     Passive ordinary_guy = new Passive("ordinary guy", "a human just like you", "Hello sir, the weather is nice, don't you think?");
     Passive merchant = new Passive("merchant", "a big guy with all kinds of things in his bag", "Hello adventurer, would you like to take a look at my goods?");
     Passive scandalf = new Passive("Scandalf the wizard", "He has a long beard and a pointy hat, you should listen to what he tells you", "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! If you kill the dragon and save the princess, you'll be a hero for ever!");
-    Passive annoying_princess = new Passive("annoying princess", "The beautifull princess you've been looking for, she has long golden hair and beautiful sapphire eyes", "deliver me quickly, you retarded incompetent!");
+    Passive annoying_princess = new Passive("annoying princess", "The beautifull princess you've been looking for, she has long golden hair and beautiful sapphire eyes", "free me quick, you retarded incompetent!");
 
     Set<Entity> entityMasterList = getAllEntities();
 
