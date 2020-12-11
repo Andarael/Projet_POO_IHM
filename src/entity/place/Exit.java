@@ -8,14 +8,8 @@ public class Exit extends Entity {
     private final Place destination;
 
     public Exit(Place destination) {
-        super(destination.getName());
-        this.setShortName(destination.getShortName());
+        super(destination.getName(), destination.getShortName());
         this.destination = destination;
-    }
-
-    public Exit() {
-        super(null);
-        destination = null;
     }
 
     public Place getDestination() {

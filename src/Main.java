@@ -33,7 +33,7 @@ public class Main {
         String s3 = createShort("123");
         System.out.println("s3 : \"" + s3 + "\", len(s) : " + s2.length());
 
-        Item apple = new Food("apple", "a delicious red apple", 2);
+        Item apple = new Food("apple","appl", "a delicious red apple", 2);
         System.out.println(apple);
 
         System.out.println("\ntaille 2 (7) : ");

@@ -27,16 +27,17 @@ import static utils.Printer.printMsg;
 public class Player extends Being {
 
     private static final Hand HANDS = new Hand();
-    private final LimitedInventory limitedInventory;
+    private final LimitedInventory limitedInventory = new LimitedInventory();
     private Item equipped;
     private int killCounter;
 
     public Player(int hp) {
-        super("player", null, hp, 1);
+        super("player", "ME", null, hp, 1);
+
         killCounter = 0;
-        limitedInventory = new LimitedInventory();
-        this.inventory = limitedInventory;
         equipped = HANDS;
+
+        this.inventory = limitedInventory;
     }
 
     public Player() {

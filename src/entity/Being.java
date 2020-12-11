@@ -20,8 +20,8 @@ public class Being extends Container implements Fightable, Comparable<Being> {
     private int hp;
     private int level;
 
-    public Being(String name, String description, int hp, int power) {
-        super(name, description);
+    public Being(String name, String shortName, String description, int hp, int power) {
+        super(name, shortName, description);
 
         if (hp < 0)
             hp = DEFAULT_HEALTH;
@@ -36,16 +36,8 @@ public class Being extends Container implements Fightable, Comparable<Being> {
         this.BASE_HEALTH = hp;
     }
 
-    public Being(String name, String description, int hp) {
-        this(name, description, hp, 1);
-    }
-
-    public Being(String name, String description) {
-        this(name, description, DEFAULT_HEALTH, 1);
-    }
-
     public Being(String name, int hp) {
-        this(name, null, hp, 1);
+        this(name, name, null, hp, 1);
     }
 
     public Being(String name) {

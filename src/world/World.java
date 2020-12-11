@@ -38,7 +38,7 @@ public class World implements WorldContains {
         this.player = new Player(baseHp);
         this.end = false;
         this.win = false;
-        this.currentPlace = new Place("pog");
+        this.currentPlace = null;
 
         entities = entityMasterList;
 

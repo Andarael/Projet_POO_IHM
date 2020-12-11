@@ -17,12 +17,6 @@ public class LockedExit extends Exit {
         this.color = color;
     }
 
-    public LockedExit(Col color) {
-        super();
-        this.color = color;
-        this.locked = true;
-    }
-
     public boolean canGo() {
         return !this.locked;
     }

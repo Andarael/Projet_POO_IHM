@@ -4,7 +4,6 @@ package entity.place;
 
 import entity.Container;
 import entity.Entity;
-import entity.Player;
 import entity.StaticContainer;
 import entity.item.Item;
 import utils.Col;
@@ -16,63 +15,31 @@ import java.util.Objects;
 
 
 public class Place extends Entity {
-    private final String name;
+
     private final int exitMax = 4;
     private final int containerMax = 10;
     private final List<Exit> listExits;
     private final List<Container> listContainers;
     private final StaticContainer placeContainer;
-    private Player player;
 
+    public Place(String name, String shortName, String description) {
+        super(name, shortName, description);
 
-    public Place(String name) {
-        super(name);
-        this.name = name;
-        this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
-        for (int i = 0; i < this.exitMax; i++) {
+        //position dans la liste 0:top  1:left  2:right  3:bottom
+        this.listExits = new ArrayList<>(this.exitMax);
+
+        for (int i = 0; i < this.exitMax; i++)
             this.listExits.add(null);
-        }
 
         this.listContainers = new ArrayList<>(this.containerMax);
         this.placeContainer = new StaticContainer(name);
     }
 
-    public Place(String name, String description) {
-        super(name, description);
-        this.name = name;
-        this.listExits = new ArrayList<>(this.exitMax);  //position dans la liste 0:top  1:left  2:right  3:bottom
-        for (int i = 0; i < this.exitMax; i++) {
-            this.listExits.add(null);
-        }
-
-        this.listContainers = new ArrayList<>(this.containerMax);
-        this.placeContainer = new StaticContainer(name);
+    public Place(String name) {
+        this(name, name, null);
     }
 
     /* ------ méthodes ------*/
-
-    /* ------ le player ------*/
-
-    public boolean hasPlayer() {
-        return this.player != null;
-    }
-
-    public Player getPlayer() {
-        return this.player;
-    }
-
-    public void addPlayer(Player player1) {
-        if (!this.hasPlayer()) {
-            this.player = player1;
-        }
-    }
-
-    public void rmPlayer() {
-        if (this.hasPlayer()) {
-            this.player = null;
-        }
-    }
-
 
     /**
      * this add an exit to another place in the curent place
@@ -350,13 +317,12 @@ public class Place extends Entity {
     @Override
     public String toString() {
         return "Place{" +
-               "name='" + name + '\'' + "\n" +
+               getDisplay() +
                ", exitMax=" + exitMax + "\n" +
                ", containerMax=" + containerMax + "\n" +
                ", listExits=" + listExits + "\n" +
                ", listContainers=" + listContainers + "\n" +
                ", placeContainer=" + placeContainer + "\n" +
-               ", player=" + player +
                '}';
     }
 }

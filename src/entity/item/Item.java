@@ -21,8 +21,8 @@ public class Item extends Entity implements Comparable<Item> {
     private final double weight;
     private final int value;
 
-    public Item(String name, String description, double weight, int value) {
-        super(name, description);
+    public Item(String name,String shortName, String description, double weight, int value) {
+        super(name, shortName, description);
 
         // on autorise les poids négatifs, par ex pour un item qui ajout de la capacité de port
         this.weight = weight;
@@ -34,16 +34,10 @@ public class Item extends Entity implements Comparable<Item> {
             this.value = value;
     }
 
-    public Item(String name, double weight, int value) {
-        this(name, null, weight, value);
-    }
-
-    public Item(String name, String description) {
-        this(name, description, DEFAULT_WEIGHT, DEFAULT_VALUE);
-    }
-
     public Item(String name) {
-        this(name, null);
+        super(name);
+        weight = DEFAULT_WEIGHT;
+        value = DEFAULT_VALUE;
     }
 
     public double getWeight() {

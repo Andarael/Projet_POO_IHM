@@ -8,8 +8,8 @@ package entity;
  */
 public class StaticContainer extends Container {
 
-    public StaticContainer(String name, String description) {
-        super(name, description);
+    public StaticContainer(String name, String shortName, String description) {
+        super(name, shortName, description);
     }
 
     public StaticContainer(String name) {
