@@ -77,29 +77,9 @@ class EntityTest {
     }
 
     @Test
-    void setShortName() {
-        e1.setShortName("123");
-        assertEquals(shorten("123"), e1.getShortName());
-
-        e1.setShortName("12345");
-        assertEquals(shorten("12345"), e1.getShortName());
-
-        e1.setShortName("123456789");
-        assertEquals(shorten("123456789"), e1.getShortName());
-    }
-
-    @Test
-    void stetShorName2() {
-        e3.setShortName("M");
-        assertEquals(shorten("M"), e3.getShortName());
-
-        e3.setShortName("MONSTRE");
-        assertEquals(shorten("MONSTRE"), e3.getShortName());
-    }
-
-    @Test
-    void testEquals() {
+    void testSame() {
         assertNotEquals(null, e1);
+
         Object o = new Object();
         assertNotEquals(e1, o);
 
@@ -107,8 +87,6 @@ class EntityTest {
         };
         e2 = new Entity("name") {
         };
-
-        e2.setShortName("shortname1");
 
         assertTrue(e1.isSame(e2));
 

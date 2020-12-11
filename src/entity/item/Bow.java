@@ -7,7 +7,9 @@ package entity.item;
  */
 public class Bow extends Weapon {
 
-    public static final double DEFAULT_WEIGHT = 3.0;
+    public static final double DEFAULT_WEIGHT = 2.0;
+    public static final int DEFAULT_VALUE = 8;
+    public static final int DEFAULT_DAMAGE = 3;
     private static final int ARROW_POWER = new Arrow().getPower();
     private int arrows;
 
@@ -15,6 +17,14 @@ public class Bow extends Weapon {
         super(name, shortName, description, weight, value, damage);
 
         arrows = 0;
+    }
+
+    public Bow(int damage) {
+        this("Bow", "Bow", "a wooden bow", DEFAULT_WEIGHT, DEFAULT_VALUE, damage);
+    }
+
+    public Bow() {
+        this(DEFAULT_DAMAGE);
     }
 
     @Override
