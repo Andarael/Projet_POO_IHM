@@ -560,6 +560,7 @@ public interface MasterListEntity {
 
         laboratory.addItemToPlace(esoteric_manual);
         laboratory.addExit(barn, 3);
+        laboratory.addContainer(steel_chest);
         laboratory.addLockedExit(church, 0, BLUE);
 
         church.addContainer(ulricWise);
