@@ -381,7 +381,8 @@ public interface MasterListEntity {
                                    "skele",
                                    "a human skeleton with shreds of flesh still attached to its bones",
                                    4,
-                                   4);
+                                   4,
+                                   false);
 
     Hostile wolf = new Hostile("wolf",
                                "wolf",
@@ -550,6 +551,7 @@ public interface MasterListEntity {
         barn.addLockedExit(forest, 3, GREEN);
 
         forest.addExit(barn, 0);
+        forest.addExit(graveyard, 1);
 
         cave.addContainer(merchant);
         cave.addContainer(minotaur);
@@ -564,6 +566,19 @@ public interface MasterListEntity {
         church.addContainer(necromancer);
         church.addExit(laboratory, 3);
         church.addExit(eternity_room, 2);
+        church.addExit(courtyard, 0);
+
+        courtyard.addContainer(ghost);
+        courtyard.addContainer(goblin);
+        courtyard.addExit(entrance, 0);
+        courtyard.addExit(church, 3);
+
+        graveyard.addContainer(skeleton);
+        graveyard.addContainer(minotaur);
+        graveyard.addExit(courtyard,2);
+        graveyard.addExit(forest, 3);
+        graveyard.addContainer(wolf);
+
 
         eternity_room.addContainer(annoying_princess);
         eternity_room.addContainer(dragon);
