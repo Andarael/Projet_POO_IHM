@@ -177,8 +177,8 @@ public class Player extends Being {
     @Override
     public String getSimpleDisplay() {
         return "Player" + ", lvl : " + getLevel() + "\n" +
-               "hp : " + getHp() + "/" + getMaxHp() +
-               "equipped : " + equipped.getDisplay();
+               " hp : " + getHp() + "/" + getMaxHp() + "\n" +
+               " equipped : " + equipped.getDisplay();
     }
 
     /**

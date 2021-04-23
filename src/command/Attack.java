@@ -1,3 +1,5 @@
+// fichier par josué et Thibaut
+
 package command;
 
 import entity.Container;
@@ -18,7 +20,7 @@ public interface Attack {
      *
      * @param player       the player of tha game
      * @param currentPlace the place the fight occurs in
-     * @param arg1         the first arg of userinput (opponent name)
+     * @param arg1         the first arg of user input (opponent name)
      */
     static void attack(Player player, Place currentPlace, String arg1) {
         Container opponent = currentPlace.getContainerByName(arg1);
@@ -58,9 +60,13 @@ public interface Attack {
 
         if (aggressiveEntity != null) {
             printMsg(aggressiveEntity.getName() + " Attacks You !");
+
             Fightable.fight(player, aggressiveEntity);
-            if (aggressiveEntity.isDead())
+
+            if (aggressiveEntity.isDead()){
+                updatedPlayerKills(player);
                 addLootToPlace(currentPlace, aggressiveEntity);
+            }
         }
     }
 

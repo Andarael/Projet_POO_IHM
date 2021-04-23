@@ -10,7 +10,6 @@ import inventory.InventoryManagement;
  * A container is an entity with an inventory.
  * All inventory methods are available via a container
  * <p>
- * <p>
  * Such containers could be chests, monsters for example.
  */
 public abstract class Container extends Entity implements InventoryManagement {
@@ -68,7 +67,6 @@ public abstract class Container extends Entity implements InventoryManagement {
 
     @Override
     public void addAllItems(Inventory inventoryToAdd) {
-
         inventory.addAllItems(inventoryToAdd);
     }
 

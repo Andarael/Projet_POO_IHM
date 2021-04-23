@@ -61,7 +61,6 @@ public interface MasterListEntity {
                                1,
                                2);
 
-
     // Weapons =================================================================
 
     Weapon great_sword = new Weapon("great sword",
@@ -132,7 +131,6 @@ public interface MasterListEntity {
                                       3,
                                       3,
                                       5);
-
 
     // Food   ==================================================================
 
@@ -223,7 +221,6 @@ public interface MasterListEntity {
                                 1,
                                 2);
 
-
     // Keys   ==================================================================
     Key redKey = new Key(RED, "a red key");
     Key blueKey = new Key(BLUE, "a blue key");
@@ -244,9 +241,7 @@ public interface MasterListEntity {
                                     "etern",
                                     "The chamber of the dragon. Your journey comes to an end.");
 
-    Place cave = new Place("Cave",
-                           "cave",
-                           "A big dark cave, your voice echoes endlessly");
+    Place cave = new Place("Cave", "cave", "A big dark cave, your voice echoes endlessly");
 
     Place graveyard = new Place("Graveyard",
                                 " grave",
@@ -284,9 +279,7 @@ public interface MasterListEntity {
                                   "sWate",
                                   "A great spring of pure water flows before you");
 
-    Place mercyDreams = new Place("Mercy Dreams",
-                                  "mercy",
-                                  "a church deep underground");
+    Place mercyDreams = new Place("Mercy Dreams", "mercy", "a church deep underground");
 
     Place desecratedCistern = new Place("Desecrated Cistern",
                                         "desec",
@@ -300,34 +293,19 @@ public interface MasterListEntity {
                                        "trees",
                                        "one of the largest and oldest forests in the region, but recently this one is dying");
 
-    Place graveyardPeaks = new Place("Graveyard of the Peaks",
-                                     "Peaks",
-                                     "");
+    Place graveyardPeaks = new Place("Graveyard of the Peaks", "Peaks", "");
 
-    Place patioSilentSteps = new Place("Patio of the Silent Steps",
-                                       "steps",
-                                       "");
+    Place patioSilentSteps = new Place("Patio of the Silent Steps", "steps", "");
 
-    Place archicathedral = new Place("Archicathedral Mother of Mothers",
-                                     "archi",
-                                     "");
+    Place archicathedral = new Place("Archicathedral Mother of Mothers", "archi", "");
 
-    Place libraryNegatedWords = new Place("Library of the Negated Words",
-                                          "libra",
-                                          "");
+    Place libraryNegatedWords = new Place("Library of the Negated Words", "libra", "");
 
-    Place sleepingCanvases = new Place("The Sleeping Canvases",
-                                       "canva",
-                                       "");
+    Place sleepingCanvases = new Place("The Sleeping Canvases", "canva", "");
 
-    Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions",
-                                           "wallH",
-                                           "");
+    Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions", "wallH", "");
 
-    Place deambulatoryHoliness = new Place("Deambulatory of His Holiness",
-                                           "deamb",
-                                           "");
-
+    Place deambulatoryHoliness = new Place("Deambulatory of His Holiness", "deamb", "");
 
     // StaticContainers ========================================================
 
@@ -390,7 +368,6 @@ public interface MasterListEntity {
                                10,
                                5);
 
-
     // Passive =================================================================
 
     Passive ordinary_guy = new Passive("ordinary guy",
@@ -443,6 +420,10 @@ public interface MasterListEntity {
                                     "Young girl with black hair, child of Ulric",
                                     "please save us sir");
 
+
+    /*==============================================================================================*/
+    /*===========================Creation & instanciation of entities===============================*/
+    /*==============================================================================================*/
 
     Set<Entity> entityMasterList = getAllEntities();
 
@@ -507,7 +488,6 @@ public interface MasterListEntity {
         output.add(remedyNecromantic);
         output.add(HandfulBean);
 
-
         //init keys
 
         output.add(redKey);
@@ -515,7 +495,6 @@ public interface MasterListEntity {
         output.add(greenKey);
         output.add(yellowKey);
         output.add(purpleKey);
-
 
         return output;
     }
@@ -576,15 +555,13 @@ public interface MasterListEntity {
 
         graveyard.addContainer(skeleton);
         graveyard.addContainer(minotaur);
-        graveyard.addExit(courtyard,2);
+        graveyard.addExit(courtyard, 2);
         graveyard.addExit(forest, 3);
         graveyard.addContainer(wolf);
-
 
         eternity_room.addContainer(annoying_princess);
         eternity_room.addContainer(dragon);
         eternity_room.addExit(church, 1);
-
 
         return output;
     }
@@ -637,23 +614,12 @@ public interface MasterListEntity {
         output.add(steel_chest);
         output.add(emerald_chest);
 
-
         iron_chest.addItem(apple);
         iron_chest.addItem(poison);
 
         steel_chest.addItem(greenKey);
         steel_chest.addItem(coca_zero);
 
-
-        return output;
-    }
-
-    static Set<Item> getItems() {
-        Set<Item> output;
-        output = entityMasterList.stream()
-                                 .filter(x -> (x instanceof Item))
-                                 .map(x -> (Item) x)
-                                 .collect(Collectors.toSet());
         return output;
     }
 
@@ -662,33 +628,6 @@ public interface MasterListEntity {
         output = entityMasterList.stream()
                                  .filter(x -> (x instanceof Place))
                                  .map(x -> (Place) x)
-                                 .collect(Collectors.toSet());
-        return output;
-    }
-
-    static Set<Hostile> getHostiles() {
-        Set<Hostile> output;
-        output = entityMasterList.stream()
-                                 .filter(x -> (x instanceof Hostile))
-                                 .map(x -> (Hostile) x)
-                                 .collect(Collectors.toSet());
-        return output;
-    }
-
-    static Set<Passive> getPassives() {
-        Set<Passive> output;
-        output = entityMasterList.stream()
-                                 .filter(x -> (x instanceof Passive))
-                                 .map(x -> (Passive) x)
-                                 .collect(Collectors.toSet());
-        return output;
-    }
-
-    static Set<Container> getContainers() {
-        Set<Container> output;
-        output = entityMasterList.stream()
-                                 .filter(x -> (x instanceof Container))
-                                 .map(x -> (Container) x)
                                  .collect(Collectors.toSet());
         return output;
     }

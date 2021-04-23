@@ -1,4 +1,4 @@
-// Fichier par Josué Raad
+// Fichier par Josué et Thibaut
 
 package command;
 
