@@ -22,12 +22,6 @@ class PlaceTest {
     private Container cont2;
     private Container cont3;
     private Container cont4;
-    private Container cont5;
-    private Container cont6;
-    private Container cont7;
-    private Container cont8;
-    private Container cont9;
-
 
     private Item item1;
 
@@ -46,16 +40,6 @@ class PlaceTest {
         cont3 = new Container("Spider") {
         };
         cont4 = new Container("Merchant") {
-        };
-        cont5 = new Container("Thief") {
-        };
-        cont6 = new Container("Murlock") {
-        };
-        cont7 = new Container("Tauren") {
-        };
-        cont8 = new Container("OldMan") {
-        };
-        cont9 = new Container("YoungMan") {
         };
 
 
@@ -186,7 +170,7 @@ class PlaceTest {
         System.out.println(place1);
         place1.removeContainer(cont1);
         System.out.println(place1);
-        assertEquals(null, place1.getContainer(cont1));
+        assertNull(place1.getContainer(cont1));
 
     }
 
@@ -299,11 +283,6 @@ class PlaceTest {
         place4.addContainer(cont2);
         place4.addContainer(cont3);
         place4.addContainer(cont4);
-       /* place4.addContainer(cont5);
-        place4.addContainer(cont6);
-        place4.addContainer(cont7);
-        place4.addContainer(cont8);
-        place4.addContainer(cont9);*/
 
         place4.draw();
     }

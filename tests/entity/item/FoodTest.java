@@ -58,10 +58,7 @@ class FoodTest {
         assertFalse(f1.use(new Being("paul")));
         assertFalse(f1.use(null));
 
-        Player p = null;
-        assertFalse(f1.use(p));
-
-        p = new Player();
+        Player p = new Player();
         assertTrue(f1.use(p));
 
         p.hurt(10);

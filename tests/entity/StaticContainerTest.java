@@ -7,11 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StaticContainerTest {
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
     void StaticContainer() {
         Container staticContainer = new StaticContainer("Chest", "chest", "an old rotten chest");

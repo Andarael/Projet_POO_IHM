@@ -20,8 +20,8 @@ class ColTest {
         System.out.println(colorize("CYAN", CYAN));
         System.out.println(colorize("WHITE", WHITE));
 
-        String scol = colorize("some text", BLUE);
-        System.out.println(colorize(scol, BACKGROUND_BLUE));
+        String strCol = colorize("some text", BLUE);
+        System.out.println(colorize(strCol, BACKGROUND_BLUE));
 
         System.out.println(colorize("BACKGROUND_BLACK", BACKGROUND_BLACK));
         System.out.println(colorize("BACKGROUND_RED", BACKGROUND_RED));

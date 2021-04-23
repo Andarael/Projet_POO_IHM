@@ -13,10 +13,6 @@ import static utils.Col.RED;
 
 class HostileTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void Hostile() {
         Hostile h = new Hostile("spider",

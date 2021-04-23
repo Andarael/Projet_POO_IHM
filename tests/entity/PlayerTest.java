@@ -221,7 +221,4 @@ class PlayerTest {
         assertEquals(3, p.getKills());
     }
 
-    @Test
-    void getItem() {
-    }
 }
