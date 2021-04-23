@@ -33,12 +33,6 @@ public interface Fightable extends Describable {
 
             player.attack(opponent);
 
-            /*try {
-                wait(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
-
             if (opponent.isDead())
                 break;
 

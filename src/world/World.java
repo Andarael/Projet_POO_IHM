@@ -15,11 +15,7 @@ public class World implements WorldContains {
 
     private static final Item itemToGetToWin = divine_jewel;
     public final Set<Entity> entities;
-    public final Set<Item> items;
     public final Set<Place> places;
-    public final Set<Hostile> hostiles;
-    public final Set<Passive> passives;
-    public final Set<Container> containers;
     private final Player player;
     private final boolean win;
     private Place currentPlace;
@@ -40,11 +36,7 @@ public class World implements WorldContains {
 
         entities = entityMasterList;
 
-        items = getItems();
         places = getPlaces();
-        hostiles = getHostiles();
-        passives = getPassives();
-        containers = getContainers();
 
         initPlayer(player);
     }
@@ -91,13 +83,6 @@ public class World implements WorldContains {
 
     public void setCurrentPlace(Place place) {
         this.currentPlace = place;
-    }
-
-    public void setCurrentPlace(String str) {
-        Place place = getPlace(str);
-
-        if (place != null)
-            setCurrentPlace(place);
     }
 
     @Override

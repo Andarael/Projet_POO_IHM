@@ -27,18 +27,6 @@ class WorldTest {
     }
 
     @Test
-    void getCurrentPlace() {
-    }
-
-    @Test
-    void setCurrentPlace() {
-    }
-
-    @Test
-    void testSetCurrentPlace() {
-    }
-
-    @Test
     void addPlace() {
         w.addPlace(p1);
         w.addPlace(p2);
@@ -62,39 +50,4 @@ class WorldTest {
 
     }
 
-    @Test
-    void isEnd() {
-    }
-
-    @Test
-    void getPlayer() {
-    }
-
-    @Test
-    void getPlace() {
-    }
-
-    @Test
-    void testGetPlace() {
-    }
-
-    @Test
-    void end() {
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
-    void hasWin() {
-    }
-
-    @Test
-    void testToString() {
-    }
-
-    @Test
-    void contains() {
-    }
 }

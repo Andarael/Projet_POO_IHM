@@ -6,11 +6,7 @@ import entity.place.Place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.event.HierarchyBoundsAdapter;
-import java.lang.management.PlatformManagedObject;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+@SuppressWarnings("FieldCanBeLocal")
 class AttackTest {
     private Player player;
     private Hostile hostile;
@@ -30,17 +26,5 @@ class AttackTest {
         Attack.attack(player, place, "toto");
         Attack.attack(player, place, "cyclope");
         Attack.attack(player, place, "cyclope");
-    }
-
-    @Test
-    void checkFight() {
-    }
-
-    @Test
-    void addLootToPlace() {
-    }
-
-    @Test
-    void updatedPlayerKills() {
     }
 }

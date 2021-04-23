@@ -1,3 +1,5 @@
+// fichier par josué  et Thibaut
+
 package command;
 
 import entity.Being;
