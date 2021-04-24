@@ -92,7 +92,7 @@ public class Game {
         printMsg("Prepare to enter Xak Tsaroth!");
         printMsg("You awake in a room, here is your inventory");
         world.getPlayer().getInventoryDisplay();
-        world.getCurrentPlace().draw();
+        world.currentPlace.draw();
     }
 
     private static void displayWaitingInput() {

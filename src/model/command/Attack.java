@@ -52,7 +52,7 @@ public interface Attack {
      * @param world the world of the game.
      */
     static void checkFight(World world) {
-        Place currentPlace = world.getCurrentPlace();
+        Place currentPlace = world.currentPlace;
         Player player = world.getPlayer();
         Hostile aggressiveEntity;
 

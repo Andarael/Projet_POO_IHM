@@ -40,7 +40,7 @@ public interface Execute {
             return;
 
         Command command = getCommandFromString(args.get(0));
-        Place currentPlace = world.getCurrentPlace();
+        Place currentPlace = world.currentPlace;
         Player player = world.getPlayer();
 
         String arg1 = null;

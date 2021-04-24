@@ -19,7 +19,7 @@ public class World implements WorldContains {
     public final Set<Place> places;
     private final Player player;
     private final boolean win;
-    private Place currentPlace;
+    public Place currentPlace;
     private boolean end;
 
 
@@ -76,10 +76,6 @@ public class World implements WorldContains {
                      .filter(x -> x.isSameStr(str))
                      .findFirst()
                      .orElse(null);
-    }
-
-    public Place getCurrentPlace() {
-        return this.currentPlace;
     }
 
     public void setCurrentPlace(Place place) {

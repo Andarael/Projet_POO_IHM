@@ -19,7 +19,7 @@ public interface Use {
         // if arg2 is a place we can reach, we call use(Item, Exit)
         // else we call the default use(item, item)
         if (isAPlace(world, arg2)) {
-            Exit exit = world.getCurrentPlace().getExitByName(arg2);
+            Exit exit = world.currentPlace.getExitByName(arg2);
             if (exit != null)
                 player.use(item1, exit);
             else
