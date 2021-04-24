@@ -143,4 +143,8 @@ public class Key extends Item implements Usable {
         System.out.println("You unlocked " + exit + " with " + this.getName());
         return true;
     }
+
+    public static String generateKeyName(Col color) {
+        return new Key(color).getName();
+    }
 }
