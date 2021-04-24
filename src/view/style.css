@@ -1,0 +1,10 @@
+.root {
+    -fx-border-color: blue;
+}
+#canevas {
+    -fx-background-image: url("image.png");
+}
+
+Button {
+    -fx-border-color: red;
+}
