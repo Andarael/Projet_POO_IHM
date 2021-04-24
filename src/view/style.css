@@ -1,10 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 .root {
-    -fx-border-color: blue;
+    -fx-padding: 10;
+    -fx-border: thick blue;
+    -fx-font-family: "Roboto Slab";
+    -fx-alignment: center;
 }
 #canevas {
     -fx-background-image: url("image.png");
 }
 
 Button {
-    -fx-border-color: red;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }
+
+.BLACK {
+    -fx-background-color: black;
+    -fx-text-inner-color : white;
+}
+
+.RED {
+    -fx-background-color: red;
+}
+
+.GREEN {
+    -fx-background-color: forestGreen;
+}
+
+.YELLOW {
+    -fx-background-color: forestGreen;
+}
+
+.BLUE {
+    -fx-background-color: dodgerblue;
+}
+
+.PURPLE {
+    -fx-background-color: purple;
+}
+
+.CYAN {
+    -fx-background-color: cyan;
+}
+
+.disabledText {
+    -fx-text-inner-color : grey
+}
+
+
