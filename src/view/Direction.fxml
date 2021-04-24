@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root stylesheets="@style.css" type="BorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.DirectionController">
+<fx:root id="canevas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="512.0" stylesheets="@style.css" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DirectionController">
     <top>
         <Button fx:id="buttonTop" mnemonicParsing="false" onAction="#goTop" text="Button" BorderPane.alignment="CENTER" />
     </top>
@@ -12,12 +12,9 @@
         <Button fx:id="buttonBottom" mnemonicParsing="false" onAction="#goBottom" text="Button" BorderPane.alignment="CENTER" />
     </bottom>
     <left>
-        <Button fx:id="buttonLeft" mnemonicParsing="false" onAction="#goLeft" rotate="-90.0" text="Button" BorderPane.alignment="CENTER" />
+        <Button fx:id="buttonLeft" mnemonicParsing="false" onAction="#goLeft" text="Button" BorderPane.alignment="CENTER" />
     </left>
     <right>
-        <Button fx:id="buttonRight" mnemonicParsing="false" onAction="#goRight" rotate="90.0" text="Button" BorderPane.alignment="CENTER" />
+        <Button fx:id="buttonRight" mnemonicParsing="false" onAction="#goRight" text="Button" BorderPane.alignment="CENTER" />
     </right>
-    <center>
-        <AnchorPane id="canevas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="512.0" BorderPane.alignment="CENTER" />
-    </center>
 </fx:root>
