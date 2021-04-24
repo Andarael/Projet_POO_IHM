@@ -8,8 +8,8 @@ import model.interfaces.Usable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static model.utils.Col.RED;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FoodTest {
 

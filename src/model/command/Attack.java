@@ -63,7 +63,7 @@ public interface Attack {
 
             Fightable.fight(player, aggressiveEntity);
 
-            if (aggressiveEntity.isDead()){
+            if (aggressiveEntity.isDead()) {
                 updatedPlayerKills(player);
                 addLootToPlace(currentPlace, aggressiveEntity);
             }

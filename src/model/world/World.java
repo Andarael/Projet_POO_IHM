@@ -2,7 +2,8 @@
 
 package model.world;
 
-import model.entity.*;
+import model.entity.Entity;
+import model.entity.Player;
 import model.entity.item.Item;
 import model.entity.place.Place;
 

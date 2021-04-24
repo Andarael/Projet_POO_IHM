@@ -6,9 +6,9 @@ import model.entity.item.Key;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static model.utils.Col.BLUE;
 import static model.utils.Col.RED;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LockedExitTest {
     private Place place1;

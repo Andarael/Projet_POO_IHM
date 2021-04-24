@@ -7,8 +7,8 @@ import model.entity.item.Key;
 import model.entity.item.Weapon;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static model.utils.Col.RED;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HostileTest {
 

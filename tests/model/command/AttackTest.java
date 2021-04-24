@@ -16,7 +16,7 @@ class AttackTest {
     @BeforeEach
     void setUp() {
         player = new Player();
-        hostile = new Hostile("cyclope", null, null, 10 ,2 );
+        hostile = new Hostile("cyclope", null, null, 10, 2);
         place = new Place("testRoom", null, null);
         place.addContainer(hostile);
     }
