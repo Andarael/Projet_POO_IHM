@@ -36,6 +36,9 @@ public interface Execute {
             throw new NullPointerException("World or command arguments are null, stopping !");
         }
 
+        if (args.size() == 0)
+            return;
+
         Command command = getCommandFromString(args.get(0));
         Place currentPlace = world.getCurrentPlace();
         Player player = world.getPlayer();

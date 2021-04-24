@@ -25,7 +25,10 @@ public class Game {
      * @return true if the use won the game
      */
     public static boolean play(int difficulty) {
+        return play(difficulty, true);
+    }
 
+    public static boolean play(int difficulty, boolean console) {
         List<String> userInput;
         boolean victory = false;
         boolean death = false;
@@ -41,8 +44,11 @@ public class Game {
 
                 Attack.checkFight(world);
                 displayWaitingInput();
-                userInput = getUserInput();
-                execute(world, userInput);
+
+                if (console) {
+                    userInput = getUserInput();
+                    execute(world, userInput);
+                }
 
                 // Update variables
                 end = world.isEnd();
@@ -70,7 +76,6 @@ public class Game {
         displayStats(world.getPlayer());
 
         return (victory);
-
     }
 
     private static void displayStats(Player player) {
