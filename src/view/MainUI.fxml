@@ -1,30 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
-    <center>
-        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
-    </center>
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <Menu mnemonicParsing="false" text="File">
-                <MenuItem mnemonicParsing="false" text="Close"/>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Delete"/>
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="About"/>
-                </items>
-            </Menu>
-        </MenuBar>
-    </top>
-</BorderPane>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox prefHeight="48.0" spacing="15.0">
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+        </VBox.margin>
+        <Label text="Room Name"/>
+        <Button mnemonicParsing="false" text="Look Place"/>
+        <Button mnemonicParsing="false" text="Loot Place"/>
+        <Button mnemonicParsing="false" text="Quit Game"/>
+    </HBox>
+    <HBox stylesheets="@style.css">
+        <VBox spacing="15.0">
+            <fx:include fx:id="direction" source="Direction.fxml"/>
+            <HBox>
+                <Rectangle fx:id="profilePicture" arcHeight="5.0" arcWidth="5.0"
+                           fill="DODGERBLUE" height="64.0" stroke="BLACK" strokeType="INSIDE"
+                           width="64.0"/>
+                <Label fx:id="characterNameLabel" text="You"/>
+                <Label fx:id="goldLabel" text="Golds : "/>
+                <HBox>
+                    <Label fx:id="lifeLabel" text="Life"/>
+                    <ProgressBar fx:id="lifeBar" progress="0.0"/>
+                    <Label fx:id="equippedLabel" text="Equipped"/>
+                </HBox>
+                <Label fx:id="hpLabel" text="10/10"/>
+            </HBox>
+            <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" prefHeight="153.0"
+                      prefWidth="528.0" text="bla bla bla"/>
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+        </VBox>
+        <VBox spacing="15.0">
+            <VBox maxWidth="384.0">
+                <TabPane prefHeight="256.0" tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="Inventory">
+                        <ListView/>
+                    </Tab>
+                    <Tab text="Trade">
+                        <GridPane alignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <ListView prefWidth="192.0" GridPane.columnIndex="1"/>
+                            <ListView/>
+                            <Button mnemonicParsing="false" text="Sell -&gt;"
+                                    GridPane.rowIndex="1"/>
+                            <Button mnemonicParsing="false" text="&lt;- Buy"
+                                    GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                            <Button mnemonicParsing="false" text="Drop"
+                                    GridPane.rowIndex="2"/>
+                            <Button mnemonicParsing="false" text="Describe Item"
+                                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        </GridPane>
+                    </Tab>
+                    <Tab text="Loot"/>
+                </TabPane>
+                <GridPane alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <Label alignment="CENTER" text="What to do with"
+                           GridPane.columnSpan="2"/>
+                    <Button mnemonicParsing="false" text="Talk" GridPane.rowIndex="1"/>
+                    <Button mnemonicParsing="false" text="Attack" GridPane.columnIndex="1"
+                            GridPane.rowIndex="1"/>
+                    <Button mnemonicParsing="false" text="Button" GridPane.columnSpan="2"
+                            GridPane.rowIndex="2"/>
+                </GridPane>
+                <TextArea prefHeight="192.0" prefWidth="384.0"/>
+                <TextArea prefHeight="192.0" prefWidth="384.0"/>
+            </VBox>
+        </VBox>
+    </HBox>
+</fx:root>

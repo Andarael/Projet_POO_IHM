@@ -4,8 +4,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.world.StaticWorld;
 import model.world.World;
-import view.Direction;
+import view.MainUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +17,15 @@ public class GameApplication extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
 
 
-        Parent root = new Direction();
+        Parent root;
+
+
+//        root = new Direction();
+        root = new MainUI();
+
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
