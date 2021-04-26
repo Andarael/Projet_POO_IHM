@@ -1,17 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
-/*@import url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Pakistan_General_election_2002.png/1920px-Pakistan_General_election_2002.png');*/
 
 .root {
     -fx-padding: 24;
     -fx-border: thick blue;
     -fx-font-family: "Roboto Slab";
     -fx-alignment: center;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+
+    -fx-base: #130A0F;
+    -fx-background: #2C1210;
+    -fx-text-fill: #FBE5C6;
 }
 
 * {
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
-    -fx-text-fill: black;
+    /*-fx-text-fill: black;*/
+    /*-fx-border-color: black;*/
+    /*-fx-border-style: solid;*/
+    /*-fx-border-width: 1;*/
+    /*-fx-open-tab-animation : grow;*/
+
+    /*-fx-background-radius: 0;*/
+    /*-fx-border-radius: 0;*/
+    -fx-border-width: 0px;
+    -fx-border-color: #0000;
+    -fx-background-insets: 0;
+}
+
+.separator .line{
+    -fx-border-width: 1px;
+    -fx-border-color: #0003;
 }
 
 
@@ -27,45 +47,74 @@
     -fx-font-size: 24px;
 }
 
-Button {
-    -fx-alignment: center;
-    -fx-text-alignment: center;
+/*=========== No focus highlight ========================*/
+/**:focused {*/
+/*    -fx-focus-color: transparent;*/
+/*    -fx-background-insets: -1;*/
+/*}*/
+
+
+/*================== Buttons ====================*/
+
+.button {
+    -fx-background-color: linear-gradient(#321D29, #212);
+    -fx-border-style: groove;
+    -fx-border-color: black;
+    -fx-border-width: 0.1;
+    -fx-padding: 1em 1.5em 1em 1.5em;
 }
 
-.BLACK {
-    -fx-background-color: black;
-    -fx-text-inner-color : white;
+.button:hover {
+    /*-fx-effect: dropshadow(gaussian, white, 10, .10, 0, 0);*/
+    /*-fx-border-radius: 56px;*/
+    -fx-background-color: linear-gradient(#40201f, #202);
 }
 
-.RED {
-    -fx-background-color: red;
+.button:pressed {
+    -fx-background-color: linear-gradient(#40201f, #FBE5C6);
 }
 
-.GREEN {
-    -fx-background-color: forestGreen;
+
+.button:armed {
+    /*-fx-font-weight: bold;*/
 }
 
-.YELLOW {
-    -fx-background-color: forestGreen;
-}
+/*todo flat buttons*/
 
-.BLUE {
-    -fx-background-color: dodgerblue;
-}
 
-.PURPLE {
-    -fx-background-color: purple;
-}
 
-.CYAN {
-    -fx-background-color: cyan;
-}
+/*================ Colors =======================*/
+
+
+
+/*===============================================*/
 
 .disabledText {
-    -fx-text-inner-color : grey
+    -fx-text-inner-color: grey
+}
+
+.progress-bar {
+
+}
+
+.lifeBar {
+    -fx-accent: red;
 }
 
 
+/* Scrollbars */
+
+* .scroll-bar .thumb {
+    -fx-background-color: #aaaa;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
 
 
-
+* .scroll-bar,
+* .scroll-bar .track,
+* .scroll-bar .track-background,
+* .scroll-bar .increment-button,
+* .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
