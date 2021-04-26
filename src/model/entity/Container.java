@@ -77,7 +77,7 @@ public abstract class Container extends Entity implements InventoryManagement {
         inventory.addAllItems(containerToAdd.getInventory());
     }
 
-    private Inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
@@ -145,4 +145,5 @@ public abstract class Container extends Entity implements InventoryManagement {
         return getSimpleDisplay() + "\n" +
                inventory.getInvDisplayDetails();
     }
+
 }

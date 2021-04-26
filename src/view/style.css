@@ -1,13 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+/*@import url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Pakistan_General_election_2002.png/1920px-Pakistan_General_election_2002.png');*/
 
 .root {
-    -fx-padding: 10;
+    -fx-padding: 24;
     -fx-border: thick blue;
     -fx-font-family: "Roboto Slab";
     -fx-alignment: center;
 }
+
+* {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: black;
+}
+
+
 #canevas {
-    -fx-background-image: url("image.png");
+
+}
+
+.h2 {
+    -fx-font-size: 18px;
+}
+
+.h1 {
+    -fx-font-size: 24px;
 }
 
 Button {
@@ -47,5 +64,8 @@ Button {
 .disabledText {
     -fx-text-inner-color : grey
 }
+
+
+
 
 

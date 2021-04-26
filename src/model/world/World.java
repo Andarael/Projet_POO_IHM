@@ -11,7 +11,7 @@ import java.util.Set;
 
 import static model.game.MasterListEntity.*;
 
-public class World implements WorldContains {
+public class World {
 
 
     private static final Item itemToGetToWin = divine_jewel;

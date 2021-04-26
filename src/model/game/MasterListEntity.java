@@ -518,6 +518,7 @@ public interface MasterListEntity {
 
         entrance.addItemToPlace(redKey);
         entrance.addItemToPlace(dagger);
+        entrance.addGoldToPlace(5);
         entrance.addExit(barn, 2);
         entrance.addContainer(scandalf);
 

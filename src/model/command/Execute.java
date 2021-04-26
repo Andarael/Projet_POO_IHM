@@ -119,6 +119,8 @@ public interface Execute {
                 break;
 
             case TAKE:
+                if (nbArgs == 0)
+                    take(player, currentPlace);
                 if (nbArgs == 1)
                     take(player, currentPlace, arg1);
                 if (nbArgs == 2)

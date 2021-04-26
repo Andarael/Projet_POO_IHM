@@ -1,0 +1,67 @@
+/* transparent */
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .column-header {
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-background-color: #ddda; /*50% transparent*/
+}
+
+.table-view .table-cell {
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-border-width: 0px;
+}
+
+
+.table-row-cell {
+    -fx-border-width: 0px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ddda;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #fff;
+}
+
+.table-row-cell:selected {
+    -fx-text-fill: red;
+    -fx-background-color: #58ca;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbars */
+
+* .scroll-bar .thumb {
+    -fx-background-color: #aaaa;
+}
+
+
+* .scroll-bar,
+* .scroll-bar .track,
+* .scroll-bar .track-background,
+* .scroll-bar .increment-button,
+* .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}

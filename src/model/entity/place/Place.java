@@ -310,6 +310,11 @@ public class Place extends Entity {
         this.placeContainer.addItem(item);
     }
 
+    public void addGoldToPlace(int nbGold) {
+        if (nbGold < 0)
+            return;
+        placeContainer.addGold(nbGold);
+    }
 
     public void displayPlaceContainer() {
         if (!this.getPlaceContainer().isEmpty()) {

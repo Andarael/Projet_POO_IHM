@@ -2,6 +2,9 @@
 
 package model.world;
 
+import model.entity.Entity;
+import model.entity.item.Item;
+
 public interface WorldContains {
 
     static boolean haveEntity(World world, String str) {
@@ -18,6 +21,24 @@ public interface WorldContains {
 
         return world.places.stream()
                            .anyMatch(x -> (x.isSameStr(place)));
+    }
+
+    static Entity getEntity(World world, String name) {
+        if (world == null)
+            return null;
+
+        return world.entities.stream()
+                .filter(x -> (x.isSameStr(name)))
+                .findFirst().orElse(null);
+    }
+
+    static Item getItem(World world, String itemName) {
+        Entity entity = getEntity(world, itemName);
+
+        if (entity instanceof Item)
+            return (Item) entity;
+
+        return null;
     }
 
 }

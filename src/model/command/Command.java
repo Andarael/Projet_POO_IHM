@@ -68,9 +68,10 @@ public enum Command {
     ),
 
     TAKE("Takes an item from a Container, \n" +
-         "For example : Take Chest Chicken -> add the chicken from the chest to your inv if possible",
+         "For example : Take Chest Chicken -> add the chicken from the chest to your inv if possible \n" +
+         "              Take -> add the golds in the room to your inventory",
          "T",
-         1,
+         0,
          2
     ),
 

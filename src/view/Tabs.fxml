@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171"
+         xmlns:fx="http://javafx.com/fxml/1">
+
+    <Tab text="Inventory">
+        <fx:include source="InventoryList.fxml"/>
+    </Tab>
+
+    <Tab text="Trade">
+        <GridPane>
+
+            <fx:include source="InventoryList.fxml" GridPane.columnIndex="1" prefWidth="256"/>
+
+            <ListView/>
+
+            <Button mnemonicParsing="false" text="Sell -&gt;" GridPane.rowIndex="1"/>
+
+            <Button mnemonicParsing="false" text="&lt;- Buy" GridPane.columnIndex="1"
+                    GridPane.rowIndex="1"/>
+
+            <Button mnemonicParsing="false" text="Drop" GridPane.rowIndex="2"/>
+
+            <Button mnemonicParsing="false" text="Describe Item" GridPane.columnIndex="1"
+                    GridPane.rowIndex="2"/>
+        </GridPane>
+    </Tab>
+
+    <Tab text="Loot"/>
+
+</TabPane>

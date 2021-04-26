@@ -7,3 +7,11 @@
 // todo faire un générateur de commandes avec le controller
 
 // todo se renseigner pour pouvoir afficher une image différente à chaque salle
+
+// todo faire en sorte qu'on puisse prendre les golds des coffres
+
+// todo réparer la map et les mobs qui ne meurent pas
+
+// todo réparer le leveling up (mauvais nbr de kills)
+
+// todo réparer le leveling up (mauvais nbr de pv gagnés)

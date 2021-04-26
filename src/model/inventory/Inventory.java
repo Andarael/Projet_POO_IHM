@@ -83,7 +83,7 @@ public class Inventory implements InventoryManagement {
         itemListToAdd.forEach(this::addItem);
     }
 
-    private List<Item> getItemList() {
+    public List<Item> getItemList() {
         return itemList;
     }
 

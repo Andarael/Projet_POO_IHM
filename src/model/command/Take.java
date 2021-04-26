@@ -58,6 +58,21 @@ public interface Take {
     }
 
 
+    /**
+     * Automatically takes the golds present in the room
+     */
+    static void take(Player player, Place currentPlace) {
+
+        StaticContainer placeContainer = currentPlace.getPlaceContainer();
+
+        int gold = placeContainer.getGold();
+        placeContainer.removeGold(gold);
+        player.addGold(gold);
+
+        printMsg("You took " + gold + " gold(s)");
+    }
+
+
     static void take(Player player, Place currentPlace, String itemName) {
 
         StaticContainer placeContainer = currentPlace.getPlaceContainer();

@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.entity.item.Key;
 import model.entity.place.Exit;
 import model.entity.place.LockedExit;
@@ -11,6 +13,7 @@ import model.utils.Col;
 import model.world.StaticWorld;
 import model.world.World;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,10 +32,35 @@ public class DirectionController {
     public Button buttonLeft;
     @FXML
     public Button buttonRight;
+    @FXML
+    public ImageView canevas;
 
     @FXML
     private void initialize() {
+        updateAll();
+    }
+
+    private void updateCanevas() {
+        initCanevas();
+        canevas.setImage(null);
+
+        String placeName = world.currentPlace.getName().toLowerCase();
+        URL resource = RessourceManager.getRessource(placeName, ".png", this);
+
+        canevas.setImage(new Image(resource.toString()));
+
+    }
+
+    private void initCanevas() {
+        canevas.toBack();
+        canevas.setImage(null);
+        canevas.setFitHeight(512);
+        canevas.setFitWidth(512);
+    }
+
+    private void updateAll() {
         updateAllButtons();
+        updateCanevas();
     }
 
     private void updateAllButtons() {
@@ -118,27 +146,27 @@ public class DirectionController {
     public void goTop(ActionEvent actionEvent) {
         executeByuDirection(0);
         System.out.println("going top");
-        updateAllButtons();
+        updateAll();
     }
 
     @FXML
     public void goLeft(ActionEvent actionEvent) {
         executeByuDirection(1);
-        updateAllButtons();
+        updateAll();
         System.out.println("going Left");
     }
 
     @FXML
     public void goRight(ActionEvent actionEvent) {
         executeByuDirection(2);
-        updateAllButtons();
+        updateAll();
         System.out.println("going Right");
     }
 
     @FXML
     public void goBottom(ActionEvent actionEvent) {
         executeByuDirection(3);
-        updateAllButtons();
+        updateAll();
         System.out.println("going bottom");
     }
 }
