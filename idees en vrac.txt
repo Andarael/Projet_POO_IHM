@@ -15,3 +15,12 @@
 // todo réparer le leveling up (mauvais nbr de kills)
 
 // todo réparer le leveling up (mauvais nbr de pv gagnés)
+
+// todo trouver où mettre le bouton 'use'
+
+// todo faire en sorte de pouvoir utiliser les clés sur les portes. Actuellement on ne peut pas select une porte !
+
+// todo gérer equip unequip
+
+
+On a en tout : h = 768, l = 1024 et 24 de padding de chaque côté du root

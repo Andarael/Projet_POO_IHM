@@ -2,26 +2,28 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
+
 <VBox spacing="8" xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InventoryListController">
 
     <Label fx:id="labelGold" text="Golds : "/>
 
-    <!-- <ListView fx:id="inventoryList" editable="true"/>-->
-
-    <TableView fx:id="itemTable" prefHeight="256">
+    <TableView fx:id="itemTable" prefHeight="192">
         <columns>
-            <TableColumn fx:id="itemTypeColumn" editable="false" sortable="false" text="Type"/>
-            <TableColumn fx:id="itemNameColumn" editable="false" text="ItemName"/>
-            <TableColumn fx:id="itemValueColumn" editable="false" text="Value"/>
-            <TableColumn fx:id="itemWeightColumn" editable="false" text="Weight"/>
+            <TableColumn fx:id="itemTypeColumn" editable="false" sortable="false" text="Type"
+                         prefWidth="48" resizable="false"/>
+            <TableColumn fx:id="itemNameColumn" editable="false" text="ItemName"
+                         prefWidth="84" resizable="false" />
+            <TableColumn fx:id="itemValueColumn" editable="false" text="Value"
+                         prefWidth="48" resizable="false"/>
+            <TableColumn fx:id="itemWeightColumn" editable="false" text="Weight"
+                         prefWidth="48" resizable="false"/>
         </columns>
     </TableView>
 
     <Label id="descriptionLabel" styleClass="h2" text="Description "/>
 
     <TextArea fx:id="descriptionTextArea" editable="false" prefColumnCount="1" prefRowCount="4"
-              text="item description here"/>
-
+              text="item description here" wrapText="true"/>
 
 </VBox>

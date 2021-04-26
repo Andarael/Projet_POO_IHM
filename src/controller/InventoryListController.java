@@ -5,20 +5,27 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.entity.Container;
 import model.entity.item.Item;
+import model.interfaces.Equipable;
+import model.interfaces.Usable;
 import model.inventory.Inventory;
 import model.world.StaticWorld;
 import model.world.World;
 
 import static controller.RessourceManager.getRessourceString;
+import static controller.utils.Utils.capitalize;
+import static controller.utils.Utils.readable;
+import static model.world.WorldContains.getItem;
 
 public class InventoryListController {
-
 
     @FXML
     public Label labelGold;
@@ -47,19 +54,22 @@ public class InventoryListController {
     public void initialize() {
         initTable();
         listenSelectedItemInTable();
-        world.getPlayer().addItem(new Item("empapaoutai ? ")); // todo remove
+        world.getPlayer().addItem(new Item("empapaoutai OUTAIOUTAI PAPAOUTAI? ")); // todo remove
 
         updateAll();
 
     }
 
     public void updateAll() {
+        if (currentContainer == null)
+            return;
+
         updateTable();
         updateGold();
     }
 
     private void initTable() {
-        itemTypeColumn.setCellValueFactory(this::call);
+        itemTypeColumn.setCellValueFactory(this::typeImageViewFactory);
         itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         itemValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
         itemWeightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
@@ -78,10 +88,28 @@ public class InventoryListController {
     private void updateDescriptionArea() {
         Item selectedItem = itemTable.getSelectionModel().getSelectedItem();
 
-        if (selectedItem == null)
+        if (selectedItem == null || getItem(world, selectedItem.getName()) == null)
             return;
 
-        descriptionTextArea.setText(selectedItem.getDescription());
+        String name = capitalize(readable(selectedItem.getName())) + ", ";
+        String description = capitalize(selectedItem.getDescription());
+        String modifiers = "";
+
+        if (selectedItem instanceof Equipable)
+            modifiers += "Equipable ";
+
+        if (selectedItem instanceof Usable) {
+            if (modifiers.length() != 0)
+                modifiers += "and ";
+            modifiers += "Usable ";
+        }
+
+
+        if (modifiers.length() != 0)
+            modifiers += " : \n";
+
+
+        descriptionTextArea.setText(name + modifiers + description);
     }
 
     private void updateGold() {
@@ -102,8 +130,8 @@ public class InventoryListController {
         itemTable.setItems(itemObservableList);
     }
 
-    private ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Item, ImageView> c) {
-        String itemType = c.getValue().getClass().getSimpleName().toLowerCase();
+    private ObservableValue<ImageView> typeImageViewFactory(TableColumn.CellDataFeatures<Item, ImageView> cell) {
+        String itemType = cell.getValue().getClass().getSimpleName().toLowerCase();
         ImageView imageView = new ImageView(new Image(getRessourceString(itemType, ".png", this)));
         imageView.setFitWidth(16);
         imageView.setFitHeight(16);

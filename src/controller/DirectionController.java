@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static model.utils.StringUtils.readable;
+import static controller.utils.Utils.readable;
 
 public class DirectionController {
 
@@ -124,8 +123,6 @@ public class DirectionController {
     }
 
     private void resetButtonColor(Button button) {
-        ObservableList<String> styleClass = button.getStyleClass();
-
         for (Col col : Col.values()) {
             String colorName = col.getColorName();
             button.getStyleClass().remove(colorName);

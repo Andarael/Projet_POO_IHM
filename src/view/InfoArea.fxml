@@ -3,4 +3,4 @@
 
 <?import javafx.scene.control.TextArea?>
 
-<TextArea/>
+<TextArea wrapText="true" editable="false" prefRowCount="8" prefWidth="384" />

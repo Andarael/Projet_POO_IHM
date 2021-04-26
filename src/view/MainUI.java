@@ -1,11 +1,11 @@
 package view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
-public class MainUI extends VBox {
+public class MainUI extends HBox {
 
     public MainUI() {
         try {

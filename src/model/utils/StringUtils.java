@@ -48,8 +48,4 @@ public interface StringUtils {
         return stringFill(size, c) + str;
     }
 
-    static String readable(String str) {
-        return str.replace('_', ' ').trim();
-    }
-
 }
