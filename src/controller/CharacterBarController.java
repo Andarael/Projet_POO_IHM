@@ -14,7 +14,6 @@ import model.world.World;
 
 import static controller.RessourceManager.getRessourceString;
 import static controller.utils.Utils.*;
-import static model.world.WorldContains.getEntity;
 
 public class CharacterBarController {
 
@@ -25,8 +24,6 @@ public class CharacterBarController {
     public Label characterNameLabel;
     @FXML
     public Label goldLabel;
-    @FXML
-    public Label lifeLabel;
     @FXML
     public ProgressBar lifeBar;
     @FXML
@@ -46,7 +43,8 @@ public class CharacterBarController {
 
     World world = StaticWorld.world;
 
-    public Being currentBeing = (Being) getEntity(world, "scand");
+//    public Being currentBeing = (Being) getEntity(world, "scand");
+    public Being currentBeing = world.getPlayer();
 
 
     @FXML
@@ -97,20 +95,19 @@ public class CharacterBarController {
     }
 
     private void updateEquipped() {
-        String equippedItemText = "";
-        String equippedLabelText = "";
+        String equippedText = "";
         if ((currentBeing instanceof Player)) {
             equippedLabel.setText("Equipped :");
             String equippedItemName = ((Player) currentBeing).getEquipped().getName();
-            equippedItemText += capitalize(equippedItemName) + "\n";
+            equippedText += capitalize(equippedItemName) + "\n";
         } else {
             equippedLabel.setText("Attack :");
         }
 
         int power = currentBeing.getPower();
-        equippedItemText += power + " " + pluralize("damage", power);
+        equippedText += power + " " + pluralize("damage", power);
 
-        equippedItem.setText(equippedItemText);
+        equippedItem.setText(equippedText);
     }
 
     private void updatePods() {

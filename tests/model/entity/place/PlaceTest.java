@@ -176,8 +176,8 @@ class PlaceTest {
 
     @Test
     void isEmptyContainer() {
-        assertTrue(place1.isEmptyContainer());
-        assertFalse(place2.isEmptyContainer());
+        assertTrue(place1.isEmptyListContainer());
+        assertFalse(place2.isEmptyListContainer());
     }
 
     @Test

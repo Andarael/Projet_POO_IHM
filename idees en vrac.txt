@@ -22,5 +22,11 @@
 
 // todo gérer equip unequip
 
+// todo gérer le bouton 'Talk' qui se transforme en 'Loot' lorsqu' on a un coffre de sélectionné
+
+
+
+on n'a plus droit qu'à 3 containers par salle par soucis de display
+
 
 On a en tout : h = 768, l = 1024 et 24 de padding de chaque côté du root

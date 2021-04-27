@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Place extends Entity {
 
     private final int exitMax = 4;
-    private final int containerMax = 10;
+    private final int containerMax = 3;
     private final List<Exit> listExits;
     private final List<Container> listContainers;
     private final StaticContainer placeContainer;
@@ -191,8 +191,12 @@ public class Place extends Entity {
             if (containsContainer(container))
                 return;
         }
-        if (this.nbContainer() < this.containerMax)
+        if (this.nbContainer() < this.containerMax){
             this.listContainers.add(container);
+        } else {
+            // todo remove
+            System.err.println("Container max atteints : ne  peut pas ajouter " + container + ", dans : " + this);
+        }
 
 
     }
@@ -203,7 +207,7 @@ public class Place extends Entity {
      * @param container the container you want to remove
      */
     public void removeContainer(Container container) {
-        if (!this.isEmptyContainer()) {
+        if (!this.isEmptyListContainer()) {
             this.listContainers.remove(container);
         }
     }
@@ -213,7 +217,7 @@ public class Place extends Entity {
      *
      * @return true if there are no containers
      */
-    public boolean isEmptyContainer() {
+    public boolean isEmptyListContainer() {
         return this.listContainers.isEmpty();
     }
 
@@ -287,6 +291,9 @@ public class Place extends Entity {
         }
     }
 
+    public List<Container> getListContainers() {
+        return listContainers;
+    }
 
     /* ------ le place container ------*/
 
@@ -436,7 +443,7 @@ public class Place extends Entity {
      */
     public String displayContainers() {
         String lineContainers = "";
-        if (this.isEmptyContainer()) {
+        if (this.isEmptyListContainer()) {
             String line2 = StringUtils.leftPad("#", 5, ' ') +
                            StringUtils.leftPad("#", 12, ' ');
             lineContainers = line2 + "\n";

@@ -5,8 +5,9 @@
     -fx-border: thick blue;
     -fx-font-family: "Roboto Slab";
     -fx-alignment: center;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
+
+    /*-fx-focus-color: transparent;*/
+    /*-fx-faint-focus-color: transparent;*/
 
     -fx-base: #130A0F;
     -fx-background: #2C1210;
@@ -117,4 +118,12 @@
 * .scroll-bar .increment-button,
 * .scroll-bar .decrement-button {
     -fx-background-color: transparent;
+}
+
+.highlighted {
+    -fx-background-color: blue;
+    -fx-border-width: 1;
+    -fx-border-color: red;
+    -fx-border-radius: 2;
+    -fx-effect: dropshadow(gaussian, #FBE5C6, 30, .50, 0, 0);
 }
