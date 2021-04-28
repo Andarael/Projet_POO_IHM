@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="directionPane" maxHeight="-Infinity" maxWidth="-Infinity"
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171"
+            id="directionPane" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0"
-            prefWidth="512.0" xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="controller.DirectionController">
+            prefWidth="512.0" fx:controller="controller.DirectionController">
 
     <top>
         <Button fx:id="buttonTop" mnemonicParsing="false" onAction="#goTop" text="Button"
@@ -14,27 +14,7 @@
     </top>
 
     <center>
-        <VBox fx:id="canevasContainer" prefHeight="512.0" prefWidth="512.0">
-            <ImageView id="canevas" fx:id="canevas" fitHeight="512" fitWidth="512"/>
-
-            <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="512"
-                  minHeight="-Infinity" minWidth="512" prefHeight="0.0" prefWidth="512.0"
-                  spacing="32">
-
-                <ImageView fx:id="playerCanevas" fitHeight="144" fitWidth="96"
-                           onMouseClicked="#selectImagePlayer" translateY="-64.0"/>
-
-                <ImageView fx:id="ContainerCanevas1" fitHeight="144" fitWidth="96"
-                           onMouseClicked="#selectImage1" translateY="-64.0"/>
-
-                <ImageView fx:id="ContainerCanevas2" fitHeight="144" fitWidth="96"
-                           onMouseClicked="#selectImage2" translateY="-64.0"/>
-
-                <ImageView fx:id="ContainerCanevas3" fitHeight="144" fitWidth="96"
-                           onMouseClicked="#selectImage3" translateY="-64.0"/>
-            </HBox>
-        </VBox>
-
+        <fx:include fx:id="canevas" source="Canevas.fxml"/>
     </center>
 
     <bottom>
