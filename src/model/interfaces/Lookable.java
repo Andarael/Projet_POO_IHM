@@ -2,6 +2,8 @@
 
 package model.interfaces;
 
+import model.utils.Printer;
+
 /**
  * An Interface to interact with objects that can be looked at.
  */
@@ -13,7 +15,7 @@ public interface Lookable extends Drawable {
      * @return the string that was displayed
      */
     default String look() {
-        System.out.println(getDisplay());
+        Printer.printMsg(getDisplay());
         return getDisplay();
     }
 

@@ -4,6 +4,7 @@ package model.game;
 
 import model.command.Attack;
 import model.entity.Player;
+import model.utils.Printer;
 import model.world.World;
 
 import java.util.List;
@@ -59,7 +60,7 @@ public class Game {
             } catch (NullPointerException nullException) {
                 printErr("This world is corrupted by some dark computer magic, \n" +
                          "your adventure must stop now !");
-                System.out.println("The devil comes from : " + nullException);
+                Printer.printErr("The devil comes from : " + nullException);
                 nullException.printStackTrace();
                 break;
             }

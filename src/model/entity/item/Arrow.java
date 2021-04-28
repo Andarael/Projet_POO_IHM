@@ -4,6 +4,7 @@ package model.entity.item;
 
 import model.entity.Entity;
 import model.interfaces.UsableOnItem;
+import model.utils.Printer;
 
 /**
  * An arrow is a weightLess Item
@@ -36,7 +37,7 @@ public class Arrow extends Weapon implements UsableOnItem {
      */
     @Override
     public boolean use() {
-        System.out.println("Invalid use of Arrow, " + getUsage());
+        Printer.printErr("Invalid use of Arrow, " + getUsage());
         return false;
     }
 
@@ -49,7 +50,7 @@ public class Arrow extends Weapon implements UsableOnItem {
      */
     @Override
     public boolean use(Entity entity) {
-        System.out.println("Invalid use of Arrow, " + getUsage());
+        Printer.printErr("Invalid use of Arrow, " + getUsage());
         return false;
     }
 
@@ -63,15 +64,15 @@ public class Arrow extends Weapon implements UsableOnItem {
     @Override
     public boolean use(Item item) {
         if (item == null) {
-            System.out.println("This item does not exist, " + getUsage());
+            Printer.printErr("This item does not exist, " + getUsage());
             return false;
         }
         if (!(item instanceof Bow)) {
-            System.out.println("This is not a Bow, " + getUsage());
+            Printer.printErr("This is not a Bow, " + getUsage());
             return false;
         }
         ((Bow) item).addArrow();
-        System.out.println("Added an Arrow to " + item.getName());
+        Printer.printMsg("Added an Arrow to " + item.getName());
         return true;
     }
 

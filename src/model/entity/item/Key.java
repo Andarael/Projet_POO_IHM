@@ -7,6 +7,7 @@ import model.entity.place.Exit;
 import model.entity.place.LockedExit;
 import model.interfaces.Usable;
 import model.utils.Col;
+import model.utils.Printer;
 
 import static model.utils.Col.*;
 
@@ -89,7 +90,7 @@ public class Key extends Item implements Usable {
      */
     @Override
     public boolean use() {
-        System.out.println("Invalid use of Key, " + getUsage());
+        Printer.printErr("Invalid use of Key, " + getUsage());
         return false;
     }
 
@@ -105,7 +106,7 @@ public class Key extends Item implements Usable {
         if (entity instanceof Exit) {
             return use((Exit) entity);
         }
-        System.out.println("This is not an exit");
+        Printer.printErr("This is not an exit");
         return false;
     }
 
@@ -118,29 +119,29 @@ public class Key extends Item implements Usable {
      */
     public boolean use(Exit exit) {
         if (exit == null) {
-            System.out.println("This Exit does not exist, " + getUsage());
+            Printer.printErr("This Exit does not exist, " + getUsage());
             return false;
         }
 
         if (!(exit instanceof LockedExit)) {
-            System.out.println("This Exit is not Locked, " + getUsage() + "on a Locked Exit");
+            Printer.printErr("This Exit is not Locked, " + getUsage() + "on a Locked Exit");
             return false;
         }
 
         LockedExit lockedExit = (LockedExit) exit;
         if (!lockedExit.isLocked()) {
-            System.out.println("This Exit is not Locked");
+            Printer.printErr("This Exit is not Locked");
             return false;
         }
 
         lockedExit.unLock(this);
 
         if (lockedExit.isLocked()) {
-            System.out.println("You can't unlock " + exit + " with " + this.getName());
+            Printer.printErr("You can't unlock " + exit + " with " + this.getName());
             return false;
         }
 
-        System.out.println("You unlocked " + exit + " with " + this.getName());
+        Printer.printMsg("You unlocked " + exit + " with " + this.getName());
         return true;
     }
 

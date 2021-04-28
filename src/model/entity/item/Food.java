@@ -5,6 +5,7 @@ package model.entity.item;
 import model.entity.Entity;
 import model.entity.Player;
 import model.interfaces.Usable;
+import model.utils.Printer;
 
 /**
  * Food is a special item that have a restore value that can be negative (poisoned food)
@@ -60,7 +61,7 @@ public class Food extends Item implements Usable {
      */
     @Override
     public boolean use() {
-        System.out.println("Try using it on a Being");
+        Printer.printErr("Try using it on a Being");
         return false;
     }
 
@@ -74,14 +75,14 @@ public class Food extends Item implements Usable {
     @Override
     public boolean use(Entity entity) {
         if (entity == null) {
-            System.out.println("This Being does not exist" + getUsage());
+            Printer.printErr("This Being does not exist" + getUsage());
             return false;
         }
 
         if (entity instanceof Player) {
             return use((Player) entity);
         }
-        System.out.println("This can only be used on the Player");
+        Printer.printErr("This can only be used on the Player");
         return false;
     }
 
@@ -96,10 +97,10 @@ public class Food extends Item implements Usable {
         String message = restoreValue + " hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);
-            System.out.println("You healed " + message);
+            Printer.printMsg("You healed " + message);
         } else {
             player.hurt(-restoreValue);
-            System.out.println("You got poisoned by " + message);
+            Printer.printMsg("You got poisoned by " + message);
         }
         return true;
     }
