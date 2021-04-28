@@ -59,7 +59,6 @@
 
 .button {
     -fx-background-color: linear-gradient(#321D29, #212);
-    -fx-border-style: groove;
     -fx-border-color: black;
     -fx-border-width: 0.1;
     -fx-padding: 1em 1.5em 1em 1.5em;

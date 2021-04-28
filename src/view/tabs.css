@@ -1,6 +1,6 @@
 .tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
     -fx-alignment: CENTER;
-    -fx-pref-width: 128.0;
+    -fx-pref-width: 172;
 }
 
 .tab-pane > .tab-header-area > .headers-region > .tab:top {
