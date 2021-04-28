@@ -66,7 +66,6 @@ public class CharacterBarController {
     }
 
     private void updateProfilePicture() {
-        System.out.println(currentBeing.getName());
         String url = getRessourceString(currentBeing.getName(), ".png", this);
         Image image = new Image(url);
         profilePicture.setImage(image);
