@@ -1,11 +1,11 @@
 package view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class MainUI extends HBox {
+public class MainUI extends StackPane {
 
     public MainUI() {
         try {

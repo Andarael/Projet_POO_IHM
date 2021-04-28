@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" type="StackPane"
+         stylesheets="@style.css, @tableStyle.css, @colors.css, @tabs.css"
+         xmlns="http://javafx.com/javafx/8.0.171">
 
-<?import javafx.scene.control.Separator?>
-<fx:root stylesheets="@style.css, @tableStyle.css, @colors.css, @tabs.css" type="HBox"
-         xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-         spacing="32" minWidth="768" maxWidth="1280" minHeight="512" maxHeight="800"
-         alignment="CENTER"
->
 
-    <VBox spacing="8">
-        <Label styleClass="h1" text="Room Name"/>
+    <HBox spacing="32" minWidth="768" maxWidth="1280" minHeight="512" maxHeight="800"
+          alignment="CENTER">
 
-        <fx:include fx:id="direction" source="Direction.fxml"/>
-        <Separator/>
-        <fx:include fx:id="CharacterBar1" source="CharacterBar.fxml"/>
-        <Separator/>
-        <fx:include fx:id="CharacterBar2" source="CharacterBar.fxml"/>
-        <Separator/>
-        <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" maxWidth="-Infinity"
-                  prefRowCount="2" prefWidth="435.0" text="bla bla bla"/>
-    </VBox>
+        <VBox spacing="8">
+            <Label styleClass="h1" text="Room Name"/>
 
-    <Separator orientation="VERTICAL"/>
+            <fx:include fx:id="direction" source="Direction.fxml"/>
+            <Separator/>
+            <fx:include fx:id="CharacterBar1" source="CharacterBar.fxml"/>
+            <Separator/>
+            <fx:include fx:id="CharacterBar2" source="CharacterBar.fxml"/>
+            <Separator/>
+            <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" maxWidth="-Infinity"
+                      prefRowCount="2" prefWidth="435.0" text="bla bla bla"/>
+        </VBox>
 
-    <VBox spacing="8">
+        <Separator orientation="VERTICAL"/>
 
-        <HBox prefHeight="32" spacing="16">
-            <Button mnemonicParsing="false" text="Look Place"/>
-            <Button mnemonicParsing="false" text="Loot Place"/>
-            <Button mnemonicParsing="false" text="Quit Game"/>
-        </HBox>
+        <VBox spacing="8">
 
-        <Separator/>
+            <HBox prefHeight="32" spacing="16">
+                <Button mnemonicParsing="false" text="Look Place"/>
+                <Button mnemonicParsing="false" text="Loot Place"/>
+                <Button mnemonicParsing="false" text="Quit Game"/>
+            </HBox>
 
-        <fx:include fx:id="tabs" source="Tabs.fxml"/>
+            <Separator/>
 
-        <Separator/>
+            <fx:include fx:id="tabs" source="Tabs.fxml"/>
 
-        <fx:include fx:id="characterInteraction" source="CharacterInteraction.fxml"/>
+            <Separator/>
 
-        <Separator/>
+            <fx:include fx:id="characterInteraction" source="CharacterInteraction.fxml"/>
 
-        <fx:include fx:id="infoArea" source="InfoArea.fxml"/>
+            <Separator/>
 
-    </VBox>
+            <fx:include fx:id="infoArea" source="InfoArea.fxml"/>
 
+        </VBox>
+
+    </HBox>
 </fx:root>
