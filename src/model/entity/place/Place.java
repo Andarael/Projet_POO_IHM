@@ -5,6 +5,7 @@ package model.entity.place;
 import model.entity.*;
 import model.entity.item.Item;
 import model.utils.Col;
+import model.utils.Printer;
 import model.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -158,10 +159,10 @@ public class Place extends Entity {
     }
 
     public void displayExit() {
-        System.out.println("= The exits in this place = \n");
+        Printer.printMsg("= The exits in this place = \n");
         for (int i = 0; i < this.exitMax; i++) {
             if (this.getExitByIndex(i) != null) {
-                System.out.println(this.getExitByIndex(i).getDisplay() + "\n");
+                Printer.printMsg(this.getExitByIndex(i).getDisplay() + "\n");
             }
         }
 
@@ -278,15 +279,15 @@ public class Place extends Entity {
     }
 
     public void displayDescContainer() {
-        System.out.println("= You see in the place = \n");
+        Printer.printMsg("= You see in the place = \n");
         for (Container container : this.listContainers) {
             if (container instanceof Hostile) {
-                System.out.println("Hostil :");
-                System.out.println(container.getSimpleDisplay());
+                Printer.printMsg("Hostil :");
+                Printer.printMsg(container.getSimpleDisplay());
             }
             if (container instanceof Passive) {
-                System.out.println("Passive:");
-                System.out.println(container.getSimpleDisplay());
+                Printer.printMsg("Passive:");
+                Printer.printMsg(container.getSimpleDisplay());
             }
         }
     }
@@ -325,8 +326,8 @@ public class Place extends Entity {
 
     public void displayPlaceContainer() {
         if (!this.getPlaceContainer().isEmpty()) {
-            System.out.println("\n= And on the ground = \n");
-            System.out.println(this.getPlaceContainer().getInventoryDisplay());
+            Printer.printMsg("\n= And on the ground = \n");
+            Printer.printMsg(this.getPlaceContainer().getInventoryDisplay());
         }
     }
 
@@ -488,8 +489,9 @@ public class Place extends Entity {
         String middle = this.displayContainers();
         String bot = this.displayExitBotLine();
 
-        System.out.println("---> " + this.getName() + "\n");
-        System.out.println(top + middle + bot);
+        Printer.printMsg("---> " + this.getName() + "\n");
+        Printer.printMsg(top + middle + bot);
+
         this.displayDescContainer();
         this.displayPlaceContainer();
         this.displayExit();
