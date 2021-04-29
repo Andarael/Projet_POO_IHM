@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import model.entity.Being;
 import model.entity.Container;
+import model.entity.Player;
 import model.entity.StaticContainer;
 import model.entity.place.Place;
 
@@ -18,49 +19,31 @@ import java.util.List;
 
 public class MainUIController extends AbstractController {
 
-    @FXML
-    public BorderPane direction;
-    @FXML
-    public HBox characterBar1;
-    @FXML
-    public HBox characterBar2;
-    @FXML
-    public TextArea dialogueBox;
-    @FXML
-    public GridPane characterInteraction;
-    @FXML
-    public Parent infoArea;
-    @FXML
-    public StackPane root;
-    @FXML
-    public DirectionController directionController;
-    @FXML
-    public CharacterBarController characterBar1Controller;
-    @FXML
-    public CharacterBarController characterBar2Controller;
-    @FXML
-    public AbstractController dialogueBoxController; // todo
-    @FXML
-    public AbstractController characterInteractionController; // todo
-    @FXML
-    public InfoAreaController infoAreaController; // todo
-    @FXML
-    public HBox tabs;
-    @FXML
-    public TabsController tabsController;
+    @FXML private BorderPane direction;
+    @FXML private HBox characterBar1;
+    @FXML private HBox characterBar2;
+    @FXML private TextArea dialogueBox;
+    @FXML private GridPane characterInteraction;
+    @FXML private Parent infoArea;
+    @FXML private StackPane root;
+    @FXML private HBox tabs;
+
+    @FXML private DirectionController directionController;
+    @FXML private CharacterBarController characterBar1Controller;
+    @FXML private CharacterBarController characterBar2Controller;
+    @FXML private CharacterInteractionController characterInteractionController;
+    @FXML private InfoAreaController infoAreaController; // todo
+    @FXML private TabsController tabsController;
 
     @Override
     public void initThis() {
-        System.out.println(getChildrenControllers()); // todo remove
-        characterBar1Controller.setCurrentBeing(MainController.player);
-        characterBar1Controller.updateThis();
-        setCurrentPlace(MainController.currentPlace);
-        MainController.setRootController(this);
+        setCurrentPlace(null);
+        MainController.setMainUIController(this);
     }
 
     @Override
     public void updateThis() {
-        // todo
+        getChildrenControllers().forEach(AbstractController::updateThis);
     }
 
     @Override
@@ -68,39 +51,45 @@ public class MainUIController extends AbstractController {
         return new ArrayList<>(Arrays.asList(directionController,
                                              characterBar1Controller,
                                              characterBar2Controller,
-                                             dialogueBoxController,
                                              tabsController,
                                              characterInteractionController,
                                              infoAreaController));
     }
 
     public void setSelectedContainer(Container container) {
-        if (container == null) {
-            tabsController.setSelectedContainer(null);
-            characterBar2Controller.setCurrentBeing(null);
 
-        } else if (container instanceof StaticContainer) {
-            tabsController.setSelectedContainer(container);
+        if (container instanceof StaticContainer)
             characterBar2Controller.setCurrentBeing(null);
-
-        } else if (container instanceof Being && container != MainController.player) {
-            tabsController.setSelectedContainer(container);
+        else if (container instanceof Being && container != MainController.getPlayer())
             characterBar2Controller.setCurrentBeing((Being) container);
-
-        } else {
-            tabsController.setSelectedContainer(null);
+        else
             characterBar2Controller.setCurrentBeing(null);
-        }
 
+        this.setDialogue(null);
+        this.setInformation(null);
+
+        tabsController.setSelectedContainer(container);
+        characterInteractionController.setSelectedContainer(container);
         directionController.setSelectedContainer(container);
     }
 
     public void setCurrentPlace(Place currentPlace) {
         directionController.setCurrentPlace(currentPlace);
-
+        characterBar1Controller.updateThis();
+        tabsController.setCurrentPlace(currentPlace);
+        setSelectedContainer(null);
     }
 
     public void setInformation(String information) {
         infoAreaController.setText(information);
+    }
+
+    public void setDialogue(String dialogue) {
+        dialogueBox.setText(dialogue);
+    }
+
+    public void setPlayer(Player player) {
+        characterBar1Controller.setCurrentBeing(player);
+        tabsController.setPlayer(player);
     }
 }

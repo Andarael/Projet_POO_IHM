@@ -2,7 +2,10 @@
 <?import javafx.scene.layout.HBox?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="32" spacing="16"
       fx:controller="controller.TopButtonsController">
+
     <Button fx:id="lookPlaceButtonButton" onAction="#lookPlaceAction" text="Look Place"/>
     <Button fx:id="lootPlaceButton" onAction="#lootPlaceAction" text="Loot Place"/>
     <Button fx:id="quitButton" onAction="#quitAction" text="Quit Game"/>
+    <Button fx:id="resetButton" onAction="#resetAction" text="Reset Game"/>
+
 </HBox>

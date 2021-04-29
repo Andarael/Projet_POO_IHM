@@ -1,4 +1,3 @@
-import controller.MainController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,10 +17,13 @@ public class GameApplication extends Application {
 
         root = new MainUI();
 
-        MainController.setSilentModel();
+//        MainController.setSilentModel();
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    // todo arguments de lancement : terminal ON/OFF
+    // todo voir pour la taille
 }

@@ -10,8 +10,10 @@ import static model.utils.Printer.printErr;
 import static model.world.WorldContains.isAPlace;
 
 public interface Use {
-    static void use(Player player, String item) {
-        player.use(item);
+
+    static String use(Player player, String item) {
+        return player.use(item);
+
     }
 
     static void use(World world, Player player, String item1, String arg2) {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" spacing="8"
+      xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.PlayerInventoryController">
+
+    <fx:include fx:id="inventory" source="Inventory.fxml"/>
+
+    <GridPane fx:id="buttonArea" alignment="CENTER" hgap="8" vgap="8">
+
+        <Button fx:id="dropButton" maxWidth="Infinity" onAction="#dropAction" prefWidth="128"
+                text="Drop" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+
+        <Button fx:id="useButton" maxWidth="Infinity" onAction="#useAction" prefWidth="128"
+                text="Use" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"/>
+
+        <Button fx:id="equipButton" alignment="CENTER" maxWidth="Infinity" onAction="#equipAction"
+                prefWidth="128" text="Equip" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+
+        <Button fx:id="unequipButton" maxWidth="Infinity" onAction="#unequipAction" prefWidth="128"
+                text="Unequip" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                GridPane.valignment="CENTER"/>
+
+        <ComboBox fx:id="selectionBox" maxHeight="1.7976931348623157E308" prefWidth="128"
+                  GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                  GridPane.valignment="CENTER"/>
+
+        <Label fx:id="useOnLabel" alignment="CENTER" prefWidth="128" text="Use on : "
+               GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+
+    </GridPane>
+
+</VBox>

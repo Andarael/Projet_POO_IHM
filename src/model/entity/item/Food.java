@@ -60,9 +60,10 @@ public class Food extends Item implements Usable {
      * @return false, invalid use all the time
      */
     @Override
-    public boolean use() {
-        Printer.printErr("Try using it on a Being");
-        return false;
+    public String use() {
+        String message = "Try using it on a Being";
+        Printer.printErr(message);
+        return message;
     }
 
     /**
@@ -70,20 +71,24 @@ public class Food extends Item implements Usable {
      * Displays its own messages
      *
      * @param entity the entity to feed (player)
-     * @return true if the entity was fed
      */
     @Override
-    public boolean use(Entity entity) {
+    public String use(Entity entity) {
+        String message;
         if (entity == null) {
-            Printer.printErr("This Being does not exist" + getUsage());
-            return false;
+            message = "This Being does not exist";
+            Printer.printErr(message + getUsage());
+            return message;
         }
 
         if (entity instanceof Player) {
             return use((Player) entity);
         }
-        Printer.printErr("This can only be used on the Player");
-        return false;
+
+
+        message = "This can only be used on the Player";
+        Printer.printErr(message);
+        return message;
     }
 
     /**
@@ -91,18 +96,19 @@ public class Food extends Item implements Usable {
      * Displays its own messages
      *
      * @param player the Player of the game
-     * @return true if the player was fed
      */
-    protected boolean use(Player player) {
+    protected String use(Player player) {
         String message = restoreValue + " hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);
-            Printer.printMsg("You healed " + message);
+            message = "You healed " + message;
+            Printer.printMsg(message);
         } else {
             player.hurt(-restoreValue);
-            Printer.printMsg("You got poisoned by " + message);
+            message = "You got poisoned by " + message;
+            Printer.printMsg(message);
         }
-        return true;
+        return message;
     }
 
 }

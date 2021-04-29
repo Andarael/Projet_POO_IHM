@@ -13,7 +13,7 @@
 }
 
 .YELLOW {
-    -fx-background-color: forestGreen;
+    -fx-background-color: yellow;
 }
 
 .BLUE {
@@ -21,7 +21,7 @@
 }
 
 .PURPLE {
-    -fx-background-color: purple;
+    -fx-background-color: deeppink;
 }
 
 .CYAN {

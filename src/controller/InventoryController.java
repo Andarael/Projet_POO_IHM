@@ -13,7 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.entity.Container;
+import model.entity.item.Bow;
+import model.entity.item.Food;
 import model.entity.item.Item;
+import model.entity.item.Weapon;
 import model.interfaces.Equipable;
 import model.interfaces.Usable;
 import model.inventory.Inventory;
@@ -23,22 +26,15 @@ import java.util.List;
 import static controller.RessourceManager.getRessourceString;
 import static controller.utils.Utils.*;
 
-public class InventoryListController extends AbstractController {
+public class InventoryController extends AbstractController {
 
-    @FXML
-    public Label labelGold;
-    @FXML
-    public TextArea descriptionTextArea;
-    @FXML
-    public TableView<Item> itemTable;
-    @FXML
-    public TableColumn<Item, String> itemNameColumn;
-    @FXML
-    public TableColumn<Item, String> itemValueColumn;
-    @FXML
-    public TableColumn<Item, String> itemWeightColumn;
-    @FXML
-    public TableColumn<Item, ImageView> itemTypeColumn;
+    @FXML public Label labelGold;
+    @FXML public TextArea descriptionTextArea;
+    @FXML public TableView<Item> itemTable;
+    @FXML public TableColumn<Item, String> itemNameColumn;
+    @FXML public TableColumn<Item, String> itemValueColumn;
+    @FXML public TableColumn<Item, String> itemWeightColumn;
+    @FXML public TableColumn<Item, ImageView> itemTypeColumn;
 
     private Item selectedItem = null;
 
@@ -86,22 +82,23 @@ public class InventoryListController extends AbstractController {
     private void listenSelectedItemInTable() {
         itemTable.getSelectionModel()
                  .selectedItemProperty()
-                 .addListener((observable, oldValue, newValue) -> updateSelectedItem());
+                 .addListener((observable, oldValue, newValue) -> selectedItemListener());
     }
 
-    private void updateSelectedItem() {
+    private void selectedItemListener() {
         selectedItem = itemTable.getSelectionModel().getSelectedItem();
-        // getParentController().setSelectedItem(selectedItem); // todo
+
         updateDescriptionArea();
 
-
-        // todo mej de l'item select dans MainController
-        // todo update actions (use etc..)
+        if (getParentController() instanceof ContainerInventoryController)
+            ((ContainerInventoryController) getParentController()).setSelectedItem(selectedItem);
     }
+
 
     private void updateDescriptionArea() {
 
-        if (this.selectedItem == null /*|| getItem(world, selectedItem.getName()) == null*/) {
+        // todo pour la bouffe et les clés etc...
+        if (this.selectedItem == null) {
             descriptionTextArea.setText(null);
             return;
         }
@@ -109,6 +106,7 @@ public class InventoryListController extends AbstractController {
         String name = capitalize(readable(selectedItem.getName())) + ", ";
         String description = capitalize(selectedItem.getDescription());
         String modifiers = "";
+        String stats = "";
 
         if (selectedItem instanceof Equipable)
             modifiers += "Equipable ";
@@ -120,9 +118,24 @@ public class InventoryListController extends AbstractController {
         }
 
         if (modifiers.length() != 0)
-            modifiers += " : \n";
+            modifiers += "\n";
 
-        descriptionTextArea.setText(name + modifiers + description);
+        if (selectedItem instanceof Bow) {
+            Bow bow = (Bow) this.selectedItem;
+            int nbArrows = bow.getArrows();
+            stats += "- Damages : " + bow.getPowerNoConsume() + "\n";
+            stats += pluralize("- Arrow", nbArrows) + " : " + nbArrows + "\n";
+
+        } else if(selectedItem instanceof Weapon) {
+            Weapon weapon = (Weapon) selectedItem;
+            stats += "- Damages : " + weapon.getPower() + "\n";
+        }
+
+        if (selectedItem instanceof Food)
+            stats += "- Restoration : " + ((Food) selectedItem).getRestoreValue() + " hp \n";
+
+
+        descriptionTextArea.setText("- " + name + "\n" + "- " + modifiers + stats + "- " +  description);
     }
 
     public Inventory getInventory() {
@@ -140,9 +153,7 @@ public class InventoryListController extends AbstractController {
 
     private void updateTable() {
         Inventory inventory = getInventory();
-
         ObservableList<Item> itemObservableList = FXCollections.observableArrayList(inventory.getItemList());
-
         itemTable.getItems().clear();
         itemTable.setItems(itemObservableList);
     }

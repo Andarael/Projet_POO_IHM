@@ -169,6 +169,10 @@ public class Place extends Entity {
 
     }
 
+    public List<Exit> getListExits() {
+        return this.listExits;
+    }
+
     /* ------ les containers ------*/
 
     /**

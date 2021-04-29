@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER"
-          xmlns="http://javafx.com/javafx/11.0.1">
 
-    <Label fx:id="npcIntercationLabel" alignment="CENTER" text="What to do with [...] : "
-           GridPane.columnSpan="2"/>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="16" vgap="16"
+          xmlns="http://javafx.com/javafx/8.0.171"
+          fx:controller="controller.CharacterInteractionController"
+          fx:id="gridPane">
 
-    <Button fx:id="talkButton" mnemonicParsing="false" text="Talk" GridPane.rowIndex="1"/>
+    <Label fx:id="npcInteractionLabel" styleClass="h2" alignment="CENTER"
+           text="What to do with [...] : "
+           GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
 
-    <Button fx:id="AttackButton" alignment="CENTER" mnemonicParsing="false" text="Attack"
-            GridPane.columnSpan="1" GridPane.rowIndex="2"/>
-
-    <Button fx:id="lookButton" mnemonicParsing="false" text="Look" GridPane.columnIndex="1"
+    <Button fx:id="talkButton" text="Talk" onAction="#talkButtonAction" GridPane.columnIndex="2"
+            GridPane.halignment="RIGHT"
             GridPane.rowIndex="1"/>
 
+    <Button fx:id="attackButton" onAction="#attackButtonAction" alignment="CENTER" text="Attack"
+            GridPane.columnIndex="2"
+            GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+
+    <Button fx:id="lookButton" text="Look" onAction="#lookButtonAction" GridPane.columnIndex="3"
+            GridPane.halignment="CENTER"
+            GridPane.rowIndex="1"/>
+
+    <Separator orientation="VERTICAL" GridPane.columnIndex="1" GridPane.rowSpan="2147483647"/>
+    <Separator orientation="VERTICAL" GridPane.columnIndex="5" GridPane.rowSpan="2147483647"/>
+
+    <!--todo button alignment-->
 </GridPane>

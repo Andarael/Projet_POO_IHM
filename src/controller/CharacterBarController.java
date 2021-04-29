@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.entity.Being;
 import model.entity.Player;
+import model.entity.item.Bow;
 
 import java.util.List;
 
@@ -18,31 +19,18 @@ import static controller.utils.Utils.*;
 public class CharacterBarController extends AbstractController {
 
     //    todo meilleurs noms pour les fields
-
-    @FXML
-    public ImageView profilePicture;
-    @FXML
-    public Label characterNameLabel;
-    @FXML
-    public Label goldLabel;
-    @FXML
-    public ProgressBar lifeBar;
-    @FXML
-    public Label equippedItem;
-    @FXML
-    public Label hpLabel;
-    @FXML
-    public Label podsLabel;
-    @FXML
-    public VBox capacityVbox;
-    @FXML
-    public Label goldQuantityLabel;
-    @FXML
-    public HBox CharacterBox;
-    @FXML
-    public Label equippedLabel;
-    @FXML
-    public HBox characterBar;
+    @FXML public ImageView profilePicture;
+    @FXML public Label characterNameLabel;
+    @FXML public Label goldLabel;
+    @FXML public ProgressBar lifeBar;
+    @FXML public Label equippedItem;
+    @FXML public Label hpLabel;
+    @FXML public Label podsLabel;
+    @FXML public VBox capacityVbox;
+    @FXML public Label goldQuantityLabel;
+    @FXML public HBox CharacterBox;
+    @FXML public Label equippedLabel;
+    @FXML public HBox characterBar;
 
     private Being currentBeing = null;
 
@@ -89,7 +77,8 @@ public class CharacterBarController extends AbstractController {
             return;
         }
 
-        String url = getRessourceString(currentBeing.getName(), ".png", this);
+        String url = getRessourceString(currentBeing.getShortName() + "_head", ".png", this);
+
         Image image = new Image(url);
         profilePicture.setImage(image);
     }
@@ -122,7 +111,7 @@ public class CharacterBarController extends AbstractController {
             return;
         }
 
-        String text = currentBeing.getMaxHp() + " / " + currentBeing.getHp() + " hp";
+        String text = currentBeing.getHp() + " / " + currentBeing.getMaxHp() + " hp";
         hpLabel.setText(text);
     }
 
@@ -153,7 +142,13 @@ public class CharacterBarController extends AbstractController {
             equippedLabel.setText("Attack :");
         }
 
-        int power = currentBeing.getPower();
+        int power;
+
+        if (currentBeing instanceof Player && ((Player) currentBeing).getEquipped() instanceof Bow)
+            power = ((Bow) ((Player) currentBeing).getEquipped()).getPowerNoConsume();
+        else
+            power = currentBeing.getPower();
+
         equippedText += power + " " + pluralize("damage", power);
 
         equippedItem.setText(equippedText);

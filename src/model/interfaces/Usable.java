@@ -21,8 +21,8 @@ public interface Usable {
      *
      * @return true if the item was used correctly
      */
-    boolean use();
+    String use();
 
-    boolean use(Entity entity);
+    String use(Entity entity);
 
 }

@@ -74,7 +74,9 @@ public abstract class AbstractController {
         }
     }
 
-    public abstract List<AbstractController> getChildrenControllers();
+    public List<AbstractController> getChildrenControllers() {
+        return null;
+    }
 
     public MainUIController getRootController() {
         AbstractController actualController = getParentController();

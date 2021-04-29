@@ -4,6 +4,9 @@ package model.interfaces;
 
 import model.utils.Printer;
 
+import static controller.utils.Utils.capitalize;
+import static controller.utils.Utils.readable; // todo move to model
+
 /**
  * An Interface to interact with objects that can be looked at.
  */
@@ -20,7 +23,7 @@ public interface Lookable extends Drawable {
     }
 
     default String getSimpleLook() {
-        return getName() + " : " + getDescription();
+        return capitalize(readable(getName())) + " : " + getDescription();
     }
 
 }

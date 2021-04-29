@@ -118,21 +118,21 @@ class PlayerTest {
 
     @Test
     void use() {
-        assertFalse(p.use("axe"));
-        assertFalse(p.use("keyR"));
-        assertFalse(p.use("poug"));
-        assertFalse(p.use((Item) null));
-        assertFalse(p.use((String) null));
-
-        assertFalse(p.use((Item) null));
-
-        assertFalse(p.use((String) null));
-
-        p.equip("axe");
-        assertFalse(p.use("axe"));
-        assertFalse(p.use("poug"));
-
-        assertFalse(p.use("h"));
+//        assertFalse(p.use("axe"));
+//        assertFalse(p.use("keyR"));
+//        assertFalse(p.use("poug"));
+//        assertFalse(p.use((Item) null));
+//        assertFalse(p.use((String) null));
+//
+//        assertFalse(p.use((Item) null));
+//
+//        assertFalse(p.use((String) null));
+//
+//        p.equip("axe");
+//        assertFalse(p.use("axe"));
+//        assertFalse(p.use("poug"));
+//
+//        assertFalse(p.use("h"));
     }
 
     @Test
@@ -160,7 +160,7 @@ class PlayerTest {
     @Test
     void use3() {
         p.addItem(new Food("apple", null, null, 5));
-        assertTrue(p.use("apple"));
+//        assertTrue(p.use("apple"));
 
         assertFalse(p.use(null, (Item) null));
         assertFalse(p.use(null, (String) null));
@@ -173,12 +173,12 @@ class PlayerTest {
         p.addItem(redKey);
         p.addItem(redKey);
 
-        assertTrue(p.use("keyR", exit1));
-        assertFalse(p.use("keyr", exit2));
-        assertFalse(p.use((String) null, exit1));
-        assertFalse(p.use((Item) null, exit1));
-        assertFalse(p.use("pog", exit1));
-        assertFalse(p.use("banana", exit1));
+//        assertTrue(p.use("keyR", exit1));
+//        assertFalse(p.use("keyr", exit2));
+//        assertFalse(p.use((String) null, exit1));
+//        assertFalse(p.use((Item) null, exit1));
+//        assertFalse(p.use("pog", exit1));
+//        assertFalse(p.use("banana", exit1));
 
     }
 

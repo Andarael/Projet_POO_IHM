@@ -7,12 +7,10 @@ import javafx.scene.control.Button;
 import java.util.List;
 
 public class TopButtonsController extends AbstractController {
-    @FXML
-    public Button lookPlaceButtonButton;
-    @FXML
-    public Button lootPlaceButton;
-    @FXML
-    public Button quitButton;
+    @FXML public Button lookPlaceButtonButton;
+    @FXML public Button lootPlaceButton;
+    @FXML public Button quitButton;
+    @FXML public Button resetButton;
 
     @Override
     public void initThis() {
@@ -40,5 +38,10 @@ public class TopButtonsController extends AbstractController {
     @FXML
     public void quitAction(ActionEvent actionEvent) {
         MainController.quitGame();
+    }
+
+    @FXML
+    public void resetAction(ActionEvent actionEvent) {
+        MainController.reset();
     }
 }

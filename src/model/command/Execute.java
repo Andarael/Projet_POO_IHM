@@ -79,7 +79,7 @@ public interface Execute {
         switch (command) {
             case USE:
                 if (nbArgs == 1)
-                    use(player, arg1);
+                    return use(player, arg1);
                 else if (nbArgs == 2)
                     use(world, player, arg1, arg2);
                 break;
@@ -136,8 +136,7 @@ public interface Execute {
                 break;
 
             case TALK:
-                talk(currentPlace, arg1);
-                break;
+                return talk(currentPlace, arg1);
 
             case EQUIP:
                 equip(player, arg1);

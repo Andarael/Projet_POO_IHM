@@ -89,9 +89,10 @@ public class Key extends Item implements Usable {
      * @return false, invalid use of Key
      */
     @Override
-    public boolean use() {
-        Printer.printErr("Invalid use of Key, " + getUsage());
-        return false;
+    public String use() {
+        String message = "Keys must be used on a locked Door";
+        Printer.printErr(message + ", " + getUsage());
+        return message;
     }
 
     /**
@@ -102,12 +103,13 @@ public class Key extends Item implements Usable {
      * @return true if the Entity accepted the Key and unlocked
      */
     @Override
-    public boolean use(Entity entity) {
+    public String use(Entity entity) {
         if (entity instanceof Exit) {
             return use((Exit) entity);
         }
-        Printer.printErr("This is not an exit");
-        return false;
+        String message = "This is not an exit";
+        Printer.printErr(message);
+        return message;
     }
 
     /**
@@ -117,32 +119,38 @@ public class Key extends Item implements Usable {
      * @param exit the Exit the key should be used on
      * @return true if the Exit accepted the Key and unlocked
      */
-    public boolean use(Exit exit) {
+    public String use(Exit exit) {
+        String message;
         if (exit == null) {
-            Printer.printErr("This Exit does not exist, " + getUsage());
-            return false;
+            message = "This Exit does not exist";
+            Printer.printErr(message + ", " + getUsage());
+            return message;
         }
 
         if (!(exit instanceof LockedExit)) {
-            Printer.printErr("This Exit is not Locked, " + getUsage() + "on a Locked Exit");
-            return false;
+            message = "Keys must be used on a locked Door";
+            Printer.printErr(message + ", " + getUsage() + "on a Locked Exit");
+            return message;
         }
 
         LockedExit lockedExit = (LockedExit) exit;
         if (!lockedExit.isLocked()) {
-            Printer.printErr("This Exit is not Locked");
-            return false;
+            message = "This Exit is not Locked";
+            Printer.printErr(message);
+            return message;
         }
 
         lockedExit.unLock(this);
 
         if (lockedExit.isLocked()) {
-            Printer.printErr("You can't unlock " + exit + " with " + this.getName());
-            return false;
+            message = "You can't unlock " + exit + " with " + this.getName();
+            Printer.printErr(message);
+            return message;
         }
 
-        Printer.printMsg("You unlocked " + exit + " with " + this.getName());
-        return true;
+        message = "You unlocked " + exit + " with " + this.getName();
+        Printer.printMsg(message);
+        return message;
     }
 
     public static String generateKeyName(Col color) {

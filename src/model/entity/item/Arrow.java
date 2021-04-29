@@ -36,9 +36,10 @@ public class Arrow extends Weapon implements UsableOnItem {
      * @return false, invalid use
      */
     @Override
-    public boolean use() {
-        Printer.printErr("Invalid use of Arrow, " + getUsage());
-        return false;
+    public String use() {
+        String message = "Arrows can only be used on a Bow";
+        Printer.printErr(message + ", " + getUsage());
+        return message;
     }
 
     /**
@@ -49,9 +50,10 @@ public class Arrow extends Weapon implements UsableOnItem {
      * @return true if the entity accepted the arrow
      */
     @Override
-    public boolean use(Entity entity) {
-        Printer.printErr("Invalid use of Arrow, " + getUsage());
-        return false;
+    public String use(Entity entity) {
+        String message = "Arrows can only be used on a Bow";
+        Printer.printErr(message + ", " + getUsage());
+        return message;
     }
 
     /**

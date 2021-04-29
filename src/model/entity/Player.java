@@ -189,16 +189,18 @@ public class Player extends Being {
      * @param item the item to use
      * @return the message to display upon use
      */
-    public boolean use(Item item) {
+    public String use(Item item) {
 
         if (item == null) {
-            printErr("This item does not exist");
-            return false;
+            String message = "This item does not exist";
+            printErr(message);
+            return message;
         }
 
         if (!contains(item)) {
-            printMsg("You don't have " + item.getName() + " in your inventory");
-            return false;
+            String message = "You don't have " + item.getName() + " in your inventory";
+            printMsg(message);
+            return message;
         }
 
         // getting the actual item from the player's inventory
@@ -206,20 +208,21 @@ public class Player extends Being {
 
         // check if item is usable
         if (!(newItem instanceof Usable)) {
-            printMsg("This (" + item.getName() + ") is not usable");
-            return false;
+            String message = "This (" + item.getName() + ") is not usable";
+            printMsg(message);
+            return message;
         }
 
-        boolean output;
+        String output;
 
         if (newItem instanceof Food)
             output = ((Food) newItem).use(this);
         else
             output = ((Usable) newItem).use();
 
-        // remove only if item was used
-        if (output)
-            removeItem(newItem);
+        // remove only if item was used // todo fix ?
+//        if (output)
+//            removeItem(newItem);
 
         return output;
     }
@@ -232,10 +235,11 @@ public class Player extends Being {
      * @param itemName of used item
      * @return true if the item was used correctly
      */
-    public boolean use(String itemName) {
+    public String use(String itemName) {
         if (itemName == null) {
-            printErr("This item does not exist");
-            return false;
+            String message = "This item does not exist";
+            printErr(message);
+            return message;
         }
 
         return use(new Item(itemName));
@@ -312,16 +316,19 @@ public class Player extends Being {
      * @param exit the exit you want to unlock
      * @return true if the item was used correctly
      */
-    public boolean use(Item item, Exit exit) {
+    public String use(Item item, Exit exit) {
+        String message;
 
         if (item == null || exit == null) {
-            printErr("This does not exist");
-            return false;
+            message = "This does not exist";
+            printErr(message);
+            return message;
         }
 
         if (!contains(item)) {
-            printMsg("You don't have " + item.getName() + " in your inventory");
-            return false;
+            message = "You don't have " + item.getName() + " in your inventory";
+            printMsg(message);
+            return message;
         }
 
         // getting the actual item from the player's inventory
@@ -329,25 +336,26 @@ public class Player extends Being {
 
         // check if item is usable
         if (!(newItem instanceof Usable)) {
-            printMsg("This (" + item.getName() + ") is not usable");
-            return false;
+            message = "This (" + item.getName() + ") is not usable";
+            printMsg(message);
+            return message;
         }
 
-        boolean output;
 
-        output = ((Usable) newItem).use(exit);
+        message = ((Usable) newItem).use(exit);
 
-        // remove only if item was used
-        if (output)
-            removeItem(newItem);
+        // remove only if item was used // todo faire marcher
+//        if (output)
+//            removeItem(newItem);
 
-        return output;
+        return message;
     }
 
-    public boolean use(String itemName, Exit exit) {
+    public String use(String itemName, Exit exit) {
         if (itemName == null || exit == null) {
-            printErr("This does not exist");
-            return false;
+            String message = "This does not exist";
+            printErr(message);
+            return message;
         }
         return use(new Item(itemName), exit);
     }

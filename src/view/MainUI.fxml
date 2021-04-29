@@ -2,15 +2,13 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" type="StackPane"
-         stylesheets="@style.css, @tableStyle.css, @colors.css, @tabs.css"
-         xmlns="http://javafx.com/javafx/8.0.171"
-         fx:controller="controller.MainUIController"
-         fx:id="root">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
+         stylesheets="@style.css, @tableStyle.css, @colors.css, @tabs.css" type="StackPane"
+         xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.MainUIController">
 
 
-    <HBox spacing="32" minWidth="768" maxWidth="1280" minHeight="512" maxHeight="800"
-          alignment="CENTER">
+    <HBox alignment="CENTER" minHeight="512" maxHeight="1024" maxWidth="1280" minWidth="768"
+          spacing="32">
 
         <VBox spacing="8">
             <Label styleClass="h1" text="Room Name"/>
@@ -27,15 +25,15 @@
 
             <Separator/>
 
-            <Label text="Dialogue" styleClass="h2"/>
+            <Label styleClass="h2" text="Dialogue"/>
 
-            <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" maxWidth="-Infinity"
-                      prefRowCount="2" prefWidth="435.0" text="bla bla bla"/>
+            <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" prefRowCount="4"
+                      wrapText="true"/>
         </VBox>
 
         <Separator orientation="VERTICAL"/>
 
-        <VBox spacing="8" alignment="CENTER">
+        <VBox alignment="CENTER" spacing="8">
 
             <fx:include source="TopButtons.fxml"/>
 

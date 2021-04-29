@@ -15,24 +15,16 @@ import java.util.Collections;
 import java.util.List;
 
 import static controller.Direction.*;
-import static controller.MainController.*;
-import static controller.MainController.executeByDirection;
 import static controller.utils.Utils.readable;
 
-public class DirectionController extends AbstractController{
+public class DirectionController extends AbstractController {
 
     //    todo meilleurs noms pour les fields
-
-    @FXML
-    public Button buttonUp;
-    @FXML
-    public Button buttonDown;
-    @FXML
-    public Button buttonLeft;
-    @FXML
-    public Button buttonRight;
-    @FXML
-    public VBox canevas;
+    @FXML public Button buttonUp;
+    @FXML public Button buttonDown;
+    @FXML public Button buttonLeft;
+    @FXML public Button buttonRight;
+    @FXML public VBox canevas;
 
     @FXML
     CanevasController canevasController;
@@ -42,7 +34,7 @@ public class DirectionController extends AbstractController{
 
     @FXML
     public void goUp(ActionEvent actionEvent) {
-        executeByDirection(UP);
+        MainController.executeByDirection(UP);
 
         // todo afficher le canevas avec la prochaine room avant l' update et sleep un peu
         // todo update all l'interface
@@ -50,17 +42,17 @@ public class DirectionController extends AbstractController{
 
     @FXML
     public void goLeft(ActionEvent actionEvent) {
-        executeByDirection(LEFT);
+        MainController.executeByDirection(LEFT);
     }
 
     @FXML
     public void goRight(ActionEvent actionEvent) {
-        executeByDirection(RIGHT);
+        MainController.executeByDirection(RIGHT);
     }
 
     @FXML
     public void goDown(ActionEvent actionEvent) {
-        executeByDirection(DOWN);
+        MainController.executeByDirection(DOWN);
     }
 
     @Override
@@ -129,7 +121,7 @@ public class DirectionController extends AbstractController{
 
     private void disableButtonIfNoKey(Button button, LockedExit exit) {
         String keyName = Key.generateKeyName(exit.getColor());
-        button.setDisable(!player.contains(keyName));
+        button.setDisable(!MainController.getPlayer().contains(keyName));
     }
 
     private void setButtonToExitColor(Button button, Exit exit) {

@@ -17,20 +17,13 @@ import static controller.RessourceManager.getRessourceString;
 
 public class CanevasController extends AbstractController {
 
-//    todo meilleurs noms pour les fields
-
-    @FXML
-    public ImageView backGroundImage;
-    @FXML
-    public VBox canevasContainer;
-    @FXML
-    public ImageView playerCanevas;
-    @FXML
-    public ImageView canevasImage3;
-    @FXML
-    public ImageView canevasImage2;
-    @FXML
-    public ImageView canevasImage1;
+    //    todo meilleurs noms pour les fields
+    @FXML public ImageView backGroundImage;
+    @FXML public VBox canevasContainer;
+    @FXML public ImageView playerCanevas;
+    @FXML public ImageView canevasImage3;
+    @FXML public ImageView canevasImage2;
+    @FXML public ImageView canevasImage1;
 
     private Place currentPlace = null;
 
@@ -137,7 +130,7 @@ public class CanevasController extends AbstractController {
             return null;
 
         String ressourceName = container.getShortName().trim();
-        String url = getRessourceString(ressourceName, ".png", this);
+        String url = getRessourceString(ressourceName + "_body", ".png", this);
         return new Image(url);
     }
 
@@ -152,7 +145,8 @@ public class CanevasController extends AbstractController {
     }
 
 
-    private void performActionOnImages(List<Container> containers, BiConsumer<ImageView, Container> consumer) {
+    private void performActionOnImages(List<Container> containers,
+                                       BiConsumer<ImageView, Container> consumer) {
         if (containers == null)
             return;
 

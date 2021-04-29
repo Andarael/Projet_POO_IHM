@@ -9,15 +9,7 @@ fx:controller="controller.TabsController">
     <TabPane tabClosingPolicy="UNAVAILABLE" prefWidth="256">
 
         <Tab text="Inventory">
-            <VBox alignment="TOP_CENTER" spacing="8">
-                <fx:include fx:id="playerInv" source="InventoryList.fxml"/>
-                <GridPane alignment="CENTER" vgap="8" hgap="8">
-                    <Button text="Drop" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <Button text="Use" GridPane.columnIndex="1"/>
-                    <Button text="Equip" GridPane.rowIndex="1"/>
-                    <Button text="Unequip"/>
-                </GridPane>
-            </VBox>
+            <fx:include fx:id="playerInv" source="PlayerInventory.fxml"/>
         </Tab>
 
     </TabPane>
@@ -30,7 +22,7 @@ fx:controller="controller.TabsController">
         <Tab fx:id="tradeTab" text="Trade">
             <VBox alignment="TOP_CENTER" spacing="8">
 
-                <fx:include fx:id="traderInv" source="InventoryList.fxml"/>
+                <fx:include fx:id="traderInv" source="Inventory.fxml"/>
 
                 <GridPane alignment="CENTER">
                     <Button text="Buy" GridPane.columnIndex="1"/>
@@ -42,7 +34,7 @@ fx:controller="controller.TabsController">
 
         <Tab fx:id="lootTab" text="Loot">
             <VBox alignment="TOP_CENTER" spacing="8">
-                <fx:include fx:id="chestInv" source="InventoryList.fxml"/>
+                <fx:include fx:id="chestInv" source="Inventory.fxml"/>
 
                 <GridPane alignment="CENTER">
                     <Button text="Take" GridPane.columnIndex="1" GridPane.rowIndex="1"/>

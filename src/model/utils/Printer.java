@@ -10,18 +10,21 @@ public class Printer {
     public static boolean displayErrors = true;
 
 
-    public static void printErr(String str) {
+    public static String printErr(String str) {
         if (displayErrors)
             System.out.println("ERROR : " + colorize(str, RED));
+        return str;
     }
 
-    public static void printMsg(String str) {
+    public static String printMsg(String str) {
         if (! silence)
             System.out.println(str);
+        return str;
     }
 
-    public static void printDialogue(String str) {
+    public static String printDialogue(String str) {
         if (! silence)
             System.out.println(colorize(str, CYAN));
+        return str;
     }
 }

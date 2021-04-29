@@ -118,7 +118,7 @@ public abstract class Entity implements Lookable {
 
     @Override
     public String toString() {
-        return print();
+        return name;
     }
 
 

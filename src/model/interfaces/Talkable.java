@@ -12,6 +12,6 @@ public interface Talkable extends Describable {
         if (getDialogue() == null)
             return getName() + " have nothing to say";
         else
-            return getName() + " : " + getDialogue();
+            return getDialogue();
     }
 }
