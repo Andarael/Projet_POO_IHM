@@ -4,28 +4,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import model.entity.Container;
 import model.entity.item.Key;
 import model.entity.place.Exit;
 import model.entity.place.LockedExit;
+import model.entity.place.Place;
 import model.utils.Col;
-import model.world.StaticWorld;
-import model.world.World;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static controller.Direction.*;
+import static controller.MainController.*;
+import static controller.MainController.executeByDirection;
 import static controller.utils.Utils.readable;
 
 public class DirectionController extends AbstractController{
 
-    private final World world = StaticWorld.world;
+    //    todo meilleurs noms pour les fields
 
     @FXML
-    public Button buttonTop;
+    public Button buttonUp;
     @FXML
-    public Button buttonBottom;
+    public Button buttonDown;
     @FXML
     public Button buttonLeft;
     @FXML
@@ -34,42 +35,44 @@ public class DirectionController extends AbstractController{
     public VBox canevas;
 
     @FXML
-    AbstractController canevasController;
+    CanevasController canevasController;
+
+    private Place currentPlace = null;
 
 
     @FXML
-    public void goTop(ActionEvent actionEvent) {
-        executeByuDirection(0);
-        canevasController.updateAll();
+    public void goUp(ActionEvent actionEvent) {
+        executeByDirection(UP);
+
         // todo afficher le canevas avec la prochaine room avant l' update et sleep un peu
-        updateAll();
+        // todo update all l'interface
     }
 
     @FXML
     public void goLeft(ActionEvent actionEvent) {
-        executeByuDirection(1);
-        canevasController.updateAll();
-        updateAll();
+        executeByDirection(LEFT);
     }
 
     @FXML
     public void goRight(ActionEvent actionEvent) {
-        executeByuDirection(2);
-        canevasController.updateAll();
-        updateAll();
+        executeByDirection(RIGHT);
     }
 
     @FXML
-    public void goBottom(ActionEvent actionEvent) {
-        executeByuDirection(3);
-        canevasController.updateAll();
-        updateAll();
+    public void goDown(ActionEvent actionEvent) {
+        executeByDirection(DOWN);
     }
 
-    public void initAll() {
-        updateAll();
+    @Override
+    public void initThis() {
+        updateThis();
         canevas.toBack();
-        canevasController.setParentController(this);
+    }
+
+    @Override
+    public void updateThis() {
+        updateAllChildren();
+        updateAllButtons();
     }
 
     @Override
@@ -77,26 +80,19 @@ public class DirectionController extends AbstractController{
         return Collections.singletonList(canevasController);
     }
 
-
-    @Override
-    public void updateAll() {
-        updateAllChildren();
-        updateAllButtons();
-    }
-
     private void updateAllButtons() {
-        updateButton(buttonTop, 0);
-        updateButton(buttonLeft, 1);
-        updateButton(buttonRight, 2);
-        updateButton(buttonBottom, 3);
+        updateButton(buttonUp, UP);
+        updateButton(buttonLeft, LEFT);
+        updateButton(buttonRight, RIGHT);
+        updateButton(buttonDown, DOWN);
     }
 
-    private void updateButton(Button button, int index) {
+    private void updateButton(Button button, Direction direction) {
         resetButtonColor(button);
         button.setDisable(true);
 
-        if (world.currentPlace.exitExistIndex(index)) {
-            Exit exit = world.currentPlace.getExitByIndex(index);
+        if (currentPlace != null && currentPlace.exitExistIndex(direction.getIndex())) {
+            Exit exit = currentPlace.getExitByIndex(direction.getIndex());
             button.setDisable(false);
             button.setText(readable(exit.getName()));
             setButtonColorFromExit(button, exit);
@@ -104,7 +100,7 @@ public class DirectionController extends AbstractController{
             button.setText("      ");
         }
 
-        if (index == 1 || index == 2) {
+        if (direction == LEFT || direction == RIGHT) {
             setVerticalText(button);
         }
     }
@@ -120,7 +116,7 @@ public class DirectionController extends AbstractController{
         for (char c : originalText.toCharArray())
             newText += c + "\n";
 
-        button.setLineSpacing(-5); // i can't put negative value in css
+        button.setLineSpacing(-5); // I can't put negative value in the css
         button.setText(newText);
     }
 
@@ -133,7 +129,7 @@ public class DirectionController extends AbstractController{
 
     private void disableButtonIfNoKey(Button button, LockedExit exit) {
         String keyName = Key.generateKeyName(exit.getColor());
-        button.setDisable(!world.getPlayer().contains(keyName));
+        button.setDisable(!player.contains(keyName));
     }
 
     private void setButtonToExitColor(Button button, Exit exit) {
@@ -151,15 +147,13 @@ public class DirectionController extends AbstractController{
         }
     }
 
-    private List<String> getCommandByDirection(int index) {
-        Exit exit = world.currentPlace.getExitByIndex(index);
-        String destination = exit != null ? exit.getName() : "";
-        return new ArrayList<>(Arrays.asList("go", destination));
+    public void setCurrentPlace(Place currentPlace) {
+        this.currentPlace = currentPlace;
+        canevasController.setCurrentPlace(currentPlace);
+        updateThis();
     }
 
-    private void executeByuDirection(int index) {
-        model.command.Execute.execute(world, getCommandByDirection(index));
+    public void setSelectedContainer(Container container) {
+        canevasController.setSelected(container);
     }
-
-
 }

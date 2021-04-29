@@ -17,15 +17,13 @@ import model.entity.item.Item;
 import model.interfaces.Equipable;
 import model.interfaces.Usable;
 import model.inventory.Inventory;
-import model.world.StaticWorld;
-import model.world.World;
+
+import java.util.List;
 
 import static controller.RessourceManager.getRessourceString;
-import static controller.utils.Utils.capitalize;
-import static controller.utils.Utils.readable;
-import static model.world.WorldContains.getItem;
+import static controller.utils.Utils.*;
 
-public class InventoryListController {
+public class InventoryListController extends AbstractController {
 
     @FXML
     public Label labelGold;
@@ -42,33 +40,43 @@ public class InventoryListController {
     @FXML
     public TableColumn<Item, ImageView> itemTypeColumn;
 
-    World world = StaticWorld.world;
-    public Container currentContainer = world.getPlayer();
+    private Item selectedItem = null;
+
+    private Container currentContainer = null;
 
     // todo add gold display from the list
     // todo description (equipable, restoration, damages)
     // todo retour à la ligne dans la description
     // todo récupérer le nom du container à afficher
+    // todo Afficher les clés de la bonne couleur
 
-    @FXML
-    public void initialize() {
+    // todo plein de trucs pour le bon MVC
+    // todo on peut faire en sorte que au niveau du dessus, on écoute le changement d'item sélectionné
+    // et en fonction du ctrller dans lequel on est on met à jour la var correspondante dans le MainController
+
+    @Override
+    public void initThis() {
         initTable();
         listenSelectedItemInTable();
-        world.getPlayer().addItem(new Item("empapaoutai OUTAIOUTAI PAPAOUTAI? ")); // todo remove
 
-        updateAll();
-
+        updateThis();
     }
 
-    public void updateAll() {
-        if (currentContainer == null)
-            return;
-
+    @Override
+    public void updateThis() {
         updateTable();
         updateGold();
+        updateDescriptionArea();
+    }
+
+    @Override
+    public List<AbstractController> getChildrenControllers() {
+        return null;
     }
 
     private void initTable() {
+        itemTable.setPlaceholder(new Label("No Items"));
+
         itemTypeColumn.setCellValueFactory(this::typeImageViewFactory);
         itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         itemValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
@@ -78,18 +86,25 @@ public class InventoryListController {
     private void listenSelectedItemInTable() {
         itemTable.getSelectionModel()
                  .selectedItemProperty()
-                 .addListener((observable, oldValue, newValue) -> updateDescriptionArea());
+                 .addListener((observable, oldValue, newValue) -> updateSelectedItem());
     }
 
-    private Inventory getInventory() {
-        return currentContainer.getInventory();
+    private void updateSelectedItem() {
+        selectedItem = itemTable.getSelectionModel().getSelectedItem();
+        // getParentController().setSelectedItem(selectedItem); // todo
+        updateDescriptionArea();
+
+
+        // todo mej de l'item select dans MainController
+        // todo update actions (use etc..)
     }
 
     private void updateDescriptionArea() {
-        Item selectedItem = itemTable.getSelectionModel().getSelectedItem();
 
-        if (selectedItem == null || getItem(world, selectedItem.getName()) == null)
+        if (this.selectedItem == null /*|| getItem(world, selectedItem.getName()) == null*/) {
+            descriptionTextArea.setText(null);
             return;
+        }
 
         String name = capitalize(readable(selectedItem.getName())) + ", ";
         String description = capitalize(selectedItem.getDescription());
@@ -104,21 +119,23 @@ public class InventoryListController {
             modifiers += "Usable ";
         }
 
-
         if (modifiers.length() != 0)
             modifiers += " : \n";
 
-
         descriptionTextArea.setText(name + modifiers + description);
+    }
+
+    public Inventory getInventory() {
+        if (currentContainer == null)
+            return new Inventory();
+
+        return currentContainer.getInventory();
     }
 
     private void updateGold() {
         Inventory inventory = getInventory();
         int gold = inventory.getGold();
-        if (gold == 1)
-            labelGold.setText("Gold : 1 ");
-        else
-            labelGold.setText("Golds : " + gold);
+        labelGold.setText(pluralize("gold", gold));
     }
 
     private void updateTable() {
@@ -135,6 +152,20 @@ public class InventoryListController {
         ImageView imageView = new ImageView(new Image(getRessourceString(itemType, ".png", this)));
         imageView.setFitWidth(16);
         imageView.setFitHeight(16);
+
         return new SimpleObjectProperty<>(imageView);
+
+        // todo ça me semble bien ici pour colorier les icons des clés
+    }
+
+    public void setCurrentContainer(Container currentContainer) {
+        this.currentContainer = currentContainer;
+        updateThis();
+    }
+
+    public void setSelectedItem(Item item) {
+        this.selectedItem = item;
+
+        updateThis();
     }
 }

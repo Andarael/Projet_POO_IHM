@@ -4,18 +4,24 @@ package model.utils;
 
 import static model.utils.Col.*;
 
-public interface Printer {
+public class Printer {
+
+    public static boolean silence = Boolean.FALSE;
+    public static boolean displayErrors = true;
 
 
-    static void printErr(String str) {
-        System.out.println("ERROR : " + colorize(str, RED));
+    public static void printErr(String str) {
+        if (displayErrors)
+            System.out.println("ERROR : " + colorize(str, RED));
     }
 
-    static void printMsg(String str) {
-        System.out.println(str);
+    public static void printMsg(String str) {
+        if (! silence)
+            System.out.println(str);
     }
 
-    static void printDialogue(String str) {
-        System.out.println(colorize(str, CYAN));
+    public static void printDialogue(String str) {
+        if (! silence)
+            System.out.println(colorize(str, CYAN));
     }
 }

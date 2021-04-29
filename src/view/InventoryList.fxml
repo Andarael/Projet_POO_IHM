@@ -24,6 +24,6 @@
     <Label id="descriptionLabel" styleClass="h2" text="Description "/>
 
     <TextArea fx:id="descriptionTextArea" editable="false" prefColumnCount="1" prefRowCount="4"
-              text="item description here" wrapText="true"/>
+              wrapText="true"/>
 
 </VBox>

@@ -30,3 +30,18 @@ on n'a plus droit qu'à 3 containers par salle par soucis de display
 
 
 On a en tout : h = 768, l = 1024 et 24 de padding de chaque côté du root
+
+pour enregistrer tout les changements, pourquoi pas un set dans lequel on enregistre tout les listenable. Et on abonne chaque crtller au listaneable qui l'intéresse ( on récup avec le root controller)
+
+En fait il faudrait 2 commandes : updateAll et updateThis.
+Et du coup updateAll fait une cascade d' updates depuis le root, mais pas sur le lanceur
+
+Esqu'in frai pô mieux lâ d'mett l'invintèr dujouèr toutl'tin au gauch hiein ? et eul'tabs àl'droit ?
+
+un fxml playerInv
+Npc inv ?
+et containerInv ?
+
+// todo quand on entre dans une salle, afficher la pièce sans le checkFight. Mais avec tout de disable. Et le messageBox qui fit qu'on est attaqué par un mob. Avec attende d'un 'ok' de l'utilisateur. Alors après seulement on déclanche le combat.
+
+cad qu'il faut qu'on sache au moment où on arrive (commande go) si on a un combat auto qui se lance

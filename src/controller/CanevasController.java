@@ -7,17 +7,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import model.entity.Container;
-import model.world.StaticWorld;
-import model.world.World;
+import model.entity.place.Place;
 
 import java.net.URL;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 import static controller.RessourceManager.getRessourceString;
 
 public class CanevasController extends AbstractController {
 
-    private final World world = StaticWorld.world;
+//    todo meilleurs noms pour les fields
 
     @FXML
     public ImageView backGroundImage;
@@ -26,19 +26,45 @@ public class CanevasController extends AbstractController {
     @FXML
     public ImageView playerCanevas;
     @FXML
-    public ImageView ContainerCanevas1;
+    public ImageView canevasImage3;
     @FXML
-    public ImageView ContainerCanevas2;
+    public ImageView canevasImage2;
     @FXML
-    public ImageView ContainerCanevas3;
+    public ImageView canevasImage1;
 
-    private Container selected = null;
+    private Place currentPlace = null;
+
+    private Container selectedContainer = null; // todo créer la logique pour highlight CE container.
+
+    @FXML
+    public void selectImagePlayer(MouseEvent mouseEvent) {
+        MainController.selectContainerByIndex(0);
+        unHighlightAll();
+    }
+
+    @FXML
+    public void selectImage1(MouseEvent mouseEvent) {
+        MainController.selectContainerByIndex(3);
+        highlightSelected(mouseEvent);
+    }
+
+    @FXML
+    public void selectImage2(MouseEvent mouseEvent) {
+        MainController.selectContainerByIndex(2);
+        highlightSelected(mouseEvent);
+    }
+
+    @FXML
+    public void selectImage3(MouseEvent mouseEvent) {
+        MainController.selectContainerByIndex(1);
+        highlightSelected(mouseEvent);
+    }
 
     @Override
-    public void initAll() {
+    public void initThis() {
         initImages();
         initCanevas();
-        updateAll();
+        updateThis();
     }
 
     @Override
@@ -46,91 +72,34 @@ public class CanevasController extends AbstractController {
         return null;
     }
 
-    @FXML
-    public void selectImagePlayer(MouseEvent mouseEvent) {
-        unSelectAll();
-        unHighlightAll();
-    }
-
-    @FXML
-    public void selectImage1(MouseEvent mouseEvent) {
-        select(3);
-        selectHighlighted(mouseEvent);
-    }
-
-    @FXML
-    public void selectImage2(MouseEvent mouseEvent) {
-        select(2);
-        selectHighlighted(mouseEvent);
-    }
-
-    @FXML
-    public void selectImage3(MouseEvent mouseEvent) {
-        select(1);
-        selectHighlighted(mouseEvent);
-    }
-
     @Override
-    public void updateAll() {
-        updateAllChildren();
-        updateSelected();
+    public void updateThis() {
         updateCanevas();
         updateContainersInCanevas();
     }
 
     private void initImages() {
         playerCanevas.setImage(new Image(getRessourceString("player", ".png", this)));
-        ContainerCanevas1.setImage(null);
-        ContainerCanevas2.setImage(null);
-        ContainerCanevas3.setImage(null);
+        canevasImage3.setImage(null);
+        canevasImage2.setImage(null);
+        canevasImage1.setImage(null);
     }
 
     private void initCanevas() {
         canevasContainer.toBack();
-
         backGroundImage.toBack();
-
         backGroundImage.setImage(null);
-    }
-
-    private void updateSelected() {
-        unSelectAll();
-        unHighlightAll();
-    }
-
-    private void unSelectAll() {
-        selected = null;
-    }
-
-    private void unHighlightAll() {
-        unHighlight(playerCanevas);
-        unHighlight(ContainerCanevas1);
-        unHighlight(ContainerCanevas2);
-        unHighlight(ContainerCanevas3);
-    }
-
-    private void select(int i) {
-        unSelectAll();
-
-        switch (i) {
-            case 0:
-                selected = world.getPlayer();
-                break;
-            case 1:
-            case 2:
-            case 3:
-                selected = world.currentPlace.getContainerByIndex(i - 1);
-                break;
-            default:
-                selected = null;
-                break;
-        }
     }
 
     private void updateCanevas() {
         backGroundImage.setImage(null);
 
-        String placeName = world.currentPlace.getName().toLowerCase();
+        String placeName;
+        if (currentPlace != null)
+            placeName = currentPlace.getName().toLowerCase();
+        else
+            placeName = "";
+
         URL resource = RessourceManager.getRessource(placeName, ".png", this);
 
         backGroundImage.setImage(new Image(resource.toString()));
@@ -138,32 +107,29 @@ public class CanevasController extends AbstractController {
     }
 
     private void updateContainersInCanevas() {
-        ContainerCanevas1.setImage(null);
-        ContainerCanevas2.setImage(null);
-        ContainerCanevas3.setImage(null);
+        canevasImage1.setImage(null);
+        canevasImage2.setImage(null);
+        canevasImage3.setImage(null);
 
-        List<Container> containers = world.currentPlace.getListContainers();
+        if (currentPlace == null)
+            return;
 
-        Container container;
-        setContainerImages(containers);
+        setContainerImages(currentPlace.getListContainers());
+    }
+
+    private void unHighlightAll() {
+        unHighlight(playerCanevas);
+        unHighlight(canevasImage1);
+        unHighlight(canevasImage2);
+        unHighlight(canevasImage3);
     }
 
     private void setContainerImages(List<Container> containers) {
-        Image img;
+        performActionOnImages(containers, this::setImageFromContainer);
+    }
 
-        if (containers.size() >= 1) {
-            img = createImageFromContainer(containers.get(0));
-            ContainerCanevas3.setImage(img);
-        }
-
-        if (containers.size() >= 2) {
-            img = createImageFromContainer(containers.get(1));
-            ContainerCanevas2.setImage(img);
-        }
-        if (containers.size() == 3) {
-            img = createImageFromContainer(containers.get(2));
-            ContainerCanevas1.setImage(img);
-        }
+    private void setImageFromContainer(ImageView imageView, Container container) {
+        imageView.setImage(createImageFromContainer(container));
     }
 
     private Image createImageFromContainer(Container container) {
@@ -179,13 +145,43 @@ public class CanevasController extends AbstractController {
         styleable.getStyleClass().add("highlighted");
     }
 
-    private void selectHighlighted(MouseEvent mouseEvent) {
+    private void highlightSelected(MouseEvent mouseEvent) {
         unHighlightAll();
 
         highlight((Styleable) mouseEvent.getTarget());
     }
 
+
+    private void performActionOnImages(List<Container> containers, BiConsumer<ImageView, Container> consumer) {
+        if (containers == null)
+            return;
+
+        if (containers.size() >= 1)
+            consumer.accept(canevasImage1, containers.get(0));
+
+        if (containers.size() >= 2)
+            consumer.accept(canevasImage2, containers.get(1));
+
+        if (containers.size() == 3)
+            consumer.accept(canevasImage3, containers.get(2));
+    }
+
     private void unHighlight(Styleable styleable) {
         styleable.getStyleClass().remove("highlighted");
+    }
+
+    public void setCurrentPlace(Place currentPlace) {
+        this.currentPlace = currentPlace;
+        this.selectedContainer = null;
+        updateThis();
+    }
+
+    public void setSelected(Container container) {
+        // I do not take into account the cases where the wanted selected container is not null
+        // For the moment this method is only called with a null container (in the 'Look Place' button)
+
+        selectedContainer = container;
+        unHighlightAll();
+        updateThis();
     }
 }

@@ -29,7 +29,7 @@ import static model.world.WorldContains.haveEntity;
 
 public interface Execute {
 
-    static void execute(World world, List<String> args) throws NullPointerException {
+    static String execute(World world, List<String> args) throws NullPointerException {
 
         if (world == null || args == null) {
             printErr("World or command arguments are null, stopping Now !");
@@ -37,7 +37,7 @@ public interface Execute {
         }
 
         if (args.size() == 0)
-            return;
+            return null;
 
         Command command = getCommandFromString(args.get(0));
         Place currentPlace = world.currentPlace;
@@ -64,7 +64,7 @@ public interface Execute {
             arg1 = args.get(1);
             if (!(haveEntity(world, arg1) || isACommand(arg1))) {
                 printErr(arg1 + " does not exist");
-                return;
+                return arg1 + " does not exist";
             }
         }
 
@@ -72,7 +72,7 @@ public interface Execute {
             arg2 = args.get(2);
             if (!haveEntity(world, arg2)) {
                 printErr(arg2 + " does not exist");
-                return;
+                return arg2 + " does not exist";
             }
         }
 
@@ -101,9 +101,9 @@ public interface Execute {
 
             case LOOK:
                 if (nbArgs == 1)
-                    look(currentPlace, arg1);
+                    return look(currentPlace, arg1);
                 if (nbArgs == 0)
-                    look(currentPlace);
+                    return look(currentPlace);
                 break;
 
             case QUIT:
@@ -148,9 +148,12 @@ public interface Execute {
                 break;
 
             default:
-                printErr("this command is not implemented yet ..");
+                String unknownCommand = "this command is not implemented yet ..";
+                printErr(unknownCommand);
+                return unknownCommand;
         }
 
+        return null;
     }
 
 }

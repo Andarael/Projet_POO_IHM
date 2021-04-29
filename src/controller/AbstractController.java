@@ -9,20 +9,46 @@ public abstract class AbstractController {
     private AbstractController parentController;
 
     @FXML
-    private void initialize() {
-        initAll();
+    protected final void initialize() {
+        initThis();
+        setThisAsParentController();
     }
 
-    public abstract void initAll();
+    public abstract void initThis();
 
-    public abstract void updateAll();
+    public final void updateAll(AbstractController caller) {
+        updateThis();
+        updateAllChildrenExceptCaller(caller);
+        updateAllInParent();
+    }
+
+    private void updateAllInParent() {
+        AbstractController parentController = getParentController();
+        if (parentController != null)
+            parentController.updateAll(this);
+    }
+
+    private void updateAllChildrenExceptCaller(AbstractController caller) {
+        List<AbstractController> childrenControllers = getChildrenControllers();
+        if (childrenControllers == null)
+            return;
+
+        childrenControllers.stream()
+                           .filter(childrenController -> childrenController != null &&
+                                                              childrenController != caller)
+                           .forEach(childrenController -> childrenController.updateAll(this));
+    }
+
+    public abstract void updateThis();
 
     protected void updateAllChildren() {
         List<AbstractController> controllers = getChildrenControllers();
 
         if (controllers != null)
-            for (AbstractController controller : controllers)
-                controller.updateAll();
+            for (AbstractController controller : controllers) {
+                controller.updateAllChildren(); // todo check
+                controller.updateThis();
+            }
 
     }
 
@@ -34,20 +60,32 @@ public abstract class AbstractController {
         this.parentController = parentController;
     }
 
+    public final void setThisAsParentController() {
+        List<AbstractController> controllers = getChildrenControllers();
+
+        if (controllers == null)
+            return;
+
+        for (AbstractController childController : controllers) {
+            if (childController == null)
+                continue;
+
+            childController.setParentController(this);
+        }
+    }
+
     public abstract List<AbstractController> getChildrenControllers();
 
-    public AbstractController getRootController() {
+    public MainUIController getRootController() {
         AbstractController actualController = getParentController();
 
-        if (actualController == null)
-            return this;
+        if (this instanceof MainUIController)
+            return (MainUIController) this;
 
-        AbstractController parentController = actualController.getParentController();
-        while (parentController != null) {
-            actualController = parentController;
-            parentController = actualController.getParentController();
-        }
+        else if (actualController == null)
+            return null;
 
-        return actualController;
+        else
+            return actualController.getRootController();
     }
 }

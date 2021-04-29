@@ -8,16 +8,21 @@ import model.entity.place.Place;
 import static model.utils.Printer.printErr;
 
 public interface Look {
-    static void look(Place currentPlace) {
+
+    static String look(Place currentPlace) {
         currentPlace.look();
+        return currentPlace.getSimpleLook();
     }
 
-    static void look(Place currentPlace, String arg1) {
+    static String look(Place currentPlace, String arg1) {
         Entity entity = currentPlace.getContainerByName(arg1);
         if (entity != null) {
             entity.look();
-        } else {
-            printErr("You can't look at " + arg1 + " from here");
+            return entity.getSimpleLook();
         }
+
+        printErr("You can't look at " + arg1 + " from here");
+        return null;
+
     }
 }

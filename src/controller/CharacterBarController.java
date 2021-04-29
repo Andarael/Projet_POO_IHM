@@ -9,14 +9,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.entity.Being;
 import model.entity.Player;
-import model.world.StaticWorld;
-import model.world.World;
+
+import java.util.List;
 
 import static controller.RessourceManager.getRessourceString;
 import static controller.utils.Utils.*;
 
-public class CharacterBarController {
+public class CharacterBarController extends AbstractController {
 
+    //    todo meilleurs noms pour les fields
 
     @FXML
     public ImageView profilePicture;
@@ -40,22 +41,21 @@ public class CharacterBarController {
     public HBox CharacterBox;
     @FXML
     public Label equippedLabel;
-
-    World world = StaticWorld.world;
-
-//    public Being currentBeing = (Being) getEntity(world, "scand");
-    public Being currentBeing = world.getPlayer();
-
-
     @FXML
-    public void initialize() {
-        updateAll();
+    public HBox characterBar;
+
+    private Being currentBeing = null;
+
+    // todo update quand : use, go, attack,
+
+
+    @Override
+    public void initThis() {
+        updateThis();
     }
 
-    private void updateAll() {
-        if (currentBeing == null)
-            return;
-
+    @Override
+    public void updateThis() {
         updateProfilePicture();
         updateCharacterName();
         updateGold();
@@ -63,37 +63,87 @@ public class CharacterBarController {
         updateHP();
         updateEquipped();
         updatePods();
+        updateCharacterBox();
+    }
+
+    @Override
+    public List<AbstractController> getChildrenControllers() {
+        return null;
+    }
+
+    public void setCurrentBeing(Being currentBeing) {
+        this.currentBeing = currentBeing;
+        updateThis();
+    }
+
+    private void updateCharacterBox() {
+        if (currentBeing == null)
+            characterBar.setOpacity(0);
+        else
+            characterBar.setOpacity(1);
     }
 
     private void updateProfilePicture() {
+        if (currentBeing == null) {
+            profilePicture.setImage(null);
+            return;
+        }
+
         String url = getRessourceString(currentBeing.getName(), ".png", this);
         Image image = new Image(url);
         profilePicture.setImage(image);
     }
 
     private void updateCharacterName() {
+        if (currentBeing == null) {
+            characterNameLabel.setText(null);
+            return;
+        }
+
         String name = readable(currentBeing.getName());
         characterNameLabel.setText(capitalize(name));
     }
 
     private void updateGold() {
+        if (currentBeing == null) {
+            goldLabel.setText(null);
+            goldQuantityLabel.setText(null);
+            return;
+        }
+
         int gold = currentBeing.getInventory().getGold();
         goldLabel.setText(pluralize("Gold", gold) + " :");
         goldQuantityLabel.setText(String.valueOf(gold));
     }
 
     private void updateHP() {
+        if (currentBeing == null) {
+            hpLabel.setText(null);
+            return;
+        }
+
         String text = currentBeing.getMaxHp() + " / " + currentBeing.getHp() + " hp";
         hpLabel.setText(text);
     }
 
     private void updateLifeBar() {
+        if (currentBeing == null) {
+            lifeBar.setProgress(0);
+            return;
+        }
+
         double hp = currentBeing.getHp();
         double maxHp = currentBeing.getMaxHp();
         lifeBar.setProgress(hp / maxHp);
     }
 
     private void updateEquipped() {
+        if (currentBeing == null) {
+            equippedLabel.setText(null);
+            equippedItem.setText(null);
+            return;
+        }
+
         String equippedText = "";
         if ((currentBeing instanceof Player)) {
             equippedLabel.setText("Equipped :");
@@ -110,6 +160,11 @@ public class CharacterBarController {
     }
 
     private void updatePods() {
+        if (currentBeing == null) {
+            capacityVbox.setOpacity(0);
+            return;
+        }
+
         if (currentBeing instanceof Player) {
             capacityVbox.setOpacity(1);
             Player player = (Player) currentBeing;

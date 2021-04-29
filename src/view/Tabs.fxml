@@ -1,79 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" spacing="8"
+fx:controller="controller.TabsController">
 
-<TabPane id="tabs" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171"
-         xmlns:fx="http://javafx.com/fxml/1">
 
-    <!--On a 512 de largeur -->
+    <TabPane tabClosingPolicy="UNAVAILABLE" prefWidth="256">
 
-    <Tab fx:id="inventoryTab" text="Inventory">
-        <VBox alignment="TOP_CENTER" fillWidth="false" spacing="8">
-            <fx:include source="InventoryList.fxml" prefWidth="384"/>
-            <HBox alignment="CENTER" spacing="8">
-                <Button text="Drop"/>
-                <Button text="use"/>
-                <Button text="equip"/>
-                <Button text="Unequip"/>
-            </HBox>
-        </VBox>
-    </Tab>
+        <Tab text="Inventory">
+            <VBox alignment="TOP_CENTER" spacing="8">
+                <fx:include fx:id="playerInv" source="InventoryList.fxml"/>
+                <GridPane alignment="CENTER" vgap="8" hgap="8">
+                    <Button text="Drop" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Button text="Use" GridPane.columnIndex="1"/>
+                    <Button text="Equip" GridPane.rowIndex="1"/>
+                    <Button text="Unequip"/>
+                </GridPane>
+            </VBox>
+        </Tab>
 
-    <Tab fx:id="tradeTab" text="Trade">
-        <GridPane alignment="TOP_CENTER" hgap="8" vgap="8">
+    </TabPane>
 
-            <fx:include source="InventoryList.fxml" GridPane.columnIndex="0"/>
-            <fx:include source="InventoryList.fxml" GridPane.columnIndex="1"/>
+    <Separator orientation="VERTICAL"/>
 
-            <Button text="&lt;- Buy" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                    GridPane.rowIndex="1"/>
 
-            <HBox alignment="CENTER" spacing="8" GridPane.columnIndex="0"
-                  GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                <Button text="Drop"/>
-                <Button text="Sell -&gt;"/>
-            </HBox>
-            <columnConstraints>
-                <ColumnConstraints/>
-                <ColumnConstraints/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints/>
-                <RowConstraints/>
-            </rowConstraints>
+    <TabPane fx:id="tradeAndLootTabPane" tabClosingPolicy="UNAVAILABLE" prefWidth="256">
 
-        </GridPane>
-    </Tab>
+        <Tab fx:id="tradeTab" text="Trade">
+            <VBox alignment="TOP_CENTER" spacing="8">
 
-    <Tab fx:id="lootTab" text="Loot">
-        <GridPane alignment="TOP_CENTER" hgap="8" vgap="8">
+                <fx:include fx:id="traderInv" source="InventoryList.fxml"/>
 
-            <fx:include source="InventoryList.fxml" GridPane.columnIndex="0"
-                        GridPane.halignment="CENTER"/>
-            <fx:include source="InventoryList.fxml" GridPane.columnIndex="1"
-                        GridPane.halignment="CENTER"/>
+                <GridPane alignment="CENTER">
+                    <Button text="Buy" GridPane.columnIndex="1"/>
+                    <Button text="Sell"/>
+                </GridPane>
+            </VBox>
 
-            <Button text="Drop -&gt;" GridPane.columnIndex="0" GridPane.halignment="CENTER"
-                    GridPane.rowIndex="1"/>
+        </Tab>
 
-            <Button text="&lt;- Take" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                    GridPane.rowIndex="1"/>
-            <columnConstraints>
-                <ColumnConstraints/>
-                <ColumnConstraints/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints/>
-                <RowConstraints/>
-            </rowConstraints>
-        </GridPane>
-    </Tab>
+        <Tab fx:id="lootTab" text="Loot">
+            <VBox alignment="TOP_CENTER" spacing="8">
+                <fx:include fx:id="chestInv" source="InventoryList.fxml"/>
 
-</TabPane>
+                <GridPane alignment="CENTER">
+                    <Button text="Take" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                </GridPane>
+
+            </VBox>
+        </Tab>
+
+    </TabPane>
+
+</HBox>

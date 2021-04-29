@@ -19,4 +19,8 @@ public interface Lookable extends Drawable {
         return getDisplay();
     }
 
+    default String getSimpleLook() {
+        return getName() + " : " + getDescription();
+    }
+
 }

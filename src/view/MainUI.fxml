@@ -4,7 +4,9 @@
 <?import javafx.scene.layout.*?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="StackPane"
          stylesheets="@style.css, @tableStyle.css, @colors.css, @tabs.css"
-         xmlns="http://javafx.com/javafx/8.0.171">
+         xmlns="http://javafx.com/javafx/8.0.171"
+         fx:controller="controller.MainUIController"
+         fx:id="root">
 
 
     <HBox spacing="32" minWidth="768" maxWidth="1280" minHeight="512" maxHeight="800"
@@ -14,24 +16,28 @@
             <Label styleClass="h1" text="Room Name"/>
 
             <fx:include fx:id="direction" source="Direction.fxml"/>
+
             <Separator/>
-            <fx:include fx:id="CharacterBar1" source="CharacterBar.fxml"/>
+
+            <fx:include fx:id="characterBar1" source="CharacterBar.fxml"/>
+
             <Separator/>
-            <fx:include fx:id="CharacterBar2" source="CharacterBar.fxml"/>
+
+            <fx:include fx:id="characterBar2" source="CharacterBar.fxml"/>
+
             <Separator/>
+
+            <Label text="Dialogue" styleClass="h2"/>
+
             <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" maxWidth="-Infinity"
                       prefRowCount="2" prefWidth="435.0" text="bla bla bla"/>
         </VBox>
 
         <Separator orientation="VERTICAL"/>
 
-        <VBox spacing="8">
+        <VBox spacing="8" alignment="CENTER">
 
-            <HBox prefHeight="32" spacing="16">
-                <Button mnemonicParsing="false" text="Look Place"/>
-                <Button mnemonicParsing="false" text="Loot Place"/>
-                <Button mnemonicParsing="false" text="Quit Game"/>
-            </HBox>
+            <fx:include source="TopButtons.fxml"/>
 
             <Separator/>
 

@@ -9,24 +9,28 @@
             prefWidth="512.0" fx:controller="controller.DirectionController">
 
     <top>
-        <Button fx:id="buttonTop" mnemonicParsing="false" onAction="#goTop" text="Button"
+        <Button fx:id="buttonUp" onAction="#goUp" text="Button"
                 BorderPane.alignment="CENTER"/>
     </top>
 
+    <bottom>
+        <Button fx:id="buttonDown" onAction="#goDown" text="Button"
+                BorderPane.alignment="CENTER"/>
+    </bottom>
+
+    <left>
+        <Button fx:id="buttonLeft" onAction="#goLeft" text="Button"
+                textAlignment="CENTER" BorderPane.alignment="CENTER"/>
+    </left>
+
+    <right>
+        <Button fx:id="buttonRight" onAction="#goRight" text="Button"
+                textAlignment="CENTER" BorderPane.alignment="CENTER"/>
+    </right>
+
+    <!--Placer le canevas en fin de fichier fxml évite qu'il ne bouge pendant que les boutons changent de taille
+    sérieusement ... -->
     <center>
         <fx:include fx:id="canevas" source="Canevas.fxml"/>
     </center>
-
-    <bottom>
-        <Button fx:id="buttonBottom" mnemonicParsing="false" onAction="#goBottom" text="Button"
-                BorderPane.alignment="CENTER"/>
-    </bottom>
-    <left>
-        <Button fx:id="buttonLeft" mnemonicParsing="false" onAction="#goLeft" text="Button"
-                textAlignment="CENTER" BorderPane.alignment="CENTER"/>
-    </left>
-    <right>
-        <Button fx:id="buttonRight" mnemonicParsing="false" onAction="#goRight" text="Button"
-                textAlignment="CENTER" BorderPane.alignment="CENTER"/>
-    </right>
 </BorderPane>
