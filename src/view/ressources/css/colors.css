@@ -1,0 +1,29 @@
+
+.BLACK {
+    -fx-background-color: black;
+    -fx-text-inner-color: white;
+}
+
+.RED {
+    -fx-background-color: red;
+}
+
+.GREEN {
+    -fx-background-color: forestGreen;
+}
+
+.YELLOW {
+    -fx-background-color: yellow;
+}
+
+.BLUE {
+    -fx-background-color: dodgerblue;
+}
+
+.PURPLE {
+    -fx-background-color: deeppink;
+}
+
+.CYAN {
+    -fx-background-color: cyan;
+}

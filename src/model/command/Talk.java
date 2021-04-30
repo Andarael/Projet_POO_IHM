@@ -6,8 +6,8 @@ import model.entity.Container;
 import model.entity.place.Place;
 import model.interfaces.Talkable;
 
-import static controller.utils.Utils.capitalize;
-import static controller.utils.Utils.readable;
+import static model.utils.StringUtils.capitalize;
+import static model.utils.StringUtils.readable;
 import static model.utils.Printer.*;
 
 public interface Talk {

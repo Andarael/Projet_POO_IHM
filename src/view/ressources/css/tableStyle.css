@@ -1,0 +1,56 @@
+/* transparent */
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-column{
+    -fx-alignment: center;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .column-header {
+
+    -fx-background-radius: 5 5 0 0;
+}
+
+.table-view .table-cell {
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-border-width: 0px;
+}
+
+
+.table-row-cell {
+    -fx-border-width: 0px;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #40201f; /*todo right value*/
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #FBE5C6aa;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover
+{
+    -fx-background-color: #FBE5C6aa;
+}

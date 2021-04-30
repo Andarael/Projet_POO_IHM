@@ -4,8 +4,8 @@ package model.interfaces;
 
 import model.utils.Printer;
 
-import static controller.utils.Utils.capitalize;
-import static controller.utils.Utils.readable; // todo move to model
+import static model.utils.StringUtils.capitalize;
+import static model.utils.StringUtils.readable; // todo move to model
 
 /**
  * An Interface to interact with objects that can be looked at.
