@@ -26,5 +26,4 @@ public class GameApplication extends Application {
     }
 
     // todo arguments de lancement : terminal ON/OFF
-    // todo voir pour la taille
 }

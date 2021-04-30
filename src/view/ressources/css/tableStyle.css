@@ -1,4 +1,3 @@
-/* transparent */
 
 .table-view {
     -fx-background-color: transparent;
@@ -39,7 +38,7 @@
 }
 
 .table-row-cell:even {
-    -fx-background-color: #40201f; /*todo right value*/
+    -fx-background-color: #40201f;
 }
 
 .table-row-cell:selected {

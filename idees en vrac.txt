@@ -21,9 +21,3 @@ Esqu'in frai pô mieux lâ d'mett l'invintèr dujouèr toutl'tin au gauch hiein 
 un fxml playerInv
 Npc inv ?
 et containerInv ?
-
-// todo quand on entre dans une salle, afficher la pièce sans le checkFight. Mais avec tout de disable. Et le messageBox qui fit qu'on est attaqué par un mob. Avec attende d'un 'ok' de l'utilisateur. Alors après seulement on déclanche le combat.
-
-cad qu'il faut qu'on sache au moment où on arrive (commande go) si on a un combat auto qui se lance
-
-// todo popup ? est-ce que c'est bien à ça que je pensais

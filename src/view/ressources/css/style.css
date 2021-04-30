@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap'); /*External font requires internet connexion*/
 
 .root {
     -fx-padding: 24;
@@ -6,8 +6,8 @@
     -fx-font-family: "Roboto Slab";
     -fx-alignment: center;
 
-    /*-fx-focus-color: transparent;*/
-    /*-fx-faint-focus-color: transparent;*/
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 
     -fx-base: #130A0F;
     -fx-background: #2C1210;
@@ -17,16 +17,8 @@
 * {
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
-    /*-fx-text-fill: black;*/
-    /*-fx-border-color: black;*/
-    /*-fx-border-style: solid;*/
-    /*-fx-border-width: 1;*/
-    /*-fx-open-tab-animation : grow;*/
-
-    /*-fx-background-radius: 0;*/
-    /*-fx-border-radius: 0;*/
     -fx-border-width: 0px;
-    -fx-border-color: #0000;
+    -fx-border-color: transparent;
     -fx-background-insets: 0;
 }
 
@@ -35,10 +27,7 @@
     -fx-border-color: #0003;
 }
 
-
-#canevas {
-
-}
+/*================== Text ====================*/
 
 .h1 {
     -fx-font-size: 24px;
@@ -51,13 +40,6 @@
     -fx-font-size: 14px;
 }
 
-/*=========== No focus highlight ========================*/
-/**:focused {*/
-/*    -fx-focus-color: transparent;*/
-/*    -fx-background-insets: -1;*/
-/*}*/
-
-
 /*================== Buttons ====================*/
 
 .button {
@@ -69,8 +51,7 @@
 }
 
 .button:hover {
-    /*-fx-effect: dropshadow(gaussian, white, 10, .10, 0, 0);*/
-    /*-fx-border-radius: 56px;*/
+    -fx-effect: dropshadow(gaussian, #FBE5C6, 5, .05, 0, 0);
     -fx-background-color: linear-gradient(#40201f, #202);
 }
 
@@ -78,19 +59,13 @@
     -fx-background-color: linear-gradient(#40201f, #FBE5C6);
 }
 
-
-.button:armed {
-    /*-fx-font-weight: bold;*/
-}
-
-
-/*===============================================*/
+/*============== LifeBar =========================*/
 
 .lifeBar {
     -fx-accent: red;
 }
 
-/* Scrollbars */
+/*===========    Scrollbars  ==================================*/
 
 * .scroll-bar .thumb {
     -fx-background-color: #aaaa;
@@ -107,9 +82,13 @@
     -fx-background-color: transparent;
 }
 
+/*============ Highlight ===============*/
+
 .highlighted {
     -fx-effect: dropshadow(gaussian, #FBE5C6, 30, .50, 0, 0);
 }
+
+/*============ cursor ===============*/
 
 .handCursor {
     -fx-cursor: hand;
@@ -118,5 +97,3 @@
 .text-area .content {
     -fx-cursor: default;
 }
-
-/*todo réparer*/

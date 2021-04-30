@@ -5,7 +5,7 @@ package model.interfaces;
 import model.utils.Printer;
 
 import static model.utils.StringUtils.capitalize;
-import static model.utils.StringUtils.readable; // todo move to model
+import static model.utils.StringUtils.readable;
 
 /**
  * An Interface to interact with objects that can be looked at.

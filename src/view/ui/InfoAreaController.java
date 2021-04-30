@@ -17,7 +17,6 @@ public class InfoAreaController extends AbstractController {
     @Override
     public void initThis() {
         okButton.setDisable(true);
-//        okButton.setOpacity(0); // todo
     }
 
     @Override
