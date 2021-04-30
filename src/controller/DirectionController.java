@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import model.entity.Container;
+import model.entity.Player;
 import model.entity.item.Key;
 import model.entity.place.Exit;
 import model.entity.place.LockedExit;
@@ -19,7 +20,6 @@ import static controller.utils.Utils.readable;
 
 public class DirectionController extends AbstractController {
 
-    //    todo meilleurs noms pour les fields
     @FXML public Button buttonUp;
     @FXML public Button buttonDown;
     @FXML public Button buttonLeft;
@@ -30,29 +30,27 @@ public class DirectionController extends AbstractController {
     CanevasController canevasController;
 
     private Place currentPlace = null;
+    private Player player = null;
 
 
     @FXML
     public void goUp(ActionEvent actionEvent) {
-        MainController.executeByDirection(UP);
-
-        // todo afficher le canevas avec la prochaine room avant l' update et sleep un peu
-        // todo update all l'interface
+        MainController.executeGo(UP);
     }
 
     @FXML
     public void goLeft(ActionEvent actionEvent) {
-        MainController.executeByDirection(LEFT);
+        MainController.executeGo(LEFT);
     }
 
     @FXML
     public void goRight(ActionEvent actionEvent) {
-        MainController.executeByDirection(RIGHT);
+        MainController.executeGo(RIGHT);
     }
 
     @FXML
     public void goDown(ActionEvent actionEvent) {
-        MainController.executeByDirection(DOWN);
+        MainController.executeGo(DOWN);
     }
 
     @Override
@@ -121,7 +119,7 @@ public class DirectionController extends AbstractController {
 
     private void disableButtonIfNoKey(Button button, LockedExit exit) {
         String keyName = Key.generateKeyName(exit.getColor());
-        button.setDisable(!MainController.getPlayer().contains(keyName));
+        button.setDisable(!player.contains(keyName) && exit.isLocked());
     }
 
     private void setButtonToExitColor(Button button, Exit exit) {
@@ -139,13 +137,22 @@ public class DirectionController extends AbstractController {
         }
     }
 
-    public void setCurrentPlace(Place currentPlace) {
+    public void updateCurrentPlace(Place currentPlace) {
         this.currentPlace = currentPlace;
-        canevasController.setCurrentPlace(currentPlace);
+        canevasController.updateCurrentPlace(currentPlace);
         updateThis();
     }
 
-    public void setSelectedContainer(Container container) {
-        canevasController.setSelected(container);
+    public void updateSelectedContainer(Container container) {
+        canevasController.updateSelectedContainer(container);
+    }
+
+    public void updatePlayer(Player player) {
+        this.player = player;
+        canevasController.updatePlayer(player);
+    }
+
+    public void updateExits() {
+        updateThis();
     }
 }

@@ -20,27 +20,11 @@ fx:controller="controller.TabsController">
     <TabPane fx:id="tradeAndLootTabPane" tabClosingPolicy="UNAVAILABLE" prefWidth="256">
 
         <Tab fx:id="tradeTab" text="Trade">
-            <VBox alignment="TOP_CENTER" spacing="8">
-
-                <fx:include fx:id="traderInv" source="Inventory.fxml"/>
-
-                <GridPane alignment="CENTER">
-                    <Button text="Buy" GridPane.columnIndex="1"/>
-                    <Button text="Sell"/>
-                </GridPane>
-            </VBox>
-
+            <fx:include fx:id="traderInv" source="TraderInventory.fxml"/>
         </Tab>
 
         <Tab fx:id="lootTab" text="Loot">
-            <VBox alignment="TOP_CENTER" spacing="8">
-                <fx:include fx:id="chestInv" source="Inventory.fxml"/>
-
-                <GridPane alignment="CENTER">
-                    <Button text="Take" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                </GridPane>
-
-            </VBox>
+            <fx:include fx:id="lootInv" source="LootInventory.fxml"/>
         </Tab>
 
     </TabPane>

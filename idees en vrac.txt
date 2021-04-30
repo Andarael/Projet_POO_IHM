@@ -1,30 +1,10 @@
 
 
-// todo faire en sorte que les actions sur les objets retournent une description de ce qui ce passe, plutôt qu'un print
-
-// todo rendre les attributs du model accessible à la vue
-
-// todo faire un générateur de commandes avec le controller
-
-// todo se renseigner pour pouvoir afficher une image différente à chaque salle
-
-// todo faire en sorte qu'on puisse prendre les golds des coffres
-
 // todo réparer la map et les mobs qui ne meurent pas
 
 // todo réparer le leveling up (mauvais nbr de kills)
 
 // todo réparer le leveling up (mauvais nbr de pv gagnés)
-
-// todo trouver où mettre le bouton 'use'
-
-// todo faire en sorte de pouvoir utiliser les clés sur les portes. Actuellement on ne peut pas select une porte !
-
-// todo gérer equip unequip
-
-// todo gérer le bouton 'Talk' qui se transforme en 'Loot' lorsqu' on a un coffre de sélectionné
-
-
 
 on n'a plus droit qu'à 3 containers par salle par soucis de display
 
@@ -45,3 +25,5 @@ et containerInv ?
 // todo quand on entre dans une salle, afficher la pièce sans le checkFight. Mais avec tout de disable. Et le messageBox qui fit qu'on est attaqué par un mob. Avec attende d'un 'ok' de l'utilisateur. Alors après seulement on déclanche le combat.
 
 cad qu'il faut qu'on sache au moment où on arrive (commande go) si on a un combat auto qui se lance
+
+// todo popup ? est-ce que c'est bien à ça que je pensais

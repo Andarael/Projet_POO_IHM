@@ -11,7 +11,7 @@
 
     <Label text="Information" styleClass="h2"/>
 
-    <TextArea fx:id="textArea" wrapText="true" editable="false" prefRowCount="8" prefWidth="384"/>
+    <TextArea fx:id="textArea" wrapText="true" editable="false" prefRowCount="2" prefWidth="384" styleClass="h3"/>
 
     <Button fx:id="okButton" text="Ok" onAction="#OkButtonAction"/>
 

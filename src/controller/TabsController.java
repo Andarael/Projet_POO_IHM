@@ -5,14 +5,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import model.entity.*;
+import model.entity.item.Item;
 import model.entity.place.Place;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
-// todo check pour la déscativation de loot
 
 public class TabsController extends AbstractController {
 
@@ -21,11 +19,12 @@ public class TabsController extends AbstractController {
     @FXML private VBox traderInv;
     @FXML private Tab tradeTab;
     @FXML private VBox playerInv;
-    @FXML private VBox chestInv;
+    @FXML private VBox lootInv;
     @FXML private TabPane tradeAndLootTabPane;
+
     @FXML private PlayerInventoryController playerInvController;
-    @FXML private InventoryController traderInvController;
-    @FXML private InventoryController chestInvController;
+    @FXML private TraderInventoryController traderInvController;
+    @FXML private LootInventoryController lootInvController;
 
     private Container selectedContainer;
 
@@ -33,7 +32,7 @@ public class TabsController extends AbstractController {
 
     @Override
     public void initThis() {
-        playerInvController.setCurrentContainer(player); // todo move
+        playerInvController.setCurrentContainer(player);
 
         updateThis();
     }
@@ -62,9 +61,7 @@ public class TabsController extends AbstractController {
                 setTabs(null, null, null);
         }
 
-//        traderInvController.setSelectedItem(null); // todo se décider si on garde ça ou pas ?
-//        chestInvController.setSelectedItem(null);
-        chestInvController.updateThis();
+        lootInvController.updateThis();
         traderInvController.updateThis();
 
         // System.out.println(lootTab.isDisabled());
@@ -80,17 +77,18 @@ public class TabsController extends AbstractController {
     public List<AbstractController> getChildrenControllers() {
         return new ArrayList<>(Arrays.asList(playerInvController,
                                              traderInvController,
-                                             chestInvController));
+                                             lootInvController));
     }
 
     private void setTabs(Container chestContainer, Container traderContainer, Tab activeTab) {
-        chestInvController.setCurrentContainer(chestContainer);
+        lootInvController.setCurrentContainer(chestContainer);
         traderInvController.setCurrentContainer(traderContainer);
         tradeAndLootTabPane.getSelectionModel().select(activeTab);
     }
 
-    public void setSelectedContainer(Container container) {
+    public void updateSelectedContainer(Container container) {
         this.selectedContainer = container;
+        traderInvController.setSelectedItem(null);
         updateThis();
     }
 
@@ -102,5 +100,9 @@ public class TabsController extends AbstractController {
 
     public void setCurrentPlace(Place currentPlace) {
         playerInvController.setCurrentPlace(currentPlace);
+    }
+
+    public void setSelectedItemPlayer(Item item) {
+        traderInvController.setSelectedItemPlayer(item);
     }
 }

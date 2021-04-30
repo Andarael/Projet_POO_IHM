@@ -13,61 +13,55 @@ import static model.utils.Printer.printErr;
 import static model.utils.Printer.printMsg;
 
 public interface Trade {
-    static void sell(Player player, Place currentPlace, String npcName, String itemName) {
+    static String sell(Player player, Place currentPlace, String npcName, String itemName) {
 
         Container buyer = currentPlace.getContainerByName(npcName);
 
         if (buyer == null) {
-            printErr(npcName + " is not here");
-            return;
+            return printErr(npcName + " is not here");
         }
 
         if (!(buyer instanceof Passive)) {
-            printErr("You can't buy from " + npcName);
-            return;
+            return printErr("You can't buy from " + npcName);
         }
 
-        trade((Being) buyer, player, itemName);
+        return trade((Being) buyer, player, itemName);
     }
 
-    static void buy(Player player, Place currentPlace, String npcName, String itemName) {
+    static String buy(Player player, Place currentPlace, String npcName, String itemName) {
 
         Container seller = currentPlace.getContainerByName(npcName);
 
         if (seller == null) {
-            printErr(npcName + " is not here");
-            return;
+            return printErr(npcName + " is not here");
         }
 
         if (!(seller instanceof Passive)) {
-            printErr("You can't sell to " + npcName);
-            return;
+            return printErr("You can't sell to " + npcName);
         }
 
-        trade(player, (Being) seller, itemName);
+        return trade(player, (Being) seller, itemName);
     }
 
-    static void trade(Being buyer, Being seller, String itemName) {
+    static String trade(Being buyer, Being seller, String itemName) {
 
         Item item = seller.getItem(itemName);
 
         if (item == null) {
-            printErr(seller.getName() + " don't have " + itemName);
-            return;
+            return printErr(seller.getName() + " don't have " + itemName);
         }
 
         int itemValue = item.getValue();
 
         if (!buyer.canPay(itemValue)) {
-            printMsg(buyer.getName() + " don't have enough gold to buy " + item.getName());
-            return;
+            return printMsg(buyer.getName() + " don't have enough gold to buy " + item.getName());
         }
 
         if (!buyer.canAddItem(item)) {
-            printMsg(buyer.getName() +
-                     " can't add" +
-                     item.getName() +
-                     "to its inventory, it weights too much ");
+            return printMsg(buyer.getName() +
+                            " can't add" +
+                            item.getName() +
+                            "to its inventory, it weights too much ");
         }
 
         buyer.removeGold(itemValue);
@@ -75,13 +69,13 @@ public interface Trade {
         seller.removeItem(item);
         buyer.addItem(item);
 
-        printMsg(buyer.getName() +
-                 " bought " +
-                 item.getName() +
-                 " from " +
-                 seller.getName() +
-                 " for " +
-                 itemValue +
-                 " gold(s)");
+        return printMsg(buyer.getName() +
+                        " bought " +
+                        item.getName() +
+                        " from " +
+                        seller.getName() +
+                        " for " +
+                        itemValue +
+                        " gold(s)");
     }
 }

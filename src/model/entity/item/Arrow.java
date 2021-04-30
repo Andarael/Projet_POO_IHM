@@ -2,6 +2,7 @@
 
 package model.entity.item;
 
+import javafx.util.Pair;
 import model.entity.Entity;
 import model.interfaces.UsableOnItem;
 import model.utils.Printer;
@@ -36,10 +37,10 @@ public class Arrow extends Weapon implements UsableOnItem {
      * @return false, invalid use
      */
     @Override
-    public String use() {
+    public Pair<Boolean, String> use() {
         String message = "Arrows can only be used on a Bow";
         Printer.printErr(message + ", " + getUsage());
-        return message;
+        return new Pair<>(false, message);
     }
 
     /**
@@ -50,10 +51,10 @@ public class Arrow extends Weapon implements UsableOnItem {
      * @return true if the entity accepted the arrow
      */
     @Override
-    public String use(Entity entity) {
+    public Pair<Boolean, String> use(Entity entity) {
         String message = "Arrows can only be used on a Bow";
         Printer.printErr(message + ", " + getUsage());
-        return message;
+        return new Pair<>(false, message);
     }
 
     /**
@@ -64,18 +65,20 @@ public class Arrow extends Weapon implements UsableOnItem {
      * @return true if the arrow was accepted by the item
      */
     @Override
-    public boolean use(Item item) {
+    public Pair<Boolean, String> use(Item item) {
+        String message;
         if (item == null) {
-            Printer.printErr("This item does not exist, " + getUsage());
-            return false;
+            message = "This item does not exist";
+            Printer.printErr(message + ", " + getUsage());
+            return new Pair<>(false,message);
         }
         if (!(item instanceof Bow)) {
-            Printer.printErr("This is not a Bow, " + getUsage());
-            return false;
+            message = "This is not a Bow";
+            Printer.printErr(message + ", " + getUsage());
+            return new Pair<>(false, message);
         }
         ((Bow) item).addArrow();
-        Printer.printMsg("Added an Arrow to " + item.getName());
-        return true;
+        return new Pair<>(true,Printer.printMsg("Added an Arrow to " + item.getName()));
     }
 
 }

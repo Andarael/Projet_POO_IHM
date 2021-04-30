@@ -18,8 +18,7 @@ import static controller.utils.Utils.*;
 
 public class CharacterBarController extends AbstractController {
 
-    //    todo meilleurs noms pour les fields
-    @FXML public ImageView profilePicture;
+    @FXML public ImageView profileImage;
     @FXML public Label characterNameLabel;
     @FXML public Label goldLabel;
     @FXML public ProgressBar lifeBar;
@@ -33,9 +32,6 @@ public class CharacterBarController extends AbstractController {
     @FXML public HBox characterBar;
 
     private Being currentBeing = null;
-
-    // todo update quand : use, go, attack,
-
 
     @Override
     public void initThis() {
@@ -59,7 +55,7 @@ public class CharacterBarController extends AbstractController {
         return null;
     }
 
-    public void setCurrentBeing(Being currentBeing) {
+    public void updateBeing(Being currentBeing) {
         this.currentBeing = currentBeing;
         updateThis();
     }
@@ -73,14 +69,14 @@ public class CharacterBarController extends AbstractController {
 
     private void updateProfilePicture() {
         if (currentBeing == null) {
-            profilePicture.setImage(null);
+            profileImage.setImage(null);
             return;
         }
 
         String url = getRessourceString(currentBeing.getShortName() + "_head", ".png", this);
 
         Image image = new Image(url);
-        profilePicture.setImage(image);
+        profileImage.setImage(image);
     }
 
     private void updateCharacterName() {
@@ -89,8 +85,8 @@ public class CharacterBarController extends AbstractController {
             return;
         }
 
-        String name = readable(currentBeing.getName());
-        characterNameLabel.setText(capitalize(name));
+        String name = capitalize(readable(currentBeing.getName()));
+        characterNameLabel.setText(name + "\n(lvl " + currentBeing.getLevel() + ")");
     }
 
     private void updateGold() {

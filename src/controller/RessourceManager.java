@@ -6,12 +6,12 @@ public interface RessourceManager {
 
     static URL getRessource(String ressourceName, String ext, Object caller) {
 
-        String ressourcePath = "../view/";
+        String ressourcePath = "../view/images/";
 
         URL url = caller.getClass().getResource(ressourcePath + ressourceName + ext);
 
         if (url == null)
-            return caller.getClass().getResource("../view/error.png");
+            return caller.getClass().getResource("../view/images/error.png");
 
         return url;
     }

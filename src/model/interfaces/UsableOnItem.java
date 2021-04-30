@@ -2,6 +2,7 @@
 
 package model.interfaces;
 
+import javafx.util.Pair;
 import model.entity.item.Item;
 
 /**
@@ -9,6 +10,6 @@ import model.entity.item.Item;
  */
 public interface UsableOnItem extends Usable {
 
-    boolean use(Item item);
+    Pair<Boolean, String> use(Item item);
 
 }

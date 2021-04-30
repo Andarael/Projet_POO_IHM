@@ -23,25 +23,28 @@ public interface Fightable extends Describable {
      * @param player   the player of the game
      * @param opponent the fightable that the player will fight
      */
-    static void fight(Player player, Fightable opponent) {
+    static String fight(Player player, Fightable opponent) {
         if (player == null || opponent == null) {
-            printErr("This does not exist !");
-            return;
+            return printErr("This does not exist !");
         }
+
+        String output = "";
 
         while (!(player.isDead() || opponent.isDead())) {
 
-            player.attack(opponent);
+            output += player.attack(opponent);
 
             if (opponent.isDead())
                 break;
 
-            opponent.attack(player);
+            output += opponent.attack(player);
 
         }
 
         if (opponent.isDead())
-            printMsg("Well done, you won the fight against " + opponent.getName());
+            output += printMsg("Well done, you won the fight against " + opponent.getName());
+
+        return output;
     }
 
     /**
@@ -113,10 +116,9 @@ public interface Fightable extends Describable {
      *
      * @param opponent the opponent to attack
      */
-    default void attack(Fightable opponent) {
+    default String attack(Fightable opponent) {
         if (opponent == null) {
-            printErr("This does not exist !");
-            return;
+            return printErr("This does not exist !");
         }
 
         int amount = getPower();
@@ -125,10 +127,10 @@ public interface Fightable extends Describable {
         if (amount < 1)
             amount = 1;
 
-        printMsg(getName() + " attacks " + opponent.getName() +
-                 " and deals " + amount + " Damage !");
-
         opponent.hurt(amount);
+
+        return printMsg(getName() + " attacks " + opponent.getName() +
+                 " and deals " + amount + " Damage !");
     }
 
     /**

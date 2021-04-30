@@ -11,21 +11,20 @@ import static model.utils.Printer.printMsg;
 
 public interface Drop {
 
-    static void drop(Player player, Place currentPlace, String arg1) {
+    static String drop(Player player, Place currentPlace, String arg1) {
+        String message;
         if (player == null || currentPlace == null) {
-            printErr("This does not exist");
-            return;
+            return printErr("This does not exist");
         }
 
         Item item = player.getItem(arg1);
         if (item == null) {
-            printErr(arg1 + " does not exist");
-            return;
+            return printErr(arg1 + " does not exist");
         }
 
         player.removeItem(item);
         currentPlace.addItemToPlace(item);
 
-        printMsg("You dropped " + item.getName() + " in the room");
+        return printMsg("You dropped " + item.getName() + " on the ground");
     }
 }

@@ -15,6 +15,13 @@ import java.util.List;
 
 public interface CommandGenerator {
 
+    static ArrayList<String> getBaseCommand(String baseCommand) {
+        ArrayList<String> command = new ArrayList<>();
+        if (baseCommand != null)
+            command.add(baseCommand);
+        return command;
+    }
+
     static List<String> generateGoCommand(Exit exit) {
         String destination = exit != null ? exit.getName() : "";
         return new ArrayList<>(Arrays.asList("go", destination));
@@ -60,13 +67,6 @@ public interface CommandGenerator {
         return command;
     }
 
-    static ArrayList<String> getBaseCommand(String baseCommand) {
-        ArrayList<String> command = new ArrayList<>();
-        if (baseCommand != null)
-            command.add(baseCommand);
-        return command;
-    }
-
     static List<String> generateUseCommand(Item itemToUse) {
         ArrayList<String> command = getBaseCommand("use");
 
@@ -83,6 +83,43 @@ public interface CommandGenerator {
             command.add(itemToUse.getName());
 
         if (target instanceof Exit || target instanceof Item)
+            command.add(target.getName());
+
+        return command;
+    }
+
+    static List<String> generateBuyCommand(Container trader, Item itemToBuy) {
+        ArrayList<String> command = getBaseCommand("buy");
+
+        command.add(trader.getName());
+        command.add(itemToBuy.getName());
+
+        return command;
+    }
+
+    static List<String> generateSellCommand(Container trader, Item itemToBuy) {
+        ArrayList<String> command = getBaseCommand("sell");
+
+        command.add(trader.getName());
+        command.add(itemToBuy.getName());
+
+        return command;
+    }
+
+    static List<String> generateTakeCommand(Container target, Item itemToTake) {
+        ArrayList<String> command = getBaseCommand("take");
+
+        if (target != null)
+            command.add(target.getName());
+        command.add(itemToTake.getName());
+
+        return command;
+    }
+
+    static List<String> generateAttackCommand(Container target) {
+        ArrayList<String> command = getBaseCommand("attack");
+
+        if (target != null)
             command.add(target.getName());
 
         return command;

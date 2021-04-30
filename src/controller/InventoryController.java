@@ -13,10 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.entity.Container;
-import model.entity.item.Bow;
-import model.entity.item.Food;
-import model.entity.item.Item;
-import model.entity.item.Weapon;
+import model.entity.item.*;
 import model.interfaces.Equipable;
 import model.interfaces.Usable;
 import model.inventory.Inventory;
@@ -39,16 +36,6 @@ public class InventoryController extends AbstractController {
     private Item selectedItem = null;
 
     private Container currentContainer = null;
-
-    // todo add gold display from the list
-    // todo description (equipable, restoration, damages)
-    // todo retour à la ligne dans la description
-    // todo récupérer le nom du container à afficher
-    // todo Afficher les clés de la bonne couleur
-
-    // todo plein de trucs pour le bon MVC
-    // todo on peut faire en sorte que au niveau du dessus, on écoute le changement d'item sélectionné
-    // et en fonction du ctrller dans lequel on est on met à jour la var correspondante dans le MainController
 
     @Override
     public void initThis() {
@@ -97,7 +84,6 @@ public class InventoryController extends AbstractController {
 
     private void updateDescriptionArea() {
 
-        // todo pour la bouffe et les clés etc...
         if (this.selectedItem == null) {
             descriptionTextArea.setText(null);
             return;
@@ -118,7 +104,7 @@ public class InventoryController extends AbstractController {
         }
 
         if (modifiers.length() != 0)
-            modifiers += "\n";
+            modifiers = "- " + modifiers + "\n";
 
         if (selectedItem instanceof Bow) {
             Bow bow = (Bow) this.selectedItem;
@@ -126,7 +112,7 @@ public class InventoryController extends AbstractController {
             stats += "- Damages : " + bow.getPowerNoConsume() + "\n";
             stats += pluralize("- Arrow", nbArrows) + " : " + nbArrows + "\n";
 
-        } else if(selectedItem instanceof Weapon) {
+        } else if (selectedItem instanceof Weapon) {
             Weapon weapon = (Weapon) selectedItem;
             stats += "- Damages : " + weapon.getPower() + "\n";
         }
@@ -135,7 +121,7 @@ public class InventoryController extends AbstractController {
             stats += "- Restoration : " + ((Food) selectedItem).getRestoreValue() + " hp \n";
 
 
-        descriptionTextArea.setText("- " + name + "\n" + "- " + modifiers + stats + "- " +  description);
+        descriptionTextArea.setText("- " + name + "\n" + modifiers + stats + "- " + description);
     }
 
     public Inventory getInventory() {
@@ -148,7 +134,8 @@ public class InventoryController extends AbstractController {
     private void updateGold() {
         Inventory inventory = getInventory();
         int gold = inventory.getGold();
-        labelGold.setText(pluralize("gold", gold));
+        labelGold.setText(pluralize("gold", gold) + " : " + gold);
+
     }
 
     private void updateTable() {
@@ -159,23 +146,28 @@ public class InventoryController extends AbstractController {
     }
 
     private ObservableValue<ImageView> typeImageViewFactory(TableColumn.CellDataFeatures<Item, ImageView> cell) {
-        String itemType = cell.getValue().getClass().getSimpleName().toLowerCase();
+        String itemType;
+        Item item = cell.getValue();
+
+        if (item instanceof Key)
+            itemType = "key_" + ((Key) item).getColor().getColorName();
+        else
+            itemType = item.getClass().getSimpleName().toLowerCase();
+
         ImageView imageView = new ImageView(new Image(getRessourceString(itemType, ".png", this)));
         imageView.setFitWidth(16);
         imageView.setFitHeight(16);
 
         return new SimpleObjectProperty<>(imageView);
-
-        // todo ça me semble bien ici pour colorier les icons des clés
     }
 
-    public void setCurrentContainer(Container currentContainer) {
-        this.currentContainer = currentContainer;
+    public void setCurrentContainer(Container container) {
+        currentContainer = container;
         updateThis();
     }
 
     public void setSelectedItem(Item item) {
-        this.selectedItem = item;
+        selectedItem = item;
 
         updateThis();
     }

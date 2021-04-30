@@ -16,29 +16,6 @@ public abstract class AbstractController {
 
     public abstract void initThis();
 
-    public final void updateAll(AbstractController caller) {
-        updateThis();
-        updateAllChildrenExceptCaller(caller);
-        updateAllInParent();
-    }
-
-    private void updateAllInParent() {
-        AbstractController parentController = getParentController();
-        if (parentController != null)
-            parentController.updateAll(this);
-    }
-
-    private void updateAllChildrenExceptCaller(AbstractController caller) {
-        List<AbstractController> childrenControllers = getChildrenControllers();
-        if (childrenControllers == null)
-            return;
-
-        childrenControllers.stream()
-                           .filter(childrenController -> childrenController != null &&
-                                                              childrenController != caller)
-                           .forEach(childrenController -> childrenController.updateAll(this));
-    }
-
     public abstract void updateThis();
 
     protected void updateAllChildren() {
@@ -46,10 +23,9 @@ public abstract class AbstractController {
 
         if (controllers != null)
             for (AbstractController controller : controllers) {
-                controller.updateAllChildren(); // todo check
+                controller.updateAllChildren();
                 controller.updateThis();
             }
-
     }
 
     public AbstractController getParentController() {

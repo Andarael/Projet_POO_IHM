@@ -28,14 +28,14 @@
             <Label styleClass="h2" text="Dialogue"/>
 
             <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" prefRowCount="4"
-                      wrapText="true"/>
+                      wrapText="true" styleClass="h3"/>
         </VBox>
 
         <Separator orientation="VERTICAL"/>
 
         <VBox alignment="CENTER" spacing="8">
 
-            <fx:include source="TopButtons.fxml"/>
+            <fx:include fx:id="topButtons" source="TopButtons.fxml" prefWidth="512"/>
 
             <Separator/>
 
@@ -43,7 +43,7 @@
 
             <Separator/>
 
-            <fx:include fx:id="characterInteraction" source="CharacterInteraction.fxml"/>
+            <fx:include fx:id="interaction" source="Interaction.fxml"/>
 
             <Separator/>
 

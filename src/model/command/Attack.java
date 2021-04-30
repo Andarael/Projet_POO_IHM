@@ -22,27 +22,27 @@ public interface Attack {
      * @param currentPlace the place the fight occurs in
      * @param arg1         the first arg of user input (opponent name)
      */
-    static void attack(Player player, Place currentPlace, String arg1) {
+    static String attack(Player player, Place currentPlace, String arg1) {
         Container opponent = currentPlace.getContainerByName(arg1);
 
         if (opponent == null) {
-            printErr(arg1 + " is not here");
-            return;
+            return printErr(arg1 + " is not here");
         }
 
         if (!(opponent instanceof Fightable)) {
-            printErr("You can't fight with" + arg1);
-            return;
+            return printErr("You can't fight with" + arg1);
         }
 
-        printMsg("You attack " + opponent.getName() + " !");
-        Fightable.fight(player, (Fightable) opponent);
+        String output = printMsg("You attack " + opponent.getName() + " !");
+        output += Fightable.fight(player, (Fightable) opponent);
 
 
         if (((Fightable) opponent).isDead()) {
             updatedPlayerKills(player);
             addLootToPlace(currentPlace, opponent);
         }
+
+        return output;
 
     }
 
@@ -51,23 +51,26 @@ public interface Attack {
      *
      * @param world the world of the game.
      */
-    static void checkFight(World world) {
+    static String checkFight(World world) {
         Place currentPlace = world.currentPlace;
         Player player = world.getPlayer();
         Hostile aggressiveEntity;
 
         aggressiveEntity = currentPlace.getAgressive();
 
-        if (aggressiveEntity != null) {
-            printMsg(aggressiveEntity.getName() + " Attacks You !");
+        String output = null;
 
-            Fightable.fight(player, aggressiveEntity);
+        if (aggressiveEntity != null) {
+            output = printMsg(aggressiveEntity.getName() + " Attacks You !");
+
+            output += Fightable.fight(player, aggressiveEntity);
 
             if (aggressiveEntity.isDead()) {
                 updatedPlayerKills(player);
                 addLootToPlace(currentPlace, aggressiveEntity);
             }
         }
+        return output;
     }
 
     /**

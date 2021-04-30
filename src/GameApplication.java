@@ -1,3 +1,4 @@
+import controller.MainController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +23,7 @@ public class GameApplication extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        MainController.initialize();
     }
 
     // todo arguments de lancement : terminal ON/OFF

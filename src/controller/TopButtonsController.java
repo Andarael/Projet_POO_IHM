@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import view.HelpGameScreen;
 
 import java.util.List;
 
@@ -41,7 +42,10 @@ public class TopButtonsController extends AbstractController {
     }
 
     @FXML
-    public void resetAction(ActionEvent actionEvent) {
-        MainController.reset();
+    public void helpAction(ActionEvent actionEvent) {
+
+        HelpGameScreen helpGameScreen = new HelpGameScreen();
+        helpGameScreen.show();
+
     }
 }

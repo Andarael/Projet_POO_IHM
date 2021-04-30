@@ -2,6 +2,7 @@
 
 package model.entity.item;
 
+import javafx.util.Pair;
 import model.entity.Entity;
 import model.entity.place.Exit;
 import model.entity.place.LockedExit;
@@ -42,6 +43,10 @@ public class Key extends Item implements Usable {
         this(color, null);
     }
 
+    public static String generateKeyName(Col color) {
+        return new Key(color).getName();
+    }
+
     /**
      * @return the color of the Key
      */
@@ -66,7 +71,6 @@ public class Key extends Item implements Usable {
         return "KEY  : ";
     }
 
-
     @Override
     public String getSimpleDisplay() {
         return colorize(super.getSimpleDisplay(), color);
@@ -89,10 +93,10 @@ public class Key extends Item implements Usable {
      * @return false, invalid use of Key
      */
     @Override
-    public String use() {
+    public Pair<Boolean, String> use() {
         String message = "Keys must be used on a locked Door";
         Printer.printErr(message + ", " + getUsage());
-        return message;
+        return new Pair<>(false, message);
     }
 
     /**
@@ -103,13 +107,13 @@ public class Key extends Item implements Usable {
      * @return true if the Entity accepted the Key and unlocked
      */
     @Override
-    public String use(Entity entity) {
+    public Pair<Boolean, String> use(Entity entity) {
         if (entity instanceof Exit) {
             return use((Exit) entity);
         }
         String message = "This is not an exit";
         Printer.printErr(message);
-        return message;
+        return new Pair<>(false, message);
     }
 
     /**
@@ -119,25 +123,25 @@ public class Key extends Item implements Usable {
      * @param exit the Exit the key should be used on
      * @return true if the Exit accepted the Key and unlocked
      */
-    public String use(Exit exit) {
+    public Pair<Boolean, String> use(Exit exit) {
         String message;
         if (exit == null) {
             message = "This Exit does not exist";
             Printer.printErr(message + ", " + getUsage());
-            return message;
+            return new Pair<>(false, message);
         }
 
         if (!(exit instanceof LockedExit)) {
             message = "Keys must be used on a locked Door";
             Printer.printErr(message + ", " + getUsage() + "on a Locked Exit");
-            return message;
+            return new Pair<>(false, message);
         }
 
         LockedExit lockedExit = (LockedExit) exit;
         if (!lockedExit.isLocked()) {
             message = "This Exit is not Locked";
             Printer.printErr(message);
-            return message;
+            return new Pair<>(false, message);
         }
 
         lockedExit.unLock(this);
@@ -145,15 +149,11 @@ public class Key extends Item implements Usable {
         if (lockedExit.isLocked()) {
             message = "You can't unlock " + exit + " with " + this.getName();
             Printer.printErr(message);
-            return message;
+            return new Pair<>(false, message);
         }
 
         message = "You unlocked " + exit + " with " + this.getName();
         Printer.printMsg(message);
-        return message;
-    }
-
-    public static String generateKeyName(Col color) {
-        return new Key(color).getName();
+        return new Pair<>(true, message);
     }
 }

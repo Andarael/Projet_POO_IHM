@@ -63,16 +63,14 @@ public interface Execute {
         if (nbArgs > 0) {
             arg1 = args.get(1);
             if (!(haveEntity(world, arg1) || isACommand(arg1))) {
-                printErr(arg1 + " does not exist");
-                return arg1 + " does not exist";
+                return printErr(arg1 + " does not exist");
             }
         }
 
         if (nbArgs > 1) {
             arg2 = args.get(2);
             if (!haveEntity(world, arg2)) {
-                printErr(arg2 + " does not exist");
-                return arg2 + " does not exist";
+                return printErr(arg2 + " does not exist");
             }
         }
 
@@ -81,16 +79,13 @@ public interface Execute {
                 if (nbArgs == 1)
                     return use(player, arg1);
                 else if (nbArgs == 2)
-                    use(world, player, arg1, arg2);
-                break;
+                    return use(world, player, arg1, arg2);
 
             case GO:
-                go(world, currentPlace, arg1);
-                break;
+                return go(world, currentPlace, arg1);
 
             case DROP:
-                drop(player, currentPlace, arg1);
-                break;
+                return drop(player, currentPlace, arg1);
 
             case HELP:
                 if (nbArgs == 0)
@@ -111,25 +106,22 @@ public interface Execute {
                 break;
 
             case SELL:
-                sell(player, currentPlace, arg1, arg2);
-                break;
+                return sell(player, currentPlace, arg1, arg2);
 
             case BUY:
-                buy(player, currentPlace, arg1, arg2);
-                break;
+                return buy(player, currentPlace, arg1, arg2);
 
             case TAKE:
                 if (nbArgs == 0)
-                    take(player, currentPlace);
+                    return take(player, currentPlace);
                 if (nbArgs == 1)
-                    take(player, currentPlace, arg1);
+                    return take(player, currentPlace, arg1);
                 if (nbArgs == 2)
-                    take(player, currentPlace, arg1, arg2);
+                    return take(player, currentPlace, arg1, arg2);
                 break;
 
             case ATTACK:
-                attack(player, currentPlace, arg1);
-                break;
+                return attack(player, currentPlace, arg1);
 
             case INVENTORY:
                 inventory(player);
@@ -139,17 +131,13 @@ public interface Execute {
                 return talk(currentPlace, arg1);
 
             case EQUIP:
-                equip(player, arg1);
-                break;
+                return equip(player, arg1);
 
             case UNEQUIP:
-                unequip(player);
-                break;
+                return unequip(player);
 
             default:
-                String unknownCommand = "this command is not implemented yet ..";
-                printErr(unknownCommand);
-                return unknownCommand;
+                return printErr("this command is not implemented yet ..");
         }
 
         return null;

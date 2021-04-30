@@ -9,9 +9,9 @@ import java.util.List;
 
 public class InfoAreaController extends AbstractController {
     @FXML
-    public TextArea textArea;
+    private TextArea textArea;
     @FXML
-    public Button okButton;
+    private Button okButton;
 
     @Override
     public void initThis() {
@@ -21,7 +21,6 @@ public class InfoAreaController extends AbstractController {
 
     @Override
     public void updateThis() {
-
     }
 
     @Override
@@ -35,6 +34,15 @@ public class InfoAreaController extends AbstractController {
 
     @FXML
     public void OkButtonAction(ActionEvent actionEvent) {
-        // todo
+        System.out.println("unlocking");
+        MainController.unlockInterface();
+    }
+
+    public void waitForInput() {
+        okButton.setDisable(false);
+    }
+
+    public void stopWaitForInput() {
+        okButton.setDisable(true);
     }
 }

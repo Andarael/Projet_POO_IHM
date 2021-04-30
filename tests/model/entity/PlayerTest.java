@@ -3,9 +3,6 @@
 package model.entity;
 
 import model.entity.item.*;
-import model.entity.place.Exit;
-import model.entity.place.LockedExit;
-import model.entity.place.Place;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -135,7 +132,7 @@ class PlayerTest {
 //        assertFalse(p.use("h"));
     }
 
-    @Test
+/*    @Test
     void use2() {
         assertFalse(p.use(item1, hands));
         assertTrue(p.use(arrow, bow));
@@ -155,9 +152,9 @@ class PlayerTest {
         assertFalse(p.use(null, "bow"));
         assertFalse(p.use("banana", "bow"));
         assertFalse(p.use("arrow", "banana"));
-    }
+    }*/
 
-    @Test
+/*    @Test
     void use3() {
         p.addItem(new Food("apple", null, null, 5));
 //        assertTrue(p.use("apple"));
@@ -180,7 +177,7 @@ class PlayerTest {
 //        assertFalse(p.use("pog", exit1));
 //        assertFalse(p.use("banana", exit1));
 
-    }
+    }*/
 
     @Test
     void display() {

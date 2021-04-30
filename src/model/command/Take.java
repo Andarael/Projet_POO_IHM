@@ -12,19 +12,28 @@ import static model.utils.Printer.printErr;
 import static model.utils.Printer.printMsg;
 
 public interface Take {
-    static void take(Player player, Place currentPlace, String containerName, String itemName) {
+
+    static String take(Player player, Place currentPlace, String containerName, String itemName) {
 
         Container container = currentPlace.getContainerByName(containerName);
 
+
+
+
         if (container == null) {
-            printErr(containerName + " is not in this Place");
-            return;
+
+            StaticContainer placeContainer = currentPlace.getPlaceContainer();
+            if (placeContainer.isSameStr(containerName)) {
+                container = placeContainer;
+            } else {
+                return printErr(containerName + " is not in this Place");
+            }
         }
 
         if (container instanceof StaticContainer) {
-            takeItemAddPlayer(player, ((StaticContainer) container), itemName);
+            return takeItemAddPlayer(player, ((StaticContainer) container), itemName);
         } else {
-            printErr("You can't take items from " + container.getName());
+            return printErr("You can't take items from " + container.getName());
         }
     }
 
@@ -36,24 +45,23 @@ public interface Take {
      * @param container the container to take the item from
      * @param itemName  the name of the item
      */
-    static void takeItemAddPlayer(Player player, StaticContainer container, String itemName) {
+    static String takeItemAddPlayer(Player player, StaticContainer container, String itemName) {
 
         Item item = container.getItem(itemName);
 
         if (item == null) {
-            printErr(itemName + " is not in this Place");
-            return;
+            return printErr(itemName + " is not in this Place");
         }
 
         if (player.canAddItem(item)) {
             player.addItem(item);
             container.removeItem(item);
-            printMsg("You added " + item.getName() + " to your inventory");
+            return printMsg("You added " + item.getName() + " to your inventory");
         } else {
-            printMsg("You can't take " +
+            return printMsg("You can't take " +
                      item.getName() +
                      ". You can't carry it. \n " +
-                     "Try discarding some items (DROP <item>)");
+                     "Try discarding some items");
         }
     }
 
@@ -61,7 +69,7 @@ public interface Take {
     /**
      * Automatically takes the golds present in the room
      */
-    static void take(Player player, Place currentPlace) {
+    static String take(Player player, Place currentPlace) {
 
         StaticContainer placeContainer = currentPlace.getPlaceContainer();
 
@@ -69,14 +77,14 @@ public interface Take {
         placeContainer.removeGold(gold);
         player.addGold(gold);
 
-        printMsg("You took " + gold + " gold(s)");
+        return printMsg("You took " + gold + " gold(s)");
     }
 
 
-    static void take(Player player, Place currentPlace, String itemName) {
+    static String take(Player player, Place currentPlace, String itemName) {
 
         StaticContainer placeContainer = currentPlace.getPlaceContainer();
 
-        takeItemAddPlayer(player, placeContainer, itemName);
+        return takeItemAddPlayer(player, placeContainer, itemName);
     }
 }

@@ -10,22 +10,30 @@ import static model.utils.Printer.printMsg;
 
 public interface EquipUnequip {
 
-    static void unequip(Player player) {
+    static String unequip(Player player) {
         Item equipped = player.getEquipped();
+        String message;
 
         if (equipped.isSame(new Hand())) {
-            printMsg("You are already unequipped");
+            message = "You are already unequipped";
+            printMsg(message);
         } else {
             player.unequip();
-            printMsg("You unequipped : " + equipped.getName());
+            message = "You unequipped : " + equipped.getName();
+            printMsg(message);
         }
-
+        return message;
     }
 
-    static void equip(Player player, String arg1) {
-        if (player.equip(arg1))
-            printMsg("You equipped " + arg1);
-        else
-            printMsg(arg1 + " is not equippable");
+    static String equip(Player player, String arg1) {
+        String message;
+        if (player.equip(arg1)) {
+            message = "You equipped " + arg1;
+            printMsg(message);
+        } else {
+            message = arg1 + " is not equippable";
+            printMsg(message);
+        }
+        return message;
     }
 }

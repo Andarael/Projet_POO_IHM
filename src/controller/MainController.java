@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
+import model.command.Attack;
 import model.command.Execute;
 import model.entity.Container;
 import model.entity.Entity;
@@ -12,11 +14,12 @@ import model.entity.place.Place;
 import model.interfaces.UsableOnItem;
 import model.utils.Printer;
 import model.world.World;
+import view.EndGameScreen;
+import view.StartGameScreen;
 
 import java.util.List;
 
 import static controller.CommandGenerator.*;
-import static controller.utils.Utils.readable;
 
 public class MainController {
 
@@ -29,30 +32,27 @@ public class MainController {
 
     private static Container selectedContainer;
 
-    private static Item selectedItemPlayer; // update in InventoryList
-    private static Item selectedItemTrader; // todo
-    private static Item selectedItemLoot; // todo
+    private static Item selectedItemPlayer;
+    private static Item selectedItemTrader;
+    private static Item selectedItemLoot;
 
     private static Entity selectedEntityToUseItemOn;
 
     /*======== initialization ======*/
 
-    public static void setMainUIController(MainUIController mainUIController) {
-        MainController.mainUIController = mainUIController;
-        initialize();
-    }
-
     public static void setSilentModel() {
         Printer.silence = true;
     }
 
-    private static void initialize() {
+    private static void initializePrivate() {
         world = new World();
 
-        mainUIController.updateThis();
+        setSilentModel();
 
         currentPlace = world.currentPlace;
         player = world.getPlayer();
+
+        player.addGold(10);
 
         selectedContainer = null;
 
@@ -62,115 +62,220 @@ public class MainController {
 
         selectedEntityToUseItemOn = null;
 
-        mainUIController.setCurrentPlace(currentPlace);
-
-        mainUIController.setPlayer(player);
-
-        mainUIController.setSelectedContainer(selectedContainer);
-
+        unselectContainer();
+        updateCurrentPlace();
+        updatePlayer();
+        updateSelectedContainer();
     }
-    /*======== getters Setters ======*/
+
+    public static void initialize() {
+        initializePrivate();
+        showStartScreen();
+    }
+
+    private static void showStartScreen() {
+        Stage startStage = new StartGameScreen();
+        startStage.show();
+        startStage.requestFocus();
+    }
 
     public static Player getPlayer() {
         return player;
     }
 
-    public static void setSelectedEntityToUseItemOn(Entity entityToUseItemOn) {
-        selectedEntityToUseItemOn = entityToUseItemOn;
+    /*======== getters Setters ======*/
+
+    public static Item getSelectedItemPlayer() {
+        return selectedItemPlayer;
+    }
+
+    public static void setSelectedItemPlayer(Item item) {
+        selectedItemPlayer = item;
+        mainUIController.setSelectedItemPlayer(selectedItemPlayer);
     }
 
     public static Item getSelectedItemTrader() {
         return selectedItemTrader;
     }
 
-    public static Item getSelectedItemPlayer() {
-        return selectedItemPlayer;
+    public static void setSelectedItemTrader(Item item) {
+        selectedItemTrader = item;
+    }
+
+    public static MainUIController getMainUIController() {
+        return mainUIController;
+    }
+
+    public static void setMainUIController(MainUIController mainUIController) {
+        MainController.mainUIController = mainUIController;
+        initializePrivate();
+    }
+
+    public static World getWorld() {
+        return world;
+    }
+
+    public static Place getCurrentPlace() {
+        return currentPlace;
+    }
+
+    public static Container getSelectedContainer() {
+        return selectedContainer;
+    }
+
+    public static Entity getSelectedEntityToUseItemOn() {
+        return selectedEntityToUseItemOn;
+    }
+
+    public static void setSelectedEntityToUseItemOn(Entity entityToUseItemOn) {
+        selectedEntityToUseItemOn = entityToUseItemOn;
     }
 
     public static Item getSelectedItemLoot() {
         return selectedItemLoot;
     }
 
-    /*============= Command direction ======================*/
+    public static void setSelectedItemLoot(Item selectedItemLoot) {
+        MainController.selectedItemLoot = selectedItemLoot;
+    }
 
-    static void executeByDirection(Direction direction) {
-        // todo ici on affiche la pièce AVANT d' entrer
-        // ou alors modifier go pour pas qu' il y ai de checkFight et du coup on peu sleep ?
 
-        unselectContainer();
+    /*============= Update the View ======================*/
+
+    private static void updateCurrentPlace() {
+        mainUIController.updateCurrentPlace(currentPlace);
+    }
+
+    private static void updateSelectedContainer() {
+        mainUIController.updateSelectedContainer(selectedContainer);
+    }
+
+    private static void updateDialogue(String executionResult) {
+        mainUIController.updateDialogue(executionResult);
+    }
+
+    private static void updatePlayer() {
+        mainUIController.updatePlayer(player);
+    }
+
+    private static void updateExits() {
+        mainUIController.updateExits();
+    }
+
+    private static void updateInfo(String executionResult) {
+        mainUIController.updateInformation(executionResult);
+    }
+
+    private static void unselectContainer() {
+        mainUIController.unselectContainer();
+        selectedContainer = null;
+    }
+
+    private static void updateOnInteractionWithContainer(String interactionResult) {
+        updateSelectedContainer();
+        updateOnInteractionWithItem(interactionResult);
+    }
+
+    private static void updateOnInteractionWithItem(String executionResult) {
+        updatePlayer();
+        updateExits(); // in case of interaction with a key
+        updateInfo(executionResult);
+    }
+
+    private static void waitForInput() {
+        mainUIController.waitForInput();
+    }
+
+    protected static void unlockInterface() {
+        mainUIController.unlockInterface();
+        updateCurrentPlace();
+    }
+
+    private static void checkDeath() {
+        if (player.isDead()) {
+            mainUIController.setDead();
+            Stage endStage = new EndGameScreen();
+            endStage.show();
+        }
+    }
+
+    /*============= Command Go ======================*/
+
+    static void executeGo(Direction direction) {
 
         Exit exit = currentPlace.getExitByIndex(direction.getIndex());
-
-        Execute.execute(world, generateGoCommand(exit));
+        String executionResult = Execute.execute(world, generateGoCommand(exit));
 
         currentPlace = world.currentPlace;
 
-        mainUIController.setCurrentPlace(currentPlace);
+        unselectContainer();
+        updateCurrentPlace();
+        updateInfo(executionResult);
 
+        String fight = Attack.checkFight(world);
+
+        if (fight != null)
+            waitForInput();
+
+        updateInfo(fight);
+
+        checkDeath();
     }
+
 
     /*============= Command Canevas ======================*/
 
     static void selectContainerByIndex(int index) {
         switch (index) {
-            case 0:
-                unselectContainer();
-                break;
             case 1:
             case 2:
             case 3:
                 selectedContainer = world.currentPlace.getContainerByIndex(index - 1);
                 break;
             default:
-                selectedContainer = null;
+                unselectContainer();
                 break;
         }
 
-
-        mainUIController.setSelectedContainer(selectedContainer);
-    }
-
-    static void unselectContainer() {
-        selectedContainer = null;
-        mainUIController.setSelectedContainer(selectedContainer);
-
+        updateSelectedContainer();
     }
 
     /*============= Command Look ======================*/
 
     static void executeLook() {
-        List<String> command = generateLookCommand(selectedContainer);// todo wire
-        String executionResult = Execute.execute(world, command);
-        System.out.println(executionResult);
-        mainUIController.setInformation(executionResult);
+        Entity whatToLookAt = selectedContainer;
 
-        // todo disable si rien selected
+        if (currentPlace.getPlaceContainer() == selectedContainer)
+            whatToLookAt = currentPlace;
+
+        List<String> command = generateLookCommand(whatToLookAt);
+
+        String executionResult = Execute.execute(world, command);
+
+        updateInfo(executionResult);
     }
 
     static void executeLookForPlace() {
         List<String> command = generateLookCommand(currentPlace);
         String executionResult = Execute.execute(world, command);
-        mainUIController.setInformation(executionResult);
+        updateInfo(executionResult);
     }
 
     /*============= Command Loot ======================*/
 
     static void lootPlace() {
-        unselectContainer();
         selectedContainer = currentPlace.getPlaceContainer();
-        mainUIController.setSelectedContainer(selectedContainer);
+        updateSelectedContainer();
     }
 
     /*============= Command Quit & Reset ======================*/
-
-    // todo are ya suuurerre ya vant to quit ?
 
     static void quitGame() {
         Platform.exit();
     }
 
     public static void reset() {
-        initialize(); // todo faire en sorte que la population du monde se fasse avec des new pour chaque new world
+        initializePrivate(); // todo faire en sorte que la population du monde se fasse avec des new pour chaque new world
     }
 
     /*============= Command Talk ======================*/
@@ -178,13 +283,24 @@ public class MainController {
     public static void executeTalk() {
         List<String> command = generateTalkCommand(selectedContainer);
         String executionResult = Execute.execute(world, command);
-        mainUIController.setDialogue(executionResult);
+        updateDialogue(executionResult);
     }
 
     /*============= Command Attack ======================*/
 
     public static void executeAttack() {
-        // todo
+        List<String> command = CommandGenerator.generateAttackCommand(selectedContainer);
+
+        String executionResult = Execute.execute(world, command);
+
+        unselectContainer();
+
+        updatePlayer();
+        updateSelectedContainer();
+        updateCurrentPlace();
+        updateInfo(executionResult);
+
+        checkDeath();
     }
 
     /*============= Command Equip ======================*/
@@ -194,7 +310,8 @@ public class MainController {
 
         String executionResult = Execute.execute(world, command);
 
-        mainUIController.setPlayer(player);
+        updatePlayer();
+        updateInfo(executionResult);
     }
 
     public static void executeUnequip() {
@@ -202,22 +319,19 @@ public class MainController {
 
         String executionResult = Execute.execute(world, command);
 
-        mainUIController.setPlayer(player);
+        updatePlayer();
+        updateInfo(executionResult);
     }
 
     /*============= Command Drop ======================*/
 
     public static void executeDrop() {
-        Item itemToDrop = MainController.selectedItemPlayer;
+        Item itemToDrop = selectedItemPlayer;
         List<String> command = CommandGenerator.generateDropCommand(itemToDrop);
 
         String executionResult = Execute.execute(world, command);
 
-        mainUIController.setPlayer(player);
-
-        mainUIController.setInformation("You dropped " +
-                                        readable(itemToDrop.getName()) +
-                                        " on the ground");
+        updateOnInteractionWithItem(executionResult);
     }
 
     /*============= Command Use ======================*/
@@ -233,18 +347,40 @@ public class MainController {
         else
             command = CommandGenerator.generateUseCommand(itemToUse);
 
-        System.out.println("COMMAND : " + command);
         String executionResult = Execute.execute(world, command);
 
-        // todo remove l'item après utilisation s'il a correctement été utilisé
+        updateOnInteractionWithItem(executionResult);
 
-        // todo récup le résultat de l'exec pour les utilisations sur d'autres items
-
-        System.out.println(selectedEntityToUseItemOn);
-
-        mainUIController.setPlayer(player);
-        mainUIController.setInformation(executionResult);
+        checkDeath();
     }
 
+    /*============= Command Take, Buy & Sell ======================*/
+
+    public static void executeTake() {
+        Item itemToTake = selectedItemLoot;
+        List<String> command = CommandGenerator.generateTakeCommand(selectedContainer, itemToTake);
+
+        String executionResult = Execute.execute(world, command);
+
+        updateOnInteractionWithContainer(executionResult);
+    }
+
+    public static void executeBuy() {
+        Item itemToBuy = selectedItemTrader;
+        List<String> command = CommandGenerator.generateBuyCommand(selectedContainer, itemToBuy);
+
+        String executionResult = Execute.execute(world, command);
+
+        updateOnInteractionWithContainer(executionResult);
+    }
+
+    public static void executeSell() {
+        Item itemToSell = selectedItemPlayer;
+        List<String> command = CommandGenerator.generateSellCommand(selectedContainer, itemToSell);
+
+        String executionResult = Execute.execute(world, command);
+
+        updateOnInteractionWithContainer(executionResult);
+    }
 
 }

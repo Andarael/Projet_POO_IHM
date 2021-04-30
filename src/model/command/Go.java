@@ -11,31 +11,29 @@ import static model.utils.Printer.printMsg;
 import static model.world.WorldContains.isAPlace;
 
 public interface Go {
-    static void go(World world, Place currentPlace, String arg1) {
+    static String go(World world, Place currentPlace, String arg1) {
 
         if (!isAPlace(world, arg1)) {
-            printErr(arg1 + " is not a place");
-            return;
+            return printErr(arg1 + " is not a place");
         }
 
         Exit destination = currentPlace.getExitByName(arg1);
 
         if (destination == null) {
-            printErr("You can't access " + arg1 + " from here");
-            return;
+            return printErr("You can't access " + arg1 + " from here");
         }
 
         if (destination.goIn() == null) {
-            printMsg("This door is locked");
-            return;
+            return printMsg("This door is locked");
         }
 
         world.setCurrentPlace(destination.getDestination());
-        printMsg("You enter " + destination.getName());
-        printMsg("\n");
+
+        String message = "You enter " + destination.getName();
+        printMsg(message + "\n");
 
         destination.getDestination().draw();
 
-        Attack.checkFight(world);
+        return message;
     }
 }

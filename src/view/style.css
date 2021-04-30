@@ -40,12 +40,15 @@
 
 }
 
+.h1 {
+    -fx-font-size: 24px;
+}
+
 .h2 {
     -fx-font-size: 18px;
 }
-
-.h1 {
-    -fx-font-size: 24px;
+.h3 {
+    -fx-font-size: 14px;
 }
 
 /*=========== No focus highlight ========================*/
@@ -58,7 +61,8 @@
 /*================== Buttons ====================*/
 
 .button {
-    -fx-background-color: linear-gradient(#321D29, #212);
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(#423, #323);
     -fx-border-color: black;
     -fx-border-width: 0.1;
     -fx-padding: 1em 1.5em 1em 1.5em;
@@ -79,28 +83,12 @@
     /*-fx-font-weight: bold;*/
 }
 
-/*todo flat buttons*/
-
-
-
-/*================ Colors =======================*/
-
-
 
 /*===============================================*/
-
-.disabledText {
-    -fx-text-inner-color: grey
-}
-
-.progress-bar {
-
-}
 
 .lifeBar {
     -fx-accent: red;
 }
-
 
 /* Scrollbars */
 
@@ -126,3 +114,13 @@
     -fx-border-radius: 2;
     -fx-effect: dropshadow(gaussian, #FBE5C6, 30, .50, 0, 0);
 }
+
+.handCursor {
+    -fx-cursor: hand;
+}
+
+.text-area .content {
+    -fx-cursor: default;
+}
+
+/*todo réparer*/

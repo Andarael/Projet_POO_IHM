@@ -2,6 +2,7 @@
 
 package model.entity.item;
 
+import javafx.util.Pair;
 import model.entity.Entity;
 import model.entity.Player;
 import model.interfaces.Usable;
@@ -60,10 +61,10 @@ public class Food extends Item implements Usable {
      * @return false, invalid use all the time
      */
     @Override
-    public String use() {
+    public Pair<Boolean, String> use() {
         String message = "Try using it on a Being";
         Printer.printErr(message);
-        return message;
+        return new Pair<>(false,message);
     }
 
     /**
@@ -73,12 +74,12 @@ public class Food extends Item implements Usable {
      * @param entity the entity to feed (player)
      */
     @Override
-    public String use(Entity entity) {
+    public Pair<Boolean, String> use(Entity entity) {
         String message;
         if (entity == null) {
             message = "This Being does not exist";
             Printer.printErr(message + getUsage());
-            return message;
+            return new Pair<>(false, message);
         }
 
         if (entity instanceof Player) {
@@ -88,7 +89,7 @@ public class Food extends Item implements Usable {
 
         message = "This can only be used on the Player";
         Printer.printErr(message);
-        return message;
+        return new Pair<>(false,message);
     }
 
     /**
@@ -97,7 +98,7 @@ public class Food extends Item implements Usable {
      *
      * @param player the Player of the game
      */
-    protected String use(Player player) {
+    protected Pair<Boolean, String> use(Player player) {
         String message = restoreValue + " hp";
         if (restoreValue > 0) {
             player.heal(restoreValue);
@@ -108,7 +109,7 @@ public class Food extends Item implements Usable {
             message = "You got poisoned by " + message;
             Printer.printMsg(message);
         }
-        return message;
+        return new Pair<>(true, message);
     }
 
 }

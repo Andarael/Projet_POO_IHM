@@ -3,22 +3,23 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import model.entity.Player;
+import model.entity.Container;
 import model.entity.item.Item;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ContainerInventoryController extends AbstractController {
+public abstract class ContainerInventoryController extends AbstractController {
 
 
-    @FXML private VBox inventory;
-    @FXML private GridPane buttonArea;
-
+    @FXML protected GridPane buttonArea;
     @FXML protected InventoryController inventoryController;
+    @FXML private VBox inventory;
 
     @Override
-    public void initThis() { setSelectedItem(null); }
+    public void initThis() {
+        setSelectedItem(null);
+    }
 
     @Override
     public List<AbstractController> getChildrenControllers() {
@@ -30,15 +31,11 @@ public class ContainerInventoryController extends AbstractController {
         inventoryController.updateThis();
     }
 
-    public void setCurrentContainer(Player player) {
-        inventoryController.setCurrentContainer(player);
+    public void setCurrentContainer(Container container) {
+        inventoryController.setCurrentContainer(container);
     }
 
-    public void setSelectedItem(Item item) {
-        buttonArea.setDisable(item == null);
-        inventoryController.setSelectedItem(item);
-        System.out.println("lolilol");
-    }
+    abstract public void setSelectedItem(Item item);
 
 
 }

@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import model.entity.Container;
+import model.entity.Player;
 import model.entity.place.Place;
 
 import java.net.URL;
@@ -17,17 +18,16 @@ import static controller.RessourceManager.getRessourceString;
 
 public class CanevasController extends AbstractController {
 
-    //    todo meilleurs noms pour les fields
     @FXML public ImageView backGroundImage;
     @FXML public VBox canevasContainer;
-    @FXML public ImageView playerCanevas;
+    @FXML public ImageView playerImage;
     @FXML public ImageView canevasImage3;
     @FXML public ImageView canevasImage2;
     @FXML public ImageView canevasImage1;
 
     private Place currentPlace = null;
 
-    private Container selectedContainer = null; // todo créer la logique pour highlight CE container.
+    private Container selectedContainer = null;
 
     @FXML
     public void selectImagePlayer(MouseEvent mouseEvent) {
@@ -72,7 +72,7 @@ public class CanevasController extends AbstractController {
     }
 
     private void initImages() {
-        playerCanevas.setImage(new Image(getRessourceString("player", ".png", this)));
+        playerImage.setImage(null);
         canevasImage3.setImage(null);
         canevasImage2.setImage(null);
         canevasImage1.setImage(null);
@@ -89,14 +89,13 @@ public class CanevasController extends AbstractController {
 
         String placeName;
         if (currentPlace != null)
-            placeName = currentPlace.getName().toLowerCase();
+            placeName = currentPlace.getShortName();
         else
             placeName = "";
 
         URL resource = RessourceManager.getRessource(placeName, ".png", this);
 
         backGroundImage.setImage(new Image(resource.toString()));
-
     }
 
     private void updateContainersInCanevas() {
@@ -111,7 +110,7 @@ public class CanevasController extends AbstractController {
     }
 
     private void unHighlightAll() {
-        unHighlight(playerCanevas);
+        unHighlight(playerImage);
         unHighlight(canevasImage1);
         unHighlight(canevasImage2);
         unHighlight(canevasImage3);
@@ -129,7 +128,7 @@ public class CanevasController extends AbstractController {
         if (container == null)
             return null;
 
-        String ressourceName = container.getShortName().trim();
+        String ressourceName = container.getShortName();
         String url = getRessourceString(ressourceName + "_body", ".png", this);
         return new Image(url);
     }
@@ -164,18 +163,32 @@ public class CanevasController extends AbstractController {
         styleable.getStyleClass().remove("highlighted");
     }
 
-    public void setCurrentPlace(Place currentPlace) {
+    public void updateCurrentPlace(Place currentPlace) {
         this.currentPlace = currentPlace;
         this.selectedContainer = null;
         updateThis();
     }
 
-    public void setSelected(Container container) {
+    public void updateSelectedContainer(Container container) {
         // I do not take into account the cases where the wanted selected container is not null
         // For the moment this method is only called with a null container (in the 'Look Place' button)
 
-        selectedContainer = container;
-        unHighlightAll();
+        if (selectedContainer != container) {
+            selectedContainer = container;
+            unHighlightAll();
+        }
         updateThis();
+    }
+
+    public void updatePlayer(Player player) {
+        String ressourceName = player.getShortName();
+
+        if (player.isDead())
+            ressourceName += "_dead_body";
+        else
+            ressourceName += "_body";
+
+        playerImage.setImage(new Image(getRessourceString(ressourceName, ".png", this)));
+
     }
 }

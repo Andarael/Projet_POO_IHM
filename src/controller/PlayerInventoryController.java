@@ -29,6 +29,7 @@ public class PlayerInventoryController extends ContainerInventoryController {
     @FXML private Button unequipButton;
 
     private Place currentPlace = null;
+
     private Entity entityToUseItemOn = null;
 
     @Override
@@ -56,15 +57,11 @@ public class PlayerInventoryController extends ContainerInventoryController {
     @FXML
     public void useAction(ActionEvent actionEvent) {
         MainController.executeUse();
-
-        // todo
-        System.out.println("use");
     }
 
     @FXML
     public void dropAction(ActionEvent actionEvent) {
         MainController.executeDrop();
-        System.out.println();
     }
 
     private void initSelectionBox() {
@@ -113,6 +110,9 @@ public class PlayerInventoryController extends ContainerInventoryController {
 
     @Override
     public void setSelectedItem(Item item) {
+        if (getRootController() != null)
+            MainController.setSelectedItemPlayer(item); // exec only if root is already initialized
+
         boolean isNull = (item == null);
         boolean isUsable = item instanceof Usable;
         boolean isEquipable = item instanceof Equipable;
@@ -127,8 +127,6 @@ public class PlayerInventoryController extends ContainerInventoryController {
 
         selectionBox.setDisable(!isUsableOnSomething);
         useOnLabel.setDisable(!isUsableOnSomething);
-
-        item = MainController.getSelectedItemPlayer();
 
         clearSelectionBox();
 

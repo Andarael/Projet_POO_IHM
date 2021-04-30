@@ -14,6 +14,9 @@ public interface Utils {
     }
 
     static String readable(String str) {
+        if (str == null)
+            return null;
+
         return str.replace('_', ' ').trim();
     }
 }

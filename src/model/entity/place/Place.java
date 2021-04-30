@@ -198,12 +198,7 @@ public class Place extends Entity {
         }
         if (this.nbContainer() < this.containerMax){
             this.listContainers.add(container);
-        } else {
-            // todo remove
-            System.err.println("Container max atteints : ne  peut pas ajouter " + container + ", dans : " + this);
         }
-
-
     }
 
     /**

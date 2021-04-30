@@ -2,6 +2,7 @@
 
 package model.interfaces;
 
+import javafx.util.Pair;
 import model.entity.Entity;
 
 /**
@@ -21,8 +22,8 @@ public interface Usable {
      *
      * @return true if the item was used correctly
      */
-    String use();
+    Pair<Boolean, String> use();
 
-    String use(Entity entity);
+    Pair<Boolean, String> use(Entity entity);
 
 }

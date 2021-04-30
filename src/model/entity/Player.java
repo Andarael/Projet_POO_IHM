@@ -2,6 +2,7 @@
 
 package model.entity;
 
+import javafx.util.Pair;
 import model.entity.item.Food;
 import model.entity.item.Hand;
 import model.entity.item.Item;
@@ -213,18 +214,18 @@ public class Player extends Being {
             return message;
         }
 
-        String output;
+        Pair<Boolean, String> output;
 
         if (newItem instanceof Food)
             output = ((Food) newItem).use(this);
         else
             output = ((Usable) newItem).use();
 
-        // remove only if item was used // todo fix ?
-//        if (output)
-//            removeItem(newItem);
+        // remove only if item was used
+        if (output.getKey())
+            removeItem(newItem);
 
-        return output;
+        return output.getValue();
     }
 
     /**
@@ -254,21 +255,21 @@ public class Player extends Being {
      * @param item2 the item used on
      * @return true if the item was used correctly
      */
-    public boolean use(Item item1, Item item2) {
+    public String use(Item item1, Item item2) {
 
         if (item1 == null || item2 == null) {
-            printErr("This item does not exist");
-            return false;
+            return printErr("This item does not exist");
+//            return false;
         }
 
         if (!contains(item1)) {
-            printErr("You don't have " + item1.getName() + " in your inventory");
-            return false;
+            return printErr("You don't have " + item1.getName() + " in your inventory");
+//            return false;
         }
 
         if (!contains(item2)) {
-            printErr("You don't have " + item2.getName() + " in your inventory");
-            return false;
+            return printErr("You don't have " + item2.getName() + " in your inventory");
+//            return false;
         }
 
         // getting the actual items from the player's inventory
@@ -276,17 +277,17 @@ public class Player extends Being {
         Item newItem2 = getItem(item2);
 
         if (!(newItem1 instanceof UsableOnItem)) {
-            printErr("This (" + newItem1.getName() + ") is not usable on another item");
-            return false;
+            return printErr("This (" + newItem1.getName() + ") is not usable on another item");
+//            return false;
         }
 
-        boolean output = ((UsableOnItem) newItem1).use(newItem2);
+        Pair<Boolean, String> output = ((UsableOnItem) newItem1).use(newItem2);
 
         // remove only if item was used
-        if (output)
+        if (output.getKey())
             removeItem(newItem1);
 
-        return output;
+        return output.getValue();
     }
 
     /**
@@ -298,10 +299,10 @@ public class Player extends Being {
      * @param itemName2 name of used on item
      * @return true if the item1 was used correctly
      */
-    public boolean use(String itemName1, String itemName2) {
+    public String use(String itemName1, String itemName2) {
         if (itemName1 == null || itemName2 == null) {
-            printErr("This item does not exist");
-            return false;
+            return printErr("This item does not exist");
+//            return false;
         }
 
         return use(new Item(itemName1), new Item(itemName2));
@@ -342,13 +343,12 @@ public class Player extends Being {
         }
 
 
-        message = ((Usable) newItem).use(exit);
+        Pair<Boolean, String> output = ((Usable) newItem).use(exit);
 
-        // remove only if item was used // todo faire marcher
-//        if (output)
-//            removeItem(newItem);
+        if (output.getKey())
+            removeItem(newItem);
 
-        return message;
+        return output.getValue();
     }
 
     public String use(String itemName, Exit exit) {
