@@ -26,7 +26,7 @@ import static shadowLair.model.utils.StringUtils.readable;
 /**
  * This fxmlController is associated with the root FXML file
  * It receive updates directly from the mainController
- * and passes it to its childs when necessary
+ * and passes it to its children when necessary
  */
 public class GameUIController extends AbstractController {
 

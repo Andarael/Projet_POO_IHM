@@ -103,12 +103,11 @@ public class Food extends Item implements Usable {
         if (restoreValue > 0) {
             player.heal(restoreValue);
             message = "You healed " + message;
-            Printer.printMsg(message);
         } else {
             player.hurt(-restoreValue);
             message = "You got poisoned by " + message;
-            Printer.printMsg(message);
         }
+        Printer.printMsg(message);
         return new Pair<>(true, message);
     }
 

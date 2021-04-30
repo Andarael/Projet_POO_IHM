@@ -82,7 +82,7 @@ public abstract class AbstractController {
 
     /**
      * recursively searches for the highest controller in the tree
-     * It might be usefull to update the interface at once form a deeply nested controller
+     * It might be useful to update the interface at once form a deeply nested controller
      */
     public GameUIController getRootController() {
         AbstractController actualController = getParentController();

@@ -281,7 +281,7 @@ public class Place extends Entity {
         Printer.printMsg("= You see in the place = \n");
         for (Container container : this.listContainers) {
             if (container instanceof Hostile) {
-                Printer.printMsg("Hostil :");
+                Printer.printMsg("Hostile :");
                 Printer.printMsg(container.getSimpleDisplay());
             }
             if (container instanceof Passive) {

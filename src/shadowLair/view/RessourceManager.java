@@ -3,7 +3,7 @@ package shadowLair.view;
 import java.net.URL;
 
 /**
- * This Interface aims to stramline the access to ressources in the application view
+ * This Interface aims to streamline the access to ressources in the application view
  * For the moment only css and png are managed
  */
 public interface RessourceManager {

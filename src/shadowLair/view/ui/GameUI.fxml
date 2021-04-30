@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
-         stylesheets="@../ressources/css/style.css, @../ressources/css/tableStyle.css, @../ressources/css/colors.css, @../ressources/css/tabs.css"
+         stylesheets="@../ressources/css/main.css, @../ressources/css/table.css, @../ressources/css/colors.css, @../ressources/css/tabs.css"
          type="StackPane"
          xmlns="http://javafx.com/javafx/8.0.171"
          fx:controller="shadowLair.view.ui.GameUIController">

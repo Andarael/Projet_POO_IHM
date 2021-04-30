@@ -69,11 +69,6 @@ public class PlayerInventoryController extends ContainerInventoryController {
         initSelectionBox();
     }
 
-    @Override
-    public void updateThis() {
-        super.updateThis();
-    }
-
     private void initSelectionBox() {
         selectionBox.setPlaceholder(new Label("Nothing to select"));
 

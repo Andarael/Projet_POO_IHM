@@ -47,7 +47,7 @@ public class InfoAreaController extends AbstractController {
 
     /**
      * is called when the interface locks up
-     * we higlight the info to draw the user's attention, and enable the OkButton
+     * we highlight the info to draw the user's attention, and enable the OkButton
      */
     public void waitForInput() {
         highlightInfo();

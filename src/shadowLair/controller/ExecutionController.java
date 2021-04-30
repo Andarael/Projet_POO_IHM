@@ -20,7 +20,7 @@ import static shadowLair.controller.MainController.*;
  * This controllers methods are mostly wired to the setOnAction() methods from the view
  * And each action in the ui correspond to a command to execute
  * <p>
- * the parameters for the command are dermined from the state of the MainController
+ * the parameters for the command are determined from the state of the MainController
  * <p>
  * Once the command has been executed the necessary updates are called from the MainController
  * <p>

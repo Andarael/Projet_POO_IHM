@@ -98,8 +98,8 @@ public class MainController {
 
 
     /*======== getters Setters ======*/
-    /*most of the getters are for the executionConroller.
-    The wiew only gets the current state with the update sent by the controllers*/
+    /*most of the getters are for the executionController.
+    The view only gets the current state with the update sent by the controllers*/
 
     /**
      * This is in order to know the instance of the UI root controller
