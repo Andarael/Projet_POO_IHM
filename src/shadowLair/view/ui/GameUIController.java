@@ -51,6 +51,7 @@ public class GameUIController extends AbstractController {
     @FXML private InteractionController interactionController;
     @FXML private InfoAreaController infoAreaController;
     @FXML private TabsController tabsController;
+    @FXML private TopButtonsController topButtonsController;
 
     /*======= inner variables ========*/
 
