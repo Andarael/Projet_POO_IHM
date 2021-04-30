@@ -3,7 +3,7 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.ui.MainUI;
+import view.ui.GameUI;
 
 public class GameApplication extends Application {
 
@@ -16,7 +16,7 @@ public class GameApplication extends Application {
 
         Parent root;
 
-        root = new MainUI();
+        root = new GameUI();
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

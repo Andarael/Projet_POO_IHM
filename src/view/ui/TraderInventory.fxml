@@ -10,7 +10,7 @@
 
     <fx:include fx:id="inventory" source="Inventory.fxml"/>
 
-    <GridPane alignment="CENTER" fx:id="buttonArea">
+    <GridPane alignment="CENTER" fx:id="buttonArea" hgap="16" vgap="16">
         <Button fx:id="buyButton" onAction="#buySelectedItem" text="Buy" GridPane.columnIndex="1"/>
         <Button fx:id="sellButton" onAction="#sellSelectedItem" text="Sell"/>
     </GridPane>

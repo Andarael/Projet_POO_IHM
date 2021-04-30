@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap'); /*External font requires internet connexion*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 
 .root {
     -fx-padding: 24;
@@ -9,9 +10,11 @@
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 
-    -fx-base: #130A0F;
-    -fx-background: #2C1210;
+    -fx-base: #150C07;
+    -fx-background: #150C07;
     -fx-text-fill: #FBE5C6;
+
+    -fx-background-image: url("../images/backgroundUI.png");
 }
 
 * {
@@ -30,6 +33,7 @@
 /*================== Text ====================*/
 
 .h1 {
+    -fx-font-family: "Cinzel Decorative", cursive;
     -fx-font-size: 24px;
 }
 
@@ -44,7 +48,7 @@
 
 .button {
     -fx-cursor: hand;
-    -fx-background-color: linear-gradient(#423, #323);
+    -fx-background-color: linear-gradient(#743c3c, #402840);
     -fx-border-color: black;
     -fx-border-width: 0.1;
     -fx-padding: 1em 1.5em 1em 1.5em;

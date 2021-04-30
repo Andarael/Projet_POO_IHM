@@ -13,7 +13,9 @@
 }
 
 .YELLOW {
+    -fx-text-inner-color: black;
     -fx-background-color: yellow;
+    -fx-text-fill: black;
 }
 
 .BLUE {

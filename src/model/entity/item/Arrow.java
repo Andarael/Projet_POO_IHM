@@ -17,7 +17,7 @@ public class Arrow extends Weapon implements UsableOnItem {
     private static final String USAGE = "try 'USE [Arrow] [Bow]'";
 
     public Arrow() {
-        super("Arrow", "arrow", "a slender arrow with an iron tip", 0.0, 3, 3);
+        super("Arrow", "arrow", "a slender arrow with an iron tip", 0.0, 1, 2);
     }
 
     @Override

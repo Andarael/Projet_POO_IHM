@@ -19,31 +19,31 @@ public interface MasterListEntity {
 
     Item golden_statue = new Item("golden statue",
                                   "gStat",
-                                  "a small statue with a frightful effigy",
+                                  "A small statue with a frightful effigy",
                                   1,
                                   2);
 
     Item divine_jewel = new Item("divine jewel",
                                  "diJew",
-                                 "as you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves...",
+                                 "As you're looking this jewel, your eyes are getting lost in the maze of its crystalline curves and impossible geometries...",
                                  1,
                                  2);
 
     Item seer_thorn = new Item("Seer's thorn",
                                "sThorn",
-                               "The seer's tears contained in a small vial",
+                               "The tears of a seer contained in a small vial.",
                                1,
                                2);
 
     Item SignetUlric = new Item("Signet of Ulric",
                                 "sUlri",
-                                "A splendid signet ring with majestic reflections",
+                                "A magnificent ring with sumptuous reflections",
                                 1,
                                 2);
 
     Item collectionPrayers = new Item("Collection of prayers",
                                       "cPray",
-                                      "Keep the faith at all times ...",
+                                      "To keep with you at all cost ...",
                                       1,
                                       2);
 
@@ -231,15 +231,15 @@ public interface MasterListEntity {
     // Places ==================================================================
     Place tavern = new Place("Tavern",
                              "taver",
-                             "A tavern with a festive atmosphere, just watch out for the flying mug !");
+                             "A tavern with a festive atmosphere, just watch out for the flying mug. Beware of this shady guy in the corner !");
 
     Place entrance = new Place("Entrance",
                                "Entra",
-                               "The entrance of the dungeon, you're not ready for what's next.");
+                               "The entrance of the dungeon, if you dare to take the challenge.");
 
     Place eternity_room = new Place("eternity room",
                                     "etern",
-                                    "The chamber of the dragon. Your journey comes to an end.");
+                                    "A mysterious room of unknown function.");
 
     Place cave = new Place("Cave", "cave", "A big dark cave, your voice echoes endlessly");
 
@@ -253,33 +253,33 @@ public interface MasterListEntity {
 
     Place church = new Place("church",
                              "churc",
-                             "A charming little church, with beautiful stained glass windows");
+                             "An abandoned little church, with beautiful stained glass windows");
 
     Place laboratory = new Place("Laboratory",
                                  "labor",
-                                 "A laboratory like any other, with all kinds of gadgets and flasks on the shelves");
+                                 "All kinds of alchemical experiments and flasks on the shelves");
 
     Place barn = new Place("Barn",
                            "barn",
-                           "At the entrance of the barn, you can see a huge pile of hay, the smell goes with it of course, but that's nature !");
+                           "At the entrance of the barn, you can see a huge pile of hay. As if someone was here recently!");
 
     Place courtyard = new Place("Courtyard",
                                 "court",
-                                "In the courtyard there is a small garden and next to a lot of training dummies");
+                                "In the courtyard there is a small garden with few statues");
 
     Place marketPlace = new Place("Marketplace",
                                   "mPlac",
-                                  "In the marketplace, lots of people are jostling for their purchases, but watch out for thieves");
+                                  "Lots of people are jostling for their purchases, but watch out for thieves");
 
     Place banditLair = new Place("Bandit lair",
                                  "bandi",
-                                 "You see tables overturned, barrels full of swords and of course a crowd of terrifying bandits");
+                                 "You see tables overturned, barrels full of swords and of course a crowd of terrifying bandits. They don't seem to care about you");
 
     Place waterSource = new Place("Water source",
                                   "sWate",
                                   "A great spring of pure water flows before you");
 
-    Place mercyDreams = new Place("Mercy Dreams", "mercy", "a church deep underground");
+    Place mercyDreams = new Place("Mercy Dreams", "mercy", "An old church buried deep underground");
 
     Place desecratedCistern = new Place("Desecrated Cistern",
                                         "desec",
@@ -287,25 +287,33 @@ public interface MasterListEntity {
 
     Place echoesOfSalt = new Place("Echoes of Salt",
                                    "eSalt",
-                                   "with all that salt, we could conserve tons of meat!");
+                                   "Is that salt or snow ? Anyway, that falling powder is not good for your armor!");
 
     Place whereTreesWither = new Place("Where Trees Wither",
                                        "trees",
-                                       "one of the largest and oldest forests in the region, but recently this one is dying");
+                                       "One of the largest and oldest forests in the region, but recently this one is dying");
 
-    Place graveyardPeaks = new Place("Graveyard of the Peaks", "Peaks", "");
+    Place graveyardPeaks = new Place("Graveyard of the Peaks",
+                                     "Peaks",
+                                     "A secret graveyard for the royal family.");
 
     Place patioSilentSteps = new Place("Patio of the Silent Steps", "steps", "");
 
-    Place archicathedral = new Place("Archicathedral Mother of Mothers", "archi", "");
+    Place archiCathedral = new Place("Archicathedral Mother of Mothers",
+                                     "archi",
+                                     "A cathedral made of other cathedral within. It's as big as a mountain, and echoes the sound of a thousand bells");
 
-    Place libraryNegatedWords = new Place("Library of the Negated Words", "libra", "");
+    Place libraryNegatedWords = new Place("Library of the Negated Words",
+                                          "libra",
+                                          "In this library you can't read the books. A very bad omen awaits anyone who dares to disturb the place");
 
-    Place sleepingCanvases = new Place("The Sleeping Canvases", "canva", "");
+    Place sleepingCanvases = new Place("The Sleeping Canvases",
+                                       "canva",
+                                       "This is the place where paintings of long forgotten artists remains.");
 
-    Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions", "wallH", "");
-
-    Place deambulatoryHoliness = new Place("Deambulatory of His Holiness", "deamb", "");
+    Place wallHolyProhibitions = new Place("Wall of the Holy Prohibitions",
+                                           "wallH",
+                                           "A wall on the side of the main castle. It has a gloomy feel");
 
     // StaticContainers ========================================================
 
@@ -322,58 +330,58 @@ public interface MasterListEntity {
                                                       "a massive chest that probably houses sumptuous treasures ...");
 
     StaticContainer emerald_chest = new StaticContainer("emerald chest",
-                                                        "emeChe",
+                                                        "emeCh",
                                                         "a massive chest that probably houses sumptuous treasures ...");
 
     // Hostiles ================================================================
     Hostile orc = new Hostile("orc", "orc", "a green creature", 4, 2);
 
-    Hostile goblin = new Hostile("goblin", "gobli", "a small and pathetic creature", 3, 3);
+    Hostile goblin = new Hostile("goblin", "gobli", "a small and pathetic creature", 3, 2);
 
     Hostile dragon = new Hostile("dragon",
                                  "drago",
-                                 "a gigantic dragon with emerald reflections",
-                                 20,
-                                 5,
+                                 "A gigantic dragon with dark eyes and emerald reflections. He keeps what you seek",
+                                 25,
+                                 7,
                                  false);
 
     Hostile necromancer = new Hostile("necromancer",
                                       "necro",
-                                      "a dark wizard in tattered clothes",
+                                      "A dark wizard in tattered clothes",
                                       10,
-                                      10);
+                                      7);
 
     Hostile minotaur = new Hostile("minotaur",
                                    "minot",
-                                   "a scary creature with a man's body but a bull's head",
+                                   "A scary creature with a man's body but a bull's head",
                                    8,
-                                   8);
+                                   6);
 
     Hostile ghost = new Hostile("ghost",
                                 "ghost",
-                                "you can barely see the outlines of this creature",
+                                "You can barely see this creature",
                                 6,
-                                6);
+                                4);
 
     Hostile skeleton = new Hostile("skeleton",
                                    "skele",
-                                   "a human skeleton with shreds of flesh still attached to its bones",
+                                   "Shreds of flesh are still  attached to its bones. He does not seem bothered by your presence",
                                    4,
                                    4,
                                    false);
 
     Hostile wolf = new Hostile("wolf",
                                "wolf",
-                               "a piercing gaze  wolf and  sharp fangs, he's ready to pounce",
-                               10,
-                               5);
+                               "It have a piercing gaze and  sharp fangs, he's ready to kill any intruder",
+                               5,
+                               3);
 
     // Passive =================================================================
 
     Passive ordinary_guy = new Passive("ordinary guy",
                                        "orGuy",
                                        "a human just like you",
-                                       "Hello sir, the weather is nice, don't you think?");
+                                       "Hello sir, the weather is nice since we got this dragon thing, don't you think ?");
 
     Passive merchant = new Passive("merchant",
                                    "merch",
@@ -383,42 +391,45 @@ public interface MasterListEntity {
     Passive scandalf = new Passive("Scandalf the wizard",
                                    "scand",
                                    "He has a long beard and a pointy hat, you should listen to what he tells you",
-                                   "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! If you kill the dragon and save the princess, you'll be a hero for ever!");
+                                   "Hello adventurer, and welcome to the dungeon of Xar Tsaroth ! If you kill the dragon and save the princess, you'll be a hero for ever! " +
+                                   "Beware, this land is treacherous, a dragon and a necromancer are fighting for the power, " +
+                                   "while poor King Ulric is hiding in the basement of his own castle. " +
+                                   "Take the Divine Jewel and restore balance !");
 
     Passive annoying_princess = new Passive("annoying princess",
                                             "aPrin",
                                             "The beautiful princess you've been looking for, she has long golden hair and beautiful sapphire eyes",
-                                            "free me quick, you retarded incompetent!");
+                                            "You ! Free me quick, you retarded incompetent!");
 
     Passive ulricWise = new Passive("Ulric the Wise",
                                     "ulric",
                                     "Former ruler of the dungeon, he fled the takeover of the Necromancer, this dragon story really did not help matters!",
-                                    "take this key and deliver my kingdom!");
+                                    "Take this key and deliver my kingdom!");
 
-    Passive WillyPillager = new Passive("Willy the pillager",
+    Passive willyPillager = new Passive("Willy the pillager",
                                         "Willy",
                                         "Little man with graying hair, take advantage of the discord to plunder the dungeon",
-                                        "I found lots of beautiful things! You want some ?");
+                                        "Hey, I found lots of beautiful things! You want some ?");
 
     Passive piousHelen = new Passive("Pious helen",
                                      "helen",
                                      "Girl with blond hair",
-                                     "I lost my statuette, if you found it, keep it in memory of me sir");
+                                     "I lost my statuette, if you found it please keep it in memory of me sir");
 
     Passive torakStrange = new Passive("Torak the strange",
                                        "torak",
-                                       "Elderly man with red head",
-                                       "At a time I could have helped you... at a time ...");
+                                       "An elderly man blind",
+                                       "A long time ago I could have helped you, ... A long time ago");
 
     Passive arthurBrave = new Passive("Arthur the brave",
                                       "Arthu",
-                                      "Young knight",
-                                      "Hello, my sword send you it's regards!");
+                                      "Young (and very small) knight lost in the castle, juste as you",
+                                      "Hello, my sword is blunt, I can go no further !");
 
     Passive madelaine = new Passive("Madelaine the beloved",
                                     "Madel",
                                     "Young girl with black hair, child of Ulric",
-                                    "please save us sir");
+                                    "Please save us sir, first a Necromancer, then a Dragon, what now ? ");
 
 
     /*==============================================================================================*/
@@ -510,59 +521,129 @@ public interface MasterListEntity {
         output.add(forest);
         output.add(church);
         output.add(laboratory);
+        output.add(mercyDreams);
         output.add(barn);
         output.add(courtyard);
         output.add(marketPlace);
         output.add(banditLair);
         output.add(waterSource);
+        output.add(whereTreesWither);
+        output.add(sleepingCanvases);
+        output.add(desecratedCistern);
+        output.add(graveyardPeaks);
+        output.add(libraryNegatedWords);
+        output.add(archiCathedral);
+        output.add(patioSilentSteps);
+        output.add(wallHolyProhibitions);
+        output.add(echoesOfSalt);
+
 
         entrance.addItemToPlace(redKey);
-        entrance.addItemToPlace(dagger);
         entrance.addGoldToPlace(5);
-        entrance.addExit(barn, 2);
+        entrance.addExit(courtyard, 0);
         entrance.addContainer(scandalf);
 
-        barn.addContainer(iron_chest);
-        barn.addContainer(ordinary_guy);
-        barn.addContainer(orc);
-        barn.addExit(cave, 0);
-        barn.addExit(entrance, 1);
-        barn.addLockedExit(laboratory, 2, RED);
-        barn.addLockedExit(forest, 3, GREEN);
+        courtyard.addContainer(arthurBrave);
+        courtyard.addItemToPlace(dagger);
+        courtyard.addExit(entrance, 3);
+        courtyard.addLockedExit(forest, 2, RED);
+        courtyard.addLockedExit(graveyard, 0, BLUE);
 
-        forest.addExit(barn, 0);
-        forest.addExit(graveyard, 1);
-
-        cave.addContainer(merchant);
-        cave.addContainer(minotaur);
-        cave.addContainer(skeleton);
-        cave.addExit(barn, 3);
-
-        laboratory.addItemToPlace(esoteric_manual);
-        laboratory.addExit(barn, 3);
-        laboratory.addContainer(steel_chest);
-        laboratory.addLockedExit(church, 0, BLUE);
-
-        church.addContainer(ulricWise);
-        church.addContainer(necromancer);
-        church.addExit(laboratory, 3);
-        church.addExit(eternity_room, 2);
-        church.addExit(courtyard, 0);
-
-        courtyard.addContainer(ghost);
-        courtyard.addContainer(goblin);
-        courtyard.addExit(entrance, 0);
-        courtyard.addExit(church, 3);
+        forest.addContainer(ordinary_guy);
+        forest.addContainer(wolf);
+        forest.addContainer(iron_chest);
+        forest.addExit(courtyard, 1);
+        forest.addLockedExit(waterSource, 3, GREEN);
 
         graveyard.addContainer(skeleton);
-        graveyard.addContainer(minotaur);
-        graveyard.addExit(courtyard, 2);
-        graveyard.addExit(forest, 3);
-        graveyard.addContainer(wolf);
+        graveyard.addExit(marketPlace, 2);
+        graveyard.addExit(courtyard, 3);
+        graveyard.addItemToPlace(humanSkull);
 
-        eternity_room.addContainer(annoying_princess);
-        eternity_room.addContainer(dragon);
-        eternity_room.addExit(church, 1);
+        marketPlace.addContainer(merchant);
+        marketPlace.addExit(graveyard, 1);
+        marketPlace.addExit(laboratory, 2);
+
+        laboratory.addContainer(ghost);
+        laboratory.addExit(marketPlace, 1);
+        laboratory.addExit(mercyDreams, 3);
+
+        mercyDreams.addContainer(madelaine);
+        mercyDreams.addContainer(wooden_chest);
+        mercyDreams.addExit(laboratory, 0);
+        mercyDreams.addExit(courtyard, 3);
+
+        waterSource.addExit(forest, 0);
+        waterSource.addExit(banditLair, 2);
+        waterSource.addExit(eternity_room, 3);
+        waterSource.addItemToPlace(elixir_of_mystic_life);
+        waterSource.addContainer(torakStrange);
+
+        banditLair.addExit(waterSource, 1);
+        banditLair.addExit(whereTreesWither, 2);
+        banditLair.addContainer(orc);
+        banditLair.addContainer(steel_chest);
+
+        whereTreesWither.addExit(banditLair, 1);
+        whereTreesWither.addLockedExit(barn, 0, PURPLE);
+        whereTreesWither.addContainer(willyPillager);
+
+        barn.addContainer(minotaur);
+        barn.addExit(whereTreesWither, 3);
+        barn.addExit(church, 2);
+
+        church.addContainer(piousHelen);
+        church.addContainer(necromancer);
+        church.addContainer(emerald_chest);
+        church.addExit(barn, 1);
+        church.addExit(sleepingCanvases, 3);
+
+        sleepingCanvases.addExit(church, 0);
+        sleepingCanvases.addExit(cave, 2);
+        sleepingCanvases.addLockedExit(wallHolyProhibitions, 3, YELLOW);
+        sleepingCanvases.addItemToPlace(rotten_chicken);
+        sleepingCanvases.addItemToPlace(coca_zero);
+
+        cave.addExit(sleepingCanvases, 1);
+        cave.addItemToPlace(SmallWoodenStatuette);
+        cave.addExit(patioSilentSteps, 2);
+
+        wallHolyProhibitions.addExit(sleepingCanvases, 0);
+        wallHolyProhibitions.addContainer(dragon);
+        wallHolyProhibitions.addContainer(annoying_princess);
+
+        eternity_room.addExit(waterSource, 0);
+        eternity_room.addContainer(ulricWise);
+        eternity_room.addItemToPlace(golden_statue);
+
+        patioSilentSteps.addExit(cave, 1);
+        patioSilentSteps.addExit(echoesOfSalt, 2);
+        patioSilentSteps.addItemToPlace(staleWheatPancake);
+
+        echoesOfSalt.addExit(patioSilentSteps, 1);
+        echoesOfSalt.addExit(desecratedCistern, 2);
+        echoesOfSalt.addItemToPlace(sinnerTear);
+
+        desecratedCistern.addExit(echoesOfSalt, 1);
+        desecratedCistern.addExit(archiCathedral, 2);
+        desecratedCistern.addContainer(goblin);
+
+        archiCathedral.addExit(desecratedCistern, 1);
+        archiCathedral.addExit(libraryNegatedWords, 2);
+        archiCathedral.addItemToPlace(rotten_chicken);
+        archiCathedral.addItemToPlace(messiahBlood);
+
+        libraryNegatedWords.addExit(archiCathedral, 1);
+        libraryNegatedWords.addExit(tavern, 2);
+        libraryNegatedWords.addItemToPlace(irons_arrow);
+        libraryNegatedWords.addItemToPlace(irons_arrow);
+        libraryNegatedWords.addItemToPlace(irons_arrow);
+
+        tavern.addExit(libraryNegatedWords, 1);
+        tavern.addExit(entrance, 2);
+        tavern.addItemToPlace(irons_arrow);
+        tavern.addItemToPlace(apple);
+        tavern.addItemToPlace(poison);
 
         return output;
     }
@@ -579,9 +660,15 @@ public interface MasterListEntity {
         output.add(skeleton);
         output.add(wolf);
 
+        orc.addItem(staff);
         minotaur.addItem(spiked_mass);
+        minotaur.addGold(3);
         skeleton.addItem(one_handed_sword);
         dragon.addItem(divine_jewel);
+        dragon.addGold(20);
+        necromancer.addGold(5);
+        necromancer.addItem(limboLament);
+        wolf.addItem(rotten_chicken);
 
         return output;
     }
@@ -594,15 +681,36 @@ public interface MasterListEntity {
         output.add(scandalf);
         output.add(annoying_princess);
         output.add(ulricWise);
-        output.add(WillyPillager);
+        output.add(willyPillager);
         output.add(piousHelen);
         output.add(torakStrange);
         output.add(arthurBrave);
         output.add(madelaine);
 
         merchant.addItem(irons_arrow);
-        merchant.addItem(hunters_bow);
+        merchant.addItem(irons_arrow);
+        merchant.addItem(irons_arrow);
+        merchant.addItem(irons_arrow);
+        merchant.addItem(apple);
+        merchant.addItem(apple);
+        merchant.addItem(apple);
+        merchant.addItem(elixir_of_mystic_life);
+        merchant.addItem(big_cake);
         merchant.addGold(10);
+
+        scandalf.addItem(apple);
+        scandalf.addItem(sacredBook);
+
+        ulricWise.addItem(SignetUlric);
+        ulricWise.addItem(purpleKey);
+
+        arthurBrave.addItem(great_sword);
+
+        torakStrange.addItem(esoteric_manual);
+
+        piousHelen.addItem(collectionPrayers);
+
+        willyPillager.addItem(dagger);
 
         return output;
     }
@@ -616,10 +724,19 @@ public interface MasterListEntity {
         output.add(emerald_chest);
 
         iron_chest.addItem(apple);
-        iron_chest.addItem(poison);
+        iron_chest.addItem(blueKey);
 
-        steel_chest.addItem(greenKey);
         steel_chest.addItem(coca_zero);
+        steel_chest.addGold(3);
+
+        emerald_chest.addItem(yellowKey);
+        emerald_chest.addItem(oldHam);
+        emerald_chest.addGold(4);
+
+        wooden_chest.addItem(greenKey);
+        wooden_chest.addItem(daggerFaith);
+        wooden_chest.addItem(countryPate);
+        wooden_chest.addGold(2);
 
         return output;
     }
@@ -637,12 +754,13 @@ public interface MasterListEntity {
 
         player.addItem(rotten_chicken);
         player.addItem(hunters_bow);
+        hunters_bow.addArrow();
         player.addItem(irons_arrow);
         player.addItem(irons_arrow);
-        player.addItem(irons_arrow);
-        player.addItem(irons_arrow);
-        player.addItem(blueKey);
 
+        player.addItem(esoteric_manual); // todo remove
+
+        player.addGold(3);
     }
 
 }

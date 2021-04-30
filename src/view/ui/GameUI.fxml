@@ -4,14 +4,17 @@
 <?import javafx.scene.layout.*?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
          stylesheets="@../ressources/css/style.css, @../ressources/css/tableStyle.css, @../ressources/css/colors.css, @../ressources/css/tabs.css" type="StackPane"
-         xmlns="http://javafx.com/javafx/8.0.171" fx:controller="view.ui.MainUIController">
+         xmlns="http://javafx.com/javafx/8.0.171" fx:controller="view.ui.GameUIController">
 
 
     <HBox alignment="CENTER" minHeight="512" maxHeight="1024" maxWidth="1280" minWidth="768"
           spacing="32">
 
-        <VBox spacing="8">
+        <VBox spacing="16" prefWidth="600" alignment="CENTER">
+
             <Label styleClass="h1" text="Room Name" fx:id="roomNameLabel"/>
+
+            <Separator/>
 
             <fx:include fx:id="direction" source="Direction.fxml"/>
 
@@ -33,7 +36,7 @@
 
         <Separator orientation="VERTICAL"/>
 
-        <VBox alignment="CENTER" spacing="8">
+        <VBox alignment="CENTER" spacing="8" prefWidth="600">
 
             <fx:include fx:id="topButtons" source="TopButtons.fxml" prefWidth="512"/>
 

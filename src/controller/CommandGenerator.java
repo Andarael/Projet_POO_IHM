@@ -124,4 +124,8 @@ public interface CommandGenerator {
 
         return command;
     }
+
+    static List<String> generateLootCommand() {
+        return getBaseCommand("take");
+    }
 }

@@ -15,7 +15,7 @@ public class HelpGameScreen extends Stage{
 
         this.setTitle("How to Play ?");
 
-        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("help", ".png")));
+        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("help_screen", ".png")));
 
         helpImage.setOnMouseClicked(event -> this.close());
 

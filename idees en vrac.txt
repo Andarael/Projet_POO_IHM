@@ -21,3 +21,5 @@ Esqu'in frai pô mieux lâ d'mett l'invintèr dujouèr toutl'tin au gauch hiein 
 un fxml playerInv
 Npc inv ?
 et containerInv ?
+
+// todo loot l'or par terre avec la command loot

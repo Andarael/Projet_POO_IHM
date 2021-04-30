@@ -54,11 +54,11 @@ public abstract class AbstractController {
         return null;
     }
 
-    public MainUIController getRootController() {
+    public GameUIController getRootController() {
         AbstractController actualController = getParentController();
 
-        if (this instanceof MainUIController)
-            return (MainUIController) this;
+        if (this instanceof GameUIController)
+            return (GameUIController) this;
 
         else if (actualController == null)
             return null;

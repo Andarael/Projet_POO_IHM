@@ -5,11 +5,11 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class MainUI extends StackPane {
+public class GameUI extends StackPane {
 
-    public MainUI() {
+    public GameUI() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("MainUI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(GameUI.class.getResource("GameUI.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
         } catch (IOException ioe) {

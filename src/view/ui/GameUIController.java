@@ -20,7 +20,7 @@ import java.util.List;
 import static model.utils.StringUtils.capitalize;
 import static model.utils.StringUtils.readable;
 
-public class MainUIController extends AbstractController {
+public class GameUIController extends AbstractController {
 
     @FXML private Label roomNameLabel;
     @FXML private HBox topButtons;
@@ -39,6 +39,8 @@ public class MainUIController extends AbstractController {
     @FXML private InteractionController interactionController;
     @FXML private InfoAreaController infoAreaController;
     @FXML private TabsController tabsController;
+
+    Player player = null;
 
     @Override
     public void initThis() {
@@ -64,7 +66,7 @@ public class MainUIController extends AbstractController {
 
         if (container instanceof StaticContainer)
             characterBar2Controller.updateBeing(null);
-        else if (container instanceof Being && container != MainController.getPlayer())
+        else if (container instanceof Being && container != player)
             characterBar2Controller.updateBeing((Being) container);
         else
             characterBar2Controller.updateBeing(null);
@@ -95,6 +97,7 @@ public class MainUIController extends AbstractController {
     }
 
     public void updatePlayer(Player player) {
+        this.player = player;
         characterBar1Controller.updateBeing(player);
         tabsController.setPlayer(player);
         directionController.updatePlayer(player);

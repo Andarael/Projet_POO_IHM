@@ -7,10 +7,12 @@
 <HBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="32" spacing="16"
       fx:controller="view.ui.TopButtonsController">
 
-    <Button fx:id="lookPlaceButtonButton" onAction="#lookPlaceAction" text="Look Place"/>
+    <Button fx:id="lookPlaceButton" onAction="#lookPlaceAction" text="Look Place"/>
     <Button fx:id="lootPlaceButton" onAction="#lootPlaceAction" text="Loot Place"/>
     <Separator orientation="VERTICAL" />
     <Button fx:id="quitButton" onAction="#quitAction" text="Quit Game"/>
-    <Button fx:id="resetButton" onAction="#helpAction" text="Help"/>
+    <Button fx:id="helpButton" onAction="#helpAction" text="Help"/>
+
+    <!--todo add graphics-->
 
 </HBox>

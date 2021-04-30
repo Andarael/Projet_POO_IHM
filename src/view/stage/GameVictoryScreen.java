@@ -1,6 +1,5 @@
 package view.stage;
 
-import view.RessourceManager;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -8,15 +7,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import view.RessourceManager;
 
-public class EndGameScreen extends Stage{
+public class GameVictoryScreen extends Stage{
 
-    public EndGameScreen() {
-        this.initModality(Modality.NONE);
+    public GameVictoryScreen() {
+        this.initModality(Modality.APPLICATION_MODAL);
 
-        this.setTitle("Game Over !");
+        this.setTitle("Victory !");
 
-        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("game_over", ".png")));
+        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("victory", ".png")));
 
         helpImage.setOnMouseClicked(event -> Platform.exit());
 
