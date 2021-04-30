@@ -13,6 +13,4 @@
     <Button fx:id="quitButton" onAction="#quitAction" text="Quit Game"/>
     <Button fx:id="helpButton" onAction="#helpAction" text="Help"/>
 
-    <!--todo add graphics-->
-
 </HBox>

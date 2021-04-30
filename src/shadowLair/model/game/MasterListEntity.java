@@ -758,8 +758,6 @@ public interface MasterListEntity {
         player.addItem(irons_arrow);
         player.addItem(irons_arrow);
 
-        player.addItem(esoteric_manual); // todo remove
-
         player.addGold(3);
     }
 

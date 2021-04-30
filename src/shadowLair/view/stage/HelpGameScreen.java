@@ -26,6 +26,5 @@ public class HelpGameScreen extends Stage{
         this.setScene(helpScene);
 
         this.setResizable(false);
-        // todo help image
     }
 }
