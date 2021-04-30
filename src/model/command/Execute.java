@@ -79,10 +79,10 @@ public interface Execute {
                 if (nbArgs == 1)
                     return use(player, arg1);
                 else if (nbArgs == 2)
-                    return use(world, player, arg1, arg2);
+                    return use(world, player, arg1, arg2); // this does not fall through despite what the warning says
 
             case GO:
-                return go(world, currentPlace, arg1);
+                return go(world, currentPlace, arg1); // nor does this
 
             case DROP:
                 return drop(player, currentPlace, arg1);
