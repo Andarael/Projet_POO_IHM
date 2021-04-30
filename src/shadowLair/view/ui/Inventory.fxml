@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" spacing="8"
-      fx:controller="shadowLair.view.ui.InventoryController">
+      fx:controller="shadowLair.controller.ui.InventoryController">
 
     <Label fx:id="labelGold" text="Golds : "/>
 

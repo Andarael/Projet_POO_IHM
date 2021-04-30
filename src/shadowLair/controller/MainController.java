@@ -11,7 +11,7 @@ import shadowLair.model.world.World;
 import shadowLair.view.stage.GameOverScreen;
 import shadowLair.view.stage.GameVictoryScreen;
 import shadowLair.view.stage.StartGameScreen;
-import shadowLair.view.ui.GameUIController;
+import shadowLair.controller.ui.GameUIController;
 
 /**
  * This controller contains the different game elements relevent to the interface.

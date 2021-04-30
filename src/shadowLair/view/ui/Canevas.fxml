@@ -6,7 +6,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       fx:id="canevasContainer" prefHeight="512.0"
       prefWidth="512.0"
-      fx:controller="shadowLair.view.ui.CanevasController">
+      fx:controller="shadowLair.controller.ui.CanevasController">
 
     <ImageView id="canevas" fx:id="backGroundImage" fitHeight="512" fitWidth="512"/>
 

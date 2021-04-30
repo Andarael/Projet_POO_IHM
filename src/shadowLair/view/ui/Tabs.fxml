@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" spacing="8"
-      fx:controller="shadowLair.view.ui.TabsController">
+      fx:controller="shadowLair.controller.ui.TabsController">
 
 
     <TabPane tabClosingPolicy="UNAVAILABLE" prefWidth="256">

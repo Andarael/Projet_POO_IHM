@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="shadowLair.view.ui.LootInventoryController"
+      fx:controller="shadowLair.controller.ui.LootInventoryController"
       alignment="TOP_CENTER" spacing="8">
 
 

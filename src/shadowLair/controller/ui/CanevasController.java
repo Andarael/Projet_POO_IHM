@@ -1,4 +1,4 @@
-package shadowLair.view.ui;
+package shadowLair.controller.ui;
 
 import javafx.css.Styleable;
 import javafx.fxml.FXML;

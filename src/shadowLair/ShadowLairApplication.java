@@ -23,7 +23,9 @@ public class ShadowLairApplication extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        primaryStage.setTitle("The Shadow Lair Game");
         primaryStage.show();
+
         MainController.initialize();
     }
 

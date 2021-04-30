@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <HBox fx:id="characterBar" alignment="CENTER_LEFT" prefWidth="512" spacing="4"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadowLair.view.ui.CharacterBarController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadowLair.controller.ui.CharacterBarController">
 
     <!-- Character box -->
     <HBox alignment="CENTER_LEFT" prefWidth="128" spacing="4">

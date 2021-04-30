@@ -1,4 +1,4 @@
-package shadowLair.view.ui;
+package shadowLair.controller.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

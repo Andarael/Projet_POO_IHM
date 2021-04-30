@@ -1,4 +1,4 @@
-package shadowLair.view.ui;
+package shadowLair.controller.ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

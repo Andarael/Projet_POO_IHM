@@ -1,4 +1,4 @@
-package shadowLair.view.ui;
+package shadowLair.controller.ui;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;

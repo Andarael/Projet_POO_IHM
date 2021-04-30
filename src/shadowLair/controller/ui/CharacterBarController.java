@@ -1,4 +1,4 @@
-package shadowLair.view.ui;
+package shadowLair.controller.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

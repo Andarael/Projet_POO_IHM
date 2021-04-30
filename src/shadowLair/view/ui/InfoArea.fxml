@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       spacing="8" alignment="CENTER" fillWidth="false"
-      fx:controller="shadowLair.view.ui.InfoAreaController">
+      fx:controller="shadowLair.controller.ui.InfoAreaController">
 
     <Label text="Information" styleClass="h2"/>
 

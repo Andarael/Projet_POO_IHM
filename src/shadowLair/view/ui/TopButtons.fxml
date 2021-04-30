@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="32" spacing="16"
-      fx:controller="shadowLair.view.ui.TopButtonsController">
+      fx:controller="shadowLair.controller.ui.TopButtonsController">
 
     <Button fx:id="lookPlaceButton" onAction="#lookPlaceAction" text="Look Place"/>
     <Button fx:id="lootPlaceButton" onAction="#lootPlaceAction" text="Loot Place"/>

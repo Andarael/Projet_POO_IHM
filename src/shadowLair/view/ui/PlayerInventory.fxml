@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" spacing="8"
-      fx:controller="shadowLair.view.ui.PlayerInventoryController">
+      fx:controller="shadowLair.controller.ui.PlayerInventoryController">
 
     <fx:include fx:id="inventory" source="Inventory.fxml"/>
 

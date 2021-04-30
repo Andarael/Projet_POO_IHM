@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="interactionArea" alignment="CENTER" spacing="16"
-      fx:controller="shadowLair.view.ui.InteractionController">
+      fx:controller="shadowLair.controller.ui.InteractionController">
 
     <Label fx:id="npcInteractionLabel" alignment="CENTER" maxWidth="Infinity" styleClass="h2"
            text="What to do with [...] : "/>
