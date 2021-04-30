@@ -1,7 +1,5 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.ExecutionController;
-import shadowLair.controller.MainController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import shadowLair.controller.ExecutionController;
+import shadowLair.controller.MainController;
 import shadowLair.model.entity.Entity;
 import shadowLair.model.entity.Player;
 import shadowLair.model.entity.item.Item;

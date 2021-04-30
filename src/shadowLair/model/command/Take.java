@@ -18,8 +18,6 @@ public interface Take {
         Container container = currentPlace.getContainerByName(containerName);
 
 
-
-
         if (container == null) {
 
             StaticContainer placeContainer = currentPlace.getPlaceContainer();
@@ -59,9 +57,9 @@ public interface Take {
             return printMsg("You added " + item.getName() + " to your inventory");
         } else {
             return printMsg("You can't take " +
-                     item.getName() +
-                     ". You can't carry it. \n " +
-                     "Try discarding some items");
+                            item.getName() +
+                            ". You can't carry it. \n " +
+                            "Try discarding some items");
         }
     }
 

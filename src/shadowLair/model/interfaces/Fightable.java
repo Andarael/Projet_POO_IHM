@@ -130,7 +130,7 @@ public interface Fightable extends Describable {
         opponent.hurt(amount);
 
         return printMsg(getName() + " attacks " + opponent.getName() +
-                 " and deals " + amount + " Damage !");
+                        " and deals " + amount + " Damage !");
     }
 
     /**

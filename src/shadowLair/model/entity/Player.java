@@ -368,11 +368,11 @@ public class Player extends Being {
         return killCounter;
     }
 
-    public double getCapacity () {
+    public double getCapacity() {
         return limitedInventory.getCapacity();
     }
 
-    public double getUsedCapacity () {
+    public double getUsedCapacity() {
         return limitedInventory.getUsedCapacity();
     }
 }

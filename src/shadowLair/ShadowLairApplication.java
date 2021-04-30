@@ -1,10 +1,10 @@
 package shadowLair;
 
-import shadowLair.controller.MainController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shadowLair.controller.MainController;
 import shadowLair.view.ui.GameUI;
 
 public class ShadowLairApplication extends Application {

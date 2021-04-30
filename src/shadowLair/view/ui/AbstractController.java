@@ -8,7 +8,7 @@ import java.util.List;
  * An AbstractController aims to streamline the initialization and communication of nested fxml controllers
  * It provides methods to update all child controllers at once.
  * And allows lower controller to easily talk to their parents in the tree
- *
+ * <p>
  * Those features are barely used in this project.
  */
 public abstract class AbstractController {

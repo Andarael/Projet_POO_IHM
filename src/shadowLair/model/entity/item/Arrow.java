@@ -70,7 +70,7 @@ public class Arrow extends Weapon implements UsableOnItem {
         if (item == null) {
             message = "This item does not exist";
             Printer.printErr(message + ", " + getUsage());
-            return new Pair<>(false,message);
+            return new Pair<>(false, message);
         }
         if (!(item instanceof Bow)) {
             message = "This is not a Bow";
@@ -78,7 +78,7 @@ public class Arrow extends Weapon implements UsableOnItem {
             return new Pair<>(false, message);
         }
         ((Bow) item).addArrow();
-        return new Pair<>(true,Printer.printMsg("Added an Arrow to " + item.getName()));
+        return new Pair<>(true, Printer.printMsg("Added an Arrow to " + item.getName()));
     }
 
 }

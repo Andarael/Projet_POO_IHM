@@ -1,6 +1,5 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.ExecutionController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import shadowLair.controller.ExecutionController;
 import shadowLair.model.entity.Being;
 import shadowLair.model.entity.Container;
 import shadowLair.model.interfaces.Talkable;
@@ -18,10 +18,10 @@ import static shadowLair.model.utils.StringUtils.readable;
 
 /**
  * This controller is responsible for the interactions with the selected container (in the canevas)
- *
+ * <p>
  * The buttons gets enabled or disable according to the class of the selected container
  * (we can't talk to a chest, nor can we trade with a dragon)
- *
+ * <p>
  * the label always shows the name of the selected Container
  */
 public class InteractionController extends AbstractController {

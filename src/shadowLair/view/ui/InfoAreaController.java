@@ -1,16 +1,16 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import shadowLair.controller.MainController;
 
 import java.util.List;
 
 /**
  * An infoArea displays info it receives from higher controllers
- *
+ * <p>
  * It is also responsible to notify the MainController when the user unlocks the interface
  */
 public class InfoAreaController extends AbstractController {

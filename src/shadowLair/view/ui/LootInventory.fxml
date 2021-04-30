@@ -4,17 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="shadowLair.view.ui.LootInventoryController"
       alignment="TOP_CENTER" spacing="8">
 
 
-        <fx:include fx:id="inventory" source="Inventory.fxml"/>
+    <fx:include fx:id="inventory" source="Inventory.fxml"/>
 
-        <GridPane alignment="CENTER" fx:id="buttonArea">
-            <Button text="Take" onAction="#takeItem" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        </GridPane>
+    <GridPane alignment="CENTER" fx:id="buttonArea">
+        <Button text="Take" onAction="#takeItem" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
 
 
 </VBox>

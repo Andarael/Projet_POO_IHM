@@ -16,11 +16,11 @@ import java.util.List;
  * This controller is associated with the so called Tabs.fxml
  * But it have tabs only in name.
  * Because the tab switch is done automatically and other tabs are disable when not in use
- *
+ * <p>
  * So the tabs are still here mainly for aesthetic reasons
  * And if we would like to add other tabs in the future  the code base is still here
  * (for a horse inventory accessible at all time for example)
- *
+ * <p>
  * This controller passes trough the updates to its children
  */
 public class TabsController extends AbstractController {

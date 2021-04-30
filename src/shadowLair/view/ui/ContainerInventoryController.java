@@ -13,7 +13,7 @@ import java.util.List;
  * This abstract class is a layer between the inventory controller and the entity that owns this inventory
  * It allows the MainController to differenciate the inventories of a chest from an NPC from a being
  * It also allows to have different button layouts with different actions bellow the inventory
- *
+ * <p>
  * When this receive an update the buttons are set accordingly
  * and the update passed down to the InventoryController if necessary
  */

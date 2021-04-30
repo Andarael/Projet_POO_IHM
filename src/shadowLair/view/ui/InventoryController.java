@@ -28,10 +28,10 @@ import static shadowLair.view.RessourceManager.getRessourceString;
  * It can actually display any inventory.
  * It receives the Container from which the inventory is to be displayed
  * from higher up controllers
- *
+ * <p>
  * I use a TableView with a custom cellFactory for the item type image
  * The TableView eases the management of the selected item (i just added a listener to the selection change)
- *
+ * <p>
  * When an item is selected a notification is sent to the MainController
  * the description is also updated
  */

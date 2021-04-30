@@ -16,14 +16,14 @@ import static shadowLair.controller.MainController.*;
 
 /**
  * This controller executes command to update the model
- *
+ * <p>
  * This controllers methods are mostly wired to the setOnAction() methods from the view
  * And each action in the ui correspond to a command to execute
- *
+ * <p>
  * the parameters for the command are dermined from the state of the MainController
- *
+ * <p>
  * Once the command has been executed the necessary updates are called from the MainController
- *
+ * <p>
  * execution schéma :
  * 1 - get current state
  * 2 - generate command from state
@@ -37,8 +37,8 @@ public class ExecutionController {
 
     /**
      * executes the go command from the model
-     *
-     *
+     * <p>
+     * <p>
      * when changing place, if there are agressive creatures in the new room, they automatically attack the player
      * also because the player can die after changing place, we check death here
      */
@@ -162,7 +162,7 @@ public class ExecutionController {
      * exec the use command
      * The model had to be modified in order to get both the result of the utilisation (boolean -> item consumed or not)
      * and the description of the utilization
-     *
+     * <p>
      * because the player can poison himself, we check death here too
      */
     public static void executeUse() {
@@ -200,7 +200,7 @@ public class ExecutionController {
 
     /**
      * exec the take command
-     *
+     * <p>
      * because the victory is achieved when the player takes an item we check victory here
      */
     public static void executeTake() {

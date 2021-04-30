@@ -28,8 +28,8 @@ public interface WorldContains {
             return null;
 
         return world.entities.stream()
-                .filter(x -> (x.isSameStr(name)))
-                .findFirst().orElse(null);
+                             .filter(x -> (x.isSameStr(name)))
+                             .findFirst().orElse(null);
     }
 
     static Item getItem(World world, String itemName) {

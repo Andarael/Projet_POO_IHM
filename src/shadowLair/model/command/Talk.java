@@ -6,15 +6,14 @@ import shadowLair.model.entity.Container;
 import shadowLair.model.entity.place.Place;
 import shadowLair.model.interfaces.Talkable;
 
+import static shadowLair.model.utils.Printer.*;
 import static shadowLair.model.utils.StringUtils.capitalize;
 import static shadowLair.model.utils.StringUtils.readable;
-import static shadowLair.model.utils.Printer.*;
 
 public interface Talk {
     static String talk(Place currentPlace, String arg1) {
 
         Container npc = currentPlace.getContainerByName(arg1);
-
 
 
         if (npc == null) {

@@ -10,7 +10,6 @@
 }
 
 
-
 .tab-pane > .tab-header-area > .tab-header-background {
-    -fx-background-color:transparent;
+    -fx-background-color: transparent;
 }

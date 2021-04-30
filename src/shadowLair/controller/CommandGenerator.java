@@ -36,7 +36,7 @@ public interface CommandGenerator {
         return command;
     }
 
-    static  List<String> generateTalkCommand(Container container) {
+    static List<String> generateTalkCommand(Container container) {
         ArrayList<String> command = getBaseCommand("talk");
 
         if (container instanceof Being)

@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadowLair.view.ui.TraderInventoryController"
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="shadowLair.view.ui.TraderInventoryController"
       alignment="TOP_CENTER" spacing="8">
 
     <fx:include fx:id="inventory" source="Inventory.fxml"/>

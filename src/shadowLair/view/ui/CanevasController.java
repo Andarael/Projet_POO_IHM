@@ -1,12 +1,12 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.MainController;
 import javafx.css.Styleable;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import shadowLair.controller.MainController;
 import shadowLair.model.entity.Container;
 import shadowLair.model.entity.Player;
 import shadowLair.model.entity.place.Place;
@@ -37,7 +37,7 @@ public class CanevasController extends AbstractController {
     /*======= FXML Actions ========*/
 
     /*The highlighting part is done by searching the mouseEvent target
-    * There is no code to force a container to be highlighted */
+     * There is no code to force a container to be highlighted */
 
     @FXML
     public void selectImagePlayer(MouseEvent mouseEvent) {

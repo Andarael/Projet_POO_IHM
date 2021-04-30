@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.layout.*?>
 <HBox fx:id="characterBar" alignment="CENTER_LEFT" prefWidth="512" spacing="4"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadowLair.view.ui.CharacterBarController">
 

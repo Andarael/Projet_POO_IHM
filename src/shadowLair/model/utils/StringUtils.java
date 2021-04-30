@@ -56,8 +56,8 @@ public interface StringUtils {
         return pluralize(string, number, string.trim() + 's');
     }
 
-    static  String capitalize(String string) {
-        return string.substring(0,1).toUpperCase() + string.substring(1);
+    static String capitalize(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     static String readable(String str) {

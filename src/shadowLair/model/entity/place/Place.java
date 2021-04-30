@@ -196,7 +196,7 @@ public class Place extends Entity {
             if (containsContainer(container))
                 return;
         }
-        if (this.nbContainer() < this.containerMax){
+        if (this.nbContainer() < this.containerMax) {
             this.listContainers.add(container);
         }
     }

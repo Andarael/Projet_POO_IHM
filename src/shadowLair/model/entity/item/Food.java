@@ -64,7 +64,7 @@ public class Food extends Item implements Usable {
     public Pair<Boolean, String> use() {
         String message = "Try using it on a Being";
         Printer.printErr(message);
-        return new Pair<>(false,message);
+        return new Pair<>(false, message);
     }
 
     /**
@@ -89,7 +89,7 @@ public class Food extends Item implements Usable {
 
         message = "This can only be used on the Player";
         Printer.printErr(message);
-        return new Pair<>(false,message);
+        return new Pair<>(false, message);
     }
 
     /**

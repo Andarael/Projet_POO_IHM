@@ -1,11 +1,11 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.Direction;
-import shadowLair.controller.ExecutionController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import shadowLair.controller.Direction;
+import shadowLair.controller.ExecutionController;
 import shadowLair.model.entity.Container;
 import shadowLair.model.entity.Player;
 import shadowLair.model.entity.item.Key;
@@ -23,7 +23,7 @@ import static shadowLair.model.utils.StringUtils.readable;
 /**
  * A DirectionController contains a canevas and4 buttons.
  * Each button correspond to an exit
- *
+ * <p>
  * This receive updates from higher up, and it sets the buttons accordingly
  * while also passing the updates to the canevas when necessary
  */

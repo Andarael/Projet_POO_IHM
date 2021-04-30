@@ -17,13 +17,13 @@ public class Printer {
     }
 
     public static String printMsg(String str) {
-        if (! silence)
+        if (!silence)
             System.out.println(str);
         return str + "\n";
     }
 
     public static String printDialogue(String str) {
-        if (! silence)
+        if (!silence)
             System.out.println(colorize(str, CYAN));
         return str + "\n";
     }

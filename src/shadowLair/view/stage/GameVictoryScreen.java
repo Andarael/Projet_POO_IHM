@@ -12,14 +12,15 @@ import shadowLair.view.RessourceManager;
 /**
  * a simple stage for the victory screen
  */
-public class GameVictoryScreen extends Stage{
+public class GameVictoryScreen extends Stage {
 
     public GameVictoryScreen() {
         this.initModality(Modality.APPLICATION_MODAL);
 
         this.setTitle("Victory !");
 
-        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("victory", ".png")));
+        ImageView helpImage = new ImageView(new Image(RessourceManager.getRessourceString("victory",
+                                                                                          ".png")));
 
         helpImage.setOnMouseClicked(event -> Platform.exit());
 

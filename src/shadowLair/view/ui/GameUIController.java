@@ -1,11 +1,14 @@
 package shadowLair.view.ui;
 
-import shadowLair.controller.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import shadowLair.controller.MainController;
 import shadowLair.model.entity.Being;
 import shadowLair.model.entity.Container;
 import shadowLair.model.entity.Player;
