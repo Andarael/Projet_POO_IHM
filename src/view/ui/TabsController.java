@@ -12,6 +12,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This controller is associated with the so called Tabs.fxml
+ * But it have tabs only in name.
+ * Because the tab switch is done automatically and other tabs are disable when not in use
+ *
+ * So the tabs are still here mainly for aesthetic reasons
+ * And if we would like to add other tabs in the future  the code base is still here
+ * (for a horse inventory accessible at all time for example)
+ *
+ * This controller passes trough the updates to its children
+ */
 public class TabsController extends AbstractController {
 
     @FXML private VBox ChestInv;
@@ -64,7 +75,8 @@ public class TabsController extends AbstractController {
         lootInvController.updateThis();
         traderInvController.updateThis();
 
-        // System.out.println(lootTab.isDisabled());
+        // Known bug : disabled tab appears not disabled (but remains un-clickable)
+        // System.out.println("lootTab : " + lootTab.isDisabled() + "tradeTab : " + tradeTab.isDisable());
         // javafx dit que le loot tab est disable. Alors qu'il ne l'est clairement pas dans l'interface ... s
     }
 

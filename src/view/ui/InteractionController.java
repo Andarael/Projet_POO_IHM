@@ -16,6 +16,14 @@ import view.RessourceManager;
 import static model.utils.StringUtils.capitalize;
 import static model.utils.StringUtils.readable;
 
+/**
+ * This controller is responsible for the interactions with the selected container (in the canevas)
+ *
+ * The buttons gets enabled or disable according to the class of the selected container
+ * (we can't talk to a chest, nor can we trade with a dragon)
+ *
+ * the label always shows the name of the selected Container
+ */
 public class InteractionController extends AbstractController {
 
     @FXML public VBox interactionArea;
@@ -23,7 +31,6 @@ public class InteractionController extends AbstractController {
     @FXML private Button talkButton;
     @FXML private Button attackButton;
     @FXML private Button lookButton;
-
 
     private Container selectedContainer = null;
 
@@ -36,12 +43,12 @@ public class InteractionController extends AbstractController {
     }
 
     private void setButtonImage(Button button, String string) {
-        ImageView quitView = new ImageView(new Image(RessourceManager.getRessourceString(string, ".png")));
+        ImageView quitView = new ImageView(new Image(RessourceManager.getRessourceString(string,
+                                                                                         ".png")));
         quitView.setFitHeight(32);
         quitView.setFitWidth(32);
         button.setGraphic(quitView);
     }
-
 
     @Override
     public void updateThis() {

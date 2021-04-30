@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import model.entity.item.Item;
 
+/**
+ * Very similar to {@link PlayerInventoryController}
+ */
 public class TraderInventoryController extends ContainerInventoryController {
 
 

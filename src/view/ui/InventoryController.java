@@ -23,6 +23,18 @@ import java.util.List;
 
 import static view.RessourceManager.getRessourceString;
 
+/**
+ * This controller is associated with the fxml file for an inventory
+ * It can actually display any inventory.
+ * It receives the Container from which the inventory is to be displayed
+ * from higher up controllers
+ *
+ * I use a TableView with a custom cellFactory for the item type image
+ * The TableView eases the management of the selected item (i just added a listener to the selection change)
+ *
+ * When an item is selected a notification is sent to the MainController
+ * the description is also updated
+ */
 public class InventoryController extends AbstractController {
 
     @FXML public Label labelGold;

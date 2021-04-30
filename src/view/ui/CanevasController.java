@@ -18,7 +18,14 @@ import java.util.function.BiConsumer;
 
 import static view.RessourceManager.getRessourceString;
 
+/**
+ * A canevas is responsible for displaying the background image corresponding to the place
+ * as well as the NPCs and chests in that place.
+ * It is also responsible to notify the MainController if a container is selected
+ */
 public class CanevasController extends AbstractController {
+
+    /*======= FXML Nodes ========*/
 
     @FXML public ImageView backGroundImage;
     @FXML public VBox canevasContainer;
@@ -27,9 +34,10 @@ public class CanevasController extends AbstractController {
     @FXML public ImageView canevasImage2;
     @FXML public ImageView canevasImage1;
 
-    private Place currentPlace = null;
+    /*======= FXML Actions ========*/
 
-    private Container selectedContainer = null;
+    /*The highlighting part is done by searching the mouseEvent target
+    * There is no code to force a container to be highlighted */
 
     @FXML
     public void selectImagePlayer(MouseEvent mouseEvent) {
@@ -55,6 +63,13 @@ public class CanevasController extends AbstractController {
         highlightSelected(mouseEvent);
     }
 
+    /*======= inner variables ========*/
+
+    private Place currentPlace = null;
+    private Container selectedContainer = null;
+
+    /*======= AbstractController overrides ========*/
+
     @Override
     public void initThis() {
         initImages();
@@ -73,6 +88,8 @@ public class CanevasController extends AbstractController {
         updateContainersInCanevas();
     }
 
+    /*======= Initializations ========*/
+
     private void initImages() {
         playerImage.setImage(null);
         canevasImage3.setImage(null);
@@ -85,6 +102,25 @@ public class CanevasController extends AbstractController {
         backGroundImage.toBack();
         backGroundImage.setImage(null);
     }
+
+    /*======= privates methods ========*/
+
+    private void highlight(Styleable styleable) {
+        styleable.getStyleClass().add("highlighted");
+    }
+
+    private void highlightSelected(MouseEvent mouseEvent) {
+        unHighlightAll();
+
+        highlight((Styleable) mouseEvent.getTarget());
+    }
+
+
+    private void unHighlight(Styleable styleable) {
+        styleable.getStyleClass().remove("highlighted");
+    }
+
+    /*======= updates form higher controllers ========*/
 
     private void updateCanevas() {
         backGroundImage.setImage(null);
@@ -135,17 +171,6 @@ public class CanevasController extends AbstractController {
         return new Image(url);
     }
 
-    private void highlight(Styleable styleable) {
-        styleable.getStyleClass().add("highlighted");
-    }
-
-    private void highlightSelected(MouseEvent mouseEvent) {
-        unHighlightAll();
-
-        highlight((Styleable) mouseEvent.getTarget());
-    }
-
-
     private void performActionOnImages(List<Container> containers,
                                        BiConsumer<ImageView, Container> consumer) {
         if (containers == null)
@@ -159,10 +184,6 @@ public class CanevasController extends AbstractController {
 
         if (containers.size() == 3)
             consumer.accept(canevasImage3, containers.get(2));
-    }
-
-    private void unHighlight(Styleable styleable) {
-        styleable.getStyleClass().remove("highlighted");
     }
 
     public void updateCurrentPlace(Place currentPlace) {
@@ -190,6 +211,8 @@ public class CanevasController extends AbstractController {
         else
             ressourceName += "_body";
 
+        // might not be efficient to update the player img everyTime
+        // but if we want to add different states or poses, a bit of the cod is already here
         playerImage.setImage(new Image(getRessourceString(ressourceName, ".png")));
 
     }

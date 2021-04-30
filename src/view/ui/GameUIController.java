@@ -20,7 +20,14 @@ import java.util.List;
 import static model.utils.StringUtils.capitalize;
 import static model.utils.StringUtils.readable;
 
+/**
+ * This fxmlController is associated with the root FXML file
+ * It receive updates directly from the mainController
+ * and passes it to its childs when necessary
+ */
 public class GameUIController extends AbstractController {
+
+    /*======= FXML Nodes ========*/
 
     @FXML private Label roomNameLabel;
     @FXML private HBox topButtons;
@@ -33,6 +40,8 @@ public class GameUIController extends AbstractController {
     @FXML private StackPane root;
     @FXML private HBox tabs;
 
+    /*======= FXML controllers ========*/
+
     @FXML private DirectionController directionController;
     @FXML private CharacterBarController characterBar1Controller;
     @FXML private CharacterBarController characterBar2Controller;
@@ -40,7 +49,11 @@ public class GameUIController extends AbstractController {
     @FXML private InfoAreaController infoAreaController;
     @FXML private TabsController tabsController;
 
+    /*======= inner variables ========*/
+
     Player player = null;
+
+    /*======= AbstractController overrides ========*/
 
     @Override
     public void initThis() {
@@ -61,6 +74,8 @@ public class GameUIController extends AbstractController {
                                              interactionController,
                                              infoAreaController));
     }
+
+    /*======= updates form higher controllers ========*/
 
     public void updateSelectedContainer(Container container) {
 
@@ -85,7 +100,7 @@ public class GameUIController extends AbstractController {
         characterBar1Controller.updateThis();
         tabsController.setCurrentPlace(currentPlace);
         roomNameLabel.setText(capitalize(readable(currentPlace.getName())));
-        updateSelectedContainer(null);
+        updateSelectedContainer(null); // when a change occurs in the currentPlace, we always unselect the Container
     }
 
     public void updateInformation(String information) {
@@ -135,7 +150,6 @@ public class GameUIController extends AbstractController {
         infoArea.setDisable(bool);
         tabs.setDisable(bool);
         topButtons.setDisable(bool);
-
     }
 
     public void setDead() {

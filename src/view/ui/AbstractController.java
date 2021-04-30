@@ -4,28 +4,48 @@ import javafx.fxml.FXML;
 
 import java.util.List;
 
+/**
+ * An AbstractController aims to streamline the initialization and communication of nested fxml controllers
+ * It provides methods to update all child controllers at once.
+ * And allows lower controller to easily talk to their parents in the tree
+ *
+ * Those features are barely used in this project.
+ */
 public abstract class AbstractController {
 
     private AbstractController parentController;
 
+    /**
+     * is called at the creation of the FXMLController
+     * So we set the parent here
+     */
     @FXML
     protected final void initialize() {
         initThis();
         setThisAsParentController();
     }
 
+    /**
+     * for the children to implement their own initialization
+     */
     public abstract void initThis();
 
+    /**
+     * for the children to implement their own updates
+     */
     public abstract void updateThis();
 
+    /**
+     * update all the AbstractController children of this
+     */
     protected void updateAllChildren() {
         List<AbstractController> controllers = getChildrenControllers();
 
         if (controllers != null)
-            for (AbstractController controller : controllers) {
+            controllers.forEach(controller -> {
                 controller.updateAllChildren();
                 controller.updateThis();
-            }
+            });
     }
 
     public AbstractController getParentController() {
@@ -36,10 +56,13 @@ public abstract class AbstractController {
         this.parentController = parentController;
     }
 
+    /**
+     * register this as a parent for all its children
+     */
     public final void setThisAsParentController() {
         List<AbstractController> controllers = getChildrenControllers();
 
-        if (controllers == null)
+        if (controllers == null) // if this is a leaf in the tree
             return;
 
         for (AbstractController childController : controllers) {
@@ -50,10 +73,17 @@ public abstract class AbstractController {
         }
     }
 
+    /**
+     * for children to implement
+     */
     public List<AbstractController> getChildrenControllers() {
         return null;
     }
 
+    /**
+     * recursively searches for the highest controller in the tree
+     * It might be usefull to update the interface at once form a deeply nested controller
+     */
     public GameUIController getRootController() {
         AbstractController actualController = getParentController();
 

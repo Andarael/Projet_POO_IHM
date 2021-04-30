@@ -16,7 +16,14 @@ import java.util.List;
 
 import static view.RessourceManager.getRessourceString;
 
+/**
+ * A characterBar is responsible of displaying stats about a being
+ * Some additional stats (like equipped and weight) are displayed for the player
+ * The characterBar does not notify other controllers.
+ */
 public class CharacterBarController extends AbstractController {
+
+    /*======= FXML Nodes ========*/
 
     @FXML public ImageView profileImage;
     @FXML public Label characterNameLabel;
@@ -31,7 +38,11 @@ public class CharacterBarController extends AbstractController {
     @FXML public Label equippedLabel;
     @FXML public HBox characterBar;
 
+    /*======= inner variables ========*/
+
     private Being currentBeing = null;
+
+    /*======= AbstractController overrides ========*/
 
     @Override
     public void initThis() {
@@ -59,6 +70,8 @@ public class CharacterBarController extends AbstractController {
         this.currentBeing = currentBeing;
         updateThis();
     }
+
+    /*======= updates form higher controllers ========*/
 
     private void updateCharacterBox() {
         if (currentBeing == null)

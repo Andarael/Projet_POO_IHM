@@ -21,7 +21,10 @@ import model.inventory.Inventory;
 
 import java.util.Objects;
 
+
 public class PlayerInventoryController extends ContainerInventoryController {
+
+    /*======= FXML Nodes ========*/
 
     @FXML public Label useOnLabel;
     @FXML public ComboBox<Entity> selectionBox;
@@ -30,21 +33,7 @@ public class PlayerInventoryController extends ContainerInventoryController {
     @FXML private Button equipButton;
     @FXML private Button unequipButton;
 
-    private Place currentPlace = null;
-
-    private Entity entityToUseItemOn = null;
-
-    @Override
-    public void initThis() {
-        super.initThis();
-
-        initSelectionBox();
-    }
-
-    @Override
-    public void updateThis() {
-        super.updateThis();
-    }
+    /*======= FXML Actions ========*/
 
     @FXML
     public void unequipAction(ActionEvent actionEvent) {
@@ -64,6 +53,25 @@ public class PlayerInventoryController extends ContainerInventoryController {
     @FXML
     public void dropAction(ActionEvent actionEvent) {
         ExecutionController.executeDrop();
+    }
+
+    /*======= inner variables ========*/
+
+    private Place currentPlace = null;
+    private Entity entityToUseItemOn = null;
+
+    /*======= AbstractController overrides & initializations ========*/
+
+    @Override
+    public void initThis() {
+        super.initThis();
+
+        initSelectionBox();
+    }
+
+    @Override
+    public void updateThis() {
+        super.updateThis();
     }
 
     private void initSelectionBox() {
@@ -109,6 +117,9 @@ public class PlayerInventoryController extends ContainerInventoryController {
         ObservableList<Entity> itemObservableList = FXCollections.observableArrayList(inventory.getItemList());
         selectionBox.setItems(itemObservableList);
     }
+
+
+    /*======= updates form higher controllers ========*/
 
     @Override
     public void setSelectedItem(Item item) {

@@ -2,10 +2,17 @@ package view;
 
 import java.net.URL;
 
+/**
+ * This Interface aims to stramline the access to ressources in the application view
+ * For the moment only css and png are managed
+ */
 public interface RessourceManager {
 
     String ressourcePath = "./ressources";
 
+    /**
+     * takes the name of a ressource and return the full url to it
+     */
     static URL getRessource(String ressourceName, String ext) {
         String path = "";
 
@@ -26,6 +33,10 @@ public interface RessourceManager {
         return url;
     }
 
+
+    /**
+     * takes the name of a ressource and return the full url to it
+     */
     static String getRessourceString(String ressourceName, String ext) {
         return getRessource(ressourceName, ext).toString();
     }

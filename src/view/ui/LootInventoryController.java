@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import model.entity.item.Item;
 
+/**
+ * Very similar to {@link PlayerInventoryController}
+ */
 public class LootInventoryController extends ContainerInventoryController {
 
     private Item selectedItemLoot;

@@ -5,6 +5,9 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
+/**
+ * The root fxmlLoader
+ */
 public class GameUI extends StackPane {
 
     public GameUI() {

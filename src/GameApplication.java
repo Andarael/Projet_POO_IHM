@@ -25,5 +25,4 @@ public class GameApplication extends Application {
         MainController.initialize();
     }
 
-    // todo arguments de lancement : terminal ON/OFF
 }

@@ -20,7 +20,16 @@ import java.util.List;
 import static controller.Direction.*;
 import static model.utils.StringUtils.readable;
 
+/**
+ * A DirectionController contains a canevas and4 buttons.
+ * Each button correspond to an exit
+ *
+ * This receive updates from higher up, and it sets the buttons accordingly
+ * while also passing the updates to the canevas when necessary
+ */
 public class DirectionController extends AbstractController {
+
+    /*======= FXML Nodes ========*/
 
     @FXML public Button buttonUp;
     @FXML public Button buttonDown;
@@ -28,12 +37,12 @@ public class DirectionController extends AbstractController {
     @FXML public Button buttonRight;
     @FXML public VBox canevas;
 
+    /*======= FXML controllers ========*/
+
     @FXML
     CanevasController canevasController;
 
-    private Place currentPlace = null;
-    private Player player = null;
-
+    /*======= FXML Actions ========*/
 
     @FXML
     public void goUp(ActionEvent actionEvent) {
@@ -55,6 +64,13 @@ public class DirectionController extends AbstractController {
         ExecutionController.executeGo(DOWN);
     }
 
+    /*======= inner variables ========*/
+
+    private Place currentPlace = null;
+    private Player player = null;
+
+    /*======= AbstractController overrides ========*/
+
     @Override
     public void initThis() {
         updateThis();
@@ -71,6 +87,29 @@ public class DirectionController extends AbstractController {
     public List<AbstractController> getChildrenControllers() {
         return Collections.singletonList(canevasController);
     }
+
+    /*======= updates form higher controllers ========*/
+
+    public void updateCurrentPlace(Place currentPlace) {
+        this.currentPlace = currentPlace;
+        canevasController.updateCurrentPlace(currentPlace);
+        updateThis();
+    }
+
+    public void updateSelectedContainer(Container container) {
+        canevasController.updateSelectedContainer(container);
+    }
+
+    public void updatePlayer(Player player) {
+        this.player = player;
+        canevasController.updatePlayer(player);
+    }
+
+    public void updateExits() {
+        updateThis();
+    }
+
+    /*======= private methods ========*/
 
     private void updateAllButtons() {
         updateButton(buttonUp, UP);
@@ -139,22 +178,5 @@ public class DirectionController extends AbstractController {
         }
     }
 
-    public void updateCurrentPlace(Place currentPlace) {
-        this.currentPlace = currentPlace;
-        canevasController.updateCurrentPlace(currentPlace);
-        updateThis();
-    }
 
-    public void updateSelectedContainer(Container container) {
-        canevasController.updateSelectedContainer(container);
-    }
-
-    public void updatePlayer(Player player) {
-        this.player = player;
-        canevasController.updatePlayer(player);
-    }
-
-    public void updateExits() {
-        updateThis();
-    }
 }
