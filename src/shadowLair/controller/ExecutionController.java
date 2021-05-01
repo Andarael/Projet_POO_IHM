@@ -156,6 +156,7 @@ public class ExecutionController {
         String executionResult = Execute.execute(world, command);
 
         updateOnInteractionWithItem(executionResult);
+        updateCurrentPlace();
     }
 
     /**
@@ -195,6 +196,7 @@ public class ExecutionController {
         updateCurrentPlace();
         updatePlayer();
         lootPlace();
+        updateSelectedContainer();
         updateInfo(executionResult);
     }
 
