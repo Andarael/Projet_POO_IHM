@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
+         stylesheets="@../ressources/css/main.css, @../ressources/css/table.css, @../ressources/css/colors.css, @../ressources/css/tabs.css"
+         type="StackPane"
+         xmlns="http://javafx.com/javafx/8.0.171"
+         fx:controller="shadowLair.controller.ui.GameUIController">
+
+
+    <HBox alignment="CENTER" minHeight="512" maxHeight="1024" maxWidth="1280" minWidth="768"
+          spacing="32">
+
+        <VBox spacing="16" prefWidth="600" alignment="CENTER">
+
+            <Label styleClass="h1" text="Room Name" fx:id="roomNameLabel"/>
+
+            <Separator/>
+
+            <fx:include fx:id="direction" source="Direction.fxml"/>
+
+            <Separator/>
+
+            <fx:include fx:id="characterBar1" source="CharacterBar.fxml"/>
+
+            <Separator/>
+
+            <fx:include fx:id="characterBar2" source="CharacterBar.fxml"/>
+
+            <Separator/>
+
+            <Label styleClass="h2" text="Dialogue"/>
+
+            <TextArea id="dialogueBox" fx:id="dialogueBox" editable="false" prefRowCount="4"
+                      wrapText="true" styleClass="h3"/>
+        </VBox>
+
+        <Separator orientation="VERTICAL"/>
+
+        <VBox alignment="CENTER" spacing="8" prefWidth="600">
+
+            <fx:include fx:id="topButtons" source="TopButtons.fxml" prefWidth="512"/>
+
+            <Separator/>
+
+            <fx:include fx:id="tabs" source="Tabs.fxml"/>
+
+            <Separator/>
+
+            <fx:include fx:id="interaction" source="Interaction.fxml"/>
+
+            <Separator/>
+
+            <fx:include fx:id="infoArea" source="InfoArea.fxml"/>
+
+        </VBox>
+
+    </HBox>
+</fx:root>

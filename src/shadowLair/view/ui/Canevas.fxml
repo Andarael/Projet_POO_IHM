@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:id="canevasContainer" prefHeight="512.0"
+      prefWidth="512.0"
+      fx:controller="shadowLair.controller.ui.CanevasController">
+
+    <ImageView id="canevas" fx:id="backGroundImage" fitHeight="512" fitWidth="512"/>
+
+    <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="512"
+          minHeight="-Infinity" minWidth="512" prefHeight="0.0" prefWidth="512.0"
+          spacing="32">
+
+        <ImageView fx:id="playerImage" fitHeight="144" fitWidth="96"
+                   onMouseClicked="#selectImagePlayer" translateY="-64.0" styleClass="handCursor"/>
+
+        <ImageView fx:id="canevasImage3" fitHeight="144" fitWidth="96"
+                   onMouseClicked="#selectImage1" translateY="-64.0" styleClass="handCursor"/>
+
+        <ImageView fx:id="canevasImage2" fitHeight="144" fitWidth="96"
+                   onMouseClicked="#selectImage2" translateY="-64.0" styleClass="handCursor"/>
+
+        <ImageView fx:id="canevasImage1" fitHeight="144" fitWidth="96"
+                   onMouseClicked="#selectImage3" translateY="-64.0" styleClass="handCursor"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" spacing="8"
+      fx:controller="shadowLair.controller.ui.TabsController">
+
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" prefWidth="256">
+
+        <Tab text="Inventory">
+            <fx:include fx:id="playerInv" source="PlayerInventory.fxml"/>
+        </Tab>
+
+    </TabPane>
+
+    <Separator orientation="VERTICAL"/>
+
+
+    <TabPane fx:id="tradeAndLootTabPane" tabClosingPolicy="UNAVAILABLE" prefWidth="256">
+
+        <Tab fx:id="tradeTab" text="Trade">
+            <fx:include fx:id="traderInv" source="TraderInventory.fxml"/>
+        </Tab>
+
+        <Tab fx:id="lootTab" text="Loot">
+            <fx:include fx:id="lootInv" source="LootInventory.fxml"/>
+        </Tab>
+
+    </TabPane>
+
+</HBox>

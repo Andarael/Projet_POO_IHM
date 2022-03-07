@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="8"
+      fx:controller="shadowLair.controller.ui.InventoryController">
+
+    <Label fx:id="labelGold" text="Golds : "/>
+
+    <TableView fx:id="itemTable" prefHeight="192">
+        <columns>
+            <TableColumn fx:id="itemTypeColumn" editable="false" sortable="false" text="Type"
+                         prefWidth="48" resizable="false"/>
+            <TableColumn fx:id="itemNameColumn" editable="false" text="ItemName"
+                         prefWidth="84" resizable="false"/>
+            <TableColumn fx:id="itemValueColumn" editable="false" text="Value"
+                         prefWidth="48" resizable="false"/>
+            <TableColumn fx:id="itemWeightColumn" editable="false" text="Weight"
+                         prefWidth="48" resizable="false"/>
+        </columns>
+    </TableView>
+
+    <Label id="descriptionLabel" styleClass="h2" text="Description "/>
+
+    <TextArea fx:id="descriptionTextArea" editable="false" prefColumnCount="1" prefRowCount="4"
+              wrapText="true"/>
+
+</VBox>
