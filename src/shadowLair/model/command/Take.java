@@ -36,6 +36,28 @@ public interface Take {
     }
 
     /**
+     * Automatically takes the golds present in the room
+     */
+    static String take(Player player, Place currentPlace) {
+
+        StaticContainer placeContainer = currentPlace.getPlaceContainer();
+
+        int gold = placeContainer.getGold();
+        placeContainer.removeGold(gold);
+        player.addGold(gold);
+
+        return printMsg("You took " + gold + " gold(s)");
+    }
+
+
+    static String take(Player player, Place currentPlace, String itemName) {
+
+        StaticContainer placeContainer = currentPlace.getPlaceContainer();
+
+        return takeItemAddPlayer(player, placeContainer, itemName);
+    }
+
+    /**
      * Takes an item from a container and add it to the player
      * if the player can't carry it, then
      *
@@ -61,28 +83,5 @@ public interface Take {
                             ". You can't carry it. \n " +
                             "Try discarding some items");
         }
-    }
-
-
-    /**
-     * Automatically takes the golds present in the room
-     */
-    static String take(Player player, Place currentPlace) {
-
-        StaticContainer placeContainer = currentPlace.getPlaceContainer();
-
-        int gold = placeContainer.getGold();
-        placeContainer.removeGold(gold);
-        player.addGold(gold);
-
-        return printMsg("You took " + gold + " gold(s)");
-    }
-
-
-    static String take(Player player, Place currentPlace, String itemName) {
-
-        StaticContainer placeContainer = currentPlace.getPlaceContainer();
-
-        return takeItemAddPlayer(player, placeContainer, itemName);
     }
 }
